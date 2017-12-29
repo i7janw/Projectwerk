@@ -1,0 +1,52 @@
+#!/bin/bash
+
+function create {
+	filename=`echo $filename | cut -d. -f1`	# remove .tex
+
+	# Aanmaken van bestandsname om te gebruiken in latex met \input
+	#readlink -f  $filename.tex > filename.txt
+	#echo \/\/`hostname`\/`readlink -f  opdracht-itil.tex` > filename.txt
+	echo $filename.tex | sed 's/_/\\textunderscore /g' > filename.txt
+
+	if [ "$1" = "pdflatex" ]
+	then
+		pdflatex $filename
+		pdflatex $filename
+	else
+		#latex 2 * voor crossreference
+		latex $filename
+		latex $filename
+
+		#dvips
+		dvips $filename.dvi
+
+		#ps --> pdf
+		ps2pdf $filename.ps
+	fi
+}
+
+#1. Korte omschrijving
+filename=`ls korteOmschrijving*.tex`
+##create
+
+#2. definitiestudie
+filename=`ls definitiestudie*.tex`
+##create
+
+#3. featureList
+filename=`ls featureList*.tex`
+##create 
+
+#5. datawoordenboek
+##pdf2ps ~/MEGA/2017-2018/ProjectWerk/DesignDocument/1.5_datawoordenboek/EER.pdf ~/MEGA/2017-2018/ProjectWerk/DesignDocument/latex/pictures/EER.ps
+##pdf2ps ~/MEGA/2017-2018/ProjectWerk/DesignDocument/1.5_datawoordenboek/Aansluitpunten.pdf ~/MEGA/2017-2018/ProjectWerk/DesignDocument/latex/pictures/Aansluitpunten.ps
+filename=`ls datawoordenboek*.tex`
+create
+
+#10. visueel ontwerp
+filename=`ls visueelOntwerp*.tex`
+create pdflatex
+
+#13. standup SCRUM
+filename=`ls standupScrum*.tex`
+##create

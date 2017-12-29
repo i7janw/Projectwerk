@@ -1,0 +1,12 @@
+C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\1home\1home\bin\Debug\1home.exe.config
+C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\1home\1home\bin\Debug\1home.exe
+C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\1home\1home\bin\Debug\1home.pdb
+C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\1home\1home\obj\Debug\1home.csprojResolveAssemblyReference.cache
+C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\1home\1home\obj\Debug\_1home.Form1.resources
+C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\1home\1home\obj\Debug\_1home.Properties.Resources.resources
+C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\1home\1home\obj\Debug\1home.csproj.GenerateResource.Cache
+C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\1home\1home\obj\Debug\1home.csproj.CoreCompileInputs.cache
+C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\1home\1home\obj\Debug\1home.exe
+C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\1home\1home\obj\Debug\1home.pdb
+C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\1home\1home\bin\Debug\MySql.Data.dll
+C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\1home\1home\bin\Debug\MySql.Data.xml

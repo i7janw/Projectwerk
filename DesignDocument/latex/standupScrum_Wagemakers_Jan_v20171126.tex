@@ -1,0 +1,212 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Structured General Purpose Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+%\usepackage{currfile}
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx} % Required to insert images
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{outlines}
+\usepackage{wrapfig}
+\usepackage[dutch,]{babel}
+\selectlanguage{dutch}
+
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+%\chead{\hmwkClass\ \small{(\textit{\hmwkClassInstructor})}} 
+\chead{\hmwkClass} 
+\rhead{\hmwkTitle} 
+\lfoot{\LaTeX: \small{\input{filename.txt}}} % Bottom left footer
+%\lfoot{\LaTeX: {/home/jan/CVOTSM/A7\_IT-organisatie/ITIL/}\currfilepath} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Pagina\ \thepage\ van\ \pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+
+%\setlength{\parskip}{\baselineskip}%
+%\setlength{\parindent}{12pt}%
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT STRUCTURE COMMANDS
+%	Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+   
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{13. Logboek scrum/agile} % Assignment title
+%\newcommand{\hmwkDueDate}{Monday,\ January\ 1,\ 2012} % Due date
+\newcommand{\hmwkDueDate}{} % Due date
+\newcommand{\hmwkClass}{Projectwerk} % Course/class
+%\newcommand{\hmwkClassTime}{10:30am} % Class/lecture time
+\newcommand{\hmwkClassTime}{} % Class/lecture time
+\newcommand{\hmwkClassInstructor}{} % Teacher/lecturer
+\newcommand{\hmwkAuthorName}{Wagemakers Jan} % Your name
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\vspace{2in}
+\textmd{\textbf{\hmwkClass}}\\
+\textmd{\textbf{\hmwkTitle}}\\
+%\normalsize\vspace{0.1in}\small{In\ te\ dienen\ voor\ \hmwkDueDate}\\
+%\vspace{0.1in}{\textit{Leerkracht: \hmwkClassInstructor\ \hmwkClassTime}}
+\vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName}}
+\date{\today} % Insert date here if you want it to appear below your name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
+
+%\newpage
+%\tableofcontents
+\newpage
+
+%%% Opdracht
+
+%\begin{homeworkProblem}[\arabic{homeworkProblemCounter} : Omschrijving opdracht]
+\begin{homeworkProblem}[29/10/2017]
+We gaan gewoon starten met het schrijven van korte omschrijving
+designdocument om zo al een duidelijker beeld te krijgen van wat de software
+juist moet doen.
+\\~\\
+Documenten moeten nog niet 100\% in orde zijn. Belangrijker is dat er een
+begin is en er over het probleem goed wordt nagedacht.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[04/11/2017]
+Korte omschrijving + definitie-studie : 1ste draft is gemaakt, later nog
+terug bekijken en verder uitwerken.
+\\~\\
+Besloten om als volgende stap de opbouw van de database te bekijken. Dit
+hoort bij analyse/datawoordenboek. Reden om hier mee te starten is dat de
+database in dit project een zeer belangrijke rol speelt. 
+\\~\\
+Jan gaat database structuur bekijken en eventueel al eens uittesten in bv.
+mySQL workbench.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[11/11/2017]
+	Op scrumbord een extra veld \textbf{DRAFT's ter nazicht} aangemaakt om een onderscheid te maken tussen zaken waar als iets voor gedaan is.
+\\~\\
+	Database : zekeringkasten, verdeelborden, tranfso's worden bezien als \textbf{Aansluitpunten}, van waaruit \textbf{Aansluitingen} naar andere \textbf{Aansluitpunten} of \textbf{Machines} of andere eindverbruikers vertrekken.
+	Zie \textbf{datawoordenboek} voor meer info.
+	\\~\\
+	Tegen volgende week moet er een eerste aanzet gemaakt zijn voor de feature list. 
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[18/11/2017]
+Feature list is aangemaakt.
+\\~\\
+Use case diagram + visueel ontwerp gelijktijdig uitwerken omdat er een groot verband is tussen de \textbf{gebruikersschermen} en de \textbf{use cases}.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[26/11/2017]
+Feedback doorgenomen.
+\\~\\
+Aan het datawoordenboek zijn nog een aantal zaken die verbeterd kunnen
+worden. Is het bv. een goed idee om met waarden NULL te werken als een
+aansluiting niet naar een ander aansluitpunt gaat. Zie ook naar de \textbf{checklist} die bij datawoordenboek toegevoegd is aan het scrum-board.
+\\~\\
+Een ander aandachtspunt in verband met het datawoordenboek is de vraag of we
+de aanduiding van een aansluitpunt als primary key nemen, of toch beter met
+een extra ID werken. Feedback aan Joris gevraagd die meer ervaring in deze
+materie heeft.
+\\~\\
+%%\problemAnswer{
+Momenteel wordt er dus aan het \textbf{datawoordenboek}, \textbf{gebruikersschermen (visueel
+ontwerp)} en \textbf{use cases} gewerkt.
+%%}
+
+\end{homeworkProblem}
+\end{document}

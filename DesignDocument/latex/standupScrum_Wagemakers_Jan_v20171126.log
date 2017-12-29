@@ -1,0 +1,197 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=latex 2017.11.11)  26 NOV 2017 12:23
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**standupScrum_Wagemakers_Jan_v20171126
+(./standupScrum_Wagemakers_Jan_v20171126.tex
+LaTeX2e <2017/01/01> patch level 3
+Babel <3.9r> and hyphenation patterns for 30 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2016/09/06 3.8 Extensive control of page headers and footers
+\fancy@headwidth=\skip43
+\f@ncyO@elh=\skip44
+\f@ncyO@erh=\skip45
+\f@ncyO@olh=\skip46
+\f@ncyO@orh=\skip47
+\f@ncyO@elf=\skip48
+\f@ncyO@erf=\skip49
+\f@ncyO@olf=\skip50
+\f@ncyO@orf=\skip51
+)
+(/usr/share/texlive/texmf-dist/tex/latex/lastpage/lastpage.sty
+Package: lastpage 2015/03/29 v1.2m Refers to last page's name (HMM; JPG)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/extramarks.sty
+Package: extramarks 2016/08/27 2.1 Extra marks
+\@temptokenb=\toks14
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/10/09 v1.0u Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: dvips.def on input line 99.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/dvips.def
+File: dvips.def 2016/07/10 v3.1a Driver-dependent file (DPC,SPQR)
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.sty
+Package: lipsum 2014/07/27 v1.3 150 paragraphs of Lorem Ipsum dummy text
+\c@lips@count=\count87
+)
+(/usr/share/texlive/texmf-dist/tex/latex/outlines/outlines.sty
+Package: outlines 2012/1/23 1.1 Ch. Pecheur
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen105
+\WF@size=\dimen106
+\c@WF@wrappedlines=\count88
+\WF@box=\box26
+\WF@everypar=\toks16
+Package: wrapfig 2003/01/31  v 3.6
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2016/04/23 3.9r The Babel package
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel-dutch/dutch.ldf
+Language: dutch 2005/03/30 v3.8i Dutch support from the babel system
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2016/04/23 3.9r Babel common definitions
+\babel@savecnt=\count89
+\U@D=\dimen107
+)
+Package babel Info: Making " an active character on input line 132.
+))
+\c@homeworkProblemCounter=\count90
+
+(./standupScrum_Wagemakers_Jan_v20171126.aux)
+\openout1 = `standupScrum_Wagemakers_Jan_v20171126.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 140.
+LaTeX Font Info:    ... okay on input line 140.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 140.
+LaTeX Font Info:    ... okay on input line 140.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 140.
+LaTeX Font Info:    ... okay on input line 140.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 140.
+LaTeX Font Info:    ... okay on input line 140.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 140.
+LaTeX Font Info:    ... okay on input line 140.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 140.
+LaTeX Font Info:    ... okay on input line 140.
+Package lastpage Info: Please have a look at the pageslts package at
+(lastpage)             https://www.ctan.org/pkg/pageslts
+(lastpage)             ! on input line 140.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 142.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 142.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 142.
+ [1
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 158--165
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 167--177
+
+ []
+
+
+Overfull \hbox (4.37561pt too wide) in paragraph at lines 167--177
+\OT1/cmr/m/n/10 Besloten om als vol-gende stap de op-bouw van de da-ta-base te 
+be-kij-ken. Dit hoort bij ana-lyse/datawoordenboek.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 167--177
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--185
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--185
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 189--193
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 195--210
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 195--210
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 195--210
+
+ []
+
+
+AED: lastpage setting LastPage
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 212.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 212.
+(./filename.txt) [2] (./filename.txt) [3]
+(./standupScrum_Wagemakers_Jan_v20171126.aux) ) 
+Here is how much of TeX's memory you used:
+ 1566 strings out of 494359
+ 19657 string characters out of 6164552
+ 181178 words of memory out of 5000000
+ 4909 multiletter control sequences out of 15000+600000
+ 8501 words of font info for 30 fonts, out of 8000000 for 9000
+ 350 hyphenation exceptions out of 8191
+ 33i,12n,43p,293b,233s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on standupScrum_Wagemakers_Jan_v20171126.dvi (3 pages, 4248 byte
+s).

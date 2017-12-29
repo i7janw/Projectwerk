@@ -1,0 +1,21 @@
+\select@language {dutch}
+\select@language {dutch}
+\contentsline {section}{1 : Omschrijving opdracht}{3}
+\contentsline {section}{2 : Visie}{5}
+\contentsline {section}{3 : Service Catalog Management}{5}
+\contentsline {section}{4 : Locatie - Namen : Netwerkconnectie}{7}
+\contentsline {section}{5 : Incident Management/Event management}{7}
+\contentsline {section}{6 : Service Desk}{8}
+\contentsline {section}{7 : Centralisatie/Standaardisatie}{9}
+\contentsline {section}{8 : Request fulfilment}{10}
+\contentsline {section}{9 : Access Management}{10}
+\contentsline {section}{10 : Service Level Management}{11}
+\contentsline {section}{11 : Capacity }{11}
+\contentsline {section}{12 : Availalbility}{12}
+\contentsline {section}{13 : IT Service Continuity}{12}
+\contentsline {section}{14 : Financi\"eel}{13}
+\contentsline {section}{15 : Service Transition}{13}
+\contentsline {section}{16 : Change Management}{14}
+\contentsline {section}{17 : Service Asset en Configuration}{14}
+\contentsline {section}{18 : Knowledge management}{15}
+\contentsline {section}{19 : Release en Deployment}{15}
