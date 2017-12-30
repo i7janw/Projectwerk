@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=latex 2017.11.11)  26 NOV 2017 12:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=latex 2017.11.11)  30 DEC 2017 12:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**standupScrum_Wagemakers_Jan_v20171126
-(./standupScrum_Wagemakers_Jan_v20171126.tex
+**standupScrum_Wagemakers_Jan_v20171230
+(./standupScrum_Wagemakers_Jan_v20171230.tex
 LaTeX2e <2017/01/01> patch level 3
 Babel <3.9r> and hyphenation patterns for 30 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -99,8 +99,8 @@ Package babel Info: Making " an active character on input line 132.
 ))
 \c@homeworkProblemCounter=\count90
 
-(./standupScrum_Wagemakers_Jan_v20171126.aux)
-\openout1 = `standupScrum_Wagemakers_Jan_v20171126.aux'.
+(./standupScrum_Wagemakers_Jan_v20171230.aux)
+\openout1 = `standupScrum_Wagemakers_Jan_v20171230.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 140.
 LaTeX Font Info:    ... okay on input line 140.
@@ -176,14 +176,38 @@ Underfull \hbox (badness 10000) in paragraph at lines 195--210
 
  []
 
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 213.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 213.
+(./filename.txt) [2]
+Underfull \hbox (badness 10000) in paragraph at lines 214--232
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 214--232
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 214--232
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 214--232
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 214--232
+
+ []
+
 
 AED: lastpage setting LastPage
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 212.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 212.
-(./filename.txt) [2] (./filename.txt) [3]
-(./standupScrum_Wagemakers_Jan_v20171126.aux) ) 
+(./filename.txt) [3] (./standupScrum_Wagemakers_Jan_v20171230.aux) ) 
 Here is how much of TeX's memory you used:
  1566 strings out of 494359
  19657 string characters out of 6164552
@@ -191,7 +215,7 @@ Here is how much of TeX's memory you used:
  4909 multiletter control sequences out of 15000+600000
  8501 words of font info for 30 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
- 33i,12n,43p,293b,233s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 32i,12n,43p,293b,257s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on standupScrum_Wagemakers_Jan_v20171126.dvi (3 pages, 4248 byte
+Output written on standupScrum_Wagemakers_Jan_v20171230.dvi (3 pages, 5160 byte
 s).
