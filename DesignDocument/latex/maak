@@ -43,6 +43,10 @@ filename=`ls featureList*.tex`
 filename=`ls datawoordenboek*.tex`
 create
 
+#6. use case diagram
+filename=`ls useCase*.tex`
+create pdflatex
+
 #10. visueel ontwerp
 filename=`ls visueelOntwerp*.tex`
 create pdflatex
