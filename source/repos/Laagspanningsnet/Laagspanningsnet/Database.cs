@@ -112,7 +112,7 @@ namespace Laagspanningsnet
         {
             Open();
             // Data ophalen en in DataSet ds stoppen
-            string query = "select AP_id AS 'Transfo', AP_locatie AS 'Locatie' from laagspanningsnet.aansluitpunten WHERE AP_id LIKE 'T%';";
+            string query = "select AP_id, AP_locatie from laagspanningsnet.aansluitpunten WHERE AP_id LIKE 'T%';";
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, connectie);
             DataSet ds = new DataSet();
             adapter.Fill(ds);

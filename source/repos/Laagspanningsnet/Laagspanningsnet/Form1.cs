@@ -23,7 +23,72 @@ namespace Laagspanningsnet
         private void Form1_Load(object sender, EventArgs e)
         {
             database = new Database();
-            showAansluitpunt("T8");
+            showTransfos();
+        }
+
+        private void showTransfos()
+        {
+
+            // !!!!! CODE DUPLICATION tussen showTransfos en showAansluitpunt !!!!! Bekijken, dit kan beter!!!!
+
+            // Haal de gegevens uit de database
+            DataSet dsDatabase = database.getTransfos();
+
+            // Maak een nieuwe (lege) dataset aan waarin de gegevens komen zoals ze op het sherm getoond worden
+            // en koppel die aan dgvLaagspanningsnet
+            DataSet dsDisplay = new DataSet();
+            dtDisplay = new DataTable("Display");
+            dsDisplay.Tables.Add(dtDisplay);
+            dgvLaagspanningsnet.DataSource = dsDisplay.Tables[0];
+
+            // Maak de kolommen aan die getoond moeten worden
+            dtDisplay.Columns.Add(new DataColumn("+", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("-", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("A", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("Transfo", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("Locatie", typeof(string)));
+
+            // eerste 3 columns zijn de +/-A knoppen --> width op 25 zetten en HeaderText verbergen
+            dgvLaagspanningsnet.Columns[0].Width = 25;
+            dgvLaagspanningsnet.Columns[0].HeaderText = "";
+            dgvLaagspanningsnet.Columns[1].Width = 25;
+            dgvLaagspanningsnet.Columns[1].HeaderText = "";
+            dgvLaagspanningsnet.Columns[2].Width = 25;
+            dgvLaagspanningsnet.Columns[2].HeaderText = "";
+
+            // Loop over de Database gegevens om ze te analyseren
+            int count = 0;
+            foreach (DataRow row in dsDatabase.Tables[0].Rows)
+            {
+                var db_AP_id = row["AP_id"];
+                var db_AP_Locatie = row["AP_locatie"];
+
+                // Rij (velden) met de juiste waarden vullen
+                DataRow dr = dtDisplay.NewRow();
+                dr[0] = "+";
+                dr[1] = "-";
+                dr[2] = "A";
+                dr["Transfo"] = db_AP_id;
+                dr["Locatie"] = db_AP_Locatie;
+                dtDisplay.Rows.Add(dr);
+
+                // Bepaalde cellen moeten buttons worden.
+                dgvLaagspanningsnet.Rows[count].Cells[0] = new DataGridViewButtonCell();
+                dgvLaagspanningsnet.Rows[count].Cells[1] = new DataGridViewButtonCell();
+                dgvLaagspanningsnet.Rows[count].Cells[2] = new DataGridViewButtonCell();
+                dgvLaagspanningsnet.Rows[count].Cells["Transfo"] = new DataGridViewButtonCell();
+                count++;
+
+            }
+            // En nog een extra lijn bijvoegen voor de extra "+" knop.
+            DataRow extraDataRow = dtDisplay.NewRow();
+            extraDataRow[0] = "+";
+            dtDisplay.Rows.Add(extraDataRow);
+            dgvLaagspanningsnet.Rows[count].Cells[0] = new DataGridViewButtonCell();
+            for (int y = 1; y < dgvLaagspanningsnet.ColumnCount; y++) // Op deze rij alles grijs maken, behalve de +knop.
+            {
+                dgvLaagspanningsnet.Rows[count].Cells[y].Style.BackColor = Color.DarkGray;
+            }
         }
 
         private void showAansluitpunt(String aansluitpunt)
@@ -130,10 +195,14 @@ namespace Laagspanningsnet
         private void dgvLaagspanningsnet_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView dgv = sender as DataGridView;
+
+            // Is er op een cell met een button gedrukt?
             if (dgv[e.ColumnIndex, e.RowIndex].GetType() != typeof(DataGridViewButtonCell))
             {
-                return;
+                return; // Geen button --> negeren
             }
+
+            // Afhandelen van drukken op +/-/A
             if (e.ColumnIndex == 0) // +
             {
                 return;
@@ -147,21 +216,8 @@ namespace Laagspanningsnet
                 return;
             }
 
-            //var dgv = (DataGridView)sender;
-
-            Console.Write(e.ToString());
-
-            //if (dgv.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
-            //  e.RowIndex >= 0)
-            //{
-            //TODO - Button Clicked - Execute Code Here
-            //MessageBox.Show((e.RowIndex + 1) + "  Row  " + (e.ColumnIndex + 1) + "  Column button clicked ");
-
-            // MessageBox.Show(dtDisplay.Rows[e.RowIndex][e.ColumnIndex].ToString());
+            // Doorbladeren naar een ander aansluitpunt
             showAansluitpunt(dtDisplay.Rows[e.RowIndex][e.ColumnIndex].ToString());
-
-
-            //}
         }
     }
 }
