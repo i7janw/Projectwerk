@@ -28,6 +28,11 @@ namespace Laagspanningsnet
 
         private void showTransfos()
         {
+            lblLayout.Text = "Overzicht Transformatoren";
+            btnDynVoeding.Text = "-";
+            lblDynLocatie.Text = "-";
+            lblDynKabel.Text = "-";
+            lblDynStroom.Text = "-";
 
             // !!!!! CODE DUPLICATION tussen showTransfos en showAansluitpunt !!!!! Bekijken, dit kan beter!!!!
 
@@ -40,7 +45,7 @@ namespace Laagspanningsnet
             dtDisplay = new DataTable("Display");
             dsDisplay.Tables.Add(dtDisplay);
             dgvLaagspanningsnet.DataSource = dsDisplay.Tables[0];
-
+            
             // Maak de kolommen aan die getoond moeten worden
             dtDisplay.Columns.Add(new DataColumn("+", typeof(string)));
             dtDisplay.Columns.Add(new DataColumn("-", typeof(string)));
@@ -190,6 +195,21 @@ namespace Laagspanningsnet
             {
                 dgvLaagspanningsnet.Rows[count].Cells[y].Style.BackColor = Color.DarkGray;
             }
+
+            // Text in button voeding aanpassen
+            btnDynVoeding.Text = database.getVoeding(aansluitpunt);
+
+            // Text Layout aanpassen
+            lblLayout.Text = "Layout van " + aansluitpunt;
+
+            // Text Locatie aanpassen
+            lblDynLocatie.Text = database.getAansluitpuntLocatie(aansluitpunt);
+
+            // Text kabel aanpassen
+            lblDynKabel.Text = database.getKabel(aansluitpunt);
+
+            // Text stroom aanpassen
+            lblDynStroom.Text = database.getStroom(aansluitpunt);
         }
 
         private void dgvLaagspanningsnet_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -218,6 +238,31 @@ namespace Laagspanningsnet
 
             // Doorbladeren naar een ander aansluitpunt
             showAansluitpunt(dtDisplay.Rows[e.RowIndex][e.ColumnIndex].ToString());
+        }
+
+        /* Als er op de knop van de voeding wordt geklikt, ga we naar het scherm van dit aansluitpunt.
+         */
+        private void btnDynVoeding_Click(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            String aansluitpunt = button.Text.Split(' ').First();
+            if(aansluitpunt == "-")
+            {
+                showTransfos();
+                return;
+            }
+            showAansluitpunt(aansluitpunt);
+        }
+
+        /* De blauwe selectie-balk hebben we in dit programma niet nodig.
+         * --> disable
+         * 
+         * Info:
+         * <https://stackoverflow.com/questions/11330147/how-to-disable-the-ability-to-select-in-a-datagridview>
+         */
+        private void dgvLaagspanningsnet_SelectionChanged(object sender, EventArgs e)
+        {
+            dgvLaagspanningsnet.ClearSelection();
         }
     }
 }

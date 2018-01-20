@@ -106,6 +106,56 @@ namespace Laagspanningsnet
             return locatie;
         }
 
+        /* Ophalen van de Aansluitpunt Voeding
+         */
+        public String getVoeding(String aansluitpunt)
+        {
+            Open();
+            // Haal het aansluitpunt op waar de voeding van komt
+            string query = "select AP_id from laagspanningsnet.aansluitingen WHERE Naar_AP_id = '" + aansluitpunt + "';";
+            MySqlCommand cmd = new MySqlCommand(query, connectie);
+            string voedingAP = (String)cmd.ExecuteScalar();
+            // Haal de aansluiitng op waar de voeding van komt
+            query = "select A_id from laagspanningsnet.aansluitingen WHERE Naar_AP_id = '" + aansluitpunt + "';";
+            cmd = new MySqlCommand(query, connectie);
+            string voedingA = (String)cmd.ExecuteScalar();
+            Close();
+            return (voedingAP + " - " + voedingA).Trim();
+        }
+
+        /* Ophalen van de Aansluitpunt Voedingskabel
+         */
+        public String getKabel(String aansluitpunt)
+        {
+            Open();
+            // Haal het aansluitpunt op waar de voeding van komt
+            string query = "select Kabeltype from laagspanningsnet.aansluitingen WHERE Naar_AP_id = '" + aansluitpunt + "';";
+            MySqlCommand cmd = new MySqlCommand(query, connectie);
+            string kabeltype = (String)cmd.ExecuteScalar();
+            // Haal de aansluitng op waar de voeding van komt
+            query = "select Kabelsectie from laagspanningsnet.aansluitingen WHERE Naar_AP_id = '" + aansluitpunt + "';";
+            cmd = new MySqlCommand(query, connectie);
+            string kabelsectie = (String)cmd.ExecuteScalar();
+            Close();
+            return (kabeltype + " - " + kabelsectie).Trim();
+        }
+
+        /* Ophalen van het Aansluitpunt zijn stroomtoevoer
+         */
+        public String getStroom(String aansluitpunt)
+        {
+            Open();
+            // Haal het aansluitpunt op waar de voeding van komt
+            string query = "select Stroom from laagspanningsnet.aansluitingen WHERE Naar_AP_id = '" + aansluitpunt + "';";
+            MySqlCommand cmd = new MySqlCommand(query, connectie);
+            var stroom = cmd.ExecuteScalar();
+            if (stroom == null)
+            {
+                return "-";
+            }
+            return (stroom + "A").Trim();
+        }
+
         /* Opvragen van alle aanwezige Transormatoren in het bedrijf.
          */
         public DataSet getTransfos()
