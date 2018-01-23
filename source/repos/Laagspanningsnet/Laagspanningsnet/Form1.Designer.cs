@@ -36,8 +36,8 @@
             this.afdrukkenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvLaagspanningsnet = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnUndo = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.lblLayout = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.lblVoeding = new System.Windows.Forms.Label();
@@ -134,8 +134,8 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.button1, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button2, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btnUndo, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnSave, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.lblLayout, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -147,25 +147,27 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1188, 144);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
-            // button1
+            // btnUndo
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(497, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(194, 66);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Ongedaan Maken";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnUndo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnUndo.Location = new System.Drawing.Point(497, 3);
+            this.btnUndo.Name = "btnUndo";
+            this.btnUndo.Size = new System.Drawing.Size(194, 66);
+            this.btnUndo.TabIndex = 0;
+            this.btnUndo.Text = "Ongedaan Maken";
+            this.btnUndo.UseVisualStyleBackColor = true;
+            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
             // 
-            // button2
+            // btnSave
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Location = new System.Drawing.Point(497, 75);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(194, 66);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Opslaan";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSave.Location = new System.Drawing.Point(497, 75);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(194, 66);
+            this.btnSave.TabIndex = 1;
+            this.btnSave.Text = "Opslaan";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblLayout
             // 
@@ -325,8 +327,8 @@
         private System.Windows.Forms.ToolStripMenuItem afdrukkenToolStripMenuItem;
         private System.Windows.Forms.DataGridView dgvLaagspanningsnet;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnUndo;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblLayout;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label lblVoeding;
