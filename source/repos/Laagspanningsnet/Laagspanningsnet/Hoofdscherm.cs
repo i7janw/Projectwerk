@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace Laagspanningsnet
 {
-    public partial class Form1 : Form
+    public partial class Hoofdscherm : Form
     {
         private Database database;      // Alle communicatie met de database verloopt via de database klasse
         private DataTable dtDisplay;    // Inhoud van deze DataTable wordt via een DataGridView op het scherm getoond
         private bool unsaved;           // Staan er niet bewaarde gegevens op het scherm?
         private string aansluitpunt;    // Het aansluitpunt dat momenteel wordt getoond
         
-        public Form1()
+        public Hoofdscherm()
         {
             InitializeComponent();
         }
@@ -286,13 +286,19 @@ namespace Laagspanningsnet
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //
-            if(aansluitpunt=="Transfos")
+            // Als er geen unsaved data is, moet er niks gebeuren.
+            if (!unsaved)
+            {
+                return;
+            }
+            
+            // !!!! TODO : bekijken wat we doen bij overzicht transfos.
+            if (aansluitpunt=="Transfos")
             {
                 MessageBox.Show("Onder constructie, nog niet geprogrammeerd!!! TODO");
                 return;
             }
-
+            
             // Maak een nieuwe Dataset aan met de nodige columns, waar de gegevens voor de database in komen
             DataSet dsDatabase = new DataSet();
             DataTable dtDatabase = new DataTable("aansluitingen");

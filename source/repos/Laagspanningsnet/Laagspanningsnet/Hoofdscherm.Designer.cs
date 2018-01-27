@@ -1,6 +1,6 @@
 ﻿namespace Laagspanningsnet
 {
-    partial class Form1
+    partial class Hoofdscherm
     {
         /// <summary>
         /// Required designer variable.
