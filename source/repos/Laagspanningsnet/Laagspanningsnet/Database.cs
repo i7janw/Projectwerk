@@ -186,5 +186,85 @@ namespace Laagspanningsnet
             Close();
             return ds;
         }
+
+        /* Data van alle aansluitingen van een aansluitpunt opslaan in de database.
+         */
+        public void setAansluitingen(DataSet dsDatabase)
+        {
+            int count = 0;
+            foreach (DataRow row in dsDatabase.Tables["aansluitingen"].Rows)
+            {
+                // Steek de gegevens van deze row in losse var's
+                var db_AP_id = "'" + row["AP_id"] + "'";
+                var db_A_id = "'" + row["A_id"] + "'";
+                var db_Naar_AP_id = row["Naar_AP_id"];
+                var db_Naar_M_id = row["Naar_M_id"];
+                var db_Omschrijving = row["Omschrijving"];
+                var db_Kabeltype = "'" + row["Kabeltype"] + "'";
+                var db_Kabelsectie = "'" + row["Kabelsectie"]+ "'";
+                var db_Stroom = "'" + row["Stroom"] + "'";
+                var db_Polen = "'" + row["Polen"] + "'";
+                // 
+                if(db_Naar_AP_id == DBNull.Value)
+                {
+                    db_Naar_AP_id = "NULL";
+                }
+                else
+                {
+                    db_Naar_AP_id = "'" + db_Naar_AP_id + "'";
+                }
+                //
+                if (db_Naar_M_id == DBNull.Value)
+                {
+                    db_Naar_M_id = "NULL";
+                }
+                else
+                {
+                    db_Naar_M_id = "'" + db_Naar_M_id + "'";
+                }
+                //
+                if (db_Omschrijving == DBNull.Value)
+                {
+                    db_Omschrijving = "NULL";
+                }
+                else
+                {
+                    db_Omschrijving = "'" + db_Omschrijving + "'";
+                }
+
+                // !!!! Voorlopig deleten en dan inserten, kan verbeterd worden door updaten , maar dan is test op reeds bestaan nodig !!!!
+                Open();
+                string query;
+                MySqlCommand cmd;
+                if (count == 0) { 
+                    // DELETE alles van een bepaald aansluitpunt van de database (enkel 1 maal uitvoeren is voldoende)
+                    query = "DELETE FROM laagspanningsnet.aansluitingen WHERE AP_id = " + db_AP_id + ";";
+                    cmd = new MySqlCommand(query, connectie);
+                    cmd.ExecuteNonQuery();
+                }
+
+                // INSERT de gegevens in de database
+                query = "INSERT INTO laagspanningsnet.aansluitingen " + 
+                    "(`AP_id`, `A_id`, `Naar_AP_id`, `Naar_M_id` , `Omschrijving`, `Kabeltype`, `Kabelsectie`, `Stroom`, `Polen`)" +
+                    "VALUES(" + 
+                    db_AP_id + ", " +
+                    db_A_id + ", " +
+                    db_Naar_AP_id + ", " +
+                    db_Naar_M_id + ", " +
+                    db_Omschrijving + ", " +
+                    db_Kabeltype + ", " +
+                    db_Kabelsectie + ", " +
+                    db_Stroom + ", " +
+                    db_Polen + ");";
+                Console.WriteLine(query);
+                cmd = new MySqlCommand(query, connectie);
+                cmd.ExecuteNonQuery();
+                Close();
+                count++;
+            }
+            
+        }
+
+        
     }
 }

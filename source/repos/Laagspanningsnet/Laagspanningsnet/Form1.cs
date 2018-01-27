@@ -286,43 +286,71 @@ namespace Laagspanningsnet
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
-            // OPGEPAST andere save routine voor TRANSFOS en AANSLUITPUNT!!!!!
-
-            // 1. DELETE FROM laagspanningsnet.aansluitingen WHERE AP_id = 'VB810';
-            // 2. LOOP INSERT : INSERT INTO `Laagspanningsnet`.`Aansluitingen` 
-            // (`AP_id`, `A_id`, `Naar_AP_id`, `Naar_M_id` , 
-            // `Omschrijving`, `Kabeltype`, `Kabelsectie`, `Stroom`, `Polen`) 
-            // VALUES('T8', 'H810', 'VB810', NULL, NULL, 'XVB', '4G95', '250', '3');
-            
-            // !!!!! TODO !!!!!
-
-            // Volledige dataSet doorlopen, behalve de laatste lijn, want dat is lege lijn met +
-            // foreach (DataRow row in dtDisplay.Rows)
-            for (int count=0; count < dtDisplay.Select().Length - 1; count++)
-           {
-
-                // voorlopig gewoon alle gegevens afdrukken... 
-                // code om echte te bewaren nog te programmeren
-
-                DataRow row = dtDisplay.Rows[count];
-                Console.WriteLine("--" + count + "---------");
-
-                Console.WriteLine(row["+"]);
-                Console.WriteLine(row["-"]);
-                Console.WriteLine(row["A"]);
-                Console.WriteLine(row["Kring"]);
-                Console.WriteLine(row["Nummer"]);
-                Console.WriteLine(row["Omschrijving"]);
-                Console.WriteLine(row["Kabeltype"]);
-                Console.WriteLine(row["Kabelsectie"]);
-                Console.WriteLine(row["Stroom (A)"]);
-                Console.WriteLine(row["Aantal polen"]);
-                Console.WriteLine(row["Locatie"]);
-                Console.WriteLine(row["Type"]);
-                               
+            //
+            if(aansluitpunt=="Transfos")
+            {
+                MessageBox.Show("Onder constructie, nog niet geprogrammeerd!!! TODO");
+                return;
             }
 
+            // Maak een nieuwe Dataset aan met de nodige columns, waar de gegevens voor de database in komen
+            DataSet dsDatabase = new DataSet();
+            DataTable dtDatabase = new DataTable("aansluitingen");
+            dsDatabase.Tables.Add(dtDatabase);
+            dtDatabase.Columns.Add(new DataColumn("A_id", typeof(string)));
+            dtDatabase.Columns.Add(new DataColumn("AP_id", typeof(string)));
+            dtDatabase.Columns.Add(new DataColumn("Naar_AP_id", typeof(string)));
+            dtDatabase.Columns.Add(new DataColumn("Naar_M_id", typeof(string)));
+            dtDatabase.Columns.Add(new DataColumn("Omschrijving", typeof(string)));
+            dtDatabase.Columns.Add(new DataColumn("Kabeltype", typeof(string)));
+            dtDatabase.Columns.Add(new DataColumn("Kabelsectie", typeof(string)));
+            dtDatabase.Columns.Add(new DataColumn("Stroom", typeof(int)));
+            dtDatabase.Columns.Add(new DataColumn("Polen", typeof(int)));
+
+            Console.WriteLine("Start LOOP SAVE BTN");
+            // Doorloop de datatable die op het scherm staat.
+            // Opm. de laatste lijn is de lege lijn met een plus dus die lezen we niet.
+            for (int count = 0; count < dtDisplay.Select().Length - 1; count++)
+            {
+                Console.WriteLine(count);
+                DataRow rowDatabase = dtDatabase.NewRow();       // nieuwe row dtDatabase 
+                DataRow rowDisplay = dtDisplay.Rows[count];     // lees een row dtDisplay
+
+                rowDatabase["AP_id"] = aansluitpunt;
+                rowDatabase["A_id"] = rowDisplay["Kring"];
+                if ((string)rowDisplay["Type"] == "N")
+                {
+                    rowDatabase["Naar_AP_id"] = null;
+                    rowDatabase["Naar_M_id"] = null;
+                    rowDatabase["Omschrijving"] = rowDisplay["Omschrijving"];
+                }
+                if ((string)rowDisplay["Type"] == "M")
+                {
+                    rowDatabase["Naar_AP_id"] = null;
+                    rowDatabase["Naar_M_id"] = rowDisplay["Nummer"];
+                    rowDatabase["Omschrijving"] = null;
+                }
+                if ((string)rowDisplay["Type"] == "A")
+                {
+                    rowDatabase["Naar_AP_id"] = rowDisplay["Nummer"];
+                    rowDatabase["Naar_M_id"] = null;
+                    rowDatabase["Omschrijving"] = null;
+                }
+                rowDatabase["Kabeltype"] = rowDisplay["Kabeltype"];
+                rowDatabase["Kabelsectie"] = rowDisplay["Kabelsectie"];
+                rowDatabase["Stroom"] = rowDisplay["Stroom (A)"];
+                rowDatabase["Polen"] = rowDisplay["Aantal polen"];
+                
+                // Deze row toevoegen aan de dataSet
+                dtDatabase.Rows.Add(rowDatabase);
+            }
+
+            
+
+            // De database dataset sturen we naar de database, die de gegevens op de mySQL-server zal opslaan
+            Console.WriteLine("SAVE wordt aangeroepen");
+            database.setAansluitingen(dsDatabase);
+            
             // Gegevens terug inladen zodat hetgene op het scherm staat zeker hetzelfde is als inde database is opgeslagen
             showAansluitpunt(aansluitpunt);
         }
