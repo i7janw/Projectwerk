@@ -48,11 +48,15 @@
             this.lblDynKabel = new System.Windows.Forms.Label();
             this.lblStroom = new System.Windows.Forms.Label();
             this.lblDynStroom = new System.Windows.Forms.Label();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtbxSearch = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLaagspanningsnet)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -130,14 +134,18 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnCount = 5;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Controls.Add(this.btnUndo, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnSave, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.lblLayout, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 3, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 30);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -150,7 +158,7 @@
             // btnUndo
             // 
             this.btnUndo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnUndo.Location = new System.Drawing.Point(497, 3);
+            this.btnUndo.Location = new System.Drawing.Point(457, 3);
             this.btnUndo.Name = "btnUndo";
             this.btnUndo.Size = new System.Drawing.Size(194, 66);
             this.btnUndo.TabIndex = 0;
@@ -161,7 +169,7 @@
             // btnSave
             // 
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSave.Location = new System.Drawing.Point(497, 75);
+            this.btnSave.Location = new System.Drawing.Point(457, 75);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(194, 66);
             this.btnSave.TabIndex = 1;
@@ -176,7 +184,7 @@
             this.lblLayout.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.73585F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLayout.Location = new System.Drawing.Point(3, 0);
             this.lblLayout.Name = "lblLayout";
-            this.lblLayout.Size = new System.Drawing.Size(488, 72);
+            this.lblLayout.Size = new System.Drawing.Size(448, 72);
             this.lblLayout.TabIndex = 3;
             this.lblLayout.Text = "Layout van K810a";
             this.lblLayout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -202,7 +210,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(488, 66);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(448, 66);
             this.tableLayoutPanel3.TabIndex = 4;
             // 
             // lblVoeding
@@ -254,7 +262,7 @@
             // 
             this.lblKabel.AutoSize = true;
             this.lblKabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblKabel.Location = new System.Drawing.Point(251, 0);
+            this.lblKabel.Location = new System.Drawing.Point(231, 0);
             this.lblKabel.Name = "lblKabel";
             this.lblKabel.Size = new System.Drawing.Size(56, 33);
             this.lblKabel.TabIndex = 4;
@@ -265,7 +273,7 @@
             // 
             this.lblDynKabel.AutoSize = true;
             this.lblDynKabel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblDynKabel.Location = new System.Drawing.Point(313, 0);
+            this.lblDynKabel.Location = new System.Drawing.Point(293, 0);
             this.lblDynKabel.Name = "lblDynKabel";
             this.lblDynKabel.Size = new System.Drawing.Size(14, 33);
             this.lblDynKabel.TabIndex = 5;
@@ -276,7 +284,7 @@
             // 
             this.lblStroom.AutoSize = true;
             this.lblStroom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblStroom.Location = new System.Drawing.Point(251, 33);
+            this.lblStroom.Location = new System.Drawing.Point(231, 33);
             this.lblStroom.Name = "lblStroom";
             this.lblStroom.Size = new System.Drawing.Size(56, 33);
             this.lblStroom.TabIndex = 6;
@@ -287,21 +295,63 @@
             // 
             this.lblDynStroom.AutoSize = true;
             this.lblDynStroom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDynStroom.Location = new System.Drawing.Point(313, 33);
+            this.lblDynStroom.Location = new System.Drawing.Point(293, 33);
             this.lblDynStroom.Name = "lblDynStroom";
-            this.lblDynStroom.Size = new System.Drawing.Size(172, 33);
+            this.lblDynStroom.Size = new System.Drawing.Size(152, 33);
             this.lblDynStroom.TabIndex = 7;
             this.lblDynStroom.Text = "?";
             this.lblDynStroom.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // Form1
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 5;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.btnSearch, 2, 2);
+            this.tableLayoutPanel4.Controls.Add(this.txtbxSearch, 1, 1);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(697, 3);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 4;
+            this.tableLayoutPanel2.SetRowSpan(this.tableLayoutPanel4, 2);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(448, 138);
+            this.tableLayoutPanel4.TabIndex = 5;
+            // 
+            // txtbxSearch
+            // 
+            this.tableLayoutPanel4.SetColumnSpan(this.txtbxSearch, 3);
+            this.txtbxSearch.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txtbxSearch.Location = new System.Drawing.Point(127, 46);
+            this.txtbxSearch.Name = "txtbxSearch";
+            this.txtbxSearch.Size = new System.Drawing.Size(194, 20);
+            this.txtbxSearch.TabIndex = 0;
+            this.txtbxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbxSearch_KeyDown);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(202, 72);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(44, 23);
+            this.btnSearch.TabIndex = 1;
+            this.btnSearch.Text = "Zoek";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // Hoofdscherm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1194, 699);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "Hoofdscherm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -313,6 +363,8 @@
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -339,6 +391,9 @@
         private System.Windows.Forms.Label lblDynKabel;
         private System.Windows.Forms.Label lblStroom;
         private System.Windows.Forms.Label lblDynStroom;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.TextBox txtbxSearch;
+        private System.Windows.Forms.Button btnSearch;
     }
 }
 

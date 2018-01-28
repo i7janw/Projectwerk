@@ -187,6 +187,35 @@ namespace Laagspanningsnet
             return ds;
         }
 
+        /* Opvragen zoek-resultaten.
+         */
+        public DataSet getSearch(String search)
+        {
+            Open();
+            // Data ophalen en in DataSet ds stoppen
+
+            // !!!!! * in query later aanpassen, enkel opvragen wat nodig is !!!!!
+            string what = "AP_id, A_id, Kabeltype, Kabelsectie, Stroom, Polen, Omschrijving, Naar_AP_id, M_id AS Naar_M_id";
+            string where = "WHERE Naar_AP_id LIKE '%" +
+                search + "%' OR M_id LIKE '%" +
+                search + "%' OR Omschrijving LIKE '%" +
+                search + "%' OR M_omschrijving LIKE '%" +
+                search + "%' ";
+            string query = "SELECT " + what + " FROM laagspanningsnet.aansluitingen " +
+                "LEFT JOIN laagspanningsnet.machines ON Naar_M_id = M_id " +
+                where +
+                "UNION " +
+                "SELECT " + what + " FROM laagspanningsnet.aansluitingen " +
+                "RIGHT JOIN laagspanningsnet.machines ON Naar_M_id = M_id " +
+                where + "";
+            
+            MySqlDataAdapter adapter = new MySqlDataAdapter(query, connectie);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds);
+            Close();
+            return ds;
+        }
+
         /* Data van alle aansluitingen van een aansluitpunt opslaan in de database.
          */
         public void setAansluitingen(DataSet dsDatabase)

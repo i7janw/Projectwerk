@@ -25,149 +25,70 @@ namespace Laagspanningsnet
         private void Form1_Load(object sender, EventArgs e)
         {
             database = new Database();
-            showAansluitpunt("Transfos");   // We starten met een overzicht van de Transfos
+            showTransfos();             // We starten met een overzicht van de Transfos
         }
         
-        /* Tonen van het aansluitpunt.
-         * 
-         * Als parameter wordt een string meegegeven dat het 'nummer' van het aansluitpunt is
-         * Speciaal geval is 'Transfos' als parameter, in dat geval wordt een overzicht van de tranformatoren gegeven
+        /* Tonen van het overzicht van de Transfos
          */
-        private void showAansluitpunt(String ap)
+        private void showTransfos()
         {
-            this.aansluitpunt = ap;
+            showInit();
+            this.aansluitpunt = "";
+            lblLayout.Text = "Overzicht transfos";
+            DataSet dsDatabase = database.getTransfos();
+                                    
+            // Maak de kolommen aan die getoond moeten worden
+            dtDisplay.Columns.Add(new DataColumn("+", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("-", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("A", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("Transfo", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("Locatie", typeof(string)));
 
+            // Loop over de Database gegevens om ze te analyseren
+            foreach (DataRow row in dsDatabase.Tables[0].Rows)
+            {
+                var db_AP_id = row["AP_id"];
+                var db_AP_Locatie = row["AP_locatie"];
+
+                // Rij (velden) met de juiste waarden vullen
+                DataRow dr = dtDisplay.NewRow();
+                dr[0] = "+";
+                dr[1] = "-";
+                dr[2] = "A";
+                dr["Transfo"] = db_AP_id;
+                dr["Locatie"] = db_AP_Locatie;
+                dtDisplay.Rows.Add(dr);
+
+                // Bepaalde cellen moeten buttons worden.
+                dgvLaagspanningsnet.Rows[dgvLaagspanningsnet.RowCount - 1].Cells["Transfo"] = new DataGridViewButtonCell();
+                dgvLaagspanningsnet.Rows[dgvLaagspanningsnet.RowCount - 1].Cells["-"] = new DataGridViewButtonCell();
+                dgvLaagspanningsnet.Rows[dgvLaagspanningsnet.RowCount - 1].Cells["+"] = new DataGridViewButtonCell();
+                dgvLaagspanningsnet.Rows[dgvLaagspanningsnet.RowCount - 1].Cells["A"] = new DataGridViewButtonCell();
+            }
+            showCommon();
+        }
+
+        private void showInit()
+        {
             // Maak een nieuwe (lege) dataset aan waarin de gegevens komen zoals ze op het sherm getoond worden
             // en koppel die aan dgvLaagspanningsnet
             DataSet dsDisplay = new DataSet();
             dtDisplay = new DataTable("Display");
             dsDisplay.Tables.Add(dtDisplay);
             dgvLaagspanningsnet.DataSource = dsDisplay.Tables[0];
+            return;
+        }
 
-            // Haal de gegevens uit de database.
-            DataSet dsDatabase;
-            if (aansluitpunt == "Transfos")     // Overzicht transfos tonen, of de aansluitingen van een aansluitpunt?
-            {
-                dsDatabase = database.getTransfos();
-
-                // Maak de kolommen aan die getoond moeten worden
-                dtDisplay.Columns.Add(new DataColumn("+", typeof(string)));
-                dtDisplay.Columns.Add(new DataColumn("-", typeof(string)));
-                dtDisplay.Columns.Add(new DataColumn("A", typeof(string)));
-                dtDisplay.Columns.Add(new DataColumn("Transfo", typeof(string)));
-                dtDisplay.Columns.Add(new DataColumn("Locatie", typeof(string)));
-
-                // Loop over de Database gegevens om ze te analyseren
-                foreach (DataRow row in dsDatabase.Tables[0].Rows)
-                {
-                    var db_AP_id = row["AP_id"];
-                    var db_AP_Locatie = row["AP_locatie"];
-
-                    // Rij (velden) met de juiste waarden vullen
-                    DataRow dr = dtDisplay.NewRow();
-                    dr[0] = "+";
-                    dr[1] = "-";
-                    dr[2] = "A";
-                    dr["Transfo"] = db_AP_id;
-                    dr["Locatie"] = db_AP_Locatie;
-                    dtDisplay.Rows.Add(dr);
-
-                    // Bepaalde cellen moeten buttons worden.
-                    dgvLaagspanningsnet.Rows[dgvLaagspanningsnet.RowCount - 1].Cells["Transfo"] = new DataGridViewButtonCell();
-                    dgvLaagspanningsnet.Rows[dgvLaagspanningsnet.RowCount - 1].Cells["-"] = new DataGridViewButtonCell();
-                    dgvLaagspanningsnet.Rows[dgvLaagspanningsnet.RowCount - 1].Cells["+"] = new DataGridViewButtonCell();
-                    dgvLaagspanningsnet.Rows[dgvLaagspanningsnet.RowCount - 1].Cells["A"] = new DataGridViewButtonCell();
-                }
-            }
-            else
-            {
-                dsDatabase = database.getAansluitingen(aansluitpunt);
-
-                // Maak de kolommen aan die getoond moeten worden
-                dtDisplay.Columns.Add(new DataColumn("+", typeof(string)));
-                dtDisplay.Columns.Add(new DataColumn("-", typeof(string)));
-                dtDisplay.Columns.Add(new DataColumn("A", typeof(string)));
-                dtDisplay.Columns.Add(new DataColumn("Kring", typeof(string)));
-                dtDisplay.Columns.Add(new DataColumn("Nummer", typeof(string)));
-                dtDisplay.Columns.Add(new DataColumn("Omschrijving", typeof(string)));
-                dtDisplay.Columns.Add(new DataColumn("Kabeltype", typeof(string)));
-                dtDisplay.Columns.Add(new DataColumn("Kabelsectie", typeof(string)));
-                dtDisplay.Columns.Add(new DataColumn("Stroom (A)", typeof(string)));
-                dtDisplay.Columns.Add(new DataColumn("Aantal polen", typeof(string)));
-                dtDisplay.Columns.Add(new DataColumn("Locatie", typeof(string)));
-                dtDisplay.Columns.Add(new DataColumn("Type", typeof(string)));          // Normaal ; Aansluitpunt ; Machine
-
-                // de column "Type" is enkel voor intern gebruik en wordt dus niet getoond
-                dgvLaagspanningsnet.Columns["Type"].Visible = false;
-
-                // Loop over de Database gegevens om ze te analyseren
-                foreach (DataRow row in dsDatabase.Tables[0].Rows)
-                {
-                    var db_A_id = row["A_id"];
-                    var db_Kabeltype = row["Kabeltype"];
-                    var db_Kabelsectie = row["Kabelsectie"];
-                    var db_Stroom = row["Stroom"];
-                    var db_Polen = row["Polen"];
-                    var db_Omschrijving = row["Omschrijving"];
-                    string db_Locatie = "";
-                    string db_Nummer = "";
-                    string db_Type = "N";   // zet standaard op Normaal.
-
-                    // Gaat deze aansluiting naar een ander aansluitpunt?
-                    var db_Naar_AP_id = row["Naar_AP_id"];
-                    if (db_Naar_AP_id != DBNull.Value)
-                    {
-                        db_Nummer = (String)db_Naar_AP_id;
-                        db_Type = "A";      // type = Aansluitpunt
-                        db_Locatie = database.getAansluitpuntLocatie(db_Nummer);                    // Locatie van aansluitpunt ophalen
-                    }
-
-                    // Gaat deze aansluiting naar een machine?
-                    var db_Naar_M_id = row["Naar_M_id"];
-                    if (db_Naar_M_id != DBNull.Value)
-                    {
-                        db_Nummer = (String)db_Naar_M_id;
-                        db_Type = "M";      // type = Machine
-                        db_Locatie = database.getMachineLocatie(db_Nummer);                         // Locatie van machine ophalen
-                        db_Omschrijving = database.getMachineOmschrijving((String)db_Naar_M_id);    // Bij een machine komt de omschrijving uit de machine DB
-                    }
-
-                    // Rij (velden) met de juiste waarden vullen
-                    DataRow dr = dtDisplay.NewRow();
-                    dr["+"] = "+";
-                    dr["-"] = "-";
-                    dr["A"] = "A";
-                    dr["Kring"] = db_A_id;
-                    dr["Nummer"] = db_Nummer;
-                    dr["Omschrijving"] = db_Omschrijving;
-                    dr["Kabeltype"] = db_Kabeltype;
-                    dr["Kabelsectie"] = db_Kabelsectie;
-                    dr["Stroom (A)"] = db_Stroom;
-                    dr["Aantal polen"] = db_Polen;
-                    dr["Locatie"] = db_Locatie;
-                    dr["Type"] = db_Type;
-                    dtDisplay.Rows.Add(dr);
-
-                    // Bepaalde cellen moeten buttons worden.
-                    if (db_Type == "A")    // T/VB/K-nummer --> ook een button
-                    {
-                        dgvLaagspanningsnet.Rows[dgvLaagspanningsnet.RowCount - 1].Cells["Nummer"] = new DataGridViewButtonCell();
-                    }
-                    dgvLaagspanningsnet.Rows[dgvLaagspanningsnet.RowCount - 1].Cells["-"] = new DataGridViewButtonCell();
-                    dgvLaagspanningsnet.Rows[dgvLaagspanningsnet.RowCount - 1].Cells["+"] = new DataGridViewButtonCell();
-                    dgvLaagspanningsnet.Rows[dgvLaagspanningsnet.RowCount - 1].Cells["A"] = new DataGridViewButtonCell();
-                }
-
-            }
-
+        private void showCommon()
+        {
             // En nog een extra lijn bijvoegen voor de extra "+" knop.
             DataRow extraDataRow = dtDisplay.NewRow();
             extraDataRow[0] = "+";
             dtDisplay.Rows.Add(extraDataRow);
-            dgvLaagspanningsnet.Rows[dgvLaagspanningsnet.RowCount-1].Cells[0] = new DataGridViewButtonCell();
+            dgvLaagspanningsnet.Rows[dgvLaagspanningsnet.RowCount - 1].Cells[0] = new DataGridViewButtonCell();
             for (int y = 1; y < dgvLaagspanningsnet.ColumnCount; y++) // Op deze rij alles grijs maken, behalve de +knop.
             {
-                dgvLaagspanningsnet.Rows[dgvLaagspanningsnet.RowCount-1].Cells[y].Style.BackColor = Color.DarkGray;
+                dgvLaagspanningsnet.Rows[dgvLaagspanningsnet.RowCount - 1].Cells[y].Style.BackColor = Color.DarkGray;
             }
 
             // eerste 3 columns zijn de +/-A knoppen --> width op 25 zetten en HeaderText verbergen
@@ -188,16 +109,6 @@ namespace Laagspanningsnet
             // Text in button voeding aanpassen
             btnDynVoeding.Text = database.getVoeding(aansluitpunt);
 
-            // Text Layout aanpassen
-            if (aansluitpunt == "Transfos")
-            {
-                lblLayout.Text = "Overzicht transfos";
-            }
-            else
-            { 
-                lblLayout.Text = "Layout van " + aansluitpunt;
-            }
-
             // Text Locatie aanpassen
             lblDynLocatie.Text = database.getAansluitpuntLocatie(aansluitpunt);
 
@@ -209,10 +120,138 @@ namespace Laagspanningsnet
 
             // Alle data staat op het scherm --> unsaved=false
             setUnsaved(false);
+            return;
         }
 
+        /* Tonen van het aansluitpunt.
+         * 
+         * Als parameter wordt een string meegegeven dat het 'nummer' van het aansluitpunt is
+         */
+        private void showAansluitpunt(String _ap)
+        {
+            showSearchOrAansluitpunt(_ap, false);
+        }
+
+        /* Tonen van zoekresultaten.
+         * 
+         * Als parameter wordt een string meegegeven met zoekterm
+         */
+        private void showSearch(String _search)
+        {
+            showSearchOrAansluitpunt(_search, true);
+        }
+        
+        /* Tonen van Zoekresultaten of Aansluitpunt
+         * 
+         * Eerste parameter = string = zoekterm of aansluitpunt
+         * Tweede Parameter = bool   = false = aansluitpunt tonen, true = zoekterm resultaat tonen
+         */
+        private void showSearchOrAansluitpunt(String _ap, bool search)
+        {
+            showInit();
+            DataSet dsDatabase;
+            if (!search)
+            {
+                this.aansluitpunt = _ap;
+                lblLayout.Text = "Layout van " + aansluitpunt;
+                dsDatabase = database.getAansluitingen(aansluitpunt);
+            }
+            else
+            {
+                this.aansluitpunt = "";
+                lblLayout.Text = "Zoeken : " + _ap;
+                dsDatabase = database.getSearch(_ap);
+            }
+            
+            // Maak de kolommen aan die getoond moeten worden
+            dtDisplay.Columns.Add(new DataColumn("+", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("-", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("A", typeof(string)));
+            if (search)
+            {
+                dtDisplay.Columns.Add(new DataColumn("T/VB/K", typeof(string)));
+            }
+            dtDisplay.Columns.Add(new DataColumn("Kring", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("Nummer", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("Omschrijving", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("Kabeltype", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("Kabelsectie", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("Stroom (A)", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("Aantal polen", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("Locatie", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("Type", typeof(string)));          // Normaal ; Aansluitpunt ; Machine
+                                                                                    // de column "Type" is enkel voor intern gebruik en wordt dus niet getoond
+            dgvLaagspanningsnet.Columns["Type"].Visible = false;
+
+            // Loop over de Database gegevens om ze te analyseren
+            foreach (DataRow row in dsDatabase.Tables[0].Rows)
+            {
+                var db_AP_id = row["AP_id"];
+                var db_A_id = row["A_id"];
+                var db_Kabeltype = row["Kabeltype"];
+                var db_Kabelsectie = row["Kabelsectie"];
+                var db_Stroom = row["Stroom"];
+                var db_Polen = row["Polen"];
+                var db_Omschrijving = row["Omschrijving"];
+                string db_Locatie = "";
+                string db_Nummer = "";
+                string db_Type = "N";   // zet standaard op Normaal.
+                                        // Gaat deze aansluiting naar een ander aansluitpunt?
+                var db_Naar_AP_id = row["Naar_AP_id"];
+                if (db_Naar_AP_id != DBNull.Value)
+                {
+                    db_Nummer = (String)db_Naar_AP_id;
+                    db_Type = "A";      // type = Aansluitpunt
+                    db_Locatie = database.getAansluitpuntLocatie(db_Nummer);                    // Locatie van aansluitpunt ophalen
+                }
+
+                // Gaat deze aansluiting naar een machine?
+                var db_Naar_M_id = row["Naar_M_id"];
+                if (db_Naar_M_id != DBNull.Value)
+                {
+                    db_Nummer = (String)db_Naar_M_id;
+                    db_Type = "M";      // type = Machine
+                    db_Locatie = database.getMachineLocatie(db_Nummer);                         // Locatie van machine ophalen
+                    db_Omschrijving = database.getMachineOmschrijving((String)db_Naar_M_id);    // Bij een machine komt de omschrijving uit de machine DB
+                }
+
+                // Rij (velden) met de juiste waarden vullen
+                DataRow dr = dtDisplay.NewRow();
+                dr["+"] = "+";
+                dr["-"] = "-";
+                dr["A"] = "A";
+                if(search)
+                {
+                    dr["T/VB/K"] = db_AP_id;
+                }
+                dr["Kring"] = db_A_id;
+                dr["Nummer"] = db_Nummer;
+                dr["Omschrijving"] = db_Omschrijving;
+                dr["Kabeltype"] = db_Kabeltype;
+                dr["Kabelsectie"] = db_Kabelsectie;
+                dr["Stroom (A)"] = db_Stroom;
+                dr["Aantal polen"] = db_Polen;
+                dr["Locatie"] = db_Locatie;
+                dr["Type"] = db_Type;
+                dtDisplay.Rows.Add(dr);
+                
+                // Bepaalde cellen moeten buttons worden.
+                if (db_Type == "A")    // T/VB/K-nummer --> ook een button
+                {
+                    dgvLaagspanningsnet.Rows[dgvLaagspanningsnet.RowCount - 1].Cells["Nummer"] = new DataGridViewButtonCell();
+                }
+                dgvLaagspanningsnet.Rows[dgvLaagspanningsnet.RowCount - 1].Cells["-"] = new DataGridViewButtonCell();
+                dgvLaagspanningsnet.Rows[dgvLaagspanningsnet.RowCount - 1].Cells["+"] = new DataGridViewButtonCell();
+                dgvLaagspanningsnet.Rows[dgvLaagspanningsnet.RowCount - 1].Cells["A"] = new DataGridViewButtonCell();
+            }
+            showCommon();
+        }
+
+        /* Is er op een cell van het dataGrid geklikt?
+         */
         private void dgvLaagspanningsnet_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            // Klikken op de bovenste rij (column-text) negeren.
             if (e.RowIndex < 0)
             {
                 return;
@@ -253,9 +292,11 @@ namespace Laagspanningsnet
             String ap = button.Text.Split(' ').First();
             if(ap == "-")
             {
-                ap = "Transfos";
+                showTransfos();
+                return;
             }
             showAansluitpunt(ap);
+            return;
         }
 
         /* Bijhouden of data reeds in database is opgeslagen
@@ -284,6 +325,8 @@ namespace Laagspanningsnet
             dgvLaagspanningsnet.ClearSelection();
         }
 
+        /* Er is op de knop save geklikt.
+         */
         private void btnSave_Click(object sender, EventArgs e)
         {
             // Als er geen unsaved data is, moet er niks gebeuren.
@@ -313,7 +356,6 @@ namespace Laagspanningsnet
             dtDatabase.Columns.Add(new DataColumn("Stroom", typeof(int)));
             dtDatabase.Columns.Add(new DataColumn("Polen", typeof(int)));
 
-            Console.WriteLine("Start LOOP SAVE BTN");
             // Doorloop de datatable die op het scherm staat.
             // Opm. de laatste lijn is de lege lijn met een plus dus die lezen we niet.
             for (int count = 0; count < dtDisplay.Select().Length - 1; count++)
@@ -350,14 +392,11 @@ namespace Laagspanningsnet
                 // Deze row toevoegen aan de dataSet
                 dtDatabase.Rows.Add(rowDatabase);
             }
-
             
-
             // De database dataset sturen we naar de database, die de gegevens op de mySQL-server zal opslaan
-            Console.WriteLine("SAVE wordt aangeroepen");
             database.setAansluitingen(dsDatabase);
             
-            // Gegevens terug inladen zodat hetgene op het scherm staat zeker hetzelfde is als inde database is opgeslagen
+            // Gegevens terug inladen zodat hetgene op het scherm staat zeker hetzelfde is als in de database is opgeslagen
             showAansluitpunt(aansluitpunt);
         }
 
@@ -366,6 +405,23 @@ namespace Laagspanningsnet
         private void btnUndo_Click(object sender, EventArgs e)
         {
             showAansluitpunt(aansluitpunt);
+        }
+
+        /* Op de zoekknop klikken --> start zoeken
+         */
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            showSearch(txtbxSearch.Text);
+        }
+
+        /* Op Enter drukken in de search box = op de zoekknop klikken
+         */
+        private void txtbxSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSearch_Click(this, new EventArgs());
+            }
         }
     }
 }
