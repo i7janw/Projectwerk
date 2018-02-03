@@ -421,6 +421,11 @@ namespace Laagspanningsnet
             if (e.KeyCode == Keys.Enter)
             {
                 btnSearch_Click(this, new EventArgs());
+
+                // Toegevoegd omdat anders een ding-sound wordt afgespeeld na het drukken op enter.
+                // <https://stackoverflow.com/questions/6290967/stop-the-ding-when-pressing-enter>
+                e.Handled = true;
+                e.SuppressKeyPress = true;
             }
         }
     }

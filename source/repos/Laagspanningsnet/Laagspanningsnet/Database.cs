@@ -20,16 +20,16 @@ namespace Laagspanningsnet
         private static string database = "laagspanningsnet";
         private static string user = "root";
         private static string password = "root";
-        private static MySqlConnection connectie = new MySqlConnection(connectiestring);
         private static string connectiestring = "SERVER=" + server +
             ";DATABASE=" + database + ";UID=" + user +
             ";PASSWORD=" + password + ";";
+        private static MySqlConnection connectie = new MySqlConnection(connectiestring);
 
         /* Openen van de connectie met de database.
          * Toont een MessageBox op het scherm als er een probleem is.
          * 
          * RETURN : false = mislukt
-         *          true  = sluiten gelukt
+         *          true  = openen gelukt
          */
         private bool Open()
         {
@@ -71,6 +71,8 @@ namespace Laagspanningsnet
         }
 
         /* Ophalen van de Machine Omschrijving
+         * 
+         * RETURN : String omschrijving
          */
         public String getMachineOmschrijving(String machine)
         {
@@ -83,6 +85,8 @@ namespace Laagspanningsnet
         }
 
         /* Ophalen van de Machine Locatie
+         * 
+         * RETURN : string locatie
          */
         public String getMachineLocatie(String machine)
         {
@@ -95,6 +99,8 @@ namespace Laagspanningsnet
         }
 
         /* Ophalen van de Aansluitpunt Locatie
+         * 
+         * RETURN string locatie
          */
         public String getAansluitpuntLocatie(String aansluitpunt)
         {
@@ -107,6 +113,8 @@ namespace Laagspanningsnet
         }
 
         /* Ophalen van de Aansluitpunt Voeding
+         *
+         * RETURN : string voeding , = "-" als er geen voeding is gevonden
          */
         public String getVoeding(String aansluitpunt)
         {
@@ -115,7 +123,7 @@ namespace Laagspanningsnet
             string query = "select AP_id from laagspanningsnet.aansluitingen WHERE Naar_AP_id = '" + aansluitpunt + "';";
             MySqlCommand cmd = new MySqlCommand(query, connectie);
             string voedingAP = (String)cmd.ExecuteScalar();
-            // Haal de aansluiitng op waar de voeding van komt
+            // Haal de aansluitng op waar de voeding van komt
             query = "select A_id from laagspanningsnet.aansluitingen WHERE Naar_AP_id = '" + aansluitpunt + "';";
             cmd = new MySqlCommand(query, connectie);
             string voedingA = (String)cmd.ExecuteScalar();
@@ -124,6 +132,8 @@ namespace Laagspanningsnet
         }
 
         /* Ophalen van de Aansluitpunt Voedingskabel
+         * 
+         * RETURN : string voedingskabel , = "-" als er geen voedingskabel is gevonden
          */
         public String getKabel(String aansluitpunt)
         {
@@ -141,6 +151,8 @@ namespace Laagspanningsnet
         }
 
         /* Ophalen van het Aansluitpunt zijn stroomtoevoer
+         * 
+         * RETURN : string stroom , = "-" als er geen stroom is gevonden
          */
         public String getStroom(String aansluitpunt)
         {
@@ -157,6 +169,8 @@ namespace Laagspanningsnet
         }
 
         /* Opvragen van alle aanwezige Transormatoren in het bedrijf.
+         *
+         * RETURN : DataSet met gegevens alle transfo's
          */
         public DataSet getTransfos()
         {
@@ -171,13 +185,15 @@ namespace Laagspanningsnet
         }
 
         /* Opvragen van alle aansluitingen voor een bepaald aansluitpunt.
+         * 
+         * RETURN : DataSet met gegevens alle aansluitingen van een aansluitpunt
          */
         public DataSet getAansluitingen(String aansluitpunt)
         {
             Open();
             // Data ophalen en in DataSet ds stoppen
 
-            // !!!!! * in query later aanpassen, enkel opvragen wat nodig is !!!!!
+            // !!!!! TODO * in query later aanpassen, enkel opvragen wat nodig is !!!!!
 
             string query = "select * from laagspanningsnet.aansluitingen WHERE AP_id ='" + aansluitpunt + "';";
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, connectie);
@@ -188,6 +204,8 @@ namespace Laagspanningsnet
         }
 
         /* Opvragen zoek-resultaten.
+         * 
+         * RETURN : DataSet met alle zoekresultaten
          */
         public DataSet getSearch(String search)
         {
@@ -195,6 +213,7 @@ namespace Laagspanningsnet
             // Data ophalen en in DataSet ds stoppen
 
             // !!!!! * in query later aanpassen, enkel opvragen wat nodig is !!!!!
+            // TODO Query e.d. nog te bekijken, momenteel voldoende om te testen...
             string what = "AP_id, A_id, Kabeltype, Kabelsectie, Stroom, Polen, Omschrijving, Naar_AP_id, M_id AS Naar_M_id";
             string where = "WHERE Naar_AP_id LIKE '%" +
                 search + "%' OR M_id LIKE '%" +
@@ -217,8 +236,11 @@ namespace Laagspanningsnet
         }
 
         /* Data van alle aansluitingen van een aansluitpunt opslaan in de database.
+         * 
+         * RETURN : false = mislukt
+         *          true  = bewaren gelukt
          */
-        public void setAansluitingen(DataSet dsDatabase)
+        public bool setAansluitingen(DataSet dsDatabase)
         {
             int count = 0;
             foreach (DataRow row in dsDatabase.Tables["aansluitingen"].Rows)
@@ -261,7 +283,7 @@ namespace Laagspanningsnet
                     db_Omschrijving = "'" + db_Omschrijving + "'";
                 }
 
-                // !!!! Voorlopig deleten en dan inserten, kan verbeterd worden door updaten , maar dan is test op reeds bestaan nodig !!!!
+                // !!!! TODO : Voorlopig deleten en dan inserten, kan misschien verbeterd worden door updaten , maar dan is test op reeds bestaan nodig !!!!
                 Open();
                 string query;
                 MySqlCommand cmd;
@@ -291,9 +313,7 @@ namespace Laagspanningsnet
                 Close();
                 count++;
             }
-            
+            return true;    // TODO als bewaren mislukt false catch try e.d. nog toe te voegen
         }
-
-        
     }
 }

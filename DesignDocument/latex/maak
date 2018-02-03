@@ -37,6 +37,10 @@ filename=`ls definitiestudie*.tex`
 filename=`ls featureList*.tex`
 ##create 
 
+#4. klassendiagram
+filename=`ls klassendiagram*.tex`
+create
+
 #5. datawoordenboek
 ##pdf2ps ~/MEGA/2017-2018/ProjectWerk/DesignDocument/1.5_datawoordenboek/EER.pdf ~/MEGA/2017-2018/ProjectWerk/DesignDocument/latex/pictures/EER.ps
 ##pdf2ps ~/MEGA/2017-2018/ProjectWerk/DesignDocument/1.5_datawoordenboek/Aansluitpunten.pdf ~/MEGA/2017-2018/ProjectWerk/DesignDocument/latex/pictures/Aansluitpunten.ps
@@ -53,4 +57,4 @@ filename=`ls visueelOntwerp*.tex`
 
 #13. standup SCRUM
 filename=`ls standupScrum*.tex`
-create
+##create
