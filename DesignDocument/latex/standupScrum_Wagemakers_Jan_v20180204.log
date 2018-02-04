@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=latex 2017.11.11)  28 JAN 2018 21:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=latex 2017.11.11)  4 FEB 2018 20:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**standupScrum_Wagemakers_Jan_v20180128
-(./standupScrum_Wagemakers_Jan_v20180128.tex
+**standupScrum_Wagemakers_Jan_v20180204
+(./standupScrum_Wagemakers_Jan_v20180204.tex
 LaTeX2e <2017/01/01> patch level 3
 Babel <3.9r> and hyphenation patterns for 30 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -99,8 +99,8 @@ Package babel Info: Making " an active character on input line 132.
 ))
 \c@homeworkProblemCounter=\count90
 
-(./standupScrum_Wagemakers_Jan_v20180128.aux)
-\openout1 = `standupScrum_Wagemakers_Jan_v20180128.aux'.
+(./standupScrum_Wagemakers_Jan_v20180204.aux)
+\openout1 = `standupScrum_Wagemakers_Jan_v20180204.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 140.
 LaTeX Font Info:    ... okay on input line 140.
@@ -223,16 +223,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 258--265
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 267--286
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 267--286
+
+ []
+
+(./filename.txt) [3] 
 AED: lastpage setting LastPage
-(./filename.txt) [3] (./standupScrum_Wagemakers_Jan_v20180128.aux) ) 
+(./filename.txt) [4] (./standupScrum_Wagemakers_Jan_v20180204.aux) ) 
 Here is how much of TeX's memory you used:
- 1583 strings out of 494359
- 19949 string characters out of 6164552
- 181178 words of memory out of 5000000
+ 1585 strings out of 494359
+ 19975 string characters out of 6164552
+ 183178 words of memory out of 5000000
  4923 multiletter control sequences out of 15000+600000
  8501 words of font info for 30 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
- 32i,12n,43p,293b,257s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 32i,12n,43p,293b,268s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on standupScrum_Wagemakers_Jan_v20180128.dvi (3 pages, 7272 byte
+Output written on standupScrum_Wagemakers_Jan_v20180204.dvi (4 pages, 9232 byte
 s).

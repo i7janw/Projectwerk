@@ -340,7 +340,7 @@ namespace Laagspanningsnet
             }
             
             // !!!! TODO : bekijken wat we doen bij overzicht transfos.
-            if (aansluitpunt=="Transfos")
+            if (aansluitpunt=="")
             {
                 MessageBox.Show("Onder constructie, nog niet geprogrammeerd!!! TODO");
                 return;
@@ -408,7 +408,10 @@ namespace Laagspanningsnet
          */
         private void btnUndo_Click(object sender, EventArgs e)
         {
-            showAansluitpunt(aansluitpunt);
+            if (aansluitpunt != "")
+            {
+                showAansluitpunt(aansluitpunt);
+            }
         }
 
         /* Op de zoekknop klikken --> start zoeken
