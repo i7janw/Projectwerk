@@ -278,9 +278,6 @@ database op te halen. Andere vensters worden van uit deze klasse aangeroepen.
 \end{itemize}
 \item\textbf{Methodes}
 	\begin{itemize}
-	\item  \textcolor{red}{\textbf{$-$showInit()}} Te bekijken
-        \item  \textcolor{red}{\textbf{$-$showCommon()}} Te bekijken
- 	\item  \textcolor{red}{\textbf{$-$showSearchOrAansluitpunt(String aansluitpunt, bool search)}} Te bekijken
 
 
         \item  \textcolor{blue}{\textbf{$-$showTransfos()}}
@@ -300,10 +297,23 @@ database op te halen. Andere vensters worden van uit deze klasse aangeroepen.
 	\item  \textcolor{blue}{\textbf{$-$showSearch(String search)}}
                 \begin{itemize}
                         \item \textbf{Doel} : Tonen van de zoekresultaten
-                        \item \textbf{Parameters} : String search
+                        \item \textbf{Parameters} : String met de zoekterm
                         \item \textbf{Return} : niets.
                 \end{itemize}
 
+        \item  \textcolor{cyan}{\textbf{$-$showCommon(String word, int
+modus)}} 
+		\begin{itemize}
+                        \item \textbf{Doel} : Tijdens het programmeren is
+gebleken dat er veel code gemeenschappelijk is tussen \textbf{showTransfos},
+\textbf{showAansluitpunt}, \textbf{showSearch}, daarom is deze
+gemeenschappelijke routine aangemaakt.
+                        \item \textbf{Parameters} : String
+zoekterm/aansluitpunt, int modus 1=Transfos, 2=Aansluitpunt, 3=Search
+                        \item \textbf{Return} : niets.
+                \end{itemize}
+
+	
 	\item \textcolor{blue}{\textbf{$-$dgvLaagspanningsnet\_CellContentClick(object sender, DataGridViewCellEventArgs e)}}
                 \begin{itemize}
                         \item \textbf{Doel} : Actie ondernemen als er op een Cell van de DataGridView wordt geklikt
@@ -328,7 +338,7 @@ database op te halen. Andere vensters worden van uit deze klasse aangeroepen.
 				\end{itemize}
                         \item \textbf{Return} : niets.
                 \end{itemize}
-	\item  \textcolor{blue}{\textbf{$-$dgvLaagspanningsnet\_SelectionChanged(object sender, EventArgs e)}}
+	\item  \textcolor{cyan}{\textbf{$-$dgvLaagspanningsnet\_SelectionChanged(object sender, EventArgs e)}}
                 \begin{itemize}
                         \item \textbf{Doel} : Uitschakelen van blauwe
 selectiebalk in DataGridView\\ (zie ook: https://stackoverflow.com/questions/11330147/how-to-disable-the-ability-to-select-in-a-datagridview)
@@ -357,7 +367,7 @@ selectiebalk in DataGridView\\ (zie ook: https://stackoverflow.com/questions/113
                         \item \textbf{Return} : niets.
                 \end{itemize}
 
-	\item \textcolor{blue}{\textbf{$-$txtbxSearch\_KeyDown(object sender, KeyEventArgs e)}}
+	\item \textcolor{cyan}{\textbf{$-$txtbxSearch\_KeyDown(object sender, KeyEventArgs e)}}
 		\begin{itemize}
                         \item \textbf{Doel} : Op Enter drukken in de search box = op zoekknop klikken.
                         \item \textbf{Parameters} : object sender, EventArgs
