@@ -10,3 +10,15 @@ C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagsp
 C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\bin\Debug\MySql.Data.dll
 C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\bin\Debug\MySql.Data.xml
 C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\obj\Debug\Laagspanningsnet.Hoofdscherm.resources
+C:\Users\jan\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\bin\Debug\Laagspanningsnet.exe.config
+C:\Users\jan\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\bin\Debug\Laagspanningsnet.exe
+C:\Users\jan\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\bin\Debug\Laagspanningsnet.pdb
+C:\Users\jan\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\bin\Debug\MySql.Data.xml
+C:\Users\jan\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\obj\Debug\Laagspanningsnet.csprojResolveAssemblyReference.cache
+C:\Users\jan\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\obj\Debug\Laagspanningsnet.Hoofdscherm.resources
+C:\Users\jan\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\obj\Debug\Laagspanningsnet.Properties.Resources.resources
+C:\Users\jan\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\obj\Debug\Laagspanningsnet.csproj.GenerateResource.Cache
+C:\Users\jan\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\obj\Debug\Laagspanningsnet.csproj.CoreCompileInputs.cache
+C:\Users\jan\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\obj\Debug\Laagspanningsnet.exe
+C:\Users\jan\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\obj\Debug\Laagspanningsnet.pdb
+C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\obj\Debug\Laagspanningsnet.AansluitingAanpassen.resources

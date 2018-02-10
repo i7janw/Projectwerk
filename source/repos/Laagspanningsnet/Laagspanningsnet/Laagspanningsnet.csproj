@@ -54,6 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AansluitingAanpassen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AansluitingAanpassen.Designer.cs">
+      <DependentUpon>AansluitingAanpassen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database.cs" />
     <Compile Include="Hoofdscherm.cs">
       <SubType>Form</SubType>
@@ -63,6 +69,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AansluitingAanpassen.resx">
+      <DependentUpon>AansluitingAanpassen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Hoofdscherm.resx">
       <DependentUpon>Hoofdscherm.cs</DependentUpon>
     </EmbeddedResource>

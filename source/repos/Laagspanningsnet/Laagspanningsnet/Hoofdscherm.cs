@@ -27,7 +27,7 @@ namespace Laagspanningsnet
             database = new Database();
             showTransfos();             // We starten met een overzicht van de Transfos
         }
-        
+
         /* Tonen van het overzicht van de Transfos
          */
         private void showTransfos()
@@ -271,6 +271,19 @@ namespace Laagspanningsnet
             // Afhandelen van drukken op +/-/A
             if (e.ColumnIndex == 0) // +
             {
+                setUnsaved(true);
+                DataRow row = dtDisplay.NewRow();
+                row["+"] = "+";
+                row["-"] = "-";
+                row["A"] = "A";
+                row["Kring"] = "TODO!!!!";
+                row["Type"] = "N";
+                dtDisplay.Rows.InsertAt(row, e.RowIndex);
+                dgvLaagspanningsnet.Rows[e.RowIndex].Cells["-"] = new DataGridViewButtonCell();
+                dgvLaagspanningsnet.Rows[e.RowIndex].Cells["+"] = new DataGridViewButtonCell();
+                dgvLaagspanningsnet.Rows[e.RowIndex].Cells["A"] = new DataGridViewButtonCell();
+                AansluitingAanpassen aa = new AansluitingAanpassen(aansluitpunt, dtDisplay.Rows[e.RowIndex], false);    // false = invoegen
+                aa.ShowDialog();    // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
                 return;
             }
             if (e.ColumnIndex == 1) // -
@@ -281,6 +294,10 @@ namespace Laagspanningsnet
             }
             if (e.ColumnIndex == 2) // A
             {
+                setUnsaved(true);
+                // Open het venster om aanpassingen te doen
+                AansluitingAanpassen aa = new AansluitingAanpassen(aansluitpunt, dtDisplay.Rows[e.RowIndex], true);     // true = aanpassen
+                aa.ShowDialog();    // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
                 return;
             }
 
@@ -345,7 +362,7 @@ namespace Laagspanningsnet
                 MessageBox.Show("Onder constructie, nog niet geprogrammeerd!!! TODO");
                 return;
             }
-            
+                        
             // Maak een nieuwe Dataset aan met de nodige columns, waar de gegevens voor de database in komen
             DataSet dsDatabase = new DataSet();
             DataTable dtDatabase = new DataTable("aansluitingen");
@@ -366,7 +383,7 @@ namespace Laagspanningsnet
             {
                 Console.WriteLine(count);
                 DataRow rowDatabase = dtDatabase.NewRow();       // nieuwe row dtDatabase 
-                DataRow rowDisplay = dtDisplay.Rows[count];     // lees een row dtDisplay
+                DataRow rowDisplay = dtDisplay.Rows[count];      // lees een row dtDisplay
 
                 rowDatabase["AP_id"] = aansluitpunt;
                 rowDatabase["A_id"] = rowDisplay["Kring"];
@@ -390,8 +407,27 @@ namespace Laagspanningsnet
                 }
                 rowDatabase["Kabeltype"] = rowDisplay["Kabeltype"];
                 rowDatabase["Kabelsectie"] = rowDisplay["Kabelsectie"];
-                rowDatabase["Stroom"] = rowDisplay["Stroom (A)"];
-                rowDatabase["Polen"] = rowDisplay["Aantal polen"];
+                
+                // stroom & polen = int --> via Int32.TryParse
+                int convert;
+                if (rowDisplay["Stroom (A)"] == DBNull.Value) rowDisplay["Stroom (A)"] = "";
+                if (rowDisplay["Aantal polen"] == DBNull.Value) rowDisplay["Aantal polen"] = "";
+                if (Int32.TryParse((String)rowDisplay["Stroom (A)"], out convert))
+                {
+                    rowDatabase["Stroom"] = convert;
+                }
+                else
+                {
+                    rowDatabase["Stroom"] = DBNull.Value;
+                }
+                if (Int32.TryParse((String)rowDisplay["Aantal polen"], out convert))
+                {
+                    rowDatabase["Polen"] = convert;
+                }
+                else
+                {
+                    rowDatabase["Polen"] = 3;                       // Standaard is het aantal polen 3 : R S T + Vaste PEN aansluiting 
+                }
                 
                 // Deze row toevoegen aan de dataSet
                 dtDatabase.Rows.Add(rowDatabase);

@@ -253,9 +253,9 @@ namespace Laagspanningsnet
                 var db_Omschrijving = row["Omschrijving"];
                 var db_Kabeltype = "'" + row["Kabeltype"] + "'";
                 var db_Kabelsectie = "'" + row["Kabelsectie"]+ "'";
-                var db_Stroom = "'" + row["Stroom"] + "'";
-                var db_Polen = "'" + row["Polen"] + "'";
-                // 
+                var db_Stroom = row["Stroom"];
+                var db_Polen = row["Polen"];
+                // Afhandelen van items waar evt. NULL in kan zitten.
                 if(db_Naar_AP_id == DBNull.Value)
                 {
                     db_Naar_AP_id = "NULL";
@@ -281,6 +281,24 @@ namespace Laagspanningsnet
                 else
                 {
                     db_Omschrijving = "'" + db_Omschrijving + "'";
+                }
+                //
+                if (db_Stroom == DBNull.Value)
+                {
+                    db_Stroom = "NULL";
+                }
+                else
+                {
+                    db_Stroom = "'" + db_Stroom + "'";
+                }
+                //
+                if (db_Polen == DBNull.Value)
+                {
+                    db_Polen = "NULL";
+                }
+                else
+                {
+                    db_Polen = "'" + db_Polen + "'";
                 }
 
                 // !!!! TODO : Voorlopig deleten en dan inserten, kan misschien verbeterd worden door updaten , maar dan is test op reeds bestaan nodig !!!!
@@ -309,11 +327,94 @@ namespace Laagspanningsnet
                     db_Polen + ");";
                 Console.WriteLine(query);
                 cmd = new MySqlCommand(query, connectie);
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("An error occurred: " +  e);
+                }
                 Close();
                 count++;
             }
             return true;    // TODO als bewaren mislukt false catch try e.d. nog toe te voegen
+        }
+
+        // NEW ------------------------------------------------------------------------------------
+
+        /* Haal een lijst op van alle machines die in de machine table aanwezig zijn
+         * 
+         * RETURN: List<String> met alle machines
+         */
+        public List<String> getMachines()
+        {
+            return getMachines(false);
+        }
+
+        /* Haal een lijst op van alle machines die in de machine table aanwezig zijn 
+         * 
+         * Naargelang _notconnected = true/false worden enkel de niet aangesloten machines geRETURNed
+         * 
+         * RETURN: List<String> met alle machines
+         */
+        public List<String> getMachines(bool _notConnected)
+        { 
+            Open();
+            string query = "SELECT M_id FROM laagspanningsnet.machines ";
+            if (_notConnected)
+            {
+                query = query + "LEFT JOIN laagspanningsnet.aansluitingen ON M_id = Naar_M_id WHERE Naar_M_id IS NULL";
+            }
+            query = query + ";";
+            MySqlDataAdapter adapter = new MySqlDataAdapter(query, connectie);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds);
+            Close();
+
+            List<string> convert = new List<string>();
+            foreach (DataRow row in ds.Tables[0].Rows)
+            {
+                convert.Add((String)row["M_id"]);
+            }
+            return convert;
+        }
+
+        /* Haal een lijst op van alle aansluitpunten die in de aansluitpunt table aanwezig zijn
+         * 
+         * RETURN: List<String> met alle aansluitpunten
+         */
+        public List<String> getAansluitpunten()
+        {
+            return getAansluitpunten(false);
+        }
+
+        /* Haal een lijst op van alle aansluitpunten die in de aansluitpunt table aanwezig zijn 
+         * 
+         * Naargelang _notconnected = true/false worden enkel de niet aangesloten aansluitpunten geRETURNed
+         * 
+         * RETURN: List<String> met alle aansluitpunten
+         */
+        public List<String> getAansluitpunten(bool _notConnected)
+        {
+            Open();
+            string query = "SELECT aansluitpunten.AP_id FROM laagspanningsnet.aansluitpunten ";
+            if (_notConnected)
+            {
+                query = query + "LEFT JOIN laagspanningsnet.aansluitingen ON aansluitpunten.AP_id = Naar_AP_id WHERE Naar_AP_id IS NULL";
+            }
+            query = query + ";";
+            MySqlDataAdapter adapter = new MySqlDataAdapter(query, connectie);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds);
+            Close();
+
+            List<string> convert = new List<string>();
+            foreach (DataRow row in ds.Tables[0].Rows)
+            {
+                convert.Add((String)row["AP_id"]);
+            }
+            return convert;
         }
     }
 }
