@@ -265,6 +265,7 @@ namespace Laagspanningsnet
             if (e.ColumnIndex == 0) // +
             {
                 setUnsaved(true);
+                // Maak een nieuwe dataRow aan en vul deze met default gegevens
                 DataRow row = dtDisplay.NewRow();
                 row["+"] = "+";
                 row["-"] = "-";
@@ -273,14 +274,15 @@ namespace Laagspanningsnet
                 row["Type"] = "N";
                 row["T/VB/K"] = aansluitpunt;
                 dtDisplay.Rows.InsertAt(row, e.RowIndex);
-                dgvLaagspanningsnet.Rows[e.RowIndex].Cells["-"] = new DataGridViewButtonCell();
-                dgvLaagspanningsnet.Rows[e.RowIndex].Cells["+"] = new DataGridViewButtonCell();
-                dgvLaagspanningsnet.Rows[e.RowIndex].Cells["A"] = new DataGridViewButtonCell();
+                // maak van de +/-/A velden reeds knoppen
+                makeButtons();
                 AansluitingAanpassen aa = new AansluitingAanpassen(dtDisplay, e.RowIndex);  
-                if(aa.ShowDialog() == DialogResult.Cancel)    // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
+                if(aa.ShowDialog() == DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
                 {
-                    dtDisplay.Rows.Remove(row);
+                    dtDisplay.Rows.Remove(row);                 // Verwijder de toegevoegde rij als er op cancel is gedrukt.
+                    return;
                 }
+                // knoppen updaten
                 makeButtons();
                 return;
             }
@@ -296,6 +298,7 @@ namespace Laagspanningsnet
                 // Open het venster om aanpassingen te doen
                 AansluitingAanpassen aa = new AansluitingAanpassen(dtDisplay, e.RowIndex); 
                 aa.ShowDialog();    // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
+                // knoppen updaten
                 makeButtons();
                 return;
             }
@@ -304,7 +307,7 @@ namespace Laagspanningsnet
             showAansluitpunt(dtDisplay.Rows[e.RowIndex][e.ColumnIndex].ToString());
         }
 
-        /* Als er op de knop van de voeding wordt geklikt, ga we naar het scherm van dit aansluitpunt.
+        /* Als er op de knop van de voeding wordt geklikt, gaan we naar het scherm van dit aansluitpunt.
          */
         private void btnDynVoeding_Click(object sender, EventArgs e)
         {
@@ -321,9 +324,9 @@ namespace Laagspanningsnet
 
         /* Bijhouden of data reeds in database is opgeslagen
          */
-        private void setUnsaved(bool status)
+        private void setUnsaved(bool _status)
         {
-            unsaved = status;
+            unsaved = _status;
             if (unsaved)
             {
                 btnSave.BackColor = Color.Red;
@@ -350,15 +353,9 @@ namespace Laagspanningsnet
         private void btnSave_Click(object sender, EventArgs e)
         {
             // Als er geen unsaved data is, moet er niks gebeuren.
-            if (!unsaved)
+            // Als er geen aansluitpunt getoond wordt, kan er niets veranderd zijn --> niks te doen.
+            if (!unsaved || aansluitpunt == "")
             {
-                return;
-            }
-            
-            // !!!! TODO : bekijken wat we doen bij overzicht transfos.
-            if (aansluitpunt=="")
-            {
-                MessageBox.Show("Onder constructie, nog niet geprogrammeerd!!! TODO");
                 return;
             }
                         

@@ -49,8 +49,8 @@
             this.lblStroom = new System.Windows.Forms.Label();
             this.lblDynStroom = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtbxSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.txtbxSearch = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLaagspanningsnet)).BeginInit();
@@ -62,7 +62,7 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.menuStrip1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.dgvLaagspanningsnet, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
@@ -72,7 +72,7 @@
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1194, 699);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -126,8 +126,9 @@
             this.dgvLaagspanningsnet.MultiSelect = false;
             this.dgvLaagspanningsnet.Name = "dgvLaagspanningsnet";
             this.dgvLaagspanningsnet.RowHeadersVisible = false;
+            this.dgvLaagspanningsnet.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvLaagspanningsnet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLaagspanningsnet.Size = new System.Drawing.Size(1188, 566);
+            this.dgvLaagspanningsnet.Size = new System.Drawing.Size(1188, 516);
             this.dgvLaagspanningsnet.TabIndex = 1;
             this.dgvLaagspanningsnet.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLaagspanningsnet_CellContentClick);
             this.dgvLaagspanningsnet.SelectionChanged += new System.EventHandler(this.dgvLaagspanningsnet_SelectionChanged);
@@ -324,16 +325,6 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(448, 138);
             this.tableLayoutPanel4.TabIndex = 5;
             // 
-            // txtbxSearch
-            // 
-            this.tableLayoutPanel4.SetColumnSpan(this.txtbxSearch, 3);
-            this.txtbxSearch.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtbxSearch.Location = new System.Drawing.Point(127, 46);
-            this.txtbxSearch.Name = "txtbxSearch";
-            this.txtbxSearch.Size = new System.Drawing.Size(194, 20);
-            this.txtbxSearch.TabIndex = 0;
-            this.txtbxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbxSearch_KeyDown);
-            // 
             // btnSearch
             // 
             this.btnSearch.Location = new System.Drawing.Point(202, 72);
@@ -343,6 +334,16 @@
             this.btnSearch.Text = "Zoek";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtbxSearch
+            // 
+            this.tableLayoutPanel4.SetColumnSpan(this.txtbxSearch, 3);
+            this.txtbxSearch.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txtbxSearch.Location = new System.Drawing.Point(127, 46);
+            this.txtbxSearch.Name = "txtbxSearch";
+            this.txtbxSearch.Size = new System.Drawing.Size(194, 20);
+            this.txtbxSearch.TabIndex = 0;
+            this.txtbxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbxSearch_KeyDown);
             // 
             // Hoofdscherm
             // 
