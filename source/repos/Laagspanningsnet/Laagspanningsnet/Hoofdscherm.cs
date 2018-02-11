@@ -63,48 +63,81 @@ namespace Laagspanningsnet
          */
         private void showCommon(String _ap, int _mode)
         {
+            // DataSet definieren waar de database gegevens in geladen worden
+            DataSet dsDatabase;
+
             // Maak een nieuwe (lege) dataset aan waarin de gegevens komen zoals ze op het sherm getoond worden
             // en koppel die aan dgvLaagspanningsnet
             DataSet dsDisplay = new DataSet();
             dtDisplay = new DataTable("Display");
             dsDisplay.Tables.Add(dtDisplay);
             dgvLaagspanningsnet.DataSource = dsDisplay.Tables[0];
-            
-            // DataSet definieren waar de database gegevens in geladen worden
-            DataSet dsDatabase;
 
+            // De +/-/A Columns toevoegen
+            dtDisplay.Columns.Add(new DataColumn("+", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("-", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("A", typeof(string)));
+            // De andere Columns toevoegen
+            dtDisplay.Columns.Add(new DataColumn("T/VB/K", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("Kring", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("Nummer", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("Omschrijving", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("Kabeltype", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("Kabelsectie", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("Stroom (A)", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("Aantal polen", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("Locatie", typeof(string)));
+            dtDisplay.Columns.Add(new DataColumn("Type", typeof(string)));          // Normaal ; Aansluitpunt ; Machine
+            // Zichtbaarheid van de Column Type instellen
+            dgvLaagspanningsnet.Columns["Type"].Visible = false;                    // de column "Type" is enkel voor intern gebruik en wordt dus niet getoond
+            
             // Andere gegevens uit database halen + op het scherm zetten naar gelang de modus
             switch (_mode)
             {
-                case 1:
+                case 1:     // transfos
+                    // Zichtbaarheid instellen
+                    dgvLaagspanningsnet.Columns["+"].Visible = false;
+                    dgvLaagspanningsnet.Columns["-"].Visible = false;
+                    dgvLaagspanningsnet.Columns["A"].Visible = false;
+                    dgvLaagspanningsnet.Columns["T/VB/K"].Visible = false;
+                    dgvLaagspanningsnet.Columns["Kring"].Visible = false;
+                    dgvLaagspanningsnet.Columns["Omschrijving"].Visible = false;
+                    dgvLaagspanningsnet.Columns["Kabeltype"].Visible = false;
+                    dgvLaagspanningsnet.Columns["Kabelsectie"].Visible = false;
+                    dgvLaagspanningsnet.Columns["Stroom (A)"].Visible = false;
+                    dgvLaagspanningsnet.Columns["Aantal polen"].Visible = false;
+                    // aansluitpunt + titel aanpassen
                     this.aansluitpunt = "";
                     lblLayout.Text = "Overzicht transfos";
+                    // database gegevens ophalen
                     dsDatabase = database.getTransfos();
                     break;
-                case 3:
+                case 3:     // search
+                    // Zichtbaarheid instellen
+                    dgvLaagspanningsnet.Columns["+"].Visible = false;
+                    dgvLaagspanningsnet.Columns["-"].Visible = false;
+                    dgvLaagspanningsnet.Columns["A"].Visible = false;
+                    // aansluitpunt + titel aanpassen
                     this.aansluitpunt = "";
                     lblLayout.Text = "Zoeken : " + _ap;
+                    // database gegevens ophalen
                     dsDatabase = database.getSearch(_ap);
                     break;
-                default:    // case 2 = default
+                default:    // aansluitpunt // case 2 = default
+                    // Zichtbaarheid instellen
+                    dgvLaagspanningsnet.Columns["T/VB/K"].Visible = false;
+                    // aansluitpunt + titel aanpassen
                     this.aansluitpunt = _ap;
                     lblLayout.Text = "Layout van " + aansluitpunt;
+                    // database gegevens ophalen
                     dsDatabase = database.getAansluitingen(aansluitpunt);
                     break;
             }
-
+                        
             // Transfo() <> aansluitpunt/search andere gegevens worden in DataGridView getoond
             switch (_mode)
             {
-                case 1:
-                    // Maak de kolommen aan die getoond moeten worden
-                    dtDisplay.Columns.Add(new DataColumn("+", typeof(string)));
-                    dtDisplay.Columns.Add(new DataColumn("-", typeof(string)));
-                    dtDisplay.Columns.Add(new DataColumn("A", typeof(string)));
-                    dtDisplay.Columns.Add(new DataColumn("Nummer", typeof(string)));
-                    dtDisplay.Columns.Add(new DataColumn("Locatie", typeof(string)));
-                    dtDisplay.Columns.Add(new DataColumn("Type", typeof(string)));
-
+                case 1: // Transfos
                     // Loop over de Database gegevens om ze te analyseren
                     foreach (DataRow row in dsDatabase.Tables[0].Rows)
                     {
@@ -120,41 +153,9 @@ namespace Laagspanningsnet
                         dr["Locatie"] = db_AP_Locatie;
                         dr["Type"] = "A";
                         dtDisplay.Rows.Add(dr);
-
-                        // Niet alle velden moeten getoond worden.
-                        dgvLaagspanningsnet.Columns["Type"].Visible = false;
-                        dgvLaagspanningsnet.Columns["+"].Visible = false;
-                        dgvLaagspanningsnet.Columns["-"].Visible = false;
-                        dgvLaagspanningsnet.Columns["A"].Visible = false;
                     }
                     break;
                 default:    // (2)aansluitpunt of (3)search
-                    // Maak de kolommen aan die getoond moeten worden
-                    dtDisplay.Columns.Add(new DataColumn("+", typeof(string)));
-                    dtDisplay.Columns.Add(new DataColumn("-", typeof(string)));
-                    dtDisplay.Columns.Add(new DataColumn("A", typeof(string)));
-                    dtDisplay.Columns.Add(new DataColumn("T/VB/K", typeof(string)));
-                    if (_mode == 2)
-                    {
-                        dgvLaagspanningsnet.Columns["T/VB/K"].Visible = false;              // Enkel zichtbaar bij (3)search
-                    }
-                    dtDisplay.Columns.Add(new DataColumn("Kring", typeof(string)));
-                    dtDisplay.Columns.Add(new DataColumn("Nummer", typeof(string)));
-                    dtDisplay.Columns.Add(new DataColumn("Omschrijving", typeof(string)));
-                    dtDisplay.Columns.Add(new DataColumn("Kabeltype", typeof(string)));
-                    dtDisplay.Columns.Add(new DataColumn("Kabelsectie", typeof(string)));
-                    dtDisplay.Columns.Add(new DataColumn("Stroom (A)", typeof(string)));
-                    dtDisplay.Columns.Add(new DataColumn("Aantal polen", typeof(string)));
-                    dtDisplay.Columns.Add(new DataColumn("Locatie", typeof(string)));
-                    dtDisplay.Columns.Add(new DataColumn("Type", typeof(string)));          // Normaal ; Aansluitpunt ; Machine
-                                                                                            // de column "Type" is enkel voor intern gebruik en wordt dus niet getoond
-                    dgvLaagspanningsnet.Columns["Type"].Visible = false;
-                    if(_mode == 3)
-                    {
-                        dgvLaagspanningsnet.Columns["+"].Visible = false;
-                        dgvLaagspanningsnet.Columns["-"].Visible = false;
-                        dgvLaagspanningsnet.Columns["A"].Visible = false;
-                    }
                     // Loop over de Database gegevens om ze te analyseren
                     foreach (DataRow row in dsDatabase.Tables[0].Rows)
                     {
@@ -241,6 +242,7 @@ namespace Laagspanningsnet
             // Alle data staat op het scherm --> unsaved=false
             setUnsaved(false);
 
+            // Knoppen in de dgv aanmaken.
             makeButtons();
         }
 
