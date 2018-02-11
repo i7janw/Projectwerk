@@ -14,17 +14,19 @@ namespace Laagspanningsnet
     public partial class AansluitingAanpassen : Form
     {
         private String aansluitpunt;
-        private bool aanpassen;                 // !!!!! TODO deze weg en string aanpassen NIEUW als bool gebruiken
+        private DataTable dt;
         private DataRow row;
-        private Database database;
+        private int index;
+        private Database database;      // Nodig om machine en aansluitpunten lijst op te halen
 
         // Aansluiting aanpassen , _aanpassen TRUE --> reeds bestaande kring aanpassen
-        public AansluitingAanpassen(String _aansluitpunt, DataRow _row, bool _aanpassen)
+        public AansluitingAanpassen(DataTable _dt, int _index)
         {
             InitializeComponent();
-            row = _row;
-            aansluitpunt = _aansluitpunt;
-            aanpassen = _aanpassen;                 // !!!!! TODO , deze weg en aansluitpunt = NIEUW als aanpassen gebruiken
+            dt = _dt;
+            index = _index;
+            row = dt.Rows[_index];
+            aansluitpunt = (String)row["T/VB/K"];
             database = new Database();
         }
 
@@ -48,7 +50,7 @@ namespace Laagspanningsnet
             listAansluitpunten.Insert(0, "Geen");
 
             // Pas de titel aan
-            this.Text = "Aansluiting " + aansluitpunt + " - "+ (String)row["Kring"] + "aanpassen";
+            this.Text = "Aansluiting " + aansluitpunt + " - "+ (String)row["Kring"] + " aanpassen";
             lblTitel.Text = aansluitpunt + " - " + (String)row["Kring"];
 
             // Wat is er op deze aansluiting aangesloten?
@@ -80,7 +82,7 @@ namespace Laagspanningsnet
             }
             // Zet de overige gegevens op het scherm
             txtbxKring.Text = (String)row["Kring"];
-            if (aanpassen)
+            if ((String)row["Kring"] != "Nieuw")
             {
                 txtbxKring.Enabled = false;
             }
@@ -106,29 +108,37 @@ namespace Laagspanningsnet
             }
             cmbMachine.DataSource = listMachines;
             cmbAansluitpunt.DataSource = listAansluitpunten;
-
         }
 
         // Er is op de OK knop geklikt.
         private void btnOK_Click(object sender, EventArgs e)
         {
             // Ga na of deze aansluiting wel uniek is
-            if (!aanpassen) // enkel checken als we een nieuwe kring toevoegen
+            if ((String)this.row["Kring"] == "Nieuw")    // enkel checken als we een nieuwe kring toevoegen
             {
-                // !!!! TODO , nakijken of het niet beter is om het uit de displaydataset te halen.
-                DataSet ds = database.getAansluitingen(aansluitpunt);
-                foreach (DataRow dsRow in ds.Tables[0].Rows)
+                foreach (DataRow dtRow in dt.Rows)
                 {
-                    Console.WriteLine(dsRow["A_id"] + " " + txtbxKring.Text);
-                    if ((String)dsRow["A_id"] == txtbxKring.Text)
+                    if (dtRow["Kring"] != DBNull.Value)
                     {
-                        MessageBox.Show("Deze aansluiting is niet uniek.\nKijk de gegevens na!");
-                        return;
+                        Console.WriteLine(dtRow["Kring"] + " " + txtbxKring.Text);
+                        if ((String)dtRow["Kring"] == txtbxKring.Text)
+                        {
+                            MessageBox.Show("Deze aansluiting bestaat reeds.\nKijk na of alles correct is ingegeven...");
+                            return;
+                        }
                     }
                 }
             }
 
             // Ok, aansluiting is uniek, we kunnen verder gaan
+            dt.Rows.Remove(this.row);
+            DataRow row = dt.NewRow();
+            row["+"] = "+";
+            row["-"] = "-";
+            row["A"] = "A";
+            row["T/VB/K"] = aansluitpunt;
+            dt.Rows.InsertAt(row, index);
+
             if (cmbAansluitpunt.Text == "Geen" && cmbMachine.Text == "Geen")
             {
                 row["Type"] = "N";
@@ -138,11 +148,13 @@ namespace Laagspanningsnet
             {
                 row["Type"] = "A";
                 row["Nummer"] = cmbAansluitpunt.Text;
+                row["Locatie"] = database.getAansluitpuntLocatie(cmbAansluitpunt.Text);
             }
             if (cmbMachine.Text != "Geen")
             {
                 row["Type"] = "M";
                 row["Nummer"] = cmbMachine.Text;
+                row["Locatie"] = database.getMachineLocatie(cmbMachine.Text);
             }
             row["Kring"] = txtbxKring.Text;
             row["Omschrijving"] = txtbxOmschrijving.Text;
@@ -150,6 +162,7 @@ namespace Laagspanningsnet
             row["Kabelsectie"] = txtbxKabelsectie.Text;
             row["Stroom (A)"] = txtbxStroom.Text;
             row["Aantal polen"] = cmbPolen.Text;
+            this.DialogResult = DialogResult.OK;
             Close();
         }
 
