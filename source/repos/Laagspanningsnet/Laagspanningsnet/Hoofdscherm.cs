@@ -242,29 +242,6 @@ namespace Laagspanningsnet
             setUnsaved(false);
 
             makeButtons();
-            // Buttons in dgv aanmaken
-            int count = 0;
-            foreach (DataRow dtRow in dtDisplay.Rows)
-            {
-                if (dtRow["Type"] != DBNull.Value)  // als Type != N/A/M , dan is het de laatste lijn zonder gegevens
-                {
-                    if ((String)dtRow["Type"] == "A")
-                    {
-                        dgvLaagspanningsnet.Rows[count].Cells["Nummer"] = new DataGridViewButtonCell();
-                    }
-                    dgvLaagspanningsnet.Rows[count].Cells["-"] = new DataGridViewButtonCell();
-                    dgvLaagspanningsnet.Rows[count].Cells["+"] = new DataGridViewButtonCell();
-                    dgvLaagspanningsnet.Rows[count].Cells["A"] = new DataGridViewButtonCell();
-                }
-                count++;
-            }
-
-            // Laatste lijn met enkel de +
-            dgvLaagspanningsnet.Rows[count-1].Cells[0] = new DataGridViewButtonCell();
-            for (int y = 1; y < dgvLaagspanningsnet.ColumnCount; y++) // Op deze rij alles grijs maken, behalve de +knop.
-            {
-                dgvLaagspanningsnet.Rows[dgvLaagspanningsnet.RowCount - 1].Cells[y].Style.BackColor = Color.DarkGray;
-            }
         }
 
         /* Is er op een cell van het dataGrid geklikt?
