@@ -100,12 +100,12 @@ namespace Laagspanningsnet
                     dgvLaagspanningsnet.Columns["-"].Visible = false;
                     dgvLaagspanningsnet.Columns["A"].Visible = false;
                     dgvLaagspanningsnet.Columns["T/VB/K"].Visible = false;
-                    dgvLaagspanningsnet.Columns["Kring"].Visible = false;
-                    dgvLaagspanningsnet.Columns["Omschrijving"].Visible = false;
-                    dgvLaagspanningsnet.Columns["Kabeltype"].Visible = false;
-                    dgvLaagspanningsnet.Columns["Kabelsectie"].Visible = false;
-                    dgvLaagspanningsnet.Columns["Stroom (A)"].Visible = false;
-                    dgvLaagspanningsnet.Columns["Aantal polen"].Visible = false;
+                    // dgvLaagspanningsnet.Columns["Kring"].Visible = false;
+                    //dgvLaagspanningsnet.Columns["Omschrijving"].Visible = false;
+                    //dgvLaagspanningsnet.Columns["Kabeltype"].Visible = false;
+                    //dgvLaagspanningsnet.Columns["Kabelsectie"].Visible = false;
+                    //dgvLaagspanningsnet.Columns["Stroom (A)"].Visible = false;
+                    //dgvLaagspanningsnet.Columns["Aantal polen"].Visible = false;
                     // aansluitpunt + titel aanpassen
                     this.aansluitpunt = "";
                     lblLayout.Text = "Overzicht transfos";
@@ -134,78 +134,54 @@ namespace Laagspanningsnet
                     break;
             }
 
-            // Transfo() <> aansluitpunt/search andere gegevens worden in DataGridView getoond
-            switch (_mode)
+            // Loop over de Database gegevens om ze te analyseren
+            foreach (DataRow row in dsDatabase.Tables[0].Rows)
             {
-                case 1: // Transfos
-                    // Loop over de Database gegevens om ze te analyseren
-                    foreach (DataRow row in dsDatabase.Tables[0].Rows)
-                    {
-                        var db_AP_id = row["AP_id"];
-                        var db_AP_Locatie = row["AP_locatie"];
+                var db_AP_id = row["AP_id"];
+                var db_A_id = row["A_id"];
+                var db_Kabeltype = row["Kabeltype"];
+                var db_Kabelsectie = row["Kabelsectie"];
+                var db_Stroom = row["Stroom"];
+                var db_Polen = row["Polen"];
+                var db_Omschrijving = row["Omschrijving"];
+                string db_Locatie = "";
+                string db_Nummer = "";
+                string db_Type = "N";   // zet standaard op Normaal.
+                                        // Gaat deze aansluiting naar een ander aansluitpunt?
+                var db_Naar_AP_id = row["Naar_AP_id"];
+                if (db_Naar_AP_id != DBNull.Value)
+                {
+                    db_Nummer = (String)db_Naar_AP_id;
+                    db_Type = "A";      // type = Aansluitpunt
+                    db_Locatie = database.getAansluitpuntLocatie(db_Nummer);                    // Locatie van aansluitpunt ophalen
+                }
 
-                        // Rij (velden) met de juiste waarden vullen
-                        DataRow dr = dtDisplay.NewRow();
-                        dr[0] = "+";
-                        dr[1] = "-";
-                        dr[2] = "A";
-                        dr["Nummer"] = db_AP_id;
-                        dr["Locatie"] = db_AP_Locatie;
-                        dr["Type"] = "A";
-                        dtDisplay.Rows.Add(dr);
-                    }
-                    break;
-                default:    // (2)aansluitpunt of (3)search
-                    // Loop over de Database gegevens om ze te analyseren
-                    foreach (DataRow row in dsDatabase.Tables[0].Rows)
-                    {
-                        var db_AP_id = row["AP_id"];
-                        var db_A_id = row["A_id"];
-                        var db_Kabeltype = row["Kabeltype"];
-                        var db_Kabelsectie = row["Kabelsectie"];
-                        var db_Stroom = row["Stroom"];
-                        var db_Polen = row["Polen"];
-                        var db_Omschrijving = row["Omschrijving"];
-                        string db_Locatie = "";
-                        string db_Nummer = "";
-                        string db_Type = "N";   // zet standaard op Normaal.
-                                                // Gaat deze aansluiting naar een ander aansluitpunt?
-                        var db_Naar_AP_id = row["Naar_AP_id"];
-                        if (db_Naar_AP_id != DBNull.Value)
-                        {
-                            db_Nummer = (String)db_Naar_AP_id;
-                            db_Type = "A";      // type = Aansluitpunt
-                            db_Locatie = database.getAansluitpuntLocatie(db_Nummer);                    // Locatie van aansluitpunt ophalen
-                        }
+                // Gaat deze aansluiting naar een machine?
+                var db_Naar_M_id = row["Naar_M_id"];
+                if (db_Naar_M_id != DBNull.Value)
+                {
+                    db_Nummer = (String)db_Naar_M_id;
+                    db_Type = "M";      // type = Machine
+                    db_Locatie = database.getMachineLocatie(db_Nummer);                         // Locatie van machine ophalen
+                    db_Omschrijving = database.getMachineOmschrijving((String)db_Naar_M_id);    // Bij een machine komt de omschrijving uit de machine DB
+                }
 
-                        // Gaat deze aansluiting naar een machine?
-                        var db_Naar_M_id = row["Naar_M_id"];
-                        if (db_Naar_M_id != DBNull.Value)
-                        {
-                            db_Nummer = (String)db_Naar_M_id;
-                            db_Type = "M";      // type = Machine
-                            db_Locatie = database.getMachineLocatie(db_Nummer);                         // Locatie van machine ophalen
-                            db_Omschrijving = database.getMachineOmschrijving((String)db_Naar_M_id);    // Bij een machine komt de omschrijving uit de machine DB
-                        }
-
-                        // Rij (velden) met de juiste waarden vullen
-                        DataRow dr = dtDisplay.NewRow();
-                        dr["+"] = "+";
-                        dr["-"] = "-";
-                        dr["A"] = "A";
-                        dr["T/VB/K"] = db_AP_id;
-                        dr["Kring"] = db_A_id;
-                        dr["Nummer"] = db_Nummer;
-                        dr["Omschrijving"] = db_Omschrijving;
-                        dr["Kabeltype"] = db_Kabeltype;
-                        dr["Kabelsectie"] = db_Kabelsectie;
-                        dr["Stroom (A)"] = db_Stroom;
-                        dr["Aantal polen"] = db_Polen;
-                        dr["Locatie"] = db_Locatie;
-                        dr["Type"] = db_Type;
-                        dtDisplay.Rows.Add(dr);
-                    }
-                    break;
+                // Rij (velden) met de juiste waarden vullen
+                DataRow dr = dtDisplay.NewRow();
+                dr["+"] = "+";
+                dr["-"] = "-";
+                dr["A"] = "A";
+                dr["T/VB/K"] = db_AP_id;
+                dr["Kring"] = db_A_id;
+                dr["Nummer"] = db_Nummer;
+                dr["Omschrijving"] = db_Omschrijving;
+                dr["Kabeltype"] = db_Kabeltype;
+                dr["Kabelsectie"] = db_Kabelsectie;
+                dr["Stroom (A)"] = db_Stroom;
+                dr["Aantal polen"] = db_Polen;
+                dr["Locatie"] = db_Locatie;
+                dr["Type"] = db_Type;
+                dtDisplay.Rows.Add(dr);
             }
             
             // En nog een extra lijn bijvoegen voor de extra "+" knop.

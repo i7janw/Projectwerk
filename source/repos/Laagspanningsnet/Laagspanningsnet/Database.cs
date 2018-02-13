@@ -169,6 +169,8 @@ namespace Laagspanningsnet
         }
 
         /* Opvragen van alle aanwezige Transormatoren in het bedrijf.
+         * We geven de transformatoren terug als aansluitpunten (Naar_AP_id) die zijn aangesloten op het aansluitpunt "Hoogspanning" 
+         * om de code in Hoofdscherm zo uniform mogelijk te houden.
          *
          * RETURN : DataSet met gegevens alle transfo's
          */
@@ -176,7 +178,18 @@ namespace Laagspanningsnet
         {
             Open();
             // Data ophalen en in DataSet ds stoppen
-            string query = "select AP_id, AP_locatie from laagspanningsnet.aansluitpunten WHERE AP_id LIKE 'T%';";
+            //string query = "select AP_id, AP_locatie from laagspanningsnet.aansluitpunten WHERE AP_id LIKE 'T%';";
+            string query = "SELECT " +
+                "'Hoogspanning' as A_id, " +
+                "'Hoogspanning' as AP_id, " +
+                "AP_id AS Naar_AP_id, " +
+                "NULL AS Naar_M_ID, " +
+                "NULL AS Omschrijving, " +
+                "NULL AS Kabeltype, " +
+                "NULL AS Kabelsectie, " +
+                "NULL AS Stroom, " +
+                "3 AS Polen " +
+                "FROM laagspanningsnet.aansluitpunten WHERE AP_id like 'T%';";
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, connectie);
             DataSet ds = new DataSet();
             adapter.Fill(ds);
