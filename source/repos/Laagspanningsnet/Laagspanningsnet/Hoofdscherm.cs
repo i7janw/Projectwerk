@@ -16,7 +16,7 @@ namespace Laagspanningsnet
         private DataTable dtDisplay;    // Inhoud van deze DataTable wordt via een DataGridView op het scherm getoond
         private bool unsaved;           // Staan er niet bewaarde gegevens op het scherm?
         private string aansluitpunt;    // Het aansluitpunt dat momenteel wordt getoond
-        
+
         public Hoofdscherm()
         {
             InitializeComponent();
@@ -33,9 +33,9 @@ namespace Laagspanningsnet
         private void showTransfos()
         {
             showCommon("", 1);
-         
+
         }
-        
+
         /* Tonen van het aansluitpunt.
          * 
          * Als parameter wordt een string meegegeven dat het 'nummer' van het aansluitpunt is
@@ -53,7 +53,7 @@ namespace Laagspanningsnet
         {
             showCommon(_search, 3);
         }
-        
+
         /* Tonen van Zoekresultaten of Aansluitpunt
          * 
          * Eerste parameter = string = zoekterm of aansluitpunt
@@ -90,7 +90,7 @@ namespace Laagspanningsnet
             dtDisplay.Columns.Add(new DataColumn("Type", typeof(string)));          // Normaal ; Aansluitpunt ; Machine
             // Zichtbaarheid van de Column Type instellen
             dgvLaagspanningsnet.Columns["Type"].Visible = false;                    // de column "Type" is enkel voor intern gebruik en wordt dus niet getoond
-            
+
             // Andere gegevens uit database halen + op het scherm zetten naar gelang de modus
             switch (_mode)
             {
@@ -133,7 +133,7 @@ namespace Laagspanningsnet
                     dsDatabase = database.getAansluitingen(aansluitpunt);
                     break;
             }
-                        
+
             // Transfo() <> aansluitpunt/search andere gegevens worden in DataGridView getoond
             switch (_mode)
             {
@@ -203,16 +203,17 @@ namespace Laagspanningsnet
                         dr["Aantal polen"] = db_Polen;
                         dr["Locatie"] = db_Locatie;
                         dr["Type"] = db_Type;
-                        dtDisplay.Rows.Add(dr);  
+                        dtDisplay.Rows.Add(dr);
                     }
                     break;
             }
-
+            
             // En nog een extra lijn bijvoegen voor de extra "+" knop.
-            DataRow extraDataRow = dtDisplay.NewRow();
-            extraDataRow[0] = "+";
-            dtDisplay.Rows.Add(extraDataRow);
-           
+            if(_mode == 2) {    // enkel bij modus (2)aansluitpunt
+                DataRow extraDataRow = dtDisplay.NewRow();
+                extraDataRow[0] = "+";
+                dtDisplay.Rows.Add(extraDataRow);
+            }
             // eerste 3 columns zijn de +/-A knoppen --> width op 25 zetten en HeaderText verbergen
             dgvLaagspanningsnet.Columns["+"].Width = 25;
             dgvLaagspanningsnet.Columns["+"].HeaderText = "";
@@ -243,7 +244,12 @@ namespace Laagspanningsnet
             setUnsaved(false);
 
             // Knoppen in de dgv aanmaken.
-            makeButtons();
+            int count = 0;
+            foreach (DataGridViewRow row in dgvLaagspanningsnet.Rows)
+            {
+                makeButtons(count);
+                count++;
+            }
         }
 
         /* Is er op een cell van het dataGrid geklikt?
@@ -277,15 +283,15 @@ namespace Laagspanningsnet
                 row["T/VB/K"] = aansluitpunt;
                 dtDisplay.Rows.InsertAt(row, e.RowIndex);
                 // maak van de +/-/A velden reeds knoppen
-                makeButtons();
-                AansluitingAanpassen aa = new AansluitingAanpassen(dtDisplay, e.RowIndex);  
-                if(aa.ShowDialog() == DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
+                makeButtons(e.RowIndex);
+                AansluitingAanpassen aa = new AansluitingAanpassen(dtDisplay, e.RowIndex);
+                if (aa.ShowDialog() == DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
                 {
                     dtDisplay.Rows.Remove(row);                 // Verwijder de toegevoegde rij als er op cancel is gedrukt.
                     return;
                 }
                 // knoppen updaten
-                makeButtons();
+                makeButtons(e.RowIndex);
                 return;
             }
             if (e.ColumnIndex == 1) // -
@@ -298,10 +304,10 @@ namespace Laagspanningsnet
             {
                 setUnsaved(true);
                 // Open het venster om aanpassingen te doen
-                AansluitingAanpassen aa = new AansluitingAanpassen(dtDisplay, e.RowIndex); 
+                AansluitingAanpassen aa = new AansluitingAanpassen(dtDisplay, e.RowIndex);
                 aa.ShowDialog();    // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
                 // knoppen updaten
-                makeButtons();
+                makeButtons(e.RowIndex);
                 return;
             }
 
@@ -315,7 +321,7 @@ namespace Laagspanningsnet
         {
             Button button = sender as Button;
             String ap = button.Text.Split(' ').First();
-            if(ap == "-")
+            if (ap == "-")
             {
                 showTransfos();
                 return;
@@ -360,7 +366,7 @@ namespace Laagspanningsnet
             {
                 return;
             }
-                        
+
             // Maak een nieuwe Dataset aan met de nodige columns, waar de gegevens voor de database in komen
             DataSet dsDatabase = new DataSet();
             DataTable dtDatabase = new DataTable("aansluitingen");
@@ -379,7 +385,6 @@ namespace Laagspanningsnet
             // Opm. de laatste lijn is de lege lijn met een plus dus die lezen we niet.
             for (int count = 0; count < dtDisplay.Select().Length - 1; count++)
             {
-                Console.WriteLine(count);
                 DataRow rowDatabase = dtDatabase.NewRow();       // nieuwe row dtDatabase 
                 DataRow rowDisplay = dtDisplay.Rows[count];      // lees een row dtDisplay
 
@@ -405,7 +410,7 @@ namespace Laagspanningsnet
                 }
                 rowDatabase["Kabeltype"] = rowDisplay["Kabeltype"];
                 rowDatabase["Kabelsectie"] = rowDisplay["Kabelsectie"];
-                
+
                 // stroom & polen = int --> via Int32.TryParse
                 int convert;
                 if (rowDisplay["Stroom (A)"] == DBNull.Value) rowDisplay["Stroom (A)"] = "";
@@ -426,14 +431,14 @@ namespace Laagspanningsnet
                 {
                     rowDatabase["Polen"] = 3;                       // Standaard is het aantal polen 3 : R S T + Vaste PEN aansluiting 
                 }
-                
+
                 // Deze row toevoegen aan de dataSet
                 dtDatabase.Rows.Add(rowDatabase);
             }
-            
+
             // De database dataset sturen we naar de database, die de gegevens op de mySQL-server zal opslaan
             database.setAansluitingen(dsDatabase);
-            
+
             // Gegevens terug inladen zodat hetgene op het scherm staat zeker hetzelfde is als in de database is opgeslagen
             showAansluitpunt(aansluitpunt);
         }
@@ -472,29 +477,33 @@ namespace Laagspanningsnet
 
         // NEW ------------------------------------------------------------------------------------------------
 
-        // Buttons in dgv aanmaken
-        private void makeButtons() { 
-        int count = 0;
-            foreach (DataRow dtRow in dtDisplay.Rows)
-            {
-                if (dtRow["Type"] != DBNull.Value)  // als Type != N/A/M , dan is het de laatste lijn zonder gegevens
-                {
-                    if ((String) dtRow["Type"] == "A")
-                    {
-                        dgvLaagspanningsnet.Rows[count].Cells["Nummer"] = new DataGridViewButtonCell();
-                    }
-                    dgvLaagspanningsnet.Rows[count].Cells["-"] = new DataGridViewButtonCell();
-                    dgvLaagspanningsnet.Rows[count].Cells["+"] = new DataGridViewButtonCell();
-                    dgvLaagspanningsnet.Rows[count].Cells["A"] = new DataGridViewButtonCell();
-                }
-                count++;
-            }
+        /* Maak in een bepaalde row van de DataGridView de knoppen aan voor +/-/A en Aansluitpunten
+         * Maak op de laatste row alles grijs als het over de laatste lege lijn met een + gaat (bij weergave aansluitpunt).
+         * 
+         * _count = de index van de row
+         */
+        private void makeButtons(int _count)
+        {
+            // Maak van de +  een knop.
+            dgvLaagspanningsnet.Rows[_count].Cells["+"] = new DataGridViewButtonCell();
 
-            // Laatste lijn met enkel de +
-            dgvLaagspanningsnet.Rows[count - 1].Cells[0] = new DataGridViewButtonCell();
-            for (int y = 1; y<dgvLaagspanningsnet.ColumnCount; y++) // Op deze rij alles grijs maken, behalve de +knop.
+            if (dgvLaagspanningsnet.Rows[_count].Cells["Type"].Value != DBNull.Value)    // op de laatste lege lijn met enkel een + heeft "Type" geen waarde.
             {
-                dgvLaagspanningsnet.Rows[dgvLaagspanningsnet.RowCount - 1].Cells[y].Style.BackColor = Color.DarkGray;
+                // Maak van -/A en Aansluitpunten een knop.
+                if ((String)dgvLaagspanningsnet.Rows[_count].Cells["Type"].Value == "A")
+                {
+                    dgvLaagspanningsnet.Rows[_count].Cells["Nummer"] = new DataGridViewButtonCell();
+                }
+                dgvLaagspanningsnet.Rows[_count].Cells["-"] = new DataGridViewButtonCell();
+                dgvLaagspanningsnet.Rows[_count].Cells["A"] = new DataGridViewButtonCell();
+            }
+            else // deze code wordt uitgevoerd als we op de laatste lege lijn met enkel een + zijn 
+            {
+                // Op deze rij alles grijs maken, behalve de +knop.
+                for (int y = 1; y < dgvLaagspanningsnet.ColumnCount; y++) 
+                {
+                    dgvLaagspanningsnet.Rows[dgvLaagspanningsnet.RowCount - 1].Cells[y].Style.BackColor = Color.DarkGray;
+                }
             }
         }
     }
