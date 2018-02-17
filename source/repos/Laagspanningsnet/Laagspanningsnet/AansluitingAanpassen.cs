@@ -111,7 +111,7 @@ namespace Laagspanningsnet
         }
 
         // Er is op de OK knop geklikt.
-        private void btnOK_Click(object sender, EventArgs e)
+        private void BtnOK_Click(object sender, EventArgs e)
         {
             // Ga na of deze aansluiting wel uniek is
             if ((String)this.row["Kring"] == "Nieuw")    // enkel checken als we een nieuwe kring toevoegen
@@ -167,13 +167,13 @@ namespace Laagspanningsnet
         }
 
         // Er is op de anuleer knop geklikt.
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
             Close();
         }
 
         // Machine is aangepast
-        private void cmbMachine_SelectedIndexChanged(object sender, EventArgs e)
+        private void CmbMachine_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(cmbMachine.Text == "Geen")
             {
@@ -189,7 +189,7 @@ namespace Laagspanningsnet
         }
 
         // Aansluitpunt is aangepast
-        private void cmbAansluitpunt_SelectedIndexChanged(object sender, EventArgs e)
+        private void CmbAansluitpunt_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbAansluitpunt.Text == "Geen")
             {
@@ -206,7 +206,7 @@ namespace Laagspanningsnet
 
         // In de stroom box kunnen enkel getallen ingegeven worden.
         // Bron : <https://stackoverflow.com/questions/463299/how-do-i-make-a-textbox-that-only-accepts-numbers>
-        private void txtbxStroom_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtbxStroom_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {

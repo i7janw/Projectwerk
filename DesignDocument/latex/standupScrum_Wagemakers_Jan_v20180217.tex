@@ -286,4 +286,47 @@ klasse \textbf{Hoofdscherm} de $+$ en $A$ knop (in de methode
 
 \end{homeworkProblem}
 
+\begin{homeworkProblem}[17/02/2018]
+Atrributen en methodes voor de klasse \textbf{AansluitingAanpassen} zijn
+uitgewerkt en ook geprogrammeerd. In het \textbf{Hoofdscherm} werken de $+$
+en $A$ knoppen. Er zijn tijdens het programmeren wel zaken aangepast aan het
+klassendiagram. Zo was er in eerste instantie enkel voorzien om een
+\textbf{DataRow}
+door te geven naar \textbf{AansluitingAanpassen}, maar om de uniekheid van
+een aansluiting te testen was het nodig om de volledige \textbf{DataTable} door te
+geven.
+\\\\
+De \textbf{Database} klasse is opgekuisd en er wordt nu wel rekening
+gehouden met de return-value van Open() en Close(). Er is echter nog werk
+aan, denk bv. aan \textbf{SQL-injection}.
+\\\\
+Verder is de methode \textbf{GetTransfos()} in de \textbf{Database} klasse
+zo aangepast dat deze de lijst van de transfos teruggeeft als een DataSet
+van aansluitingen van het aansluitpunt \textbf{Hoogspanning}. Op deze manier
+kon de code van de klasse \textbf{Hoofdscherm} sterk vereenvoudigd worden.
+\\\\
+Opgepast, in tegenstelling tot JAVA beginnen bij C\# de methodes met een
+hoofdletter. Aangepast.
+\\\\
+%\begingroup
+%\begin{wrapfigure}{l}{0.15\textwidth} %this figure will be at the right
+%    \centering
+%    \includegraphics[width=0.15\textwidth]{/home/jan/Afbeeldingen/FAMP.png}
+%\end{wrapfigure}
+%
+%Om te kunnen inschatten hoe het programma werkt als de verbinding over een echt netwerk
+%loopt en de Mysql-server niet al te snel is, is er een FAMP (FreeBSD,
+%Apache, Mysql, PHP) ge\"installeerd op een alix2D13 (CPU: 500 MHz AMD Geode
+%LX800 / RAM: 256 MB DDR DRAM). 
+%Vermits de broncode ook op github staat, oppassen dat er geen paswoorden
+%gelekt worden. Momenteel kan dit geen kwaad omdat de Mysql-server enkel
+%intern bereikbaar is. 
+%\par
+%\endgroup
+Volgende stap is om het \textbf{Klassendiagram} uit te werken voor de
+klassen Machines/Aansluitpunten - toevoegen/verwijderen/aanpassen. Dit
+zou ergens begin maart uitgewerkt moeten zijn. 
+Aan alles wat al geprogrammeerd is, is ook nog veel opkuiswerk.
+\end{homeworkProblem}
+
 \end{document}

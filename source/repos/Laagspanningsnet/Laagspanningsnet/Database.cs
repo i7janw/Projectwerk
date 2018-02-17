@@ -38,6 +38,12 @@ namespace Laagspanningsnet
             ";PASSWORD=" + password + ";";
         private static MySqlConnection connectie = new MySqlConnection(connectiestring);
 
+        /* Constructor
+         */
+        public Database()
+        {
+        }
+
         /* Openen van de connectie met de database.
          * Toont een MessageBox op het scherm als er een probleem is.
          * 
@@ -407,6 +413,15 @@ namespace Laagspanningsnet
             return GetMachines(false);
         }
 
+        /* Haal een lijst op van alle aansluitpunten die in de aansluitpunt table aanwezig zijn
+         * 
+         * RETURN: List<String> met alle aansluitpunten
+         */
+        public List<String> GetAansluitpunten()
+        {
+            return GetAansluitpunten(false);
+        }
+
         /* Haal een lijst op van alle machines die in de machine table aanwezig zijn 
          * 
          * Naargelang _notconnected = true/false worden enkel de niet aangesloten machines geRETURNed
@@ -431,16 +446,7 @@ namespace Laagspanningsnet
             }
             return _convert;
         }
-
-        /* Haal een lijst op van alle aansluitpunten die in de aansluitpunt table aanwezig zijn
-         * 
-         * RETURN: List<String> met alle aansluitpunten
-         */
-        public List<String> GetAansluitpunten()
-        {
-            return GetAansluitpunten(false);
-        }
-
+        
         /* Haal een lijst op van alle aansluitpunten die in de aansluitpunt table aanwezig zijn 
          * 
          * Naargelang _notconnected = true/false worden enkel de niet aangesloten aansluitpunten geRETURNed
@@ -449,24 +455,21 @@ namespace Laagspanningsnet
          */
         public List<String> GetAansluitpunten(bool _notConnected)
         {
-            Open();
-            string query = "SELECT aansluitpunten.AP_id FROM laagspanningsnet.aansluitpunten ";
+            string _query = "SELECT aansluitpunten.AP_id FROM laagspanningsnet.aansluitpunten ";
             if (_notConnected)
             {
-                query = query + "LEFT JOIN laagspanningsnet.aansluitingen ON aansluitpunten.AP_id = Naar_AP_id WHERE Naar_AP_id IS NULL";
+                _query = _query + "LEFT JOIN laagspanningsnet.aansluitingen ON aansluitpunten.AP_id = Naar_AP_id WHERE Naar_AP_id IS NULL";
             }
-            query = query + ";";
-            MySqlDataAdapter adapter = new MySqlDataAdapter(query, connectie);
-            DataSet ds = new DataSet();
-            adapter.Fill(ds);
-            Close();
+            _query = _query + ";";
+            DataSet _ds = GetDataSet(_query);
 
-            List<string> convert = new List<string>();
-            foreach (DataRow row in ds.Tables[0].Rows)
+            // Zet DataSet om naar een List
+            List<string> _convert = new List<string>();
+            foreach (DataRow _row in _ds.Tables[0].Rows)
             {
-                convert.Add((String)row["AP_id"]);
+                _convert.Add((String)_row["AP_id"]);
             }
-            return convert;
+            return _convert;
         }
     }
 }

@@ -130,8 +130,8 @@
             this.dgvLaagspanningsnet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLaagspanningsnet.Size = new System.Drawing.Size(1188, 516);
             this.dgvLaagspanningsnet.TabIndex = 1;
-            this.dgvLaagspanningsnet.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLaagspanningsnet_CellContentClick);
-            this.dgvLaagspanningsnet.SelectionChanged += new System.EventHandler(this.dgvLaagspanningsnet_SelectionChanged);
+            this.dgvLaagspanningsnet.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvLaagspanningsnet_CellContentClick);
+            this.dgvLaagspanningsnet.SelectionChanged += new System.EventHandler(this.DgvLaagspanningsnet_SelectionChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -165,7 +165,7 @@
             this.btnUndo.TabIndex = 0;
             this.btnUndo.Text = "Ongedaan Maken";
             this.btnUndo.UseVisualStyleBackColor = true;
-            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
+            this.btnUndo.Click += new System.EventHandler(this.BtnUndo_Click);
             // 
             // btnSave
             // 
@@ -176,7 +176,7 @@
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Opslaan";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // lblLayout
             // 
@@ -235,7 +235,7 @@
             this.btnDynVoeding.Text = "?";
             this.btnDynVoeding.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDynVoeding.UseVisualStyleBackColor = true;
-            this.btnDynVoeding.Click += new System.EventHandler(this.btnDynVoeding_Click);
+            this.btnDynVoeding.Click += new System.EventHandler(this.BtnDynVoeding_Click);
             // 
             // lblLocatie
             // 
@@ -333,7 +333,7 @@
             this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "Zoek";
             this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.btnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
             // txtbxSearch
             // 
@@ -343,7 +343,7 @@
             this.txtbxSearch.Name = "txtbxSearch";
             this.txtbxSearch.Size = new System.Drawing.Size(194, 20);
             this.txtbxSearch.TabIndex = 0;
-            this.txtbxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbxSearch_KeyDown);
+            this.txtbxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtbxSearch_KeyDown);
             // 
             // Hoofdscherm
             // 

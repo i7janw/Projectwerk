@@ -188,6 +188,10 @@ zaken niet werkbaar blijken.
         \item \textcolor{blue}{\textbf{$-$string connectiestring}}
         \item \textcolor{blue}{\textbf{$-$MySqlConnection connectie}}
 	\end{itemize}
+\item\textbf{Constructor}
+        \begin{itemize}
+                \item\textcolor{blue}{\textbf{$+$Database()}}
+        \end{itemize}
 \item\textbf{Methodes}
 	\begin{itemize}
 	\item \textcolor{blue}{\textbf{$-$Open():bool}}
@@ -210,61 +214,61 @@ zaken niet werkbaar blijken.
 					\item true = connectie is gesloten
 				\end{itemize}
 		\end{itemize}
-	\item\textcolor{blue}{\textbf{$+$getTransfos():DataSet}}
+	\item\textcolor{blue}{\textbf{$+$GetTransfos():DataSet}}
         	\begin{itemize}
 			\item \textbf{Doel} : ophalen van alle transformatoren die op het bedrijf aanwezig zijn.
 			\item \textbf{Parameters} : geen.
 			\item \textbf{Return} : DataSet met gegevens van alle transformatoren
 		\end{itemize}
-	\item  \textcolor{blue}{\textbf{$+$getAansluitingen(String aansluitpunt):DataSet}}
+	\item  \textcolor{blue}{\textbf{$+$GetAansluitingen(String aansluitpunt):DataSet}}
 		\begin{itemize}
                         \item \textbf{Doel} : opvragen van alle aansluitingen die behoren tot een bepaalde aansluitpunt
                         \item \textbf{Parameters} : String aansluitpunt
                         \item \textbf{Return} : DataSet met gegevens van alle aansluitingen van een aansluitpunt
                 \end{itemize}
-	\item  \textcolor{blue}{\textbf{$+$getSearch(String search):DataSet}}
+	\item  \textcolor{blue}{\textbf{$+$GetSearch(String search):DataSet}}
 		\begin{itemize}
                         \item \textbf{Doel} : ophalen van zoekresultaten
                         \item \textbf{Parameters} : String search, waarbij search de zoekterm is
                         \item \textbf{Return} : DataSet met alle zoekresultaten
                 \end{itemize}
-	\item  \textcolor{blue}{\textbf{$+$getMachineOmschrijving(String machine):String}}
+	\item  \textcolor{blue}{\textbf{$+$GetMachineOmschrijving(String machine):String}}
 		\begin{itemize}
                         \item \textbf{Doel} : opvragen van de omschrijving van een bepaalde machine
                         \item \textbf{Parameters} : String machine
                         \item \textbf{Return} : String met de omschrijving
                 \end{itemize}
-        \item \textcolor{blue}{\textbf{ $+$getMachineLocatie(String machine):String}}
+        \item \textcolor{blue}{\textbf{ $+$GetMachineLocatie(String machine):String}}
 		\begin{itemize}
                         \item \textbf{Doel} : opvragen van de locatie van een bepaalde machine
                         \item \textbf{Parameters} : String machine
                         \item \textbf{Return} : String met de locatie
                 \end{itemize}
-	\item \textcolor{blue}{\textbf{ $+$getAansluitpuntLocatie(String aansluitpunt):String}}
+	\item \textcolor{blue}{\textbf{ $+$GetAansluitpuntLocatie(String aansluitpunt):String}}
 		\begin{itemize}
                         \item \textbf{Doel} : opvragen van de locatie van een bepaalde aansluitpunt
                         \item \textbf{Parameters} : String aansluitpunt
                         \item \textbf{Return} : String met de locatie
                 \end{itemize}
-	\item  \textcolor{blue}{\textbf{$+$getVoeding(String aansluitpunt):String}}
+	\item  \textcolor{blue}{\textbf{$+$GetVoeding(String aansluitpunt):String}}
 		\begin{itemize}
                         \item \textbf{Doel} : opvragen van de voeding van een bepaald aansluitpunt
                         \item \textbf{Parameters} : String aansluitpunt
                         \item \textbf{Return} : String met de voeding, = "-" als er geen voeding is gevonden
                 \end{itemize}
-	\item  \textcolor{blue}{\textbf{$+$getKabel(String aansluitpunt):String}}
+	\item  \textcolor{blue}{\textbf{$+$GetKabel(String aansluitpunt):String}}
 		\begin{itemize}
                         \item \textbf{Doel} : opvragen van de voedingskbal van een bepaald aansluitpunt
                         \item \textbf{Parameters} : String aansluitpunt
                         \item \textbf{Return} : String met de voedingskabel, = "-" als er geen voedingskabel is gevonden
                 \end{itemize}
-	\item \textcolor{blue}{ \textbf{$+$getStroom(String aansluitpunt):String}}
+	\item \textcolor{blue}{ \textbf{$+$GetStroom(String aansluitpunt):String}}
 		\begin{itemize}
                        \item \textbf{Doel} : opvragen van de stroomtoevoer (voeding) van een bepaald aansluitpunt
                         \item \textbf{Parameters} : String aansluitpunt
                         \item \textbf{Return} : String met de stroom, = "-" als er geen voeding is gevonden
                 \end{itemize}
-	\item  \textcolor{blue}{\textbf{$+$setAansluitingen(DataSet dsDatabase):bool}}
+	\item  \textcolor{blue}{\textbf{$+$SetAansluitingen(DataSet dsDatabase):bool}}
 		\begin{itemize}
                         \item \textbf{Doel} : data van alle aansluitingen van een aansluitpunt opslaan in de database
                         \item \textbf{Parameters} : DataSet dsDatabase met alle aansluitingen van een aansluitpunt
@@ -274,13 +278,67 @@ zaken niet werkbaar blijken.
                                         \item true = connectie is gesloten
                                 \end{itemize}
                 \end{itemize}
-	\end{itemize}
+	\item \textcolor{cyan}{\textbf{$-$GetString(String query):String}}
+		\begin{itemize}
+			\item \textbf{Doel} : ophalen van een string uit de database. Dit is een private gemeenschappelijke routine die door andere methodes gebruikt wordt.
+			\item \textbf{Parameters} : String query met de query op de MySql-server moet worden uitgevoerd.
+			\item \textbf{Return} : String met het resultaat.
+		\end{itemize}
+	\item \textcolor{cyan}{\textbf{$-$GetDataSet(String query):DataSet}}
+		\begin{itemize}
+			\item \textbf{Doel} : ophalen van een DataSet uit de database. Dit is een private gemeenschappelijke routine die door andere methodes gebruikt wordt.
+			\item \textbf{Parameters} : String query met de query op de MySql-server moet worden uitgevoerd.
+                        \item \textbf{Return} : DataSet met het resultaat.
+		\end{itemize}
+	\item \textcolor{cyan}{\textbf{$-$NonQueryCommon(String nonQuery):bool}}
+		\begin{itemize}
+			\item \textbf{Doel} : Gemeenschappelijke routine voor INSERT/UPDATE/DELETE die door andere methodes gebruikt wordt.
+			\item \textbf{Parameters} : String nonQuery met het INSERT/UPDATE/DELETE SQL commando.
+			\item \textbf{Return} : bool
+                                \begin{itemize}
+                                        \item false = mislukt
+                                        \item true = connectie is gesloten
+                                \end{itemize}
+		\end{itemize}
+	\item \textcolor{blue}{\textbf{$+$GetMachines():List$<$String$>$}}
+		\begin{itemize}
+			\item \textbf{Doel} : Lijst ophalen van alle machines die in de machine table aanwezig zijn.
+			\item \textbf{Parameters} : geen.
+			\item \textbf{Return} : List$<$String$>$ met een lijst van alle machines
+      		\end{itemize} 
+	\item \textcolor{blue}{\textbf{$+$GetMachines(bool notConnected):List$<$String$>$}}
+		\begin{itemize}
+                        \item \textbf{Doel} : Lijst ophalen van machines uit de machine table.
+                        \item \textbf{Parameters} : bool notConnected
+				\begin{itemize}
+                                        \item false = alle machines uit de machine table ophalen (=\textbf{$+$GetMachines():List$<$String$>$})
+                                        \item true = enkel niet aangesloten machines uit de machine table ophalen
+                                \end{itemize}
+                        \item \textbf{Return} : List$<$String$>$ met een lijst van de machines
+                \end{itemize} 
+        \item \textcolor{blue}{\textbf{$+$GetAansluitpunten():List$<$String$>$}}
+                \begin{itemize}
+                        \item \textbf{Doel} : Lijst ophalen van alle aansluitpunten die in de aansluitpunt table aanwezig zijn.
+                        \item \textbf{Parameters} : geen.
+                        \item \textbf{Return} : List$<$String$>$ met een lijst van alle aansluitpunten
+                \end{itemize} 
+	\item \textcolor{blue}{\textbf{$+$GetAansluitpunten(bool notConnected):List$<$String$>$}}
+                \begin{itemize}
+                        \item \textbf{Doel} : Lijst ophalen van aansluitpunten uit de aansluitpunt table.
+                        \item \textbf{Parameters} : bool notConnected
+                                \begin{itemize}
+                                        \item false = alle aansluitpunten uit de aansluitpunt table ophalen (=\textbf{$+$GetAansluitpunten():List$<$String$>$})
+                                        \item true = enkel niet aangesloten aansluitpunten uit de aansluitpunt table ophalen
+                                \end{itemize}
+                        \item \textbf{Return} : List$<$String$>$ met een lijst van de aansluitpunten
+                \end{itemize} 
+\end{itemize}
 \end{itemize}
 \end{homeworkProblem}
 
-\begin{homeworkProblem}[Hoofdscherm]
+\begin{homeworkProblem}[Hoofdscherm : Form]
 \begin{itemize}
-\item\textbf{Doel} : Het hoofdscherm van het programma opbouwen. Dez klasse
+\item\textbf{Doel} : Het hoofdscherm van het programma opbouwen. Deze klasse
 communiceert met de \textbf{Database}-klasse om de nodige gegevens uit de
 database op te halen. Andere vensters worden van uit deze klasse aangeroepen.
 \item\textbf{Atributen}
@@ -290,59 +348,53 @@ database op te halen. Andere vensters worden van uit deze klasse aangeroepen.
         \item \textcolor{blue}{\textbf{$-$bool unsaved}} : Staan er niet bewaarde gegevens op het scherm?
         \item \textcolor{blue}{\textbf{$-$string aansluitpunt}} : Het aansluitpunt dat momenteel wordt getoond
 \end{itemize}
+\item\textbf{Constructor}
+        \begin{itemize}
+                \item\textcolor{blue}{\textbf{$+$Hoofdscherm()}}
+        \end{itemize}
 \item\textbf{Methodes}
 	\begin{itemize}
-
-
-        \item  \textcolor{blue}{\textbf{$-$showTransfos()}}
+        \item  \textcolor{blue}{\textbf{$-$ShowTransfos()}}
 		\begin{itemize}
                         \item \textbf{Doel} : Tonen van overzicht van alle transfos op het scherm
                         \item \textbf{Parameters} : geen.
                         \item \textbf{Return} : niets.
 		\end{itemize}
 
-	\item  \textcolor{blue}{\textbf{$-$showAansluitpunt(String aansluitpunt)}}
+	\item  \textcolor{blue}{\textbf{$-$ShowAansluitpunt(String aansluitpunt)}}
 		\begin{itemize}
                         \item \textbf{Doel} : Tonen van alle aansluitingen van een bepaald aansluitpunt
                         \item \textbf{Parameters} : String aansluitpunt
                         \item \textbf{Return} : niets.
                 \end{itemize}
 
-	\item  \textcolor{blue}{\textbf{$-$showSearch(String search)}}
+	\item  \textcolor{blue}{\textbf{$-$ShowSearch(String search)}}
                 \begin{itemize}
                         \item \textbf{Doel} : Tonen van de zoekresultaten
                         \item \textbf{Parameters} : String met de zoekterm
                         \item \textbf{Return} : niets.
                 \end{itemize}
 
-        \item  \textcolor{cyan}{\textbf{$-$showCommon(String word, int
-modus)}} 
+        \item  \textcolor{cyan}{\textbf{$-$ShowCommon(String word, int modus)}} 
 		\begin{itemize}
-                        \item \textbf{Doel} : Tijdens het programmeren is
-gebleken dat er veel code gemeenschappelijk is tussen \textbf{showTransfos},
-\textbf{showAansluitpunt}, \textbf{showSearch}, daarom is deze
-gemeenschappelijke routine aangemaakt.
-                        \item \textbf{Parameters} : String
-zoekterm/aansluitpunt, int modus 1=Transfos, 2=Aansluitpunt, 3=Search
+                        \item \textbf{Doel} : Tijdens het programmeren is gebleken dat er veel code gemeenschappelijk is tussen \textbf{showTransfos},
+				\textbf{showAansluitpunt}, \textbf{showSearch}, daarom is deze gemeenschappelijke routine aangemaakt.
+                        \item \textbf{Parameters} : String zoekterm/aansluitpunt, int modus 1=Transfos, 2=Aansluitpunt, 3=Search
                         \item \textbf{Return} : niets.
                 \end{itemize}
-
-	
-	\item \textcolor{blue}{\textbf{$-$dgvLaagspanningsnet\_CellContentClick(object sender, DataGridViewCellEventArgs e)}}
+	\item \textcolor{blue}{\textbf{$-$DgvLaagspanningsnet\_CellContentClick(object sender, DataGridViewCellEventArgs e)}}
                 \begin{itemize}
                         \item \textbf{Doel} : Actie ondernemen als er op een Cell van de DataGridView wordt geklikt
                         \item \textbf{Parameters} : object sender, DataGridViewCellEventArgs e
                         \item \textbf{Return} : niets.
                 \end{itemize}
-
-	\item  \textcolor{blue}{\textbf{$-$btnDynVoeding\_Click(object sender, EventArgs e)}}
+	\item  \textcolor{blue}{\textbf{$-$BtnDynVoeding\_Click(object sender, EventArgs e)}}
                 \begin{itemize}
                         \item \textbf{Doel} : Actie ondernemen als er op de voedingsknop is geklikt
                         \item \textbf{Parameters} : object sender, EventArgs e
                         \item \textbf{Return} : niets.
                 \end{itemize}
-
-	\item  \textcolor{blue}{\textbf{$-$setUnsaved(bool status)}}
+	\item  \textcolor{blue}{\textbf{$-$SetUnsaved(bool status)}}
                 \begin{itemize}
                         \item \textbf{Doel} : Bijhouden of data reeds in de database is opgeslagen
                         \item \textbf{Parameters} : bool status
@@ -352,43 +404,103 @@ zoekterm/aansluitpunt, int modus 1=Transfos, 2=Aansluitpunt, 3=Search
 				\end{itemize}
                         \item \textbf{Return} : niets.
                 \end{itemize}
-	\item  \textcolor{cyan}{\textbf{$-$dgvLaagspanningsnet\_SelectionChanged(object sender, EventArgs e)}}
+	\item  \textcolor{cyan}{\textbf{$-$DgvLaagspanningsnet\_SelectionChanged(object sender, EventArgs e)}}
                 \begin{itemize}
-                        \item \textbf{Doel} : Uitschakelen van blauwe
-selectiebalk in DataGridView\\ (zie ook: https://stackoverflow.com/questions/11330147/how-to-disable-the-ability-to-select-in-a-datagridview)
+                        \item \textbf{Doel} : Uitschakelen van blauwe selectiebalk in DataGridView\\ (zie ook: https://stackoverflow.com/questions/11330147/how-to-disable-the-ability-to-select-in-a-datagridview)
                         \item \textbf{Parameters} : object sender, EventArgs e
                         \item \textbf{Return} : niets.
                 \end{itemize}
-
-	\item  \textcolor{blue}{\textbf{$-$btnSave\_Click(object sender, EventArgs e)}}
+	\item  \textcolor{blue}{\textbf{$-$BtnSave\_Click(object sender, EventArgs e)}}
 		\begin{itemize}
 			\item \textbf{Doel} : Actie ondernemen als er op de save-knop wordt geklikt
 			\item \textbf{Parameters} : object sender, EventArgs e
 			\item \textbf{Return} : niets.
 		\end{itemize}
-
-       \item  \textcolor{blue}{\textbf{$-$btnUndo\_Click(object sender, EventArgs e)}}
+       \item  \textcolor{blue}{\textbf{$-$BtnUndo\_Click(object sender, EventArgs e)}}
                 \begin{itemize}
                         \item \textbf{Doel} : Actie ondernemen als er op de undo-knop wordt geklikt
                         \item \textbf{Parameters} : object sender, EventArgs e
                         \item \textbf{Return} : niets.
                 \end{itemize}
-
-	\item  \textcolor{blue}{\textbf{$-$btnSearch\_Click(object sender, EventArgs e)}}
+	\item  \textcolor{blue}{\textbf{$-$BtnSearch\_Click(object sender, EventArgs e)}}
                 \begin{itemize}
                         \item \textbf{Doel} : Actie ondernemen als er op de zoek-knop wordt geklikt
-                        \item \textbf{Parameters} : object sender, EventArgs
+                        \item \textbf{Parameters} : object sender, EventArgs e
                         \item \textbf{Return} : niets.
                 \end{itemize}
-
-	\item \textcolor{cyan}{\textbf{$-$txtbxSearch\_KeyDown(object sender, KeyEventArgs e)}}
+	\item \textcolor{cyan}{\textbf{$-$TxtbxSearch\_KeyDown(object sender, KeyEventArgs e)}}
 		\begin{itemize}
                         \item \textbf{Doel} : Op Enter drukken in de search box = op zoekknop klikken.
-                        \item \textbf{Parameters} : object sender, EventArgs
+                        \item \textbf{Parameters} : object sender, EventArgs e
                         \item \textbf{Return} : niets.
                 \end{itemize}
-	\end{itemize}
+	\item \textcolor{cyan}{\textbf{$-$MakeButtons(int index)}}
+		\begin{itemize}
+			\item \textbf{Doel} : Maak van row(index) van de DataGridView de knoppen aan voor +/-/A en aansluitpunt. Maak van de laatste row met enkel het $+$-teken alles grijs.
+			\item \textbf{Parameters} : int index : index van de row
+			\item \textbf{Return} : niets.
+		\end{itemize}
+	 \end{itemize}
 \end{itemize}
 \end{homeworkProblem}
 
+\begin{homeworkProblem}[AansluitingAanpassen : Form]
+\begin{itemize}
+\item\textbf{Doel} : Het scherm tonen waarmee de inhoud van /'e/'en aansluiting aangepast kan worden. Deze klasse wordt aangeroepen door de klasse \textbf{Hoofdscherm}. Bij de aanroep worden als parameters de DataTable 
+meegegeven van de aansluitingen die getoond worden en de index van de aansluiting die aangepast moet worden. De reden dat de volledige DataTable wordt doorgegeven is om te kunnen testen of de ingegeven aansluiting wel uniek is.
+Verder communiceert deze klasse met de \textbf(Database)-klasse om de machine- en aansluitpunt-lijst e.d. op te halen. Deze klasse zal echter geen aanpassingen in de database maken. 
+\item\textbf{Atributen}
+        \begin{itemize}
+		\item \textcolor{blue}{\textbf{$-$string aansluitpunt}} : Het aansluitpunt waarvan een aansluiting aangepast wordt.
+	        \item \textcolor{blue}{\textbf{$-$Database database}} : Alle communicatie met de database verloopt via de database klasse
+		\item \textcolor{blue}{\textbf{$-$DataRow row}} : De DataRow met de aansluiting die aangepast wordt.
+		\item \textcolor{cyan}{\textbf{$-$DataTable dt}} : DataTable met alle aansluitingen van het aansluitpunt.
+		\item \textcolor{cyan}{\textbf{$-$int index}} : index van de row.        
+	\end{itemize}
+\item\textbf{Constructor}
+	\begin{itemize}
+		\item \textcolor{cyan}{\textbf{$+$AansluitingAanpassen(DataTable dt, int index)}}
+		\begin{itemize}
+			\item\textbf{Parameters} : 
+			\begin{itemize}
+				\item DataTable dt : DataTable met alle aansluitingen van het aansluitpunt
+				\item int index : index van de aan te passen row
+			\end{itemize}
+		\end{itemize}
+	\end{itemize}
+\item\textbf{Methodes}
+        \begin{itemize}
+	\item  \textcolor{blue}{\textbf{$-$BtnOK\_Click(object sender, EventArgs e)}}
+                \begin{itemize}
+                        \item \textbf{Doel} : Actie ondernemen als er op de OK-knop wordt geklikt
+                        \item \textbf{Parameters} : object sender, EventArgs e
+                        \item \textbf{Return} : niets.
+                \end{itemize}        
+	\item  \textcolor{blue}{\textbf{$-$BtnCancel\_Click(object sender, EventArgs e)}}
+                \begin{itemize}
+                        \item \textbf{Doel} : Actie ondernemen als er op de Cancel-knop wordt geklikt, dit zal uiteindelijk het venster sluiten
+                        \item \textbf{Parameters} : object sender, EventArgs e
+                        \item \textbf{Return} : niets.
+                \end{itemize}  
+	\item  \textcolor{blue}{\textbf{$-$CmbMachine\_SelectedIndexChanged(object sender, EventArgs e)}}
+		\begin{itemize}
+                        \item \textbf{Doel} : Actie ondernemen er een andere machine is geselecteerd
+                        \item \textbf{Parameters} : object sender, EventArgs e
+                        \item \textbf{Return} : niets.
+                \end{itemize}  
+	\item  \textcolor{blue}{\textbf{$-$CmbAansluitpunt\_SelectedIndexChanged(object sender, EventArgs e)}}
+                \begin{itemize}
+                        \item \textbf{Doel} : Actie ondernemen er een ander aansluitpunt is geselecteerd
+                        \item \textbf{Parameters} : object sender, EventArgs e
+                        \item \textbf{Return} : niets.
+                \end{itemize}
+	\item  \textcolor{cyan}{\textbf{$-$TxtbxStroom\_KeyPress(object sender, KeyPressEventArgs e)}}
+		\begin{itemize}
+			\item \textbf{Doel} : Enkel getallen toelaten in de stroom ingave box
+			\item \textbf{Parameters} : object sender, KeyPressEventArgs e
+			\item \textbf{Return} : niets. 
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+\end{homeworkProblem}
 \end{document}

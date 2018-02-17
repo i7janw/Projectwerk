@@ -111,7 +111,7 @@
             this.btnOK.TabIndex = 0;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            this.btnOK.Click += new System.EventHandler(this.BtnOK_Click);
             // 
             // btnCancel
             // 
@@ -123,7 +123,7 @@
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Annuleren";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -193,7 +193,7 @@
             this.cmbMachine.Name = "cmbMachine";
             this.cmbMachine.Size = new System.Drawing.Size(296, 21);
             this.cmbMachine.TabIndex = 7;
-            this.cmbMachine.SelectedIndexChanged += new System.EventHandler(this.cmbMachine_SelectedIndexChanged);
+            this.cmbMachine.SelectedIndexChanged += new System.EventHandler(this.CmbMachine_SelectedIndexChanged);
             // 
             // cmbAansluitpunt
             // 
@@ -203,7 +203,7 @@
             this.cmbAansluitpunt.Name = "cmbAansluitpunt";
             this.cmbAansluitpunt.Size = new System.Drawing.Size(296, 21);
             this.cmbAansluitpunt.TabIndex = 8;
-            this.cmbAansluitpunt.SelectedIndexChanged += new System.EventHandler(this.cmbAansluitpunt_SelectedIndexChanged);
+            this.cmbAansluitpunt.SelectedIndexChanged += new System.EventHandler(this.CmbAansluitpunt_SelectedIndexChanged);
             // 
             // lblOmschrijving
             // 
@@ -291,7 +291,7 @@
             this.txtbxStroom.Name = "txtbxStroom";
             this.txtbxStroom.Size = new System.Drawing.Size(296, 20);
             this.txtbxStroom.TabIndex = 17;
-            this.txtbxStroom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtbxStroom_KeyPress);
+            this.txtbxStroom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtbxStroom_KeyPress);
             // 
             // cmbPolen
             // 

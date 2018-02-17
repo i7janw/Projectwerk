@@ -25,14 +25,14 @@ namespace Laagspanningsnet
         private void Form1_Load(object sender, EventArgs e)
         {
             database = new Database();
-            showTransfos();             // We starten met een overzicht van de Transfos
+            ShowTransfos();             // We starten met een overzicht van de Transfos
         }
 
         /* Tonen van het overzicht van de Transfos
          */
-        private void showTransfos()
+        private void ShowTransfos()
         {
-            showCommon("", 1);
+            ShowCommon("", 1);
 
         }
 
@@ -40,18 +40,18 @@ namespace Laagspanningsnet
          * 
          * Als parameter wordt een string meegegeven dat het 'nummer' van het aansluitpunt is
          */
-        private void showAansluitpunt(String _ap)
+        private void ShowAansluitpunt(String _ap)
         {
-            showCommon(_ap, 2);
+            ShowCommon(_ap, 2);
         }
 
         /* Tonen van zoekresultaten.
          * 
          * Als parameter wordt een string meegegeven met zoekterm
          */
-        private void showSearch(String _search)
+        private void ShowSearch(String _search)
         {
-            showCommon(_search, 3);
+            ShowCommon(_search, 3);
         }
 
         /* Tonen van Zoekresultaten of Aansluitpunt
@@ -61,7 +61,7 @@ namespace Laagspanningsnet
          *                             2. Aansluitpunt
          *                             3. Search
          */
-        private void showCommon(String _ap, int _mode)
+        private void ShowCommon(String _ap, int _mode)
         {
             // DataSet definieren waar de database gegevens in geladen worden
             DataSet dsDatabase;
@@ -134,7 +134,7 @@ namespace Laagspanningsnet
                     break;
             }
 
-            // ZItten er wel gegevens in database DataSet?
+            // Zitten er wel gegevens in database DataSet?
             if (dsDatabase.Tables.Count == 0)
             {
                 return; // Als er niks in zit, valt er niks te doen...
@@ -223,20 +223,20 @@ namespace Laagspanningsnet
             lblDynStroom.Text = database.GetStroom(aansluitpunt);
 
             // Alle data staat op het scherm --> unsaved=false
-            setUnsaved(false);
+            SetUnsaved(false);
 
             // Knoppen in de dgv aanmaken.
             int count = 0;
             foreach (DataGridViewRow row in dgvLaagspanningsnet.Rows)
             {
-                makeButtons(count);
+                MakeButtons(count);
                 count++;
             }
         }
 
         /* Is er op een cell van het dataGrid geklikt?
          */
-        private void dgvLaagspanningsnet_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DgvLaagspanningsnet_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Klikken op de bovenste rij (column-text) negeren.
             if (e.RowIndex < 0)
@@ -254,7 +254,7 @@ namespace Laagspanningsnet
             // Afhandelen van drukken op +/-/A
             if (e.ColumnIndex == 0) // +
             {
-                setUnsaved(true);
+                SetUnsaved(true);
                 // Maak een nieuwe dataRow aan en vul deze met default gegevens
                 DataRow row = dtDisplay.NewRow();
                 row["+"] = "+";
@@ -265,7 +265,7 @@ namespace Laagspanningsnet
                 row["T/VB/K"] = aansluitpunt;
                 dtDisplay.Rows.InsertAt(row, e.RowIndex);
                 // maak van de +/-/A velden reeds knoppen
-                makeButtons(e.RowIndex);
+                MakeButtons(e.RowIndex);
                 AansluitingAanpassen aa = new AansluitingAanpassen(dtDisplay, e.RowIndex);
                 if (aa.ShowDialog() == DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
                 {
@@ -273,48 +273,48 @@ namespace Laagspanningsnet
                     return;
                 }
                 // knoppen updaten
-                makeButtons(e.RowIndex);
+                MakeButtons(e.RowIndex);
                 return;
             }
             if (e.ColumnIndex == 1) // -
             {
                 dtDisplay.Rows.RemoveAt(e.RowIndex);
-                setUnsaved(true);
+                SetUnsaved(true);
                 return;
             }
             if (e.ColumnIndex == 2) // A
             {
-                setUnsaved(true);
+                SetUnsaved(true);
                 // Open het venster om aanpassingen te doen
                 AansluitingAanpassen aa = new AansluitingAanpassen(dtDisplay, e.RowIndex);
                 aa.ShowDialog();    // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
                 // knoppen updaten
-                makeButtons(e.RowIndex);
+                MakeButtons(e.RowIndex);
                 return;
             }
 
             // Doorbladeren naar een ander aansluitpunt
-            showAansluitpunt(dtDisplay.Rows[e.RowIndex][e.ColumnIndex].ToString());
+            ShowAansluitpunt(dtDisplay.Rows[e.RowIndex][e.ColumnIndex].ToString());
         }
 
         /* Als er op de knop van de voeding wordt geklikt, gaan we naar het scherm van dit aansluitpunt.
          */
-        private void btnDynVoeding_Click(object sender, EventArgs e)
+        private void BtnDynVoeding_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;
             String ap = button.Text.Split(' ').First();
             if (ap == "-")
             {
-                showTransfos();
+                ShowTransfos();
                 return;
             }
-            showAansluitpunt(ap);
+            ShowAansluitpunt(ap);
             return;
         }
 
         /* Bijhouden of data reeds in database is opgeslagen
          */
-        private void setUnsaved(bool _status)
+        private void SetUnsaved(bool _status)
         {
             unsaved = _status;
             if (unsaved)
@@ -333,14 +333,14 @@ namespace Laagspanningsnet
          * Info:
          * <https://stackoverflow.com/questions/11330147/how-to-disable-the-ability-to-select-in-a-datagridview>
          */
-        private void dgvLaagspanningsnet_SelectionChanged(object sender, EventArgs e)
+        private void DgvLaagspanningsnet_SelectionChanged(object sender, EventArgs e)
         {
             dgvLaagspanningsnet.ClearSelection();
         }
 
         /* Er is op de knop save geklikt.
          */
-        private void btnSave_Click(object sender, EventArgs e)
+        private void BtnSave_Click(object sender, EventArgs e)
         {
             // Als er geen unsaved data is, moet er niks gebeuren.
             // Als er geen aansluitpunt getoond wordt, kan er niets veranderd zijn --> niks te doen.
@@ -422,33 +422,33 @@ namespace Laagspanningsnet
             database.SetAansluitingen(dsDatabase);
 
             // Gegevens terug inladen zodat hetgene op het scherm staat zeker hetzelfde is als in de database is opgeslagen
-            showAansluitpunt(aansluitpunt);
+            ShowAansluitpunt(aansluitpunt);
         }
 
         /* UNDO : Aanpassingen ongedaan maken = database terug inlezen en tonen
          */
-        private void btnUndo_Click(object sender, EventArgs e)
+        private void BtnUndo_Click(object sender, EventArgs e)
         {
             if (aansluitpunt != "")
             {
-                showAansluitpunt(aansluitpunt);
+                ShowAansluitpunt(aansluitpunt);
             }
         }
 
         /* Op de zoekknop klikken --> start zoeken
          */
-        private void btnSearch_Click(object sender, EventArgs e)
+        private void BtnSearch_Click(object sender, EventArgs e)
         {
-            showSearch(txtbxSearch.Text);
+            ShowSearch(txtbxSearch.Text);
         }
 
         /* Op Enter drukken in de search box = op de zoekknop klikken
          */
-        private void txtbxSearch_KeyDown(object sender, KeyEventArgs e)
+        private void TxtbxSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                btnSearch_Click(this, new EventArgs());
+                BtnSearch_Click(this, new EventArgs());
 
                 // Toegevoegd omdat anders een ding-sound wordt afgespeeld na het drukken op enter.
                 // <https://stackoverflow.com/questions/6290967/stop-the-ding-when-pressing-enter>
@@ -457,14 +457,12 @@ namespace Laagspanningsnet
             }
         }
 
-        // NEW ------------------------------------------------------------------------------------------------
-
         /* Maak in een bepaalde row van de DataGridView de knoppen aan voor +/-/A en Aansluitpunten
          * Maak op de laatste row alles grijs als het over de laatste lege lijn met een + gaat (bij weergave aansluitpunt).
          * 
          * _count = de index van de row
          */
-        private void makeButtons(int _count)
+        private void MakeButtons(int _count)
         {
             // Maak van de +  een knop.
             dgvLaagspanningsnet.Rows[_count].Cells["+"] = new DataGridViewButtonCell();
