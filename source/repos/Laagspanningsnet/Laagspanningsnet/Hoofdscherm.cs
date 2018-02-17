@@ -100,17 +100,17 @@ namespace Laagspanningsnet
                     dgvLaagspanningsnet.Columns["-"].Visible = false;
                     dgvLaagspanningsnet.Columns["A"].Visible = false;
                     dgvLaagspanningsnet.Columns["T/VB/K"].Visible = false;
-                    // dgvLaagspanningsnet.Columns["Kring"].Visible = false;
-                    //dgvLaagspanningsnet.Columns["Omschrijving"].Visible = false;
-                    //dgvLaagspanningsnet.Columns["Kabeltype"].Visible = false;
-                    //dgvLaagspanningsnet.Columns["Kabelsectie"].Visible = false;
-                    //dgvLaagspanningsnet.Columns["Stroom (A)"].Visible = false;
+                    //dgvLaagspanningsnet.Columns["Kring"].Visible = false;
+                    dgvLaagspanningsnet.Columns["Omschrijving"].Visible = false;
+                    dgvLaagspanningsnet.Columns["Kabeltype"].Visible = false;
+                    dgvLaagspanningsnet.Columns["Kabelsectie"].Visible = false;
+                    dgvLaagspanningsnet.Columns["Stroom (A)"].Visible = false;
                     //dgvLaagspanningsnet.Columns["Aantal polen"].Visible = false;
                     // aansluitpunt + titel aanpassen
                     this.aansluitpunt = "";
                     lblLayout.Text = "Overzicht transfos";
                     // database gegevens ophalen
-                    dsDatabase = database.getTransfos();
+                    dsDatabase = database.GetTransfos();
                     break;
                 case 3:     // search
                     // Zichtbaarheid instellen
@@ -121,7 +121,7 @@ namespace Laagspanningsnet
                     this.aansluitpunt = "";
                     lblLayout.Text = "Zoeken : " + _ap;
                     // database gegevens ophalen
-                    dsDatabase = database.getSearch(_ap);
+                    dsDatabase = database.GetSearch(_ap);
                     break;
                 default:    // aansluitpunt // case 2 = default
                     // Zichtbaarheid instellen
@@ -130,8 +130,14 @@ namespace Laagspanningsnet
                     this.aansluitpunt = _ap;
                     lblLayout.Text = "Layout van " + aansluitpunt;
                     // database gegevens ophalen
-                    dsDatabase = database.getAansluitingen(aansluitpunt);
+                    dsDatabase = database.GetAansluitingen(aansluitpunt);
                     break;
+            }
+
+            // ZItten er wel gegevens in database DataSet?
+            if (dsDatabase.Tables.Count == 0)
+            {
+                return; // Als er niks in zit, valt er niks te doen...
             }
 
             // Loop over de Database gegevens om ze te analyseren
@@ -153,7 +159,7 @@ namespace Laagspanningsnet
                 {
                     db_Nummer = (String)db_Naar_AP_id;
                     db_Type = "A";      // type = Aansluitpunt
-                    db_Locatie = database.getAansluitpuntLocatie(db_Nummer);                    // Locatie van aansluitpunt ophalen
+                    db_Locatie = database.GetAansluitpuntLocatie(db_Nummer);                    // Locatie van aansluitpunt ophalen
                 }
 
                 // Gaat deze aansluiting naar een machine?
@@ -162,8 +168,8 @@ namespace Laagspanningsnet
                 {
                     db_Nummer = (String)db_Naar_M_id;
                     db_Type = "M";      // type = Machine
-                    db_Locatie = database.getMachineLocatie(db_Nummer);                         // Locatie van machine ophalen
-                    db_Omschrijving = database.getMachineOmschrijving((String)db_Naar_M_id);    // Bij een machine komt de omschrijving uit de machine DB
+                    db_Locatie = database.GetMachineLocatie(db_Nummer);                         // Locatie van machine ophalen
+                    db_Omschrijving = database.GetMachineOmschrijving((String)db_Naar_M_id);    // Bij een machine komt de omschrijving uit de machine DB
                 }
 
                 // Rij (velden) met de juiste waarden vullen
@@ -205,16 +211,16 @@ namespace Laagspanningsnet
             }
 
             // Text in button voeding aanpassen
-            btnDynVoeding.Text = database.getVoeding(aansluitpunt);
+            btnDynVoeding.Text = database.GetVoeding(aansluitpunt);
 
             // Text Locatie aanpassen
-            lblDynLocatie.Text = database.getAansluitpuntLocatie(aansluitpunt);
+            lblDynLocatie.Text = database.GetAansluitpuntLocatie(aansluitpunt);
 
             // Text kabel aanpassen
-            lblDynKabel.Text = database.getKabel(aansluitpunt);
+            lblDynKabel.Text = database.GetKabel(aansluitpunt);
 
             // Text stroom aanpassen
-            lblDynStroom.Text = database.getStroom(aansluitpunt);
+            lblDynStroom.Text = database.GetStroom(aansluitpunt);
 
             // Alle data staat op het scherm --> unsaved=false
             setUnsaved(false);
@@ -413,7 +419,7 @@ namespace Laagspanningsnet
             }
 
             // De database dataset sturen we naar de database, die de gegevens op de mySQL-server zal opslaan
-            database.setAansluitingen(dsDatabase);
+            database.SetAansluitingen(dsDatabase);
 
             // Gegevens terug inladen zodat hetgene op het scherm staat zeker hetzelfde is als in de database is opgeslagen
             showAansluitpunt(aansluitpunt);

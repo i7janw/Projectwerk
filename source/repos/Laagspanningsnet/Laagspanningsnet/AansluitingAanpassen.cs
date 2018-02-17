@@ -42,11 +42,11 @@ namespace Laagspanningsnet
                 cmbPolen.Items.Add(count);
             }
             // Lijst met Machines aanmaken
-            List<String> listMachines = database.getMachines(true);             // uit database ophalen (true = enkel niet aangesloten)
+            List<String> listMachines = database.GetMachines(true);             // uit database ophalen (true = enkel niet aangesloten)
             listMachines.Insert(0, "Geen");                                     // 'geen' als keuze toevoegen
             
             // Lijst met aansluitpunten aanmaken                                // uit database ophalen
-            List<String> listAansluitpunten = database.getAansluitpunten(true); // 'geen' als keuze toevoegen (true = enkel niet aangesloten)
+            List<String> listAansluitpunten = database.GetAansluitpunten(true); // 'geen' als keuze toevoegen (true = enkel niet aangesloten)
             listAansluitpunten.Insert(0, "Geen");
 
             // Pas de titel aan
@@ -67,7 +67,7 @@ namespace Laagspanningsnet
             if ((String)row["Type"] == "M")
             {
                 txtbxOmschrijving.Enabled = false;                  // Machine = Omschrijving komt uit Machine-Table
-                txtbxOmschrijving.Text = database.getMachineOmschrijving((String)row["Nummer"]);
+                txtbxOmschrijving.Text = database.GetMachineOmschrijving((String)row["Nummer"]);
                 listMachines.Insert(0, (String)row["Nummer"]);      // Huidige machine aan lijst toevoegen
                 cmbMachine.Text = (String)row["Nummer"];
                 cmbAansluitpunt.Text = "Geen";
@@ -148,13 +148,13 @@ namespace Laagspanningsnet
             {
                 row["Type"] = "A";
                 row["Nummer"] = cmbAansluitpunt.Text;
-                row["Locatie"] = database.getAansluitpuntLocatie(cmbAansluitpunt.Text);
+                row["Locatie"] = database.GetAansluitpuntLocatie(cmbAansluitpunt.Text);
             }
             if (cmbMachine.Text != "Geen")
             {
                 row["Type"] = "M";
                 row["Nummer"] = cmbMachine.Text;
-                row["Locatie"] = database.getMachineLocatie(cmbMachine.Text);
+                row["Locatie"] = database.GetMachineLocatie(cmbMachine.Text);
             }
             row["Kring"] = txtbxKring.Text;
             row["Omschrijving"] = txtbxOmschrijving.Text;
@@ -185,7 +185,7 @@ namespace Laagspanningsnet
             }
             cmbAansluitpunt.Text = "Geen";
             txtbxOmschrijving.Enabled = false;  // Machine = Omschrijving komt uit Machine-Table
-            txtbxOmschrijving.Text = database.getMachineOmschrijving(cmbMachine.Text);
+            txtbxOmschrijving.Text = database.GetMachineOmschrijving(cmbMachine.Text);
         }
 
         // Aansluitpunt is aangepast
