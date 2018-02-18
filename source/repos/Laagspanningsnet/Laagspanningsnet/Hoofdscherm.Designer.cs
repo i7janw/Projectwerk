@@ -51,6 +51,7 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtbxSearch = new System.Windows.Forms.TextBox();
+            this.nieuwToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLaagspanningsnet)).BeginInit();
@@ -104,6 +105,8 @@
             // 
             // machineToolStripMenuItem
             // 
+            this.machineToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nieuwToolStripMenuItem});
             this.machineToolStripMenuItem.Name = "machineToolStripMenuItem";
             this.machineToolStripMenuItem.Size = new System.Drawing.Size(73, 23);
             this.machineToolStripMenuItem.Text = "Machine";
@@ -345,6 +348,13 @@
             this.txtbxSearch.TabIndex = 0;
             this.txtbxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtbxSearch_KeyDown);
             // 
+            // nieuwToolStripMenuItem
+            // 
+            this.nieuwToolStripMenuItem.Name = "nieuwToolStripMenuItem";
+            this.nieuwToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
+            this.nieuwToolStripMenuItem.Text = "Nieuw";
+            this.nieuwToolStripMenuItem.Click += new System.EventHandler(this.NieuwToolStripMenuItem_Click);
+            // 
             // Hoofdscherm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -395,6 +405,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TextBox txtbxSearch;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.ToolStripMenuItem nieuwToolStripMenuItem;
     }
 }
 

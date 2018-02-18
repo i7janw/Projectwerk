@@ -486,5 +486,16 @@ namespace Laagspanningsnet
                 }
             }
         }
+
+        // ---------------------------------- NEW ----------------------------------------------------------------------------
+
+        private void NieuwToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MachineNieuw mn = new MachineNieuw();
+            if (mn.ShowDialog() == DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
+            {
+                return;
+            }
+        }
     }
 }

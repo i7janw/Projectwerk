@@ -396,8 +396,9 @@ namespace Laagspanningsnet
             { 
                 cmd.ExecuteNonQuery();
             }
-            catch
+            catch (MySqlException ex)
             {
+                MessageBox.Show(ex.Message);
                 Close();
                 return false;
             }
@@ -470,6 +471,38 @@ namespace Laagspanningsnet
                 _convert.Add((String)_row["AP_id"]);
             }
             return _convert;
+        }
+
+        // -------------------------- new --------------------------------------------------
+        
+        /* Ga na of een machine ID reeds in de database aanwezig is
+         *
+         * RETURN : bool : false/true : bestaat niet/bestaat
+         */
+        public bool IsMachine(string _id)
+        {
+            String _query = "SELECT M_id FROM laagspanningsnet.machines WHERE M_id LIKE '" + _id + "';";
+            if (GetString(_query) == "")
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+                    
+        /* Toevoegen van een nieuwe machine aan de database
+         * 
+         * RETURN : bool : false/true : mislukt/gelukt
+         */
+        public bool InsertMachine(string _id, string _omschrijving, string _locatie)
+        {
+            String _nonQuery = "INSERT INTO `laagspanningsnet`.`machines` (`M_id`, `M_omschrijving`, `M_locatie`) VALUES('" +
+                _id + "', '" +
+                _omschrijving + "', '" +
+                _locatie + "');";
+            return NonQueryCommon(_nonQuery);
         }
     }
 }
