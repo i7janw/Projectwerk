@@ -547,6 +547,18 @@ namespace Laagspanningsnet
             return NonQueryCommon(_nonQuery);
         }
 
+        /* Aanpassen van een aansluitpunt in de database
+         * 
+         * RETURN : bool : false/true : mislukt/gelukt
+         */
+        public bool UpdateAansluitpunt(string _id, string _locatie)
+        {
+            String _nonQuery = "UPDATE `laagspanningsnet`.`aansluitpunten` SET `AP_locatie`='" +
+                _locatie + "'WHERE `AP_id`='" +
+                _id + "';";
+            return NonQueryCommon(_nonQuery);
+        }
+
         /* Verwijderen van een machine uit de database
          * 
          * RETURN : bool : false/true : mislukt/gelukt

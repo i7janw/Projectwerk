@@ -392,6 +392,7 @@
             this.aanpassenToolStripMenuItem1.Name = "aanpassenToolStripMenuItem1";
             this.aanpassenToolStripMenuItem1.Size = new System.Drawing.Size(164, 24);
             this.aanpassenToolStripMenuItem1.Text = "Aanpassen";
+            this.aanpassenToolStripMenuItem1.Click += new System.EventHandler(this.aanpassenToolStripMenuItem1_Click);
             // 
             // verwijderenToolStripMenuItem1
             // 

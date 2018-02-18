@@ -531,5 +531,22 @@ namespace Laagspanningsnet
                 return;
             }
         }
+
+        private void aanpassenToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AansluitpuntAanpassen aa = new AansluitpuntAanpassen();
+            if (aa.ShowDialog() == DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
+            {
+                return;
+            }
+
+            // Vermits een machine is geupdated, kan het zijn dat op het scherm nog oude waarden staan --> refresh
+            if (aansluitpunt == "")
+            {
+                ShowTransfos();
+                return;
+            }
+            ShowAansluitpunt(aansluitpunt);
+        }
     }
 }

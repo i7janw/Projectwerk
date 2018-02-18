@@ -60,6 +60,12 @@
     <Compile Include="AansluitpuntNieuw.Designer.cs">
       <DependentUpon>AansluitpuntNieuw.cs</DependentUpon>
     </Compile>
+    <Compile Include="AansluitpuntAanpassen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AansluitpuntAanpassen.Designer.cs">
+      <DependentUpon>AansluitpuntAanpassen.cs</DependentUpon>
+    </Compile>
     <Compile Include="MachineVerwijderen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AansluitpuntNieuw.resx">
       <DependentUpon>AansluitpuntNieuw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AansluitpuntAanpassen.resx">
+      <DependentUpon>AansluitpuntAanpassen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MachineVerwijderen.resx">
       <DependentUpon>MachineVerwijderen.cs</DependentUpon>
