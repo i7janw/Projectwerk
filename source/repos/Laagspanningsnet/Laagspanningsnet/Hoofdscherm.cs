@@ -522,5 +522,14 @@ namespace Laagspanningsnet
                 return;
             }
         }
+
+        private void nieuwToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AansluitpuntNieuw an = new AansluitpuntNieuw();
+            if (an.ShowDialog() == DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
+            {
+                return;
+            }
+        }
     }
 }

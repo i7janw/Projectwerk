@@ -54,6 +54,9 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtbxSearch = new System.Windows.Forms.TextBox();
             this.verwijderenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nieuwToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.aanpassenToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.verwijderenToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLaagspanningsnet)).BeginInit();
@@ -101,6 +104,10 @@
             // 
             // aansluitpuntToolStripMenuItem
             // 
+            this.aansluitpuntToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nieuwToolStripMenuItem1,
+            this.aanpassenToolStripMenuItem1,
+            this.verwijderenToolStripMenuItem1});
             this.aansluitpuntToolStripMenuItem.Name = "aansluitpuntToolStripMenuItem";
             this.aansluitpuntToolStripMenuItem.Size = new System.Drawing.Size(99, 23);
             this.aansluitpuntToolStripMenuItem.Text = "Aansluitpunt";
@@ -373,6 +380,25 @@
             this.verwijderenToolStripMenuItem.Text = "Verwijderen";
             this.verwijderenToolStripMenuItem.Click += new System.EventHandler(this.verwijderenToolStripMenuItem_Click);
             // 
+            // nieuwToolStripMenuItem1
+            // 
+            this.nieuwToolStripMenuItem1.Name = "nieuwToolStripMenuItem1";
+            this.nieuwToolStripMenuItem1.Size = new System.Drawing.Size(164, 24);
+            this.nieuwToolStripMenuItem1.Text = "Nieuw";
+            this.nieuwToolStripMenuItem1.Click += new System.EventHandler(this.nieuwToolStripMenuItem1_Click);
+            // 
+            // aanpassenToolStripMenuItem1
+            // 
+            this.aanpassenToolStripMenuItem1.Name = "aanpassenToolStripMenuItem1";
+            this.aanpassenToolStripMenuItem1.Size = new System.Drawing.Size(164, 24);
+            this.aanpassenToolStripMenuItem1.Text = "Aanpassen";
+            // 
+            // verwijderenToolStripMenuItem1
+            // 
+            this.verwijderenToolStripMenuItem1.Name = "verwijderenToolStripMenuItem1";
+            this.verwijderenToolStripMenuItem1.Size = new System.Drawing.Size(164, 24);
+            this.verwijderenToolStripMenuItem1.Text = "Verwijderen";
+            // 
             // Hoofdscherm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -381,7 +407,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Hoofdscherm";
-            this.Text = "Form1";
+            this.Text = "Laagspanningsnet : Hansen Industrial Transmissions";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -426,6 +452,9 @@
         private System.Windows.Forms.ToolStripMenuItem nieuwToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aanpassenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verwijderenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nieuwToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem aanpassenToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem verwijderenToolStripMenuItem1;
     }
 }
 

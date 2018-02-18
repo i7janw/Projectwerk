@@ -491,7 +491,24 @@ namespace Laagspanningsnet
                 return true;
             }
         }
-                    
+
+        /* Ga na of een aansluitpunt ID reeds in de database aanwezig is
+         *
+         * RETURN : bool : false/true : bestaat niet/bestaat
+         */
+        public bool IsAansluitpunt(string _id)
+        {
+            String _query = "SELECT AP_id FROM laagspanningsnet.aansluitpunten WHERE AP_id LIKE '" + _id + "';";
+            if (GetString(_query) == "")
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         /* Toevoegen van een nieuwe machine aan de database
          * 
          * RETURN : bool : false/true : mislukt/gelukt
@@ -501,6 +518,18 @@ namespace Laagspanningsnet
             String _nonQuery = "INSERT INTO `laagspanningsnet`.`machines` (`M_id`, `M_omschrijving`, `M_locatie`) VALUES('" +
                 _id + "', '" +
                 _omschrijving + "', '" +
+                _locatie + "');";
+            return NonQueryCommon(_nonQuery);
+        }
+
+        /* Toevoegen van een nieuw aansluitpunt aan de database
+         * 
+         * RETURN : bool : false/true : mislukt/gelukt
+         */
+        public bool InsertAansluitpunt(string _id, string _locatie)
+        {
+            String _nonQuery = "INSERT INTO `laagspanningsnet`.`aansluitpunten` (`AP_id`, `AP_locatie`) VALUES('" +
+                _id + "', '" +
                 _locatie + "');";
             return NonQueryCommon(_nonQuery);
         }

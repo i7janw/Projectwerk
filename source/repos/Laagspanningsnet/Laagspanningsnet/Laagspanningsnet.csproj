@@ -54,6 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AansluitpuntNieuw.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AansluitpuntNieuw.Designer.cs">
+      <DependentUpon>AansluitpuntNieuw.cs</DependentUpon>
+    </Compile>
     <Compile Include="MachineVerwijderen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AansluitpuntNieuw.resx">
+      <DependentUpon>AansluitpuntNieuw.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MachineVerwijderen.resx">
       <DependentUpon>MachineVerwijderen.cs</DependentUpon>
     </EmbeddedResource>
