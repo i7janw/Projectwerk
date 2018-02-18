@@ -1,6 +1,6 @@
 ﻿namespace Laagspanningsnet
 {
-    partial class AansluitpuntAanpassen
+    partial class AansluitpuntVerwijderen
     {
         /// <summary>
         /// Required designer variable.
@@ -34,10 +34,10 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblAansluitpunt = new System.Windows.Forms.Label();
-            this.cmbAansluitpunt = new System.Windows.Forms.ComboBox();
             this.txtbxLocatie = new System.Windows.Forms.TextBox();
+            this.lblAansluitpunt = new System.Windows.Forms.Label();
             this.lblLocatie = new System.Windows.Forms.Label();
+            this.cmbAansluitpunt = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -69,7 +69,7 @@
             this.lblTitel.Name = "lblTitel";
             this.lblTitel.Size = new System.Drawing.Size(587, 100);
             this.lblTitel.TabIndex = 0;
-            this.lblTitel.Text = "Aansluitpunt Aanpassen";
+            this.lblTitel.Text = "Aansluitpunt Verwijderen";
             this.lblTitel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel2
@@ -121,8 +121,8 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.lblAansluitpunt, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.cmbAansluitpunt, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.txtbxLocatie, 2, 1);
             this.tableLayoutPanel3.Controls.Add(this.lblLocatie, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.txtbxLocatie, 2, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 103);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -139,6 +139,14 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(587, 171);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
+            // txtbxLocatie
+            // 
+            this.txtbxLocatie.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtbxLocatie.Location = new System.Drawing.Point(306, 75);
+            this.txtbxLocatie.Name = "txtbxLocatie";
+            this.txtbxLocatie.Size = new System.Drawing.Size(278, 20);
+            this.txtbxLocatie.TabIndex = 16;
+            // 
             // lblAansluitpunt
             // 
             this.lblAansluitpunt.AutoSize = true;
@@ -149,24 +157,6 @@
             this.lblAansluitpunt.TabIndex = 0;
             this.lblAansluitpunt.Text = "Aansluitpunt ID";
             this.lblAansluitpunt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // cmbAansluitpunt
-            // 
-            this.cmbAansluitpunt.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cmbAansluitpunt.FormattingEnabled = true;
-            this.cmbAansluitpunt.Location = new System.Drawing.Point(306, 17);
-            this.cmbAansluitpunt.Name = "cmbAansluitpunt";
-            this.cmbAansluitpunt.Size = new System.Drawing.Size(278, 21);
-            this.cmbAansluitpunt.TabIndex = 18;
-            this.cmbAansluitpunt.SelectedIndexChanged += new System.EventHandler(this.cmbAansluitpunt_SelectedIndexChanged);
-            // 
-            // txtbxLocatie
-            // 
-            this.txtbxLocatie.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtbxLocatie.Location = new System.Drawing.Point(306, 75);
-            this.txtbxLocatie.Name = "txtbxLocatie";
-            this.txtbxLocatie.Size = new System.Drawing.Size(278, 20);
-            this.txtbxLocatie.TabIndex = 16;
             // 
             // lblLocatie
             // 
@@ -179,7 +169,17 @@
             this.lblLocatie.Text = "Locatie";
             this.lblLocatie.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // AansluitpuntAanpassen
+            // cmbAansluitpunt
+            // 
+            this.cmbAansluitpunt.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cmbAansluitpunt.FormattingEnabled = true;
+            this.cmbAansluitpunt.Location = new System.Drawing.Point(306, 18);
+            this.cmbAansluitpunt.Name = "cmbAansluitpunt";
+            this.cmbAansluitpunt.Size = new System.Drawing.Size(278, 21);
+            this.cmbAansluitpunt.TabIndex = 18;
+            this.cmbAansluitpunt.SelectedIndexChanged += new System.EventHandler(this.cmbMachine_SelectedIndexChanged);
+            // 
+            // AansluitpuntVerwijderen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -187,9 +187,9 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AansluitpuntAanpassen";
-            this.Text = "Aansluitpunt Aanpassen";
-            this.Load += new System.EventHandler(this.AansluitpuntAanpassen_Load);
+            this.Name = "AansluitpuntVerwijderen";
+            this.Text = "Aansluitpunt Verwijderen";
+            this.Load += new System.EventHandler(this.AansluitpuntenVerwijderen_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);

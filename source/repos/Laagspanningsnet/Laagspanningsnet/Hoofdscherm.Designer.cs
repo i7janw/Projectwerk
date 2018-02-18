@@ -399,6 +399,7 @@
             this.verwijderenToolStripMenuItem1.Name = "verwijderenToolStripMenuItem1";
             this.verwijderenToolStripMenuItem1.Size = new System.Drawing.Size(164, 24);
             this.verwijderenToolStripMenuItem1.Text = "Verwijderen";
+            this.verwijderenToolStripMenuItem1.Click += new System.EventHandler(this.verwijderenToolStripMenuItem1_Click);
             // 
             // Hoofdscherm
             // 

@@ -530,6 +530,12 @@ namespace Laagspanningsnet
             {
                 return;
             }
+            // Wanneer de transfos() getoond worden, deze updaten want het kan zijn dat er een transfo toegevoegd is
+            if (aansluitpunt == "")
+            {
+                ShowTransfos();
+                return;
+            }
         }
 
         private void aanpassenToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -547,6 +553,22 @@ namespace Laagspanningsnet
                 return;
             }
             ShowAansluitpunt(aansluitpunt);
+        }
+
+        private void verwijderenToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AansluitpuntVerwijderen av = new AansluitpuntVerwijderen();
+            if (av.ShowDialog() == DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
+            {
+                return;
+            }
+
+            // Wanneer de transfos() getoond worden, deze updaten want het kan zijn dat er een transfo verwijderd is
+            if (aansluitpunt == "")
+            {
+                ShowTransfos();
+                return;
+            }
         }
     }
 }

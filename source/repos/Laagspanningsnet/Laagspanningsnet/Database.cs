@@ -569,5 +569,14 @@ namespace Laagspanningsnet
             return NonQueryCommon(_nonQuery);
         }
 
+        /* Verwijderen van een aansluitpunt uit de database
+         * 
+         * RETURN : bool : false/true : mislukt/gelukt
+         */
+        public bool DeleteAansluitpunt(string _id)
+        {
+            String _nonQuery = "DELETE FROM `laagspanningsnet`.`aansluitpunten` WHERE `AP_id`='" + _id + "';";
+            return NonQueryCommon(_nonQuery);
+        }
     }
 }
