@@ -504,5 +504,18 @@ namespace Laagspanningsnet
                 _locatie + "');";
             return NonQueryCommon(_nonQuery);
         }
+
+        /* Aanpassen van een machine in de database
+         * 
+         * RETURN : bool : false/true : mislukt/gelukt
+         */
+        public bool UpdateMachine(string _id, string _omschrijving, string _locatie)
+        {
+            String _nonQuery = "UPDATE `laagspanningsnet`.`machines` SET `M_omschrijving`='" +
+                _omschrijving + "', `M_locatie`='" +
+                _locatie + "'WHERE `M_id`='" +
+                _id + "';";
+            return NonQueryCommon(_nonQuery);
+        }
     }
 }

@@ -54,6 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MachineAanpassen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MachineAanpassen.Designer.cs">
+      <DependentUpon>MachineAanpassen.cs</DependentUpon>
+    </Compile>
     <Compile Include="MachineNieuw.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MachineAanpassen.resx">
+      <DependentUpon>MachineAanpassen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MachineNieuw.resx">
       <DependentUpon>MachineNieuw.cs</DependentUpon>
     </EmbeddedResource>

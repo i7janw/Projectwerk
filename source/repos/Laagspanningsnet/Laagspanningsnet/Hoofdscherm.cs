@@ -309,7 +309,6 @@ namespace Laagspanningsnet
                 return;
             }
             ShowAansluitpunt(ap);
-            return;
         }
 
         /* Bijhouden of data reeds in database is opgeslagen
@@ -496,6 +495,23 @@ namespace Laagspanningsnet
             {
                 return;
             }
+        }
+
+        private void aanpassenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MachineAanpassen ma = new MachineAanpassen();
+            if (ma.ShowDialog() == DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
+            {
+                return;
+            }
+
+            // Vermits een machine is geupdated, kan het zijn dat op het scherm nog oude waarden staan --> refresh
+            if (aansluitpunt == "")
+            {
+                ShowTransfos();
+                return;
+            }
+            ShowAansluitpunt(aansluitpunt);
         }
     }
 }

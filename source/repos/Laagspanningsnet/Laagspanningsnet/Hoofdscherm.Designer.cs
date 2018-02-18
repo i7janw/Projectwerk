@@ -33,6 +33,7 @@
             this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aansluitpuntToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.machineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nieuwToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.afdrukkenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvLaagspanningsnet = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -51,7 +52,7 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtbxSearch = new System.Windows.Forms.TextBox();
-            this.nieuwToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aanpassenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLaagspanningsnet)).BeginInit();
@@ -106,10 +107,18 @@
             // machineToolStripMenuItem
             // 
             this.machineToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nieuwToolStripMenuItem});
+            this.nieuwToolStripMenuItem,
+            this.aanpassenToolStripMenuItem});
             this.machineToolStripMenuItem.Name = "machineToolStripMenuItem";
             this.machineToolStripMenuItem.Size = new System.Drawing.Size(73, 23);
             this.machineToolStripMenuItem.Text = "Machine";
+            // 
+            // nieuwToolStripMenuItem
+            // 
+            this.nieuwToolStripMenuItem.Name = "nieuwToolStripMenuItem";
+            this.nieuwToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
+            this.nieuwToolStripMenuItem.Text = "Nieuw";
+            this.nieuwToolStripMenuItem.Click += new System.EventHandler(this.NieuwToolStripMenuItem_Click);
             // 
             // afdrukkenToolStripMenuItem
             // 
@@ -348,12 +357,12 @@
             this.txtbxSearch.TabIndex = 0;
             this.txtbxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtbxSearch_KeyDown);
             // 
-            // nieuwToolStripMenuItem
+            // aanpassenToolStripMenuItem
             // 
-            this.nieuwToolStripMenuItem.Name = "nieuwToolStripMenuItem";
-            this.nieuwToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
-            this.nieuwToolStripMenuItem.Text = "Nieuw";
-            this.nieuwToolStripMenuItem.Click += new System.EventHandler(this.NieuwToolStripMenuItem_Click);
+            this.aanpassenToolStripMenuItem.Name = "aanpassenToolStripMenuItem";
+            this.aanpassenToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
+            this.aanpassenToolStripMenuItem.Text = "Aanpassen";
+            this.aanpassenToolStripMenuItem.Click += new System.EventHandler(this.aanpassenToolStripMenuItem_Click);
             // 
             // Hoofdscherm
             // 
@@ -406,6 +415,7 @@
         private System.Windows.Forms.TextBox txtbxSearch;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.ToolStripMenuItem nieuwToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aanpassenToolStripMenuItem;
     }
 }
 
