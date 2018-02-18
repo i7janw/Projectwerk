@@ -517,5 +517,16 @@ namespace Laagspanningsnet
                 _id + "';";
             return NonQueryCommon(_nonQuery);
         }
+
+        /* Verwijderen van een machine uit de database
+         * 
+         * RETURN : bool : false/true : mislukt/gelukt
+         */
+        public bool DeleteMachine(string _id)
+        {
+            String _nonQuery = "DELETE FROM `laagspanningsnet`.`machines` WHERE `M_id`='" + _id + "';";
+            return NonQueryCommon(_nonQuery);
+        }
+
     }
 }

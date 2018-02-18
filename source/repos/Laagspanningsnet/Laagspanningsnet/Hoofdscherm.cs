@@ -513,5 +513,14 @@ namespace Laagspanningsnet
             }
             ShowAansluitpunt(aansluitpunt);
         }
+
+        private void verwijderenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MachineVerwijderen mv = new MachineVerwijderen();
+            if (mv.ShowDialog() == DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
+            {
+                return;
+            }
+        }
     }
 }

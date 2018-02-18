@@ -1,6 +1,6 @@
 ﻿namespace Laagspanningsnet
 {
-    partial class MachineAanpassen
+    partial class MachineVerwijderen
     {
         /// <summary>
         /// Required designer variable.
@@ -71,7 +71,7 @@
             this.lblTitel.Name = "lblTitel";
             this.lblTitel.Size = new System.Drawing.Size(587, 100);
             this.lblTitel.TabIndex = 0;
-            this.lblTitel.Text = "Machine Aanpassen";
+            this.lblTitel.Text = "Machine Verwijderen";
             this.lblTitel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel2
@@ -188,7 +188,7 @@
             // 
             this.cmbMachine.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cmbMachine.FormattingEnabled = true;
-            this.cmbMachine.Location = new System.Drawing.Point(306, 17);
+            this.cmbMachine.Location = new System.Drawing.Point(306, 18);
             this.cmbMachine.Name = "cmbMachine";
             this.cmbMachine.Size = new System.Drawing.Size(278, 21);
             this.cmbMachine.TabIndex = 18;
@@ -202,7 +202,7 @@
             this.txtbxOmschrijving.Size = new System.Drawing.Size(278, 20);
             this.txtbxOmschrijving.TabIndex = 14;
             // 
-            // MachineAanpassen
+            // MachineVerwijderen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -210,9 +210,9 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "MachineAanpassen";
-            this.Text = "Machine Aanpassen";
-            this.Load += new System.EventHandler(this.MachineAanpassen_Load);
+            this.Name = "MachineVerwijderen";
+            this.Text = "Machine Verwijderen";
+            this.Load += new System.EventHandler(this.MachineVerwijderen_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);

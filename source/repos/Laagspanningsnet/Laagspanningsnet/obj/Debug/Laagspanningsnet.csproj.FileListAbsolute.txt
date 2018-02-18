@@ -24,3 +24,4 @@ C:\Users\jan\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\
 C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\obj\Debug\Laagspanningsnet.AansluitingAanpassen.resources
 C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\obj\Debug\Laagspanningsnet.MachineNieuw.resources
 C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\obj\Debug\Laagspanningsnet.MachineAanpassen.resources
+C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\obj\Debug\Laagspanningsnet.MachineVerwijderen.resources
