@@ -1,0 +1,15 @@
+C:\Users\Jan Wagemakers\source\repos\PdfiumViewerTest\PdfiumViewerTest\bin\Debug\PdfiumViewerTest.exe.config
+C:\Users\Jan Wagemakers\source\repos\PdfiumViewerTest\PdfiumViewerTest\bin\Debug\PdfiumViewerTest.exe
+C:\Users\Jan Wagemakers\source\repos\PdfiumViewerTest\PdfiumViewerTest\bin\Debug\PdfiumViewerTest.pdb
+C:\Users\Jan Wagemakers\source\repos\PdfiumViewerTest\PdfiumViewerTest\bin\Debug\PdfiumViewer.dll
+C:\Users\Jan Wagemakers\source\repos\PdfiumViewerTest\PdfiumViewerTest\bin\Debug\PdfiumViewer.xml
+C:\Users\Jan Wagemakers\source\repos\PdfiumViewerTest\PdfiumViewerTest\bin\Debug\nl\PdfiumViewer.resources.dll
+C:\Users\Jan Wagemakers\source\repos\PdfiumViewerTest\PdfiumViewerTest\obj\Debug\PdfiumViewerTest.csprojResolveAssemblyReference.cache
+C:\Users\Jan Wagemakers\source\repos\PdfiumViewerTest\PdfiumViewerTest\obj\Debug\PdfiumViewerTest.Form1.resources
+C:\Users\Jan Wagemakers\source\repos\PdfiumViewerTest\PdfiumViewerTest\obj\Debug\PdfiumViewerTest.Properties.Resources.resources
+C:\Users\Jan Wagemakers\source\repos\PdfiumViewerTest\PdfiumViewerTest\obj\Debug\PdfiumViewerTest.csproj.GenerateResource.Cache
+C:\Users\Jan Wagemakers\source\repos\PdfiumViewerTest\PdfiumViewerTest\obj\Debug\PdfiumViewerTest.csproj.CoreCompileInputs.cache
+C:\Users\Jan Wagemakers\source\repos\PdfiumViewerTest\PdfiumViewerTest\obj\Debug\PdfiumViewerTest.exe
+C:\Users\Jan Wagemakers\source\repos\PdfiumViewerTest\PdfiumViewerTest\obj\Debug\PdfiumViewerTest.pdb
+C:\Users\Jan Wagemakers\source\repos\PdfiumViewerTest\PdfiumViewerTest\bin\Debug\x86\pdfium.dll
+C:\Users\Jan Wagemakers\source\repos\PdfiumViewerTest\PdfiumViewerTest\bin\Debug\x64\pdfium.dll
