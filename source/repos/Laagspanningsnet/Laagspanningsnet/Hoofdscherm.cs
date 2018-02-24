@@ -578,6 +578,34 @@ namespace Laagspanningsnet
         // Voorlopig een test als er op afdrukken wordt geklikt
         private void afdrukkenToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            String selectie = aansluitpunt;
+            String printer = "";
+            int kopies = 0;
+
+            using (var prn = new Afdrukken(selectie))
+            {
+                //    Afdrukken prn = new Afdrukken(selectie, printer, kopies);
+                var result = prn.ShowDialog();
+                if (result == DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
+                {
+                    return;
+                }
+                selectie = prn.selectie;
+                printer = prn.printer;
+                kopies = prn.kopies;
+            }
+            // MessageBox.Show(selectie + " " + printer + " " + kopies);
+            // return;
+
+            // We tonen het aansluitpunt dat we willen printen.
+            ShowAansluitpunt(selectie);
+
+            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            // Als we aansluitpunten inclusief willen afdrukken --> for loop oid werken....
+
+
+            // Hieronder een eerste test ivm afdrukken
+
             Document doc = new Document(PageSize.A4);
             var output = new FileStream("C:\\Users\\Jan Wagemakers\\Documents\\MEGA\\test.pdf", FileMode.Create);
             var writer = PdfWriter.GetInstance(doc, output);

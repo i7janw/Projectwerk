@@ -57,6 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Afdrukken.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Afdrukken.Designer.cs">
+      <DependentUpon>Afdrukken.cs</DependentUpon>
+    </Compile>
     <Compile Include="AansluitpuntNieuw.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +114,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Afdrukken.resx">
+      <DependentUpon>Afdrukken.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AansluitpuntNieuw.resx">
       <DependentUpon>AansluitpuntNieuw.cs</DependentUpon>
     </EmbeddedResource>

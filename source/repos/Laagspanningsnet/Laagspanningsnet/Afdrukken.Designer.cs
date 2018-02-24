@@ -1,6 +1,6 @@
 ﻿namespace Laagspanningsnet
 {
-    partial class MachineVerwijderen
+    partial class Afdrukken
     {
         /// <summary>
         /// Required designer variable.
@@ -34,15 +34,17 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtbxLocatie = new System.Windows.Forms.TextBox();
-            this.lblMachine = new System.Windows.Forms.Label();
-            this.lblOmschrijving = new System.Windows.Forms.Label();
-            this.lblLocatie = new System.Windows.Forms.Label();
-            this.cmbMachine = new System.Windows.Forms.ComboBox();
-            this.txtbxOmschrijving = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbPrinter = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.cmbAantal = new System.Windows.Forms.ComboBox();
+            this.lblAantal = new System.Windows.Forms.Label();
+            this.lblSelectie = new System.Windows.Forms.Label();
+            this.cmbSelectie = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -59,7 +61,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(593, 357);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(593, 482);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // lblTitel
@@ -71,7 +73,7 @@
             this.lblTitel.Name = "lblTitel";
             this.lblTitel.Size = new System.Drawing.Size(587, 100);
             this.lblTitel.TabIndex = 0;
-            this.lblTitel.Text = "Machine Verwijderen";
+            this.lblTitel.Text = "Afdrukken";
             this.lblTitel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel2
@@ -83,7 +85,7 @@
             this.tableLayoutPanel2.Controls.Add(this.btnOK, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.btnCancel, 2, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 280);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 405);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -121,103 +123,117 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.txtbxLocatie, 2, 2);
-            this.tableLayoutPanel3.Controls.Add(this.lblMachine, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.lblOmschrijving, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.lblLocatie, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.cmbMachine, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.txtbxOmschrijving, 2, 1);
+            this.tableLayoutPanel3.Controls.Add(this.lblSelectie, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label1, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.cmbPrinter, 2, 1);
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 2, 2);
+            this.tableLayoutPanel3.Controls.Add(this.cmbSelectie, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 103);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 4;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            this.tableLayoutPanel3.RowCount = 5;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(587, 171);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(587, 296);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
-            // txtbxLocatie
+            // label1
             // 
-            this.txtbxLocatie.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtbxLocatie.Location = new System.Drawing.Point(306, 131);
-            this.txtbxLocatie.Name = "txtbxLocatie";
-            this.txtbxLocatie.Size = new System.Drawing.Size(278, 20);
-            this.txtbxLocatie.TabIndex = 16;
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label1.Location = new System.Drawing.Point(306, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(278, 15);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Printer";
             // 
-            // lblMachine
+            // cmbPrinter
             // 
-            this.lblMachine.AutoSize = true;
-            this.lblMachine.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblMachine.Location = new System.Drawing.Point(210, 0);
-            this.lblMachine.Name = "lblMachine";
-            this.lblMachine.Size = new System.Drawing.Size(70, 57);
-            this.lblMachine.TabIndex = 0;
-            this.lblMachine.Text = "Machine ID";
-            this.lblMachine.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cmbPrinter.Dock = System.Windows.Forms.DockStyle.Right;
+            this.cmbPrinter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbPrinter.FormattingEnabled = true;
+            this.cmbPrinter.Location = new System.Drawing.Point(320, 33);
+            this.cmbPrinter.Name = "cmbPrinter";
+            this.cmbPrinter.Size = new System.Drawing.Size(264, 144);
+            this.cmbPrinter.TabIndex = 18;
             // 
-            // lblOmschrijving
+            // tableLayoutPanel4
             // 
-            this.lblOmschrijving.AutoSize = true;
-            this.lblOmschrijving.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblOmschrijving.Location = new System.Drawing.Point(202, 57);
-            this.lblOmschrijving.Name = "lblOmschrijving";
-            this.lblOmschrijving.Size = new System.Drawing.Size(78, 56);
-            this.lblOmschrijving.TabIndex = 9;
-            this.lblOmschrijving.Text = "Omschrijving";
-            this.lblOmschrijving.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Controls.Add(this.lblAantal, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.cmbAantal, 1, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(306, 183);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(278, 52);
+            this.tableLayoutPanel4.TabIndex = 20;
             // 
-            // lblLocatie
+            // cmbAantal
             // 
-            this.lblLocatie.AutoSize = true;
-            this.lblLocatie.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblLocatie.Location = new System.Drawing.Point(233, 113);
-            this.lblLocatie.Name = "lblLocatie";
-            this.lblLocatie.Size = new System.Drawing.Size(47, 56);
-            this.lblLocatie.TabIndex = 17;
-            this.lblLocatie.Text = "Locatie";
-            this.lblLocatie.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cmbAantal.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cmbAantal.FormattingEnabled = true;
+            this.cmbAantal.Location = new System.Drawing.Point(97, 14);
+            this.cmbAantal.Name = "cmbAantal";
+            this.cmbAantal.Size = new System.Drawing.Size(178, 21);
+            this.cmbAantal.TabIndex = 0;
             // 
-            // cmbMachine
+            // lblAantal
             // 
-            this.cmbMachine.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cmbMachine.FormattingEnabled = true;
-            this.cmbMachine.Location = new System.Drawing.Point(306, 17);
-            this.cmbMachine.Name = "cmbMachine";
-            this.cmbMachine.Size = new System.Drawing.Size(278, 21);
-            this.cmbMachine.TabIndex = 18;
-            this.cmbMachine.SelectedIndexChanged += new System.EventHandler(this.cmbMachine_SelectedIndexChanged);
+            this.lblAantal.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblAantal.AutoSize = true;
+            this.lblAantal.Location = new System.Drawing.Point(3, 18);
+            this.lblAantal.Name = "lblAantal";
+            this.lblAantal.Size = new System.Drawing.Size(88, 15);
+            this.lblAantal.TabIndex = 1;
+            this.lblAantal.Text = "Aantal kopieën";
+            this.lblAantal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtbxOmschrijving
+            // lblSelectie
             // 
-            this.txtbxOmschrijving.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtbxOmschrijving.Location = new System.Drawing.Point(306, 75);
-            this.txtbxOmschrijving.Name = "txtbxOmschrijving";
-            this.txtbxOmschrijving.Size = new System.Drawing.Size(278, 20);
-            this.txtbxOmschrijving.TabIndex = 14;
+            this.lblSelectie.AutoSize = true;
+            this.lblSelectie.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblSelectie.Location = new System.Drawing.Point(3, 15);
+            this.lblSelectie.Name = "lblSelectie";
+            this.lblSelectie.Size = new System.Drawing.Size(277, 15);
+            this.lblSelectie.TabIndex = 21;
+            this.lblSelectie.Text = "Selectie";
             // 
-            // MachineVerwijderen
+            // cmbSelectie
+            // 
+            this.cmbSelectie.Dock = System.Windows.Forms.DockStyle.Right;
+            this.cmbSelectie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbSelectie.FormattingEnabled = true;
+            this.cmbSelectie.Location = new System.Drawing.Point(16, 33);
+            this.cmbSelectie.Name = "cmbSelectie";
+            this.tableLayoutPanel3.SetRowSpan(this.cmbSelectie, 3);
+            this.cmbSelectie.Size = new System.Drawing.Size(264, 260);
+            this.cmbSelectie.TabIndex = 22;
+            // 
+            // Afdrukken
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(593, 357);
+            this.ClientSize = new System.Drawing.Size(593, 482);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "MachineVerwijderen";
-            this.Text = "Machine Verwijderen";
-            this.Load += new System.EventHandler(this.MachineVerwijderen_Load);
+            this.Name = "Afdrukken";
+            this.Text = "Afdrukken";
+            this.Load += new System.EventHandler(this.Afdrukken_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -230,11 +246,12 @@
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Label lblMachine;
-        private System.Windows.Forms.Label lblOmschrijving;
-        private System.Windows.Forms.TextBox txtbxOmschrijving;
-        private System.Windows.Forms.TextBox txtbxLocatie;
-        private System.Windows.Forms.Label lblLocatie;
-        private System.Windows.Forms.ComboBox cmbMachine;
+        private System.Windows.Forms.ComboBox cmbPrinter;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Label lblAantal;
+        private System.Windows.Forms.ComboBox cmbAantal;
+        private System.Windows.Forms.Label lblSelectie;
+        private System.Windows.Forms.ComboBox cmbSelectie;
     }
 }

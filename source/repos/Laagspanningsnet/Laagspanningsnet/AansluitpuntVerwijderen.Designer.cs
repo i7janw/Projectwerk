@@ -34,10 +34,10 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtbxLocatie = new System.Windows.Forms.TextBox();
             this.lblAansluitpunt = new System.Windows.Forms.Label();
-            this.lblLocatie = new System.Windows.Forms.Label();
             this.cmbAansluitpunt = new System.Windows.Forms.ComboBox();
+            this.lblLocatie = new System.Windows.Forms.Label();
+            this.txtbxLocatie = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -139,14 +139,6 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(587, 171);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
-            // txtbxLocatie
-            // 
-            this.txtbxLocatie.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtbxLocatie.Location = new System.Drawing.Point(306, 75);
-            this.txtbxLocatie.Name = "txtbxLocatie";
-            this.txtbxLocatie.Size = new System.Drawing.Size(278, 20);
-            this.txtbxLocatie.TabIndex = 16;
-            // 
             // lblAansluitpunt
             // 
             this.lblAansluitpunt.AutoSize = true;
@@ -157,6 +149,16 @@
             this.lblAansluitpunt.TabIndex = 0;
             this.lblAansluitpunt.Text = "Aansluitpunt ID";
             this.lblAansluitpunt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // cmbAansluitpunt
+            // 
+            this.cmbAansluitpunt.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cmbAansluitpunt.FormattingEnabled = true;
+            this.cmbAansluitpunt.Location = new System.Drawing.Point(306, 17);
+            this.cmbAansluitpunt.Name = "cmbAansluitpunt";
+            this.cmbAansluitpunt.Size = new System.Drawing.Size(278, 21);
+            this.cmbAansluitpunt.TabIndex = 18;
+            this.cmbAansluitpunt.SelectedIndexChanged += new System.EventHandler(this.cmbMachine_SelectedIndexChanged);
             // 
             // lblLocatie
             // 
@@ -169,15 +171,13 @@
             this.lblLocatie.Text = "Locatie";
             this.lblLocatie.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // cmbAansluitpunt
+            // txtbxLocatie
             // 
-            this.cmbAansluitpunt.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cmbAansluitpunt.FormattingEnabled = true;
-            this.cmbAansluitpunt.Location = new System.Drawing.Point(306, 18);
-            this.cmbAansluitpunt.Name = "cmbAansluitpunt";
-            this.cmbAansluitpunt.Size = new System.Drawing.Size(278, 21);
-            this.cmbAansluitpunt.TabIndex = 18;
-            this.cmbAansluitpunt.SelectedIndexChanged += new System.EventHandler(this.cmbMachine_SelectedIndexChanged);
+            this.txtbxLocatie.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtbxLocatie.Location = new System.Drawing.Point(306, 75);
+            this.txtbxLocatie.Name = "txtbxLocatie";
+            this.txtbxLocatie.Size = new System.Drawing.Size(278, 20);
+            this.txtbxLocatie.TabIndex = 16;
             // 
             // AansluitpuntVerwijderen
             // 

@@ -23,7 +23,7 @@ namespace Laagspanningsnet
 
         private void AansluitpuntAanpassen_Load(object sender, EventArgs e)
         {
-            // Haal lijst met alle machines op
+            // Haal lijst met alle aansluitpunten op
             List<String> listAansluitpunt = database.GetAansluitpunten();
 
             // Steek ze in de selectie combobox
