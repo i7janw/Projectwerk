@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+// Deze verwijderen als afdrukken in een aparte klasse steekt.
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
 
 namespace Laagspanningsnet
 {
@@ -569,6 +573,67 @@ namespace Laagspanningsnet
                 ShowTransfos();
                 return;
             }
+        }
+
+        // Voorlopig een test als er op afdrukken wordt geklikt
+        private void afdrukkenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Document doc = new Document(PageSize.A4);
+            var output = new FileStream("C:\\Users\\Jan Wagemakers\\Documents\\MEGA\\test.pdf", FileMode.Create);
+            var writer = PdfWriter.GetInstance(doc, output);
+            doc.Open();
+
+            iTextSharp.text.Font font = FontFactory.GetFont("Arial", 10);
+            iTextSharp.text.Font titleFont = FontFactory.GetFont("Arial", 32);
+
+            Paragraph text;
+            // Titel
+            text = new Paragraph(lblLayout.Text, titleFont);
+            text.Alignment = Element.ALIGN_CENTER;
+            text.SpacingAfter = 20;
+            doc.Add(text);
+
+            // Info
+            text = new Paragraph("Voeding : " + btnDynVoeding.Text + "\n" +
+                "Kabel : " + lblDynKabel.Text + "\n" +
+                "Stroom : " + lblDynStroom.Text + "\n" +
+                "Locatie : " + lblDynLocatie.Text, font);
+            text.Alignment = Element.ALIGN_LEFT;
+            text.SpacingAfter = 20;
+            doc.Add(text);
+
+            // Table
+            PdfPTable table = new PdfPTable(7);
+            table.WidthPercentage = 100;
+            float[] widths = new float[] { 1,2,5,3,2,2,2 };
+            table.SetWidths(widths);
+            //PdfPRow row = null;
+            //float[] widths = new float[] { 4f, 4f, 4f, 4f };
+
+            table.AddCell(new Phrase("Kring", font));
+            table.AddCell(new Phrase("Nummer", font));
+            table.AddCell(new Phrase("Omschrijving", font));
+            table.AddCell(new Phrase("Kabel", font));
+            table.AddCell(new Phrase("Stroom", font));
+            table.AddCell(new Phrase("Polen", font));
+            table.AddCell(new Phrase("Locatie", font));
+
+            foreach (DataRow dtRow in dtDisplay.Rows)
+            {
+                if (dtRow["Type"] == DBNull.Value)
+                {
+                    break;
+                }
+                table.AddCell(new Phrase(dtRow["Kring"].ToString(), font));
+                table.AddCell(new Phrase(dtRow["Nummer"].ToString(), font));
+                table.AddCell(new Phrase(dtRow["Omschrijving"].ToString(), font));
+                table.AddCell(new Phrase(dtRow["Kabeltype"].ToString() + " " + dtRow["Kabelsectie"].ToString(), font));
+                table.AddCell(new Phrase(dtRow["Stroom (A)"].ToString(), font));
+                table.AddCell(new Phrase(dtRow["Aantal Polen"].ToString(), font));
+                table.AddCell(new Phrase(dtRow["Locatie"].ToString(), font));
+            }
+            doc.Add(table);
+            doc.Close();
         }
     }
 }

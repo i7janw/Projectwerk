@@ -28,3 +28,5 @@ C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagsp
 C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\obj\Debug\Laagspanningsnet.AansluitpuntNieuw.resources
 C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\obj\Debug\Laagspanningsnet.AansluitpuntAanpassen.resources
 C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\obj\Debug\Laagspanningsnet.AansluitpuntVerwijderen.resources
+C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\bin\Debug\itextsharp.dll
+C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\bin\Debug\itextsharp.xml
