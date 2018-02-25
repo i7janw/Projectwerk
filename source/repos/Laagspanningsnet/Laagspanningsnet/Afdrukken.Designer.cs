@@ -34,17 +34,20 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblSelectie = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbPrinter = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.cmbAantal = new System.Windows.Forms.ComboBox();
             this.lblAantal = new System.Windows.Forms.Label();
-            this.lblSelectie = new System.Windows.Forms.Label();
+            this.cmbAantal = new System.Windows.Forms.ComboBox();
             this.cmbSelectie = new System.Windows.Forms.ComboBox();
+            this.rbtnInclusief = new System.Windows.Forms.RadioButton();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -128,6 +131,7 @@
             this.tableLayoutPanel3.Controls.Add(this.cmbPrinter, 2, 1);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 2, 2);
             this.tableLayoutPanel3.Controls.Add(this.cmbSelectie, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 0, 3);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 103);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -139,6 +143,16 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.Size = new System.Drawing.Size(587, 296);
             this.tableLayoutPanel3.TabIndex = 2;
+            // 
+            // lblSelectie
+            // 
+            this.lblSelectie.AutoSize = true;
+            this.lblSelectie.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblSelectie.Location = new System.Drawing.Point(3, 15);
+            this.lblSelectie.Name = "lblSelectie";
+            this.lblSelectie.Size = new System.Drawing.Size(277, 15);
+            this.lblSelectie.TabIndex = 21;
+            this.lblSelectie.Text = "Selectie";
             // 
             // label1
             // 
@@ -175,15 +189,6 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(278, 52);
             this.tableLayoutPanel4.TabIndex = 20;
             // 
-            // cmbAantal
-            // 
-            this.cmbAantal.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cmbAantal.FormattingEnabled = true;
-            this.cmbAantal.Location = new System.Drawing.Point(97, 14);
-            this.cmbAantal.Name = "cmbAantal";
-            this.cmbAantal.Size = new System.Drawing.Size(178, 21);
-            this.cmbAantal.TabIndex = 0;
-            // 
             // lblAantal
             // 
             this.lblAantal.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -195,15 +200,14 @@
             this.lblAantal.Text = "Aantal kopieën";
             this.lblAantal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lblSelectie
+            // cmbAantal
             // 
-            this.lblSelectie.AutoSize = true;
-            this.lblSelectie.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblSelectie.Location = new System.Drawing.Point(3, 15);
-            this.lblSelectie.Name = "lblSelectie";
-            this.lblSelectie.Size = new System.Drawing.Size(277, 15);
-            this.lblSelectie.TabIndex = 21;
-            this.lblSelectie.Text = "Selectie";
+            this.cmbAantal.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cmbAantal.FormattingEnabled = true;
+            this.cmbAantal.Location = new System.Drawing.Point(97, 14);
+            this.cmbAantal.Name = "cmbAantal";
+            this.cmbAantal.Size = new System.Drawing.Size(178, 21);
+            this.cmbAantal.TabIndex = 0;
             // 
             // cmbSelectie
             // 
@@ -212,9 +216,38 @@
             this.cmbSelectie.FormattingEnabled = true;
             this.cmbSelectie.Location = new System.Drawing.Point(16, 33);
             this.cmbSelectie.Name = "cmbSelectie";
-            this.tableLayoutPanel3.SetRowSpan(this.cmbSelectie, 3);
-            this.cmbSelectie.Size = new System.Drawing.Size(264, 260);
+            this.tableLayoutPanel3.SetRowSpan(this.cmbSelectie, 2);
+            this.cmbSelectie.Size = new System.Drawing.Size(264, 202);
             this.cmbSelectie.TabIndex = 22;
+            // 
+            // rbtnInclusief
+            // 
+            this.rbtnInclusief.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.rbtnInclusief.AutoCheck = false;
+            this.rbtnInclusief.AutoSize = true;
+            this.rbtnInclusief.Location = new System.Drawing.Point(3, 16);
+            this.rbtnInclusief.Name = "rbtnInclusief";
+            this.rbtnInclusief.Size = new System.Drawing.Size(154, 19);
+            this.rbtnInclusief.TabIndex = 23;
+            this.rbtnInclusief.TabStop = true;
+            this.rbtnInclusief.Text = "Inclusief aansluitpunten";
+            this.rbtnInclusief.UseVisualStyleBackColor = true;
+            this.rbtnInclusief.Click += new System.EventHandler(this.rbtnInclusief_Click);
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.Controls.Add(this.rbtnInclusief, 0, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Right;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(16, 241);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(264, 52);
+            this.tableLayoutPanel5.TabIndex = 24;
             // 
             // Afdrukken
             // 
@@ -234,6 +267,8 @@
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -253,5 +288,7 @@
         private System.Windows.Forms.ComboBox cmbAantal;
         private System.Windows.Forms.Label lblSelectie;
         private System.Windows.Forms.ComboBox cmbSelectie;
+        private System.Windows.Forms.RadioButton rbtnInclusief;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
     }
 }

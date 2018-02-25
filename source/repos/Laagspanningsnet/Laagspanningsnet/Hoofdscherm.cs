@@ -581,6 +581,7 @@ namespace Laagspanningsnet
             String selectie = aansluitpunt;
             String printer = "";
             int kopies = 0;
+            bool inclusief = false;
 
             using (var prn = new Afdrukken(selectie))
             {
@@ -593,21 +594,46 @@ namespace Laagspanningsnet
                 selectie = prn.selectie;
                 printer = prn.printer;
                 kopies = prn.kopies;
+                inclusief = prn.inclusief;
             }
-            // MessageBox.Show(selectie + " " + printer + " " + kopies);
-            // return;
+            
+            // Afdrukken. 
+            // We starten met het afdrukken van de selectie en
+            // indien gewenst worden ook de aansluitpunten die op de selectie zijn aangesloten afgedrukt.
+            List<string> todo = new List<string>();         // todo = lijst van aansluitpunten waarvan we nog moeten testen of er aansluitpunten op zijn aangesloten
+            todo.Add(selectie);
 
-            // We tonen het aansluitpunt dat we willen printen.
-            ShowAansluitpunt(selectie);
+            while (todo.Count != 0) {                       // zijn er nog te testen aansluitpunten?
+                List<string> tmp = new List<string>();      // tmp = om nieuwe todo lijst aan te maken
+                foreach (String ap in todo)                 // doorloop alle aansluitpunten in todo 
+                {
+                    ShowAansluitpunt(ap);                   // Toon en Print selectie
+                    Print();
+                    if (inclusief)                          // Gaan we ook de aangesloten aansluitpunten afdrukken?
+                    {
+                        foreach (DataGridViewRow row in dgvLaagspanningsnet.Rows)
+                        {
+                            if (row.Cells["Type"].Value != DBNull.Value)
+                            {
+                                if ((String)row.Cells["Type"].Value == "A")             // is de aansluiting een aansluitpunt?
+                                {
+                                    tmp.Add((String)row.Cells["Nummer"].Value);         // voeg toe aan tmp (nieuwe todo lijst)
+                                }
+                            }
+                        }
+                    }
+                }
+                todo = tmp;                                 // todo = nieuwe todo lijst.
+            }
+        }
 
-            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            // Als we aansluitpunten inclusief willen afdrukken --> for loop oid werken....
-
-
+        private void Print()
+        {
+            
             // Hieronder een eerste test ivm afdrukken
 
             Document doc = new Document(PageSize.A4);
-            var output = new FileStream("C:\\Users\\Jan Wagemakers\\Documents\\MEGA\\test.pdf", FileMode.Create);
+            var output = new FileStream("C:\\Users\\Jan Wagemakers\\Documents\\MEGA\\" + aansluitpunt + ".pdf", FileMode.Create);
             var writer = PdfWriter.GetInstance(doc, output);
             doc.Open();
 

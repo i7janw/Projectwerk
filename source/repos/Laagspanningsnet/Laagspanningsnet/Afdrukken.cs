@@ -18,6 +18,7 @@ namespace Laagspanningsnet
         public String selectie;
         public String printer;
         public int kopies;
+        public bool inclusief;
 
         public Afdrukken(String _selectie)
         {
@@ -79,6 +80,7 @@ namespace Laagspanningsnet
             kopies = 666;
             selectie = cmbSelectie.Text;
             printer = cmbPrinter.Text;
+            inclusief = rbtnInclusief.Checked;
 
             // sluit het venster
             this.DialogResult = DialogResult.OK;
@@ -91,5 +93,10 @@ namespace Laagspanningsnet
             Close();
         }
 
+        // Radio button als on/off switch (AutoCheck = false)
+        private void rbtnInclusief_Click(object sender, EventArgs e)
+        {
+            rbtnInclusief.Checked = !rbtnInclusief.Checked;
+        }
     }
 }
