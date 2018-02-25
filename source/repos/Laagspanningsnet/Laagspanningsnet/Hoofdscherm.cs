@@ -596,7 +596,20 @@ namespace Laagspanningsnet
                 kopies = prn.kopies;
                 inclusief = prn.inclusief;
             }
-            
+
+            // Als selectie == "", dan selecteren we het huidige aansluitpunt
+            if(selectie.Equals(""))
+            {
+                selectie = aansluitpunt;
+            }
+
+            // Als selectie nog steeds == "", dan staan we op Transfo of zoekresultaten
+            if (selectie.Equals(""))
+            {
+                Print();
+                return;
+            }
+                        
             // Afdrukken. 
             // We starten met het afdrukken van de selectie en
             // indien gewenst worden ook de aansluitpunten die op de selectie zijn aangesloten afgedrukt.
@@ -629,7 +642,7 @@ namespace Laagspanningsnet
 
         private void Print()
         {
-            
+            Console.WriteLine("Afdrukken van " + aansluitpunt);
             // Hieronder een eerste test ivm afdrukken
 
             Document doc = new Document(PageSize.A4);

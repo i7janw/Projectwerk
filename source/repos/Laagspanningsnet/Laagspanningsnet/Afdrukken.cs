@@ -17,7 +17,7 @@ namespace Laagspanningsnet
         private Database database;
         public String selectie;
         public String printer;
-        public int kopies;
+        public short kopies;
         public bool inclusief;
 
         public Afdrukken(String _selectie)
@@ -64,6 +64,7 @@ namespace Laagspanningsnet
 
             // Haal lijst met alle aansluitpunten op
             List<String> listAansluitpunt = database.GetAansluitpunten();
+            listAansluitpunt.Insert(0, "Huidige Pagina");
 
             // Steek ze in de selectie combobox
             cmbSelectie.DataSource = listAansluitpunt;
@@ -77,11 +78,15 @@ namespace Laagspanningsnet
         private void BtnOK_Click(object sender, EventArgs e)
         {
             // steek de geselecteerde gegevens in de public variablen
-            kopies = 666;
+            kopies = Convert.ToInt16(cmbAantal.Text);
             selectie = cmbSelectie.Text;
             printer = cmbPrinter.Text;
             inclusief = rbtnInclusief.Checked;
-
+            if (selectie.Equals("Huidige Pagina"))
+            {
+                selectie = "";
+            }
+            
             // sluit het venster
             this.DialogResult = DialogResult.OK;
             Close();
