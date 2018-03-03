@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.11.11)  17 FEB 2018 22:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.11.11)  3 MAR 2018 16:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**standupScrum_Wagemakers_Jan_v20180217
-(./standupScrum_Wagemakers_Jan_v20180217.tex
+**standupScrum_Wagemakers_Jan_v20180303
+(./standupScrum_Wagemakers_Jan_v20180303.tex
 LaTeX2e <2017/01/01> patch level 3
 Babel <3.9r> and hyphenation patterns for 30 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -107,8 +107,8 @@ Package babel Info: Making " an active character on input line 132.
 ))
 \c@homeworkProblemCounter=\count91
 
-(./standupScrum_Wagemakers_Jan_v20180217.aux)
-\openout1 = `standupScrum_Wagemakers_Jan_v20180217.aux'.
+(./standupScrum_Wagemakers_Jan_v20180303.aux)
+\openout1 = `standupScrum_Wagemakers_Jan_v20180303.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 140.
 LaTeX Font Info:    ... okay on input line 140.
@@ -325,11 +325,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 290--331
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 333--354
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 333--354
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 333--354
+
+ []
+
+(./filename.txt) [4] 
 AED: lastpage setting LastPage
-(./filename.txt) [4] (./standupScrum_Wagemakers_Jan_v20180217.aux) ) 
+(./filename.txt) [5] (./standupScrum_Wagemakers_Jan_v20180303.aux) ) 
 Here is how much of TeX's memory you used:
- 2511 strings out of 494358
- 34461 string characters out of 6164526
+ 2513 strings out of 494358
+ 34487 string characters out of 6164526
  200091 words of memory out of 5000000
  5804 multiletter control sequences out of 15000+600000
  8501 words of font info for 30 fonts, out of 8000000 for 9000
@@ -344,11 +359,11 @@ t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts
 public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmsy10.pfb>
-Output written on standupScrum_Wagemakers_Jan_v20180217.pdf (4 pages, 104494 by
+Output written on standupScrum_Wagemakers_Jan_v20180303.pdf (5 pages, 109626 by
 tes).
 PDF statistics:
- 49 PDF objects out of 1000 (max. 8388607)
- 34 compressed objects within 1 object stream
+ 52 PDF objects out of 1000 (max. 8388607)
+ 36 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
