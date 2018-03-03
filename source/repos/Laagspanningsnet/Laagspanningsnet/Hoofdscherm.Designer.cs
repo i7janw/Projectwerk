@@ -40,7 +40,7 @@
             this.aanpassenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verwijderenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.afdrukkenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dgvLaagspanningsnet = new System.Windows.Forms.DataGridView();
+            this.dgvLaagspanningsnet = new Laagspanningsnet.DGV();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnUndo = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -188,6 +188,7 @@
             this.dgvLaagspanningsnet.Size = new System.Drawing.Size(1188, 516);
             this.dgvLaagspanningsnet.TabIndex = 1;
             this.dgvLaagspanningsnet.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvLaagspanningsnet_CellContentClick);
+            this.dgvLaagspanningsnet.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLaagspanningsnet_CellValueChanged);
             this.dgvLaagspanningsnet.SelectionChanged += new System.EventHandler(this.DgvLaagspanningsnet_SelectionChanged);
             // 
             // tableLayoutPanel2
@@ -435,7 +436,7 @@
         private System.Windows.Forms.ToolStripMenuItem aansluitpuntToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem machineToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem afdrukkenToolStripMenuItem;
-        private System.Windows.Forms.DataGridView dgvLaagspanningsnet;
+        private DGV dgvLaagspanningsnet;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button btnUndo;
         private System.Windows.Forms.Button btnSave;

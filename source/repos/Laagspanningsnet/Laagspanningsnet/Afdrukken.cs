@@ -8,6 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+// print
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
+using PdfiumViewer;
 
 namespace Laagspanningsnet
 {
@@ -15,17 +20,20 @@ namespace Laagspanningsnet
     public partial class Afdrukken : Form
     {
         private Database database;
-        public String selectie;
-        public String printer;
-        public short kopies;
-        public bool inclusief;
+        private DGV dgvLaagspanningsnet;
+        private String selectie;
+        private String huidigAansluitpunt;                // onthouden van het aansluitpunt dat getoond werd toen we op afdrukken klikte.
+        private String printer;
+        private short kopies;
+        private bool inclusief;
 
-        public Afdrukken(String _selectie)
+        public Afdrukken(DGV _dgv) 
         {
             InitializeComponent();
             database = new Database();
-            selectie = _selectie;
-            Console.WriteLine(selectie);
+            huidigAansluitpunt = _dgv.GetAansluitpunt();
+            selectie = huidigAansluitpunt;
+            dgvLaagspanningsnet = _dgv;
         }
 
         private void Afdrukken_Load(object sender, EventArgs e)
@@ -77,19 +85,184 @@ namespace Laagspanningsnet
         // Er is op de OK knop geklikt.
         private void BtnOK_Click(object sender, EventArgs e)
         {
-            // steek de geselecteerde gegevens in de public variablen
+            // steek de geselecteerde gegevens in de variablen
             kopies = Convert.ToInt16(cmbAantal.Text);
             selectie = cmbSelectie.Text;
             printer = cmbPrinter.Text;
             inclusief = rbtnInclusief.Checked;
             if (selectie.Equals("Huidige Pagina"))
             {
-                selectie = "";
+                selectie = huidigAansluitpunt;                
             }
-            
+
+            // Als selectie == "", dan staan we op Transfo of zoekresultaten
+            if (selectie.Equals(""))
+            {
+                Print();
+            }
+            else
+            {
+                // Afdrukken. 
+                // We starten met het afdrukken van de selectie en
+                // indien gewenst worden ook de aansluitpunten die op de selectie zijn aangesloten afgedrukt.
+                List<string> todo = new List<string>();         // todo = lijst van aansluitpunten waarvan we nog moeten testen of er aansluitpunten op zijn aangesloten
+                todo.Add(selectie);
+
+                while (todo.Count != 0)
+                {                       // zijn er nog te testen aansluitpunten?
+                    List<string> tmp = new List<string>();      // tmp = om nieuwe todo lijst aan te maken
+                    foreach (String ap in todo)                 // doorloop alle aansluitpunten in todo 
+                    {
+                        dgvLaagspanningsnet.ShowAansluitpunt(ap);                   // Toon en Print selectie
+                        Print();
+                        if (inclusief)                          // Gaan we ook de aangesloten aansluitpunten afdrukken?
+                        {
+                            foreach (DataGridViewRow row in dgvLaagspanningsnet.Rows)
+                            {
+                                if (row.Cells["Type"].Value != DBNull.Value)
+                                {
+                                    if ((String)row.Cells["Type"].Value == "A")             // is de aansluiting een aansluitpunt?
+                                    {
+                                        tmp.Add((String)row.Cells["Nummer"].Value);         // voeg toe aan tmp (nieuwe todo lijst)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    todo = tmp;                                 // todo = nieuwe todo lijst.
+                }
+            }
+
+
+
             // sluit het venster
             this.DialogResult = DialogResult.OK;
             Close();
+        }
+
+        // Het afdrukken zelf. TODO
+        private void Print()
+        {
+            String _ap = dgvLaagspanningsnet.GetAansluitpunt();
+            Console.WriteLine("Afdrukken van " + _ap);
+
+            Document doc = new Document(PageSize.A4);
+            String pdf = "C:\\Users\\Jan Wagemakers\\Documents\\MEGA\\" + _ap + ".pdf";
+            var output = new FileStream(pdf, FileMode.Create);
+            var writer = PdfWriter.GetInstance(doc, output);
+            doc.Open();
+
+            iTextSharp.text.Font font = FontFactory.GetFont("Arial", 10);
+            iTextSharp.text.Font titleFont = FontFactory.GetFont("Arial", 32);
+
+            Paragraph text;
+            // Titel
+            String title;
+            switch (dgvLaagspanningsnet.GetMode())
+            {
+                case 1:     // transfos
+                    title = "Overzicht transfos";
+                    break;
+                case 3:     // search
+                    title = "Zoeken : " + _ap;
+                    break;
+                default:    // aansluitpunt // case 2 = default
+                    title = "Layout van " + _ap;
+                    break;
+            }
+            text = new Paragraph(title, titleFont);
+            text.Alignment = Element.ALIGN_CENTER;
+            text.SpacingAfter = 20;
+            doc.Add(text);
+
+            // Info
+            String voeding = database.GetVoeding(_ap);
+            String locatie = database.GetAansluitpuntLocatie(_ap);
+            String kabel   = database.GetKabel(_ap);
+            String stroom  = database.GetStroom(_ap);
+            text = new Paragraph("Voeding : " + voeding + "\n" +
+                "Kabel : " + kabel + "\n" +
+                "Stroom : " + stroom + "\n" +
+                "Locatie : " + locatie, font);
+            text.Alignment = Element.ALIGN_LEFT;
+            text.SpacingAfter = 20;
+            doc.Add(text);
+
+            // Table
+            PdfPTable table = new PdfPTable(7);
+            table.WidthPercentage = 100;
+            float[] widths = new float[] { 1, 2, 5, 3, 2, 2, 2 };
+            table.SetWidths(widths);
+            //PdfPRow row = null;
+            //float[] widths = new float[] { 4f, 4f, 4f, 4f };
+
+            table.AddCell(new Phrase("Kring", font));
+            table.AddCell(new Phrase("Nummer", font));
+            table.AddCell(new Phrase("Omschrijving", font));
+            table.AddCell(new Phrase("Kabel", font));
+            table.AddCell(new Phrase("Stroom", font));
+            table.AddCell(new Phrase("Polen", font));
+            table.AddCell(new Phrase("Locatie", font));
+
+            foreach (DataRow dtRow in dgvLaagspanningsnet.GetDataTable().Rows)
+            {
+                if (dtRow["Type"] == DBNull.Value)
+                {
+                    break;
+                }
+                table.AddCell(new Phrase(dtRow["Kring"].ToString(), font));
+                table.AddCell(new Phrase(dtRow["Nummer"].ToString(), font));
+                table.AddCell(new Phrase(dtRow["Omschrijving"].ToString(), font));
+                table.AddCell(new Phrase(dtRow["Kabeltype"].ToString() + " " + dtRow["Kabelsectie"].ToString(), font));
+                table.AddCell(new Phrase(dtRow["Stroom (A)"].ToString(), font));
+                table.AddCell(new Phrase(dtRow["Aantal Polen"].ToString(), font));
+                table.AddCell(new Phrase(dtRow["Locatie"].ToString(), font));
+            }
+            doc.Add(table);
+            doc.Close();
+            ToPrn(pdf);
+        }
+
+        private bool ToPrn(String _pdf)
+        {
+            try
+            {
+                var printerSettings = new PrinterSettings
+                {
+                    PrinterName = printer,
+                    Copies = (short)kopies,
+                };
+
+                var pageSettings = new PageSettings(printerSettings)
+                {
+                    Margins = new Margins(0, 0, 0, 0),
+                };
+
+                foreach (PaperSize paperSize in printerSettings.PaperSizes)
+                {
+                    if (paperSize.PaperName == "a4")
+                    {
+                        pageSettings.PaperSize = paperSize;
+                        break;
+                    }
+                }
+
+                using (var document = PdfiumViewer.PdfDocument.Load(_pdf))
+                {
+                    using (var printDocument = document.CreatePrintDocument())
+                    {
+                        printDocument.PrinterSettings = printerSettings;
+                        printDocument.DefaultPageSettings = pageSettings;
+                        printDocument.PrintController = new StandardPrintController();
+                        printDocument.Print();
+                    }
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         // Er is op de anuleer knop geklikt.
