@@ -147,8 +147,9 @@ namespace Laagspanningsnet
             Console.WriteLine("Afdrukken van " + _ap);
 
             Document doc = new Document(PageSize.A4);
-            String pdf = "C:\\Users\\Jan Wagemakers\\Documents\\MEGA\\" + _ap + ".pdf";
-            var output = new FileStream(pdf, FileMode.Create);
+            // String pdf = "C:\\Users\\Jan Wagemakers\\Documents\\MEGA\\" + _ap + ".pdf";
+            // var output = new FileStream(pdf, FileMode.Create);
+            MemoryStream output = new MemoryStream();
             var writer = PdfWriter.GetInstance(doc, output);
             doc.Open();
 
@@ -219,11 +220,15 @@ namespace Laagspanningsnet
                 table.AddCell(new Phrase(dtRow["Locatie"].ToString(), font));
             }
             doc.Add(table);
+
             doc.Close();
-            ToPrn(pdf);
+            
+            ToPrn(output.ToArray());
+
+            
         }
 
-        private bool ToPrn(String _pdf)
+        private bool ToPrn(byte[] _stream)
         {
             try
             {
@@ -246,11 +251,12 @@ namespace Laagspanningsnet
                         break;
                     }
                 }
-
-                using (var document = PdfiumViewer.PdfDocument.Load(_pdf))
+                var stream = new MemoryStream(_stream);
+                using (var document = PdfiumViewer.PdfDocument.Load(stream))
                 {
                     using (var printDocument = document.CreatePrintDocument())
                     {
+                        Console.WriteLine("Alles OK");
                         printDocument.PrinterSettings = printerSettings;
                         printDocument.DefaultPageSettings = pageSettings;
                         printDocument.PrintController = new StandardPrintController();
