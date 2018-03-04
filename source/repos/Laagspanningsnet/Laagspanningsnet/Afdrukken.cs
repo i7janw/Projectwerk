@@ -85,6 +85,15 @@ namespace Laagspanningsnet
         // Er is op de OK knop geklikt.
         private void BtnOK_Click(object sender, EventArgs e)
         {
+            // Open doc om te schrijven naar een MemoryStream
+            Document doc = new Document(PageSize.A4);
+            // String pdf = "C:\\Users\\Jan Wagemakers\\Documents\\MEGA\\" + _ap + ".pdf";
+            // var output = new FileStream(pdf, FileMode.Create);
+            MemoryStream output = new MemoryStream();
+            var writer = PdfWriter.GetInstance(doc, output);
+            doc.Open();
+
+
             // steek de geselecteerde gegevens in de variablen
             kopies = Convert.ToInt16(cmbAantal.Text);
             selectie = cmbSelectie.Text;
@@ -98,7 +107,7 @@ namespace Laagspanningsnet
             // Als selectie == "", dan staan we op Transfo of zoekresultaten
             if (selectie.Equals(""))
             {
-                Print();
+                Print(doc);
             }
             else
             {
@@ -114,7 +123,7 @@ namespace Laagspanningsnet
                     foreach (String ap in todo)                 // doorloop alle aansluitpunten in todo 
                     {
                         dgvLaagspanningsnet.ShowAansluitpunt(ap);                   // Toon en Print selectie
-                        Print();
+                        Print(doc);
                         if (inclusief)                          // Gaan we ook de aangesloten aansluitpunten afdrukken?
                         {
                             foreach (DataGridViewRow row in dgvLaagspanningsnet.Rows)
@@ -133,7 +142,11 @@ namespace Laagspanningsnet
                 }
             }
 
+            // Sluit doc
+            doc.Close();
 
+            // Print aangemaakte doc af
+            ToPrn(output.ToArray());
 
             // sluit het venster
             this.DialogResult = DialogResult.OK;
@@ -141,17 +154,10 @@ namespace Laagspanningsnet
         }
 
         // Het afdrukken zelf. TODO
-        private void Print()
+        private void Print(Document doc)
         {
             String _ap = dgvLaagspanningsnet.GetAansluitpunt();
             Console.WriteLine("Afdrukken van " + _ap);
-
-            Document doc = new Document(PageSize.A4);
-            // String pdf = "C:\\Users\\Jan Wagemakers\\Documents\\MEGA\\" + _ap + ".pdf";
-            // var output = new FileStream(pdf, FileMode.Create);
-            MemoryStream output = new MemoryStream();
-            var writer = PdfWriter.GetInstance(doc, output);
-            doc.Open();
 
             iTextSharp.text.Font font = FontFactory.GetFont("Arial", 10);
             iTextSharp.text.Font titleFont = FontFactory.GetFont("Arial", 32);
@@ -221,11 +227,8 @@ namespace Laagspanningsnet
             }
             doc.Add(table);
 
-            doc.Close();
-            
-            ToPrn(output.ToArray());
-
-            
+            // Volgende pagina
+            doc.NewPage();
         }
 
         private bool ToPrn(byte[] _stream)
@@ -256,7 +259,6 @@ namespace Laagspanningsnet
                 {
                     using (var printDocument = document.CreatePrintDocument())
                     {
-                        Console.WriteLine("Alles OK");
                         printDocument.PrinterSettings = printerSettings;
                         printDocument.DefaultPageSettings = pageSettings;
                         printDocument.PrintController = new StandardPrintController();
