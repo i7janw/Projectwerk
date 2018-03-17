@@ -1,5 +1,10 @@
-﻿/*  Communicatie met de mySQL database server loopt via deze klasse.
- */ 
+﻿/* Communicatie met de mySQL database server loopt via deze klasse.
+ * 
+ * Aanpassingen :
+ *  - 20180317 :
+ *      - Parameters.AddWithValue("@para", .... gebruikt : sql-injection
+ *
+ */
 
 using System;
 using System.Collections.Generic;
@@ -243,61 +248,16 @@ namespace Laagspanningsnet
             foreach (DataRow dataRow in dsDatabase.Tables["aansluitingen"].Rows)
             {
                 // Steek de gegevens van deze row in losse var's
-                var dbApId = "'" + dataRow["AP_id"] + "'";
-                var dbAId = "'" + dataRow["A_id"] + "'";
+                var dbApId = dataRow["AP_id"];
+                var dbAId = dataRow["A_id"];
                 var dbNaarApId = dataRow["Naar_AP_id"];
                 var dbNaarMId = dataRow["Naar_M_id"];
                 var dbOmschrijving = dataRow["Omschrijving"];
-                var dbKabeltype = "'" + dataRow["Kabeltype"] + "'";
-                var dbKabelsectie = "'" + dataRow["Kabelsectie"]+ "'";
+                var dbKabeltype = dataRow["Kabeltype"];
+                var dbKabelsectie = dataRow["Kabelsectie"];
                 var dbStroom = dataRow["Stroom"];
                 var dbPolen = dataRow["Polen"];
-                // Afhandelen van items waar evt. NULL in kan zitten.
-                if(dbNaarApId == DBNull.Value)
-                {
-                    dbNaarApId = "NULL";
-                }
-                else
-                {
-                    dbNaarApId = "'" + dbNaarApId + "'";
-                }
-                //
-                if (dbNaarMId == DBNull.Value)
-                {
-                    dbNaarMId = "NULL";
-                }
-                else
-                {
-                    dbNaarMId = "'" + dbNaarMId + "'";
-                }
-                //
-                if (dbOmschrijving == DBNull.Value)
-                {
-                    dbOmschrijving = "NULL";
-                }
-                else
-                {
-                    dbOmschrijving = "'" + dbOmschrijving + "'";
-                }
-                //
-                if (dbStroom == DBNull.Value)
-                {
-                    dbStroom = "NULL";
-                }
-                else
-                {
-                    dbStroom = "'" + dbStroom + "'";
-                }
-                //
-                if (dbPolen == DBNull.Value)
-                {
-                    dbPolen = "NULL";
-                }
-                else
-                {
-                    dbPolen = "'" + dbPolen + "'";
-                }
-
+                
                 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 // !!!! TODO : Voorlopig deleten en dan inserten, kan misschien verbeterd worden door updaten , maar dan is test op reeds bestaan nodig !!!!
                 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -490,8 +450,6 @@ namespace Laagspanningsnet
             return convert;
         }
 
-        // -------------------------- new --------------------------------------------------
-        
         /* Ga na of een machine ID reeds in de MySqlDatabase aanwezig is
          *
          * RETURN : bool : false/true : bestaat niet/bestaat

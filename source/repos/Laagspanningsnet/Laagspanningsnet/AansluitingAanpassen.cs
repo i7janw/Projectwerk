@@ -1,4 +1,11 @@
-﻿using System;
+﻿/* Venster dat verschijnt wanneer er op de + of A is geklikt (aanpassen van een aansluiting)
+ *
+ * Aanpassingen :
+ *  - 20180317 :
+ *      - beperken van welke characters er in de kring txtbx ingegeven kunnen worden
+ *      - max.lengte van txtbx'en aangepast volgens datawoordenboek
+ */
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
@@ -8,28 +15,30 @@ namespace Laagspanningsnet
     
     public partial class AansluitingAanpassen : Form
     {
-        private String aansluitpunt;
-        private DataTable dt;
-        private DataRow row;
-        private int index;
-        private Database database;      // Nodig om machine en aansluitpunten lijst op te halen
+        private readonly string _aansluitpunt;
+        private readonly DataTable _dt;
+        private readonly DataRow _row;
+        private readonly int _index;
+        private readonly Database _database;      // Nodig om machine en aansluitpunten lijst op te halen
 
         // Aansluiting aanpassen , _aanpassen TRUE --> reeds bestaande kring aanpassen
-        public AansluitingAanpassen(DataTable _dt, int _index)
+        public AansluitingAanpassen(DataTable dt, int index)
         {
             InitializeComponent();
-            dt = _dt;
-            index = _index;
-            row = dt.Rows[_index];
-            aansluitpunt = (String)row["T/VB/K"];
-            database = new Database();
+            _dt = dt;
+            _index = index;
+            _row = _dt.Rows[index];
+            _aansluitpunt = (string)_row["T/VB/K"];
+            _database = new Database();
         }
 
         private void AansluitingAanpassen_Load(object sender, EventArgs e)
         {
+            txtbxKring.MaxLength = 10;
+            txtbxKabeltype.MaxLength = 7;
+            txtbxKabelsectie.MaxLength = 12;
+            txtbxOmschrijving.MaxLength = 90;
             txtbxStroom.MaxLength = 3;
-            
-            // !!! TODO MaxLength voor andere txtbx'en ook nog toevoegen, nu geen goesting...
 
             // Vul de Polen combobox met de cijfers 1-4
             for (int count = 1; count < 5; count++)
@@ -37,69 +46,73 @@ namespace Laagspanningsnet
                 cmbPolen.Items.Add(count);
             }
             // Lijst met Machines aanmaken
-            List<String> listMachines = database.GetMachines(true);             // uit database ophalen (true = enkel niet aangesloten)
+            List<string> listMachines = _database.GetMachines(true);             // uit database ophalen (true = enkel niet aangesloten)
             listMachines.Insert(0, "Geen");                                     // 'geen' als keuze toevoegen
             
             // Lijst met aansluitpunten aanmaken                                // uit database ophalen
-            List<String> listAansluitpunten = database.GetAansluitpunten(true); // 'geen' als keuze toevoegen (true = enkel niet aangesloten)
+            List<string> listAansluitpunten = _database.GetAansluitpunten(true); // 'geen' als keuze toevoegen (true = enkel niet aangesloten)
             listAansluitpunten.Insert(0, "Geen");
 
             // Pas de titel aan
-            this.Text = "Aansluiting " + aansluitpunt + " - "+ (String)row["Kring"] + " aanpassen";
-            lblTitel.Text = aansluitpunt + " - " + (String)row["Kring"];
+            Text = "Aansluiting " + _aansluitpunt + " - "+ (string)_row["Kring"] + " aanpassen";
+            lblTitel.Text = _aansluitpunt + " - " + (string)_row["Kring"];
 
             // Wat is er op deze aansluiting aangesloten?
-            if ((String)row["Type"] == "N")
+            if ((string)_row["Type"] == "N")
             {
                 txtbxOmschrijving.Enabled = true;   // Normaal = Omschrijving kan ingegeven worden
                 txtbxOmschrijving.Text = "";
-                if (row["Omschrijving"] != DBNull.Value)
+                if (_row["Omschrijving"] != DBNull.Value)
                 {
-                    txtbxOmschrijving.Text = (String)row["Omschrijving"];
+                    txtbxOmschrijving.Text = (string)_row["Omschrijving"];
                 }
                 cmbMachine.Text = "Geen";
             }
-            if ((String)row["Type"] == "M")
+            if ((string)_row["Type"] == "M")
             {
                 txtbxOmschrijving.Enabled = false;                  // Machine = Omschrijving komt uit Machine-Table
-                txtbxOmschrijving.Text = database.GetMachineOmschrijving((String)row["Nummer"]);
-                listMachines.Insert(0, (String)row["Nummer"]);      // Huidige machine aan lijst toevoegen
-                cmbMachine.Text = (String)row["Nummer"];
+                txtbxOmschrijving.Text = _database.GetMachineOmschrijving((string)_row["Nummer"]);
+                listMachines.Insert(0, (string)_row["Nummer"]);      // Huidige machine aan lijst toevoegen
+                cmbMachine.Text = (string)_row["Nummer"];
                 cmbAansluitpunt.Text = "Geen";
             }
-            if ((String)row["Type"] == "A")
+            if ((string)_row["Type"] == "A")
             {
                 txtbxOmschrijving.Enabled = false;                  // Aansluitpunt =  geen omschrijving
                 txtbxOmschrijving.Text = "";
-                listAansluitpunten.Insert(0, (String)row["Nummer"]);// Huidig aansluitpunt aan lijst toevoegen
-                cmbAansluitpunt.Text = (String)row["Nummer"];
+                listAansluitpunten.Insert(0, (string)_row["Nummer"]);// Huidig aansluitpunt aan lijst toevoegen
+                cmbAansluitpunt.Text = (string)_row["Nummer"];
                 cmbMachine.Text = "Geen";
             }
             // Zet de overige gegevens op het scherm
-            txtbxKring.Text = (String)row["Kring"];
-            if ((String)row["Kring"] != "Nieuw")
+            txtbxKring.Text = (string)_row["Kring"];
+            if ((string)_row["Kring"] != "Nieuw")
             {
                 txtbxKring.Enabled = false;
             }
-            txtbxKabeltype.Text = "";
-            if (row["KabelType"] != DBNull.Value)
+            else
             {
-                txtbxKabeltype.Text = (String)row["Kabeltype"];
+                txtbxKring.Text = "";
+            }
+            txtbxKabeltype.Text = "";
+            if (_row["KabelType"] != DBNull.Value)
+            {
+                txtbxKabeltype.Text = (string)_row["Kabeltype"];
             }
             txtbxKabelsectie.Text = "";
-            if (row["Kabelsectie"] != DBNull.Value)
+            if (_row["Kabelsectie"] != DBNull.Value)
             { 
-                txtbxKabelsectie.Text = (String)row["Kabelsectie"];
+                txtbxKabelsectie.Text = (string)_row["Kabelsectie"];
             }
             txtbxStroom.Text = "";
-            if (row["Stroom (A)"] != DBNull.Value)
+            if (_row["Stroom (A)"] != DBNull.Value)
             {
-                txtbxStroom.Text = (String)row["Stroom (A)"];
+                txtbxStroom.Text = (string)_row["Stroom (A)"];
             }
             cmbPolen.Text = "3";                    // Default voor polen = 3 ( R S T + Vaste PEN aansluiting)
-            if (row["Aantal polen"] != DBNull.Value)
+            if (_row["Aantal polen"] != DBNull.Value)
             {
-                cmbPolen.Text = (String)row["Aantal polen"];
+                cmbPolen.Text = (string)_row["Aantal polen"];
             }
             cmbMachine.DataSource = listMachines;
             cmbAansluitpunt.DataSource = listAansluitpunten;
@@ -109,14 +122,14 @@ namespace Laagspanningsnet
         private void BtnOK_Click(object sender, EventArgs e)
         {
             // Ga na of deze aansluiting wel uniek is
-            if ((String)this.row["Kring"] == "Nieuw")    // enkel checken als we een nieuwe kring toevoegen
+            if ((string)_row["Kring"] == "Nieuw")    // enkel checken als we een nieuwe kring toevoegen
             {
-                foreach (DataRow dtRow in dt.Rows)
+                foreach (DataRow dtRow in _dt.Rows)
                 {
                     if (dtRow["Kring"] != DBNull.Value)
                     {
                         Console.WriteLine(dtRow["Kring"] + " " + txtbxKring.Text);
-                        if ((String)dtRow["Kring"] == txtbxKring.Text)
+                        if ((string)dtRow["Kring"] == txtbxKring.Text)
                         {
                             MessageBox.Show("Deze aansluiting bestaat reeds.\nKijk na of alles correct is ingegeven...");
                             return;
@@ -126,13 +139,13 @@ namespace Laagspanningsnet
             }
 
             // Ok, aansluiting is uniek, we kunnen verder gaan
-            dt.Rows.Remove(this.row);
-            DataRow row = dt.NewRow();
+            _dt.Rows.Remove(_row);
+            DataRow row = _dt.NewRow();
             row["+"] = "+";
             row["-"] = "-";
             row["A"] = "A";
-            row["T/VB/K"] = aansluitpunt;
-            dt.Rows.InsertAt(row, index);
+            row["T/VB/K"] = _aansluitpunt;
+            _dt.Rows.InsertAt(row, _index);
 
             if (cmbAansluitpunt.Text == "Geen" && cmbMachine.Text == "Geen")
             {
@@ -143,13 +156,13 @@ namespace Laagspanningsnet
             {
                 row["Type"] = "A";
                 row["Nummer"] = cmbAansluitpunt.Text;
-                row["Locatie"] = database.GetAansluitpuntLocatie(cmbAansluitpunt.Text);
+                row["Locatie"] = _database.GetAansluitpuntLocatie(cmbAansluitpunt.Text);
             }
             if (cmbMachine.Text != "Geen")
             {
                 row["Type"] = "M";
                 row["Nummer"] = cmbMachine.Text;
-                row["Locatie"] = database.GetMachineLocatie(cmbMachine.Text);
+                row["Locatie"] = _database.GetMachineLocatie(cmbMachine.Text);
             }
             row["Kring"] = txtbxKring.Text;
             row["Omschrijving"] = txtbxOmschrijving.Text;
@@ -157,7 +170,7 @@ namespace Laagspanningsnet
             row["Kabelsectie"] = txtbxKabelsectie.Text;
             row["Stroom (A)"] = txtbxStroom.Text;
             row["Aantal polen"] = cmbPolen.Text;
-            this.DialogResult = DialogResult.OK;
+            DialogResult = DialogResult.OK;
             Close();
         }
 
@@ -180,7 +193,7 @@ namespace Laagspanningsnet
             }
             cmbAansluitpunt.Text = "Geen";
             txtbxOmschrijving.Enabled = false;  // Machine = Omschrijving komt uit Machine-Table
-            txtbxOmschrijving.Text = database.GetMachineOmschrijving(cmbMachine.Text);
+            txtbxOmschrijving.Text = _database.GetMachineOmschrijving(cmbMachine.Text);
         }
 
         // Aansluitpunt is aangepast
@@ -210,6 +223,16 @@ namespace Laagspanningsnet
 
             // only allow one decimal point
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        // In de kring box kunnen enkel getallen, letter, ".", "," ingegeven worden.
+        // Bron : <https://stackoverflow.com/questions/463299/how-do-i-make-a-textbox-that-only-accepts-numbers>
+        private void TxtbxKring_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != ','))
             {
                 e.Handled = true;
             }

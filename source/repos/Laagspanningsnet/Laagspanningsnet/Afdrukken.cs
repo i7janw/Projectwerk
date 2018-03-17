@@ -14,7 +14,7 @@ namespace Laagspanningsnet
     public partial class Afdrukken : Form
     {
         private Database database;
-        private DGV dgvLaagspanningsnet;
+        private LaagspanningGridView dgvLaagspanningsnet;
         private String selectie;
 
         private String huidigAansluitpunt; // onthouden van het aansluitpunt dat getoond werd toen we op afdrukken klikte.
@@ -23,7 +23,7 @@ namespace Laagspanningsnet
         private short kopies;
         private bool inclusief;
 
-        public Afdrukken(DGV _dgv)
+        public Afdrukken(LaagspanningGridView _dgv)
         {
             InitializeComponent();
             database = new Database();

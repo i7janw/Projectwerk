@@ -1,17 +1,24 @@
-﻿using System;
+﻿/* Venster dat verschijnt als er Machine -> Nieuw is gekozen.
+ *
+ * Aanpassingen :
+ *  - 20180317 :
+ *      - TxtbxMachine_KeyPress toegevoegd, enkel cijfers en letters kunnen ingevoegd worden.
+ *        Fix voor probleem 'S019 ' ingeven --> database error want 'S019' bestaat reeds.
+ *      - .ico toegevoegd
+ */
+using System;
 using System.Windows.Forms;
 
 namespace Laagspanningsnet
 {
-    
     public partial class MachineNieuw : Form
     {
-        private Database database;      
+        private readonly Database _database;      
 
         public MachineNieuw()
         {
             InitializeComponent();
-            database = new Database();
+            _database = new Database();
         }
 
         private void MachineNieuw_Load(object sender, EventArgs e)
@@ -26,17 +33,17 @@ namespace Laagspanningsnet
         private void BtnOK_Click(object sender, EventArgs e)
         {
             // Ga na of het dit Machine ID reeds bestaat.
-            if (database.IsMachine(txtbxMachine.Text))
+            if (_database.IsMachine(txtbxMachine.Text))
             {
                 MessageBox.Show("Deze machine bestaat reeds!");
                 return;
             }
 
             // Voeg de machine toe aan de database
-            database.InsertMachine(txtbxMachine.Text, txtbxOmschrijving.Text, txtbxLocatie.Text);
+            _database.InsertMachine(txtbxMachine.Text, txtbxOmschrijving.Text, txtbxLocatie.Text);
 
             // sluit het venster
-            this.DialogResult = DialogResult.OK;
+            DialogResult = DialogResult.OK;
             Close();
         }
 
@@ -46,5 +53,14 @@ namespace Laagspanningsnet
             Close();
         }
 
+        // In de id box kunnen enkel cijfers en letters ingegeven worden.
+        // Bron : <https://stackoverflow.com/questions/463299/how-do-i-make-a-textbox-that-only-accepts-numbers>
+        private void TxtbxMachine_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

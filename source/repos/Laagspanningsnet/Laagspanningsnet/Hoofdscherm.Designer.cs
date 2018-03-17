@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Hoofdscherm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,7 +41,7 @@
             this.aanpassenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verwijderenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.afdrukkenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dgvLaagspanningsnet = new Laagspanningsnet.DGV();
+            this.dgvLaagspanningsnet = new Laagspanningsnet.LaagspanningGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnUndo = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -409,6 +410,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1194, 699);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Hoofdscherm";
             this.Text = "Laagspanningsnet : Hansen Industrial Transmissions";
@@ -436,7 +438,7 @@
         private System.Windows.Forms.ToolStripMenuItem aansluitpuntToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem machineToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem afdrukkenToolStripMenuItem;
-        private DGV dgvLaagspanningsnet;
+        private LaagspanningGridView dgvLaagspanningsnet;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button btnUndo;
         private System.Windows.Forms.Button btnSave;

@@ -1,24 +1,29 @@
-﻿using System;
+﻿/* Venster dat verschijnt als er Machine -> Aanpassen is gekozen.
+ *
+ * Aanpassingen :
+ *  - 20180317 :
+ *      - .ico toegevoegd
+ */
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Laagspanningsnet
 {
-    
     public partial class MachineAanpassen : Form
     {
-        private Database database;      
+        private readonly Database _database;      
 
         public MachineAanpassen()
         {
             InitializeComponent();
-            database = new Database();
+            _database = new Database();
         }
 
         private void MachineAanpassen_Load(object sender, EventArgs e)
         {
             // Haal lijst met alle machines op
-            List<String> listMachines = database.GetMachines();
+            List<string> listMachines = _database.GetMachines();
 
             // Steek ze in de selectie combobox
             cmbMachine.DataSource = listMachines;
@@ -32,10 +37,10 @@ namespace Laagspanningsnet
         private void BtnOK_Click(object sender, EventArgs e)
         {
             // Pas de machine aan in de database
-            database.UpdateMachine(cmbMachine.Text, txtbxOmschrijving.Text, txtbxLocatie.Text);
+            _database.UpdateMachine(cmbMachine.Text, txtbxOmschrijving.Text, txtbxLocatie.Text);
 
             // sluit het venster
-            this.DialogResult = DialogResult.OK;
+            DialogResult = DialogResult.OK;
             Close();
         }
 
@@ -46,10 +51,10 @@ namespace Laagspanningsnet
         }
 
         // Andere machine uit het menu gekozen
-        private void cmbMachine_SelectedIndexChanged(object sender, EventArgs e)
+        private void CmbMachine_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtbxOmschrijving.Text = database.GetMachineOmschrijving(cmbMachine.Text);
-            txtbxLocatie.Text = database.GetMachineLocatie(cmbMachine.Text);
+            txtbxOmschrijving.Text = _database.GetMachineOmschrijving(cmbMachine.Text);
+            txtbxLocatie.Text = _database.GetMachineLocatie(cmbMachine.Text);
         }
     }
 }

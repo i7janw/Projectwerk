@@ -1,4 +1,10 @@
-﻿using System;
+﻿/* Het hoofdvenster van het programma.
+ *
+ * Aanpassingen :
+ *  - 20180317 :
+ *      - .ico toegevoegd
+ */
+using System;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -9,17 +15,17 @@ namespace Laagspanningsnet
 {
     public partial class Hoofdscherm : Form
     {
-        private Database _database;      // Alle communicatie met de database verloopt via de database klasse
-        private bool _unsaved;           // Staan er niet bewaarde gegevens op het scherm?
+        private readonly Database _database;        // Alle communicatie met de database verloopt via de database klasse
+        private bool _unsaved;                      // Staan er niet bewaarde gegevens op het scherm?
         
         public Hoofdscherm()
         {
             InitializeComponent();
+            _database = new Database();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            _database = new Database();
             dgvLaagspanningsnet.ShowTransfos();             // We starten met een overzicht van de Transfos
         }
 

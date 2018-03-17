@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AansluitpuntNieuw));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblTitel = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -35,8 +36,8 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.txtbxAansluitpunt = new System.Windows.Forms.TextBox();
-            this.txtbxLocatie = new System.Windows.Forms.TextBox();
             this.lblAansluitpunt = new System.Windows.Forms.Label();
+            this.txtbxLocatie = new System.Windows.Forms.TextBox();
             this.lblLocatie = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -57,7 +58,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(593, 357);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(593, 299);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // lblTitel
@@ -81,7 +82,7 @@
             this.tableLayoutPanel2.Controls.Add(this.btnOK, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.btnCancel, 2, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 280);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 222);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -126,17 +127,12 @@
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 103);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 4;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            this.tableLayoutPanel3.RowCount = 3;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0075F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.9925F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(587, 171);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(587, 113);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // txtbxAansluitpunt
@@ -144,16 +140,9 @@
             this.txtbxAansluitpunt.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtbxAansluitpunt.Location = new System.Drawing.Point(306, 18);
             this.txtbxAansluitpunt.Name = "txtbxAansluitpunt";
-            this.txtbxAansluitpunt.Size = new System.Drawing.Size(278, 20);
+            this.txtbxAansluitpunt.Size = new System.Drawing.Size(232, 20);
             this.txtbxAansluitpunt.TabIndex = 15;
-            // 
-            // txtbxLocatie
-            // 
-            this.txtbxLocatie.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtbxLocatie.Location = new System.Drawing.Point(306, 75);
-            this.txtbxLocatie.Name = "txtbxLocatie";
-            this.txtbxLocatie.Size = new System.Drawing.Size(278, 20);
-            this.txtbxLocatie.TabIndex = 16;
+            this.txtbxAansluitpunt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtbxAansluitpunt_KeyPress);
             // 
             // lblAansluitpunt
             // 
@@ -161,16 +150,24 @@
             this.lblAansluitpunt.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblAansluitpunt.Location = new System.Drawing.Point(191, 0);
             this.lblAansluitpunt.Name = "lblAansluitpunt";
-            this.lblAansluitpunt.Size = new System.Drawing.Size(89, 57);
+            this.lblAansluitpunt.Size = new System.Drawing.Size(89, 56);
             this.lblAansluitpunt.TabIndex = 0;
             this.lblAansluitpunt.Text = "Aansluitpunt ID";
             this.lblAansluitpunt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtbxLocatie
+            // 
+            this.txtbxLocatie.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtbxLocatie.Location = new System.Drawing.Point(306, 74);
+            this.txtbxLocatie.Name = "txtbxLocatie";
+            this.txtbxLocatie.Size = new System.Drawing.Size(232, 20);
+            this.txtbxLocatie.TabIndex = 16;
             // 
             // lblLocatie
             // 
             this.lblLocatie.AutoSize = true;
             this.lblLocatie.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblLocatie.Location = new System.Drawing.Point(233, 57);
+            this.lblLocatie.Location = new System.Drawing.Point(233, 56);
             this.lblLocatie.Name = "lblLocatie";
             this.lblLocatie.Size = new System.Drawing.Size(47, 56);
             this.lblLocatie.TabIndex = 17;
@@ -181,8 +178,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(593, 357);
+            this.ClientSize = new System.Drawing.Size(593, 299);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AansluitpuntNieuw";

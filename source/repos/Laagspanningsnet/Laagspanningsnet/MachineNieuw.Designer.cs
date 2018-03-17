@@ -28,17 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MachineNieuw));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblTitel = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtbxMachine = new System.Windows.Forms.TextBox();
+            this.txtbxOmschrijving = new System.Windows.Forms.TextBox();
+            this.txtbxLocatie = new System.Windows.Forms.TextBox();
             this.lblMachine = new System.Windows.Forms.Label();
             this.lblOmschrijving = new System.Windows.Forms.Label();
-            this.txtbxOmschrijving = new System.Windows.Forms.TextBox();
-            this.txtbxMachine = new System.Windows.Forms.TextBox();
-            this.txtbxLocatie = new System.Windows.Forms.TextBox();
             this.lblLocatie = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -59,7 +60,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(593, 357);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(518, 373);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // lblTitel
@@ -69,7 +70,7 @@
             this.lblTitel.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.69811F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitel.Location = new System.Drawing.Point(3, 0);
             this.lblTitel.Name = "lblTitel";
-            this.lblTitel.Size = new System.Drawing.Size(587, 100);
+            this.lblTitel.Size = new System.Drawing.Size(512, 100);
             this.lblTitel.TabIndex = 0;
             this.lblTitel.Text = "Nieuwe machine";
             this.lblTitel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -83,19 +84,19 @@
             this.tableLayoutPanel2.Controls.Add(this.btnOK, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.btnCancel, 2, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 280);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 296);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(587, 74);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(512, 74);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // btnOK
             // 
             this.btnOK.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnOK.Location = new System.Drawing.Point(205, 23);
+            this.btnOK.Location = new System.Drawing.Point(168, 23);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 0;
@@ -107,7 +108,7 @@
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnCancel.Location = new System.Drawing.Point(306, 23);
+            this.btnCancel.Location = new System.Drawing.Point(269, 23);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 1;
@@ -140,16 +141,41 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(587, 171);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(512, 187);
             this.tableLayoutPanel3.TabIndex = 2;
+            // 
+            // txtbxMachine
+            // 
+            this.txtbxMachine.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtbxMachine.Location = new System.Drawing.Point(269, 21);
+            this.txtbxMachine.Name = "txtbxMachine";
+            this.txtbxMachine.Size = new System.Drawing.Size(208, 20);
+            this.txtbxMachine.TabIndex = 15;
+            this.txtbxMachine.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtbxMachine_KeyPress);
+            // 
+            // txtbxOmschrijving
+            // 
+            this.txtbxOmschrijving.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtbxOmschrijving.Location = new System.Drawing.Point(269, 83);
+            this.txtbxOmschrijving.Name = "txtbxOmschrijving";
+            this.txtbxOmschrijving.Size = new System.Drawing.Size(208, 20);
+            this.txtbxOmschrijving.TabIndex = 14;
+            // 
+            // txtbxLocatie
+            // 
+            this.txtbxLocatie.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtbxLocatie.Location = new System.Drawing.Point(269, 145);
+            this.txtbxLocatie.Name = "txtbxLocatie";
+            this.txtbxLocatie.Size = new System.Drawing.Size(208, 20);
+            this.txtbxLocatie.TabIndex = 16;
             // 
             // lblMachine
             // 
             this.lblMachine.AutoSize = true;
             this.lblMachine.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblMachine.Location = new System.Drawing.Point(210, 0);
+            this.lblMachine.Location = new System.Drawing.Point(173, 0);
             this.lblMachine.Name = "lblMachine";
-            this.lblMachine.Size = new System.Drawing.Size(70, 57);
+            this.lblMachine.Size = new System.Drawing.Size(70, 62);
             this.lblMachine.TabIndex = 0;
             this.lblMachine.Text = "Machine ID";
             this.lblMachine.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -158,44 +184,20 @@
             // 
             this.lblOmschrijving.AutoSize = true;
             this.lblOmschrijving.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblOmschrijving.Location = new System.Drawing.Point(202, 57);
+            this.lblOmschrijving.Location = new System.Drawing.Point(165, 62);
             this.lblOmschrijving.Name = "lblOmschrijving";
-            this.lblOmschrijving.Size = new System.Drawing.Size(78, 56);
+            this.lblOmschrijving.Size = new System.Drawing.Size(78, 62);
             this.lblOmschrijving.TabIndex = 9;
             this.lblOmschrijving.Text = "Omschrijving";
             this.lblOmschrijving.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtbxOmschrijving
-            // 
-            this.txtbxOmschrijving.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtbxOmschrijving.Location = new System.Drawing.Point(306, 75);
-            this.txtbxOmschrijving.Name = "txtbxOmschrijving";
-            this.txtbxOmschrijving.Size = new System.Drawing.Size(278, 20);
-            this.txtbxOmschrijving.TabIndex = 14;
-            // 
-            // txtbxMachine
-            // 
-            this.txtbxMachine.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtbxMachine.Location = new System.Drawing.Point(306, 18);
-            this.txtbxMachine.Name = "txtbxMachine";
-            this.txtbxMachine.Size = new System.Drawing.Size(278, 20);
-            this.txtbxMachine.TabIndex = 15;
-            // 
-            // txtbxLocatie
-            // 
-            this.txtbxLocatie.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtbxLocatie.Location = new System.Drawing.Point(306, 131);
-            this.txtbxLocatie.Name = "txtbxLocatie";
-            this.txtbxLocatie.Size = new System.Drawing.Size(278, 20);
-            this.txtbxLocatie.TabIndex = 16;
             // 
             // lblLocatie
             // 
             this.lblLocatie.AutoSize = true;
             this.lblLocatie.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblLocatie.Location = new System.Drawing.Point(233, 113);
+            this.lblLocatie.Location = new System.Drawing.Point(196, 124);
             this.lblLocatie.Name = "lblLocatie";
-            this.lblLocatie.Size = new System.Drawing.Size(47, 56);
+            this.lblLocatie.Size = new System.Drawing.Size(47, 62);
             this.lblLocatie.TabIndex = 17;
             this.lblLocatie.Text = "Locatie";
             this.lblLocatie.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -204,8 +206,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(593, 357);
+            this.ClientSize = new System.Drawing.Size(518, 373);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MachineNieuw";

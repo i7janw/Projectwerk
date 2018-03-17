@@ -1,24 +1,29 @@
-﻿using System;
+﻿/* Venster dat verschijnt als er Aansluitpunt -> Aanpassen is gekozen.
+ *
+ * Aanpassingen :
+ *  - 20180317 :
+ *      - .ico toegevoegd
+ */
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Laagspanningsnet
 {
-    
     public partial class AansluitpuntAanpassen : Form
     {
-        private Database database;      
+        private readonly Database _database;      
 
         public AansluitpuntAanpassen()
         {
             InitializeComponent();
-            database = new Database();
+            _database = new Database();
         }
 
         private void AansluitpuntAanpassen_Load(object sender, EventArgs e)
         {
             // Haal lijst met alle aansluitpunten op
-            List<String> listAansluitpunt = database.GetAansluitpunten();
+            List<string> listAansluitpunt = _database.GetAansluitpunten();
 
             // Steek ze in de selectie combobox
             cmbAansluitpunt.DataSource = listAansluitpunt;
@@ -31,10 +36,10 @@ namespace Laagspanningsnet
         private void BtnOK_Click(object sender, EventArgs e)
         {
             // Pas de machine aan in de database
-            database.UpdateAansluitpunt(cmbAansluitpunt.Text, txtbxLocatie.Text);
+            _database.UpdateAansluitpunt(cmbAansluitpunt.Text, txtbxLocatie.Text);
 
             // sluit het venster
-            this.DialogResult = DialogResult.OK;
+            DialogResult = DialogResult.OK;
             Close();
         }
 
@@ -47,7 +52,7 @@ namespace Laagspanningsnet
         // Andere machine uit het menu gekozen
         private void cmbAansluitpunt_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtbxLocatie.Text = database.GetAansluitpuntLocatie(cmbAansluitpunt.Text);
+            txtbxLocatie.Text = _database.GetAansluitpuntLocatie(cmbAansluitpunt.Text);
         }
     }
 }

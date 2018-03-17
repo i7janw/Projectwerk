@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MachineAanpassen));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblTitel = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -148,7 +149,7 @@
             this.txtbxLocatie.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtbxLocatie.Location = new System.Drawing.Point(306, 131);
             this.txtbxLocatie.Name = "txtbxLocatie";
-            this.txtbxLocatie.Size = new System.Drawing.Size(278, 20);
+            this.txtbxLocatie.Size = new System.Drawing.Size(232, 20);
             this.txtbxLocatie.TabIndex = 16;
             // 
             // lblMachine
@@ -190,16 +191,16 @@
             this.cmbMachine.FormattingEnabled = true;
             this.cmbMachine.Location = new System.Drawing.Point(306, 17);
             this.cmbMachine.Name = "cmbMachine";
-            this.cmbMachine.Size = new System.Drawing.Size(278, 21);
+            this.cmbMachine.Size = new System.Drawing.Size(232, 21);
             this.cmbMachine.TabIndex = 18;
-            this.cmbMachine.SelectedIndexChanged += new System.EventHandler(this.cmbMachine_SelectedIndexChanged);
+            this.cmbMachine.SelectedIndexChanged += new System.EventHandler(this.CmbMachine_SelectedIndexChanged);
             // 
             // txtbxOmschrijving
             // 
             this.txtbxOmschrijving.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtbxOmschrijving.Location = new System.Drawing.Point(306, 75);
             this.txtbxOmschrijving.Name = "txtbxOmschrijving";
-            this.txtbxOmschrijving.Size = new System.Drawing.Size(278, 20);
+            this.txtbxOmschrijving.Size = new System.Drawing.Size(232, 20);
             this.txtbxOmschrijving.TabIndex = 14;
             // 
             // MachineAanpassen
@@ -208,6 +209,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 357);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MachineAanpassen";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AansluitingAanpassen));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblTitel = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -189,9 +190,9 @@
             // 
             this.cmbMachine.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cmbMachine.FormattingEnabled = true;
-            this.cmbMachine.Location = new System.Drawing.Point(345, 69);
+            this.cmbMachine.Location = new System.Drawing.Point(345, 70);
             this.cmbMachine.Name = "cmbMachine";
-            this.cmbMachine.Size = new System.Drawing.Size(296, 21);
+            this.cmbMachine.Size = new System.Drawing.Size(278, 21);
             this.cmbMachine.TabIndex = 7;
             this.cmbMachine.SelectedIndexChanged += new System.EventHandler(this.CmbMachine_SelectedIndexChanged);
             // 
@@ -199,9 +200,9 @@
             // 
             this.cmbAansluitpunt.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cmbAansluitpunt.FormattingEnabled = true;
-            this.cmbAansluitpunt.Location = new System.Drawing.Point(345, 123);
+            this.cmbAansluitpunt.Location = new System.Drawing.Point(345, 124);
             this.cmbAansluitpunt.Name = "cmbAansluitpunt";
-            this.cmbAansluitpunt.Size = new System.Drawing.Size(296, 21);
+            this.cmbAansluitpunt.Size = new System.Drawing.Size(278, 21);
             this.cmbAansluitpunt.TabIndex = 8;
             this.cmbAansluitpunt.SelectedIndexChanged += new System.EventHandler(this.CmbAansluitpunt_SelectedIndexChanged);
             // 
@@ -265,7 +266,7 @@
             this.txtbxOmschrijving.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtbxOmschrijving.Location = new System.Drawing.Point(345, 179);
             this.txtbxOmschrijving.Name = "txtbxOmschrijving";
-            this.txtbxOmschrijving.Size = new System.Drawing.Size(296, 20);
+            this.txtbxOmschrijving.Size = new System.Drawing.Size(278, 20);
             this.txtbxOmschrijving.TabIndex = 14;
             // 
             // txtbxKabeltype
@@ -273,7 +274,7 @@
             this.txtbxKabeltype.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtbxKabeltype.Location = new System.Drawing.Point(345, 233);
             this.txtbxKabeltype.Name = "txtbxKabeltype";
-            this.txtbxKabeltype.Size = new System.Drawing.Size(296, 20);
+            this.txtbxKabeltype.Size = new System.Drawing.Size(278, 20);
             this.txtbxKabeltype.TabIndex = 15;
             // 
             // txtbxKabelsectie
@@ -281,7 +282,7 @@
             this.txtbxKabelsectie.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtbxKabelsectie.Location = new System.Drawing.Point(345, 287);
             this.txtbxKabelsectie.Name = "txtbxKabelsectie";
-            this.txtbxKabelsectie.Size = new System.Drawing.Size(296, 20);
+            this.txtbxKabelsectie.Size = new System.Drawing.Size(278, 20);
             this.txtbxKabelsectie.TabIndex = 16;
             // 
             // txtbxStroom
@@ -289,7 +290,7 @@
             this.txtbxStroom.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtbxStroom.Location = new System.Drawing.Point(345, 341);
             this.txtbxStroom.Name = "txtbxStroom";
-            this.txtbxStroom.Size = new System.Drawing.Size(296, 20);
+            this.txtbxStroom.Size = new System.Drawing.Size(278, 20);
             this.txtbxStroom.TabIndex = 17;
             this.txtbxStroom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtbxStroom_KeyPress);
             // 
@@ -297,9 +298,9 @@
             // 
             this.cmbPolen.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cmbPolen.FormattingEnabled = true;
-            this.cmbPolen.Location = new System.Drawing.Point(345, 393);
+            this.cmbPolen.Location = new System.Drawing.Point(345, 394);
             this.cmbPolen.Name = "cmbPolen";
-            this.cmbPolen.Size = new System.Drawing.Size(296, 21);
+            this.cmbPolen.Size = new System.Drawing.Size(278, 21);
             this.cmbPolen.TabIndex = 18;
             // 
             // lblKring
@@ -318,8 +319,9 @@
             this.txtbxKring.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtbxKring.Location = new System.Drawing.Point(345, 17);
             this.txtbxKring.Name = "txtbxKring";
-            this.txtbxKring.Size = new System.Drawing.Size(296, 20);
+            this.txtbxKring.Size = new System.Drawing.Size(278, 20);
             this.txtbxKring.TabIndex = 20;
+            this.txtbxKring.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtbxKring_KeyPress);
             // 
             // AansluitingAanpassen
             // 
@@ -327,6 +329,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(671, 621);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AansluitingAanpassen";

@@ -1,24 +1,29 @@
-﻿using System;
+﻿/* Venster dat verschijnt als er Machine -> Verwijderen is gekozen.
+ *
+ * Aanpassingen :
+ *  - 20180317 :
+ *      - .ico toegevoegd
+ */
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Laagspanningsnet
 {
-    
     public partial class MachineVerwijderen : Form
     {
-        private Database database;      
+        private readonly Database _database;      
 
         public MachineVerwijderen()
         {
             InitializeComponent();
-            database = new Database();
+            _database = new Database();
         }
 
         private void MachineVerwijderen_Load(object sender, EventArgs e)
         {
             // Haal lijst met alle niet aangesloten machines op
-            List<String> listMachines = database.GetMachines(true); // true - notConnected
+            List<string> listMachines = _database.GetMachines(true); // true - notConnected
 
             // Steek ze in de selectie combobox
             cmbMachine.DataSource = listMachines;
@@ -32,7 +37,7 @@ namespace Laagspanningsnet
         private void BtnOK_Click(object sender, EventArgs e)
         {
             // Wis de machine uit de database
-            database.DeleteMachine(cmbMachine.Text);
+            _database.DeleteMachine(cmbMachine.Text);
 
             // sluit het venster
             this.DialogResult = DialogResult.OK;
@@ -48,8 +53,8 @@ namespace Laagspanningsnet
         // Andere machine uit het menu gekozen
         private void cmbMachine_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtbxOmschrijving.Text = database.GetMachineOmschrijving(cmbMachine.Text);
-            txtbxLocatie.Text = database.GetMachineLocatie(cmbMachine.Text);
+            txtbxOmschrijving.Text = _database.GetMachineOmschrijving(cmbMachine.Text);
+            txtbxLocatie.Text = _database.GetMachineLocatie(cmbMachine.Text);
         }
     }
 }
