@@ -1,33 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 // print
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
-using PdfiumViewer;
 
 namespace Laagspanningsnet
 {
-    
+
     public partial class Afdrukken : Form
     {
         private Database database;
         private DGV dgvLaagspanningsnet;
         private String selectie;
-        private String huidigAansluitpunt;                // onthouden van het aansluitpunt dat getoond werd toen we op afdrukken klikte.
+
+        private String huidigAansluitpunt; // onthouden van het aansluitpunt dat getoond werd toen we op afdrukken klikte.
+
         private String printer;
         private short kopies;
         private bool inclusief;
 
-        public Afdrukken(DGV _dgv) 
+        public Afdrukken(DGV _dgv)
         {
             InitializeComponent();
             database = new Database();
@@ -101,7 +97,7 @@ namespace Laagspanningsnet
             inclusief = rbtnInclusief.Checked;
             if (selectie.Equals("Huidige Pagina"))
             {
-                selectie = huidigAansluitpunt;                
+                selectie = huidigAansluitpunt;
             }
 
             // Als selectie == "", dan staan we op Transfo of zoekresultaten
@@ -114,31 +110,35 @@ namespace Laagspanningsnet
                 // Afdrukken. 
                 // We starten met het afdrukken van de selectie en
                 // indien gewenst worden ook de aansluitpunten die op de selectie zijn aangesloten afgedrukt.
-                List<string> todo = new List<string>();         // todo = lijst van aansluitpunten waarvan we nog moeten testen of er aansluitpunten op zijn aangesloten
+                List<string>
+                    todo = new List<string>(); // todo = lijst van aansluitpunten waarvan we nog moeten testen of er aansluitpunten op zijn aangesloten
                 todo.Add(selectie);
 
                 while (todo.Count != 0)
-                {                       // zijn er nog te testen aansluitpunten?
-                    List<string> tmp = new List<string>();      // tmp = om nieuwe todo lijst aan te maken
-                    foreach (String ap in todo)                 // doorloop alle aansluitpunten in todo 
+                {
+                    // zijn er nog te testen aansluitpunten?
+                    List<string> tmp = new List<string>(); // tmp = om nieuwe todo lijst aan te maken
+                    foreach (String ap in todo) // doorloop alle aansluitpunten in todo 
                     {
-                        dgvLaagspanningsnet.ShowAansluitpunt(ap);                   // Toon en Print selectie
+                        dgvLaagspanningsnet.ShowAansluitpunt(ap); // Toon en Print selectie
                         Print(doc);
-                        if (inclusief)                          // Gaan we ook de aangesloten aansluitpunten afdrukken?
+                        if (inclusief) // Gaan we ook de aangesloten aansluitpunten afdrukken?
                         {
                             foreach (DataGridViewRow row in dgvLaagspanningsnet.Rows)
                             {
                                 if (row.Cells["Type"].Value != DBNull.Value)
                                 {
-                                    if ((String)row.Cells["Type"].Value == "A")             // is de aansluiting een aansluitpunt?
+                                    if ((String) row.Cells["Type"].Value == "A") // is de aansluiting een aansluitpunt?
                                     {
-                                        tmp.Add((String)row.Cells["Nummer"].Value);         // voeg toe aan tmp (nieuwe todo lijst)
+                                        tmp.Add((String) row.Cells["Nummer"]
+                                            .Value); // voeg toe aan tmp (nieuwe todo lijst)
                                     }
                                 }
                             }
                         }
                     }
-                    todo = tmp;                                 // todo = nieuwe todo lijst.
+
+                    todo = tmp; // todo = nieuwe todo lijst.
                 }
             }
 
@@ -167,16 +167,17 @@ namespace Laagspanningsnet
             String title;
             switch (dgvLaagspanningsnet.GetMode())
             {
-                case 1:     // transfos
+                case 1: // transfos
                     title = "Overzicht transfos";
                     break;
-                case 3:     // search
+                case 3: // search
                     title = "Zoeken : " + _ap;
                     break;
-                default:    // aansluitpunt // case 2 = default
+                default: // aansluitpunt // case 2 = default
                     title = "Layout van " + _ap;
                     break;
             }
+
             text = new Paragraph(title, titleFont);
             text.Alignment = Element.ALIGN_CENTER;
             text.SpacingAfter = 20;
@@ -185,12 +186,12 @@ namespace Laagspanningsnet
             // Info
             String voeding = database.GetVoeding(_ap);
             String locatie = database.GetAansluitpuntLocatie(_ap);
-            String kabel   = database.GetKabel(_ap);
-            String stroom  = database.GetStroom(_ap);
+            String kabel = database.GetKabel(_ap);
+            String stroom = database.GetStroom(_ap);
             text = new Paragraph("Voeding : " + voeding + "\n" +
-                "Kabel : " + kabel + "\n" +
-                "Stroom : " + stroom + "\n" +
-                "Locatie : " + locatie, font);
+                                 "Kabel : " + kabel + "\n" +
+                                 "Stroom : " + stroom + "\n" +
+                                 "Locatie : " + locatie, font);
             text.Alignment = Element.ALIGN_LEFT;
             text.SpacingAfter = 20;
             doc.Add(text);
@@ -198,7 +199,7 @@ namespace Laagspanningsnet
             // Table
             PdfPTable table = new PdfPTable(7);
             table.WidthPercentage = 100;
-            float[] widths = new float[] { 1, 2, 5, 3, 2, 2, 2 };
+            float[] widths = new float[] {1, 2, 5, 3, 2, 2, 2};
             table.SetWidths(widths);
             //PdfPRow row = null;
             //float[] widths = new float[] { 4f, 4f, 4f, 4f };
@@ -217,6 +218,7 @@ namespace Laagspanningsnet
                 {
                     break;
                 }
+
                 table.AddCell(new Phrase(dtRow["Kring"].ToString(), font));
                 table.AddCell(new Phrase(dtRow["Nummer"].ToString(), font));
                 table.AddCell(new Phrase(dtRow["Omschrijving"].ToString(), font));
@@ -225,6 +227,7 @@ namespace Laagspanningsnet
                 table.AddCell(new Phrase(dtRow["Aantal Polen"].ToString(), font));
                 table.AddCell(new Phrase(dtRow["Locatie"].ToString(), font));
             }
+
             doc.Add(table);
 
             // Volgende pagina
@@ -238,7 +241,7 @@ namespace Laagspanningsnet
                 var printerSettings = new PrinterSettings
                 {
                     PrinterName = printer,
-                    Copies = (short)kopies,
+                    Copies = (short) kopies,
                 };
 
                 var pageSettings = new PageSettings(printerSettings)
@@ -254,6 +257,7 @@ namespace Laagspanningsnet
                         break;
                     }
                 }
+
                 var stream = new MemoryStream(_stream);
                 using (var document = PdfiumViewer.PdfDocument.Load(stream))
                 {
@@ -265,6 +269,7 @@ namespace Laagspanningsnet
                         printDocument.Print();
                     }
                 }
+
                 return true;
             }
             catch

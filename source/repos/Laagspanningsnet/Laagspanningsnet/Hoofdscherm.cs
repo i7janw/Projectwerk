@@ -1,23 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 // Deze verwijderen als afdrukken in een aparte klasse steekt.
-using iTextSharp.text;
-using iTextSharp.text.pdf;
-using System.IO;
 
 namespace Laagspanningsnet
 {
     public partial class Hoofdscherm : Form
     {
-        private Database database;      // Alle communicatie met de database verloopt via de database klasse
-        private bool unsaved;           // Staan er niet bewaarde gegevens op het scherm?
+        private Database _database;      // Alle communicatie met de database verloopt via de database klasse
+        private bool _unsaved;           // Staan er niet bewaarde gegevens op het scherm?
         
         public Hoofdscherm()
         {
@@ -26,7 +19,7 @@ namespace Laagspanningsnet
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            database = new Database();
+            _database = new Database();
             dgvLaagspanningsnet.ShowTransfos();             // We starten met een overzicht van de Transfos
         }
 
@@ -109,10 +102,10 @@ namespace Laagspanningsnet
 
         /* Bijhouden of data reeds in database is opgeslagen
          */
-        private void SetUnsaved(bool _status)
+        private void SetUnsaved(bool status)
         {
-            unsaved = _status;
-            if (unsaved)
+            _unsaved = status;
+            if (_unsaved)
             {
                 btnSave.BackColor = Color.Red;
             }
@@ -139,7 +132,7 @@ namespace Laagspanningsnet
         {
             // Als er geen unsaved data is, moet er niks gebeuren.
             // Als er geen aansluitpunt getoond wordt, kan er niets veranderd zijn --> niks te doen.
-            if (!unsaved || dgvLaagspanningsnet.GetMode() != 2)
+            if (!_unsaved || dgvLaagspanningsnet.GetMode() != 2)
             {
                 return;
             }
@@ -214,7 +207,7 @@ namespace Laagspanningsnet
             }
 
             // De database dataset sturen we naar de database, die de gegevens op de mySQL-server zal opslaan
-            database.SetAansluitingen(dsDatabase);
+            _database.SetAansluitingen(dsDatabase);
 
             // Gegevens terug inladen zodat hetgene op het scherm staat zeker hetzelfde is als in de database is opgeslagen
             dgvLaagspanningsnet.Reload();
@@ -312,42 +305,42 @@ namespace Laagspanningsnet
         // Voorlopig een test als er op afdrukken wordt geklikt
         private void afdrukkenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            String _ap = dgvLaagspanningsnet.GetAansluitpunt();
-            int _mode = dgvLaagspanningsnet.GetMode();              // Afdrukken pas de huidige view aan, oude view onthouden
+            String aansluitpunt = dgvLaagspanningsnet.GetAansluitpunt();
+            int mode = dgvLaagspanningsnet.GetMode();              // Afdrukken pas de huidige view aan, oude view onthouden
             Afdrukken prn = new Afdrukken(dgvLaagspanningsnet);
             if (prn.ShowDialog() != DialogResult.Cancel)            // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
             {
-                dgvLaagspanningsnet.Reload(_ap, _mode);             // oude view terugzetten.
+                dgvLaagspanningsnet.Reload(aansluitpunt, mode);             // oude view terugzetten.
             }
         }
 
         private void dgvLaagspanningsnet_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            String _ap = dgvLaagspanningsnet.GetAansluitpunt();
+            string aansluitpunt = dgvLaagspanningsnet.GetAansluitpunt();
             switch (dgvLaagspanningsnet.GetMode())
             {
                 case 1:     // transfos
                     lblLayout.Text = "Overzicht transfos";
                     break;
                 case 3:     // search
-                    lblLayout.Text = "Zoeken : " + _ap;
+                    lblLayout.Text = "Zoeken : " + aansluitpunt;
                     break;
                 default:    // aansluitpunt // case 2 = default
-                    lblLayout.Text = "Layout van " + _ap;
+                    lblLayout.Text = "Layout van " + aansluitpunt;
                     break;
             }
             
             // Text in button voeding aanpassen
-            btnDynVoeding.Text = database.GetVoeding(_ap);
+            btnDynVoeding.Text = _database.GetVoeding(aansluitpunt);
 
             // Text Locatie aanpassen
-            lblDynLocatie.Text = database.GetAansluitpuntLocatie(_ap);
+            lblDynLocatie.Text = _database.GetAansluitpuntLocatie(aansluitpunt);
 
             // Text kabel aanpassen
-            lblDynKabel.Text = database.GetKabel(_ap);
+            lblDynKabel.Text = _database.GetKabel(aansluitpunt);
 
             // Text stroom aanpassen
-            lblDynStroom.Text = database.GetStroom(_ap);
+            lblDynStroom.Text = _database.GetStroom(aansluitpunt);
 
             // Alle data staat op het scherm --> unsaved=false
             SetUnsaved(false);
