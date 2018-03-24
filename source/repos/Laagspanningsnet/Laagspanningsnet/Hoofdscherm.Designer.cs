@@ -41,7 +41,6 @@
             this.aanpassenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verwijderenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.afdrukkenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dgvLaagspanningsnet = new Laagspanningsnet.LaagspanningGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnUndo = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -58,12 +57,14 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtbxSearch = new System.Windows.Forms.TextBox();
+            this.afsluitenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dgvLaagspanningsnet = new Laagspanningsnet.LaagspanningGridView();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLaagspanningsnet)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLaagspanningsnet)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -90,7 +91,8 @@
             this.startToolStripMenuItem,
             this.aansluitpuntToolStripMenuItem,
             this.machineToolStripMenuItem,
-            this.afdrukkenToolStripMenuItem});
+            this.afdrukkenToolStripMenuItem,
+            this.afsluitenToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1194, 27);
@@ -102,6 +104,7 @@
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
             this.startToolStripMenuItem.Size = new System.Drawing.Size(50, 23);
             this.startToolStripMenuItem.Text = "Start";
+            this.startToolStripMenuItem.Click += new System.EventHandler(this.MenuStart_Click);
             // 
             // aansluitpuntToolStripMenuItem
             // 
@@ -118,21 +121,21 @@
             this.nieuwToolStripMenuItem1.Name = "nieuwToolStripMenuItem1";
             this.nieuwToolStripMenuItem1.Size = new System.Drawing.Size(151, 24);
             this.nieuwToolStripMenuItem1.Text = "Nieuw";
-            this.nieuwToolStripMenuItem1.Click += new System.EventHandler(this.nieuwToolStripMenuItem1_Click);
+            this.nieuwToolStripMenuItem1.Click += new System.EventHandler(this.MenuAansluitpuntNieuw_Click);
             // 
             // aanpassenToolStripMenuItem1
             // 
             this.aanpassenToolStripMenuItem1.Name = "aanpassenToolStripMenuItem1";
             this.aanpassenToolStripMenuItem1.Size = new System.Drawing.Size(151, 24);
             this.aanpassenToolStripMenuItem1.Text = "Aanpassen";
-            this.aanpassenToolStripMenuItem1.Click += new System.EventHandler(this.aanpassenToolStripMenuItem1_Click);
+            this.aanpassenToolStripMenuItem1.Click += new System.EventHandler(this.MenuAansluitpuntAanpassen_Click);
             // 
             // verwijderenToolStripMenuItem1
             // 
             this.verwijderenToolStripMenuItem1.Name = "verwijderenToolStripMenuItem1";
             this.verwijderenToolStripMenuItem1.Size = new System.Drawing.Size(151, 24);
             this.verwijderenToolStripMenuItem1.Text = "Verwijderen";
-            this.verwijderenToolStripMenuItem1.Click += new System.EventHandler(this.verwijderenToolStripMenuItem1_Click);
+            this.verwijderenToolStripMenuItem1.Click += new System.EventHandler(this.MenuAansluitpuntVerwijderen_Click);
             // 
             // machineToolStripMenuItem
             // 
@@ -149,48 +152,28 @@
             this.nieuwToolStripMenuItem.Name = "nieuwToolStripMenuItem";
             this.nieuwToolStripMenuItem.Size = new System.Drawing.Size(151, 24);
             this.nieuwToolStripMenuItem.Text = "Nieuw";
-            this.nieuwToolStripMenuItem.Click += new System.EventHandler(this.NieuwToolStripMenuItem_Click);
+            this.nieuwToolStripMenuItem.Click += new System.EventHandler(this.MenuMachineNieuw_Click);
             // 
             // aanpassenToolStripMenuItem
             // 
             this.aanpassenToolStripMenuItem.Name = "aanpassenToolStripMenuItem";
             this.aanpassenToolStripMenuItem.Size = new System.Drawing.Size(151, 24);
             this.aanpassenToolStripMenuItem.Text = "Aanpassen";
-            this.aanpassenToolStripMenuItem.Click += new System.EventHandler(this.aanpassenToolStripMenuItem_Click);
+            this.aanpassenToolStripMenuItem.Click += new System.EventHandler(this.MenuMachineAanpassen_Click);
             // 
             // verwijderenToolStripMenuItem
             // 
             this.verwijderenToolStripMenuItem.Name = "verwijderenToolStripMenuItem";
             this.verwijderenToolStripMenuItem.Size = new System.Drawing.Size(151, 24);
             this.verwijderenToolStripMenuItem.Text = "Verwijderen";
-            this.verwijderenToolStripMenuItem.Click += new System.EventHandler(this.verwijderenToolStripMenuItem_Click);
+            this.verwijderenToolStripMenuItem.Click += new System.EventHandler(this.MenuMachineVerwijderen_Click);
             // 
             // afdrukkenToolStripMenuItem
             // 
             this.afdrukkenToolStripMenuItem.Name = "afdrukkenToolStripMenuItem";
             this.afdrukkenToolStripMenuItem.Size = new System.Drawing.Size(84, 23);
             this.afdrukkenToolStripMenuItem.Text = "Afdrukken";
-            this.afdrukkenToolStripMenuItem.Click += new System.EventHandler(this.afdrukkenToolStripMenuItem_Click);
-            // 
-            // dgvLaagspanningsnet
-            // 
-            this.dgvLaagspanningsnet.AllowUserToAddRows = false;
-            this.dgvLaagspanningsnet.AllowUserToDeleteRows = false;
-            this.dgvLaagspanningsnet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvLaagspanningsnet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLaagspanningsnet.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLaagspanningsnet.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvLaagspanningsnet.Location = new System.Drawing.Point(3, 180);
-            this.dgvLaagspanningsnet.MultiSelect = false;
-            this.dgvLaagspanningsnet.Name = "dgvLaagspanningsnet";
-            this.dgvLaagspanningsnet.RowHeadersVisible = false;
-            this.dgvLaagspanningsnet.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvLaagspanningsnet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLaagspanningsnet.Size = new System.Drawing.Size(1188, 516);
-            this.dgvLaagspanningsnet.TabIndex = 1;
-            this.dgvLaagspanningsnet.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvLaagspanningsnet_CellContentClick);
-            this.dgvLaagspanningsnet.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLaagspanningsnet_CellValueChanged);
-            this.dgvLaagspanningsnet.SelectionChanged += new System.EventHandler(this.DgvLaagspanningsnet_SelectionChanged);
+            this.afdrukkenToolStripMenuItem.Click += new System.EventHandler(this.MenuAfdrukken_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -404,6 +387,33 @@
             this.txtbxSearch.TabIndex = 0;
             this.txtbxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtbxSearch_KeyDown);
             // 
+            // afsluitenToolStripMenuItem
+            // 
+            this.afsluitenToolStripMenuItem.Name = "afsluitenToolStripMenuItem";
+            this.afsluitenToolStripMenuItem.Size = new System.Drawing.Size(74, 23);
+            this.afsluitenToolStripMenuItem.Text = "Afsluiten";
+            this.afsluitenToolStripMenuItem.Click += new System.EventHandler(this.MenuAfsluiten_Click);
+            // 
+            // dgvLaagspanningsnet
+            // 
+            this.dgvLaagspanningsnet.AllowUserToAddRows = false;
+            this.dgvLaagspanningsnet.AllowUserToDeleteRows = false;
+            this.dgvLaagspanningsnet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvLaagspanningsnet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLaagspanningsnet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvLaagspanningsnet.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvLaagspanningsnet.Location = new System.Drawing.Point(3, 180);
+            this.dgvLaagspanningsnet.MultiSelect = false;
+            this.dgvLaagspanningsnet.Name = "dgvLaagspanningsnet";
+            this.dgvLaagspanningsnet.RowHeadersVisible = false;
+            this.dgvLaagspanningsnet.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvLaagspanningsnet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvLaagspanningsnet.Size = new System.Drawing.Size(1188, 516);
+            this.dgvLaagspanningsnet.TabIndex = 1;
+            this.dgvLaagspanningsnet.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvLaagspanningsnet_CellContentClick);
+            this.dgvLaagspanningsnet.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvLaagspanningsnet_CellValueChanged);
+            this.dgvLaagspanningsnet.SelectionChanged += new System.EventHandler(this.DgvLaagspanningsnet_SelectionChanged);
+            // 
             // Hoofdscherm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -414,18 +424,19 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Hoofdscherm";
             this.Text = "Laagspanningsnet : Hansen Industrial Transmissions";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Hoofdscherm_FormClosing);
+            this.Load += new System.EventHandler(this.Hoofdscherm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLaagspanningsnet)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLaagspanningsnet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -461,6 +472,7 @@
         private System.Windows.Forms.ToolStripMenuItem nieuwToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem aanpassenToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem verwijderenToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem afsluitenToolStripMenuItem;
     }
 }
 

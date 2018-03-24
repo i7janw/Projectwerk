@@ -3,13 +3,16 @@
  * Aanpassingen :
  *  - 20180317 :
  *      - .ico toegevoegd
+ *      - DgvLaagspanningsnet_CellContentClick clean up & verbeterd , unsaved werkt nu correct
+ *  - 20180324 :
+ *      - Messagebox unsaved toegevoegd
+ *      - Menu start en afsluiten toegevoegd
  */
 using System;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-// Deze verwijderen als afdrukken in een aparte klasse steekt.
 
 namespace Laagspanningsnet
 {
@@ -24,7 +27,7 @@ namespace Laagspanningsnet
             _database = new Database();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Hoofdscherm_Load(object sender, EventArgs e)
         {
             dgvLaagspanningsnet.ShowTransfos();             // We starten met een overzicht van de Transfos
         }
@@ -38,67 +41,73 @@ namespace Laagspanningsnet
             {
                 return;
             }
-            DataGridView dgv = sender as DataGridView;
 
             // Is er op een cell met een button gedrukt?
-            if (dgv[e.ColumnIndex, e.RowIndex].GetType() != typeof(DataGridViewButtonCell))
+            if (sender is LaagspanningGridView dgv && dgv[e.ColumnIndex, e.RowIndex].GetType() != typeof(DataGridViewButtonCell))
             {
                 return; // Geen button --> negeren
             }
 
-            // Afhandelen van drukken op +/-/A
-            if (e.ColumnIndex == 0) // +
+            switch (e.ColumnIndex)
             {
-                SetUnsaved(true);
-                // Maak een nieuwe dataRow aan en vul deze met default gegevens
-                DataRow row = dgvLaagspanningsnet.GetDataTable().NewRow();
-                row["+"] = "+";
-                row["-"] = "-";
-                row["A"] = "A";
-                row["Kring"] = "Nieuw";
-                row["Type"] = "N";
-                row["T/VB/K"] = dgvLaagspanningsnet.GetAansluitpunt();
-                dgvLaagspanningsnet.GetDataTable().Rows.InsertAt(row, e.RowIndex);
-                // maak van de +/-/A velden reeds knoppen
-                dgvLaagspanningsnet.MakeButtons(e.RowIndex);
-                AansluitingAanpassen aa = new AansluitingAanpassen(dgvLaagspanningsnet.GetDataTable(), e.RowIndex);
-                if (aa.ShowDialog() == DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
-                {
-                    dgvLaagspanningsnet.GetDataTable().Rows.Remove(row);                 // Verwijder de toegevoegde rij als er op cancel is gedrukt.
-                    return;
-                }
-                // knoppen updaten
-                dgvLaagspanningsnet.MakeButtons(e.RowIndex);
-                return;
-            }
-            if (e.ColumnIndex == 1) // -
-            {
-                dgvLaagspanningsnet.GetDataTable().Rows.RemoveAt(e.RowIndex);
-                SetUnsaved(true);
-                return;
-            }
-            if (e.ColumnIndex == 2) // A
-            {
-                SetUnsaved(true);
-                // Open het venster om aanpassingen te doen
-                AansluitingAanpassen aa = new AansluitingAanpassen(dgvLaagspanningsnet.GetDataTable(), e.RowIndex);
-                aa.ShowDialog();    // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
-                // knoppen updaten
-                dgvLaagspanningsnet.MakeButtons(e.RowIndex);
-                return;
-            }
+                case 0: // +
+                    // Maak een nieuwe dataRow aan en vul deze met default gegevens
+                    DataRow row = dgvLaagspanningsnet.GetDataTable().NewRow();
+                    row["+"] = "+";
+                    row["-"] = "-";
+                    row["A"] = "A";
+                    row["Kring"] = "Nieuw";
+                    row["Type"] = "N";
+                    row["T/VB/K"] = dgvLaagspanningsnet.GetAansluitpunt();
+                    dgvLaagspanningsnet.GetDataTable().Rows.InsertAt(row, e.RowIndex);
+                    // maak van de +/-/A velden reeds knoppen
+                    dgvLaagspanningsnet.MakeButtons(e.RowIndex);
 
-            // Doorbladeren naar een ander aansluitpunt
-            dgvLaagspanningsnet.ShowAansluitpunt(dgvLaagspanningsnet.GetDataTable().Rows[e.RowIndex][e.ColumnIndex].ToString());
+                    // Open het venster om aanpassingen te doen
+                    AansluitingAanpassen an = new AansluitingAanpassen(dgvLaagspanningsnet.GetDataTable(), e.RowIndex);
+                    switch (an.ShowDialog())
+                    {
+                        case DialogResult.Cancel:
+                            dgvLaagspanningsnet.GetDataTable().Rows.Remove(row); // Verwijder de toegevoegde rij als er op cancel is gedrukt.
+                            break;
+                        default:
+                            dgvLaagspanningsnet.MakeButtons(e.RowIndex); // knoppen updaten
+                            SetUnsaved(true); // er is iets aangepast --> unsaved = true
+                            break;
+                    }
+                    break;
+                case 1: // -
+                    dgvLaagspanningsnet.GetDataTable().Rows.RemoveAt(e.RowIndex);
+                    SetUnsaved(true);
+                    break;
+                case 2: // A
+                    // Open het venster om aanpassingen te doen
+                    AansluitingAanpassen aa = new AansluitingAanpassen(dgvLaagspanningsnet.GetDataTable(), e.RowIndex);
+                    switch (aa.ShowDialog())
+                    {
+                        case DialogResult.Cancel:
+                            break;
+                        default:
+                            dgvLaagspanningsnet.MakeButtons(e.RowIndex); // knoppen updaten
+                            SetUnsaved(true); // er is iets aangepast --> unsaved = true
+                            break;
+                    }
+                    break;
+                default:
+                    // Doorbladeren naar een ander aansluitpunt
+                    if (!GetUnsaved()) dgvLaagspanningsnet.ShowAansluitpunt(dgvLaagspanningsnet.GetDataTable().Rows[e.RowIndex][e.ColumnIndex].ToString());
+                    break;
+            }
         }
 
         /* Als er op de knop van de voeding wordt geklikt, gaan we naar het scherm van dit aansluitpunt.
          */
         private void BtnDynVoeding_Click(object sender, EventArgs e)
         {
-            Button button = sender as Button;
-            String ap = button.Text.Split(' ').First();
-            if (ap == "-")
+            if (!(sender is Button button)) return;
+            if (GetUnsaved()) return;
+                string ap = button.Text.Split(' ').First();     // Het eerste veld is de naam van het aansluitpunt
+            if (ap.Equals("-"))
             {
                 dgvLaagspanningsnet.ShowTransfos();
                 return;
@@ -110,15 +119,9 @@ namespace Laagspanningsnet
          */
         private void SetUnsaved(bool status)
         {
+            Console.WriteLine("UNSAVED" + status);
             _unsaved = status;
-            if (_unsaved)
-            {
-                btnSave.BackColor = Color.Red;
-            }
-            else
-            {
-                btnSave.BackColor = Color.Green;
-            }
+            btnSave.BackColor = _unsaved ? Color.Red : Color.Green;
         }
 
         /* De blauwe selectie-balk hebben we in dit programma niet nodig.
@@ -138,11 +141,8 @@ namespace Laagspanningsnet
         {
             // Als er geen unsaved data is, moet er niks gebeuren.
             // Als er geen aansluitpunt getoond wordt, kan er niets veranderd zijn --> niks te doen.
-            if (!_unsaved || dgvLaagspanningsnet.GetMode() != 2)
-            {
-                return;
-            }
-
+            if (!_unsaved || dgvLaagspanningsnet.GetMode() != 2) return;
+            
             // Maak een nieuwe Dataset aan met de nodige columns, waar de gegevens voor de database in komen
             DataSet dsDatabase = new DataSet();
             DataTable dtDatabase = new DataTable("aansluitingen");
@@ -161,24 +161,24 @@ namespace Laagspanningsnet
             // Opm. de laatste lijn is de lege lijn met een plus dus die lezen we niet.
             for (int count = 0; count < dgvLaagspanningsnet.GetDataTable().Select().Length - 1; count++)
             {
-                DataRow rowDatabase = dtDatabase.NewRow();       // nieuwe row dtDatabase 
+                DataRow rowDatabase = dtDatabase.NewRow();                                // nieuwe row dtDatabase 
                 DataRow rowDisplay = dgvLaagspanningsnet.GetDataTable().Rows[count];      // lees een row dtDisplay
 
                 rowDatabase["AP_id"] = dgvLaagspanningsnet.GetAansluitpunt();
                 rowDatabase["A_id"] = rowDisplay["Kring"];
-                if ((string)rowDisplay["Type"] == "N")
+                if (rowDisplay["Type"].Equals("N"))
                 {
                     rowDatabase["Naar_AP_id"] = null;
                     rowDatabase["Naar_M_id"] = null;
                     rowDatabase["Omschrijving"] = rowDisplay["Omschrijving"];
                 }
-                if ((string)rowDisplay["Type"] == "M")
+                if (rowDisplay["Type"].Equals("M"))
                 {
                     rowDatabase["Naar_AP_id"] = null;
                     rowDatabase["Naar_M_id"] = rowDisplay["Nummer"];
                     rowDatabase["Omschrijving"] = null;
                 }
-                if ((string)rowDisplay["Type"] == "A")
+                if (rowDisplay["Type"].Equals("A"))
                 {
                     rowDatabase["Naar_AP_id"] = rowDisplay["Nummer"];
                     rowDatabase["Naar_M_id"] = null;
@@ -188,10 +188,9 @@ namespace Laagspanningsnet
                 rowDatabase["Kabelsectie"] = rowDisplay["Kabelsectie"];
 
                 // stroom & polen = int --> via Int32.TryParse
-                int convert;
                 if (rowDisplay["Stroom (A)"] == DBNull.Value) rowDisplay["Stroom (A)"] = "";
                 if (rowDisplay["Aantal polen"] == DBNull.Value) rowDisplay["Aantal polen"] = "";
-                if (Int32.TryParse((String)rowDisplay["Stroom (A)"], out convert))
+                if (Int32.TryParse((string)rowDisplay["Stroom (A)"], out int convert))
                 {
                     rowDatabase["Stroom"] = convert;
                 }
@@ -226,6 +225,7 @@ namespace Laagspanningsnet
             if (dgvLaagspanningsnet.GetMode() == 2)
             {
                 dgvLaagspanningsnet.Reload();
+                SetUnsaved(false);
             }
         }
 
@@ -233,7 +233,7 @@ namespace Laagspanningsnet
          */
         private void BtnSearch_Click(object sender, EventArgs e)
         {
-            dgvLaagspanningsnet.ShowSearch(txtbxSearch.Text);
+            if(!GetUnsaved()) dgvLaagspanningsnet.ShowSearch(txtbxSearch.Text);
         }
 
         /* Op Enter drukken in de search box = op de zoekknop klikken
@@ -242,7 +242,8 @@ namespace Laagspanningsnet
         {
             if (e.KeyCode == Keys.Enter)
             {
-                BtnSearch_Click(this, new EventArgs());
+                // Druk op de zoek-knop
+                btnSearch.PerformClick();
 
                 // Toegevoegd omdat anders een ding-sound wordt afgespeeld na het drukken op enter.
                 // <https://stackoverflow.com/questions/6290967/stop-the-ding-when-pressing-enter>
@@ -251,10 +252,9 @@ namespace Laagspanningsnet
             }
         }
                 
-        // ---------------------------------- NEW ----------------------------------------------------------------------------
-
-        private void NieuwToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MenuMachineNieuw_Click(object sender, EventArgs e)
         {
+            if (GetUnsaved()) return;
             MachineNieuw mn = new MachineNieuw();
             if (mn.ShowDialog() != DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
             {
@@ -262,8 +262,9 @@ namespace Laagspanningsnet
             }
         }
 
-        private void aanpassenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MenuMachineAanpassen_Click(object sender, EventArgs e)
         {
+            if (GetUnsaved()) return;
             MachineAanpassen ma = new MachineAanpassen();
             if (ma.ShowDialog() != DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
             {
@@ -271,8 +272,9 @@ namespace Laagspanningsnet
             }
         }
 
-        private void verwijderenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MenuMachineVerwijderen_Click(object sender, EventArgs e)
         {
+            if (GetUnsaved()) return;
             MachineVerwijderen mv = new MachineVerwijderen();
             if (mv.ShowDialog() != DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
             {
@@ -280,7 +282,7 @@ namespace Laagspanningsnet
             }
         }
 
-        private void nieuwToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void MenuAansluitpuntNieuw_Click(object sender, EventArgs e)
         {
             AansluitpuntNieuw an = new AansluitpuntNieuw();
             if (an.ShowDialog() != DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
@@ -290,7 +292,7 @@ namespace Laagspanningsnet
             
         }
 
-        private void aanpassenToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void MenuAansluitpuntAanpassen_Click(object sender, EventArgs e)
         {
             AansluitpuntAanpassen aa = new AansluitpuntAanpassen();
             if (aa.ShowDialog() != DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
@@ -299,7 +301,7 @@ namespace Laagspanningsnet
             }
         }
 
-        private void verwijderenToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void MenuAansluitpuntVerwijderen_Click(object sender, EventArgs e)
         {
             AansluitpuntVerwijderen av = new AansluitpuntVerwijderen();
             if (av.ShowDialog() != DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
@@ -308,21 +310,34 @@ namespace Laagspanningsnet
             }
         }
 
-        // Voorlopig een test als er op afdrukken wordt geklikt
-        private void afdrukkenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MenuAfdrukken_Click(object sender, EventArgs e)
         {
-            String aansluitpunt = dgvLaagspanningsnet.GetAansluitpunt();
-            int mode = dgvLaagspanningsnet.GetMode();              // Afdrukken pas de huidige view aan, oude view onthouden
+            string aansluitpunt = dgvLaagspanningsnet.GetAansluitpunt();
+            int mode = dgvLaagspanningsnet.GetMode();                       // Afdrukken pas de huidige view aan, oude view onthouden
             Afdrukken prn = new Afdrukken(dgvLaagspanningsnet);
-            if (prn.ShowDialog() != DialogResult.Cancel)            // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
+            if (prn.ShowDialog() != DialogResult.Cancel)                    // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
             {
                 dgvLaagspanningsnet.Reload(aansluitpunt, mode);             // oude view terugzetten.
             }
         }
 
-        private void dgvLaagspanningsnet_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        // Data in dgvLaagspanningsnet is ge-updated --> de nodige velden op het scherm updaten
+        private string _huidigAansluitpunt;                                 // Gebruikt in 'DgvLaagspanningsnet_CellValueChanged' om enkel te updaten indien echt nodig
+        private void DgvLaagspanningsnet_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
+            // We gaan er van uit dat als de data geupdated wordt, deze overeenkomt met de database.
+            // Indien dit niet zo is, is het de taak van de andere methodes om SetUnsaved(true) uit te voeren.
+            SetUnsaved(false);
+
+            // Welk aansluitpunt wordt er nu getoond?
             string aansluitpunt = dgvLaagspanningsnet.GetAansluitpunt();
+
+            // Enkel de labels op het scherm  updaten als het echt nodig is.
+            if (_huidigAansluitpunt != null && _huidigAansluitpunt.Equals(aansluitpunt)) return;
+            _huidigAansluitpunt = aansluitpunt;
+
+            Console.WriteLine("Updating DataGridView"  + aansluitpunt );
+
             switch (dgvLaagspanningsnet.GetMode())
             {
                 case 1:     // transfos
@@ -347,9 +362,45 @@ namespace Laagspanningsnet
 
             // Text stroom aanpassen
             lblDynStroom.Text = _database.GetStroom(aansluitpunt);
+        }
 
-            // Alle data staat op het scherm --> unsaved=false
-            SetUnsaved(false);
+        // Zijn er niet bewaarde gegevens
+        private bool GetUnsaved()
+        {
+            // Als er geen unsaved data is, geven we dit door
+            if (_unsaved == false) return false;
+
+            // Als er wel unsaved data is, geven we de mogelijkheid om de gevens op te slaan
+            DialogResult dialogResult = MessageBox.Show("Wilt u de wijzigingen die zijn aangebracht opslaan?", "Opslaan?", MessageBoxButtons.YesNoCancel);
+            if (dialogResult == DialogResult.Yes)           // YES
+            {
+                btnSave.PerformClick();                     // gegevens opslaan
+                return false;
+            }
+            if (dialogResult == DialogResult.No)            // NO
+            {
+                return false;                               // we negeren het feit dat de gegevens niet zijn opgeslagen
+            }
+            // Cancel
+            return true;                                    // er zijn niet opgeslagen gegevens
+        }
+
+        // Event : venster wordt gesloten
+        private void Hoofdscherm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (GetUnsaved()) e.Cancel = true;              // Als er unsaved data is, niet sluiten!
+        }
+
+        // Menu : Afsluiten geklikt
+        private void MenuAfsluiten_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        // Menu : Start geklikt
+        private void MenuStart_Click(object sender, EventArgs e)
+        {
+            if(!GetUnsaved()) dgvLaagspanningsnet.ShowTransfos();
         }
     }
 }

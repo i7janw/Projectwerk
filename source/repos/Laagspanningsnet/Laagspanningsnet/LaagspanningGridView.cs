@@ -1,4 +1,8 @@
 ﻿/* LaagspanningGridView : Dit is een DataGridView waar extra's aan toegevoegd zijn voor het tonen Laagspanningsnet informatie.
+ *
+ * Aanpassingen :
+ *  - 20180317 :
+ *      - width omschrijving aangepast
  */
 using System;
 using System.Data;
@@ -191,6 +195,9 @@ namespace Laagspanningsnet
             Columns["-"].HeaderText = "";
             Columns["A"].Width = 25;
             Columns["A"].HeaderText = "";
+
+            // width omschrijving instellen
+            Columns["Omschrijving"].Width = Width / 3;
 
             // Niet sorteren van columns
             foreach (DataGridViewColumn column in Columns)

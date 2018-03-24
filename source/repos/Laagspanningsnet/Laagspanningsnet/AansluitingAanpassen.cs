@@ -4,6 +4,7 @@
  *  - 20180317 :
  *      - beperken van welke characters er in de kring txtbx ingegeven kunnen worden
  *      - max.lengte van txtbx'en aangepast volgens datawoordenboek
+ *      - titel "Nieuwe aansluiting ingeven" toegevoegd
  */
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace Laagspanningsnet
         private readonly int _index;
         private readonly Database _database;      // Nodig om machine en aansluitpunten lijst op te halen
 
-        // Aansluiting aanpassen , _aanpassen TRUE --> reeds bestaande kring aanpassen
+        // Aansluiting aanpassen
         public AansluitingAanpassen(DataTable dt, int index)
         {
             InitializeComponent();
@@ -47,14 +48,19 @@ namespace Laagspanningsnet
             }
             // Lijst met Machines aanmaken
             List<string> listMachines = _database.GetMachines(true);             // uit database ophalen (true = enkel niet aangesloten)
-            listMachines.Insert(0, "Geen");                                     // 'geen' als keuze toevoegen
+            listMachines.Insert(0, "Geen");                                      // 'geen' als keuze toevoegen
             
-            // Lijst met aansluitpunten aanmaken                                // uit database ophalen
+            // Lijst met aansluitpunten aanmaken                                 // uit database ophalen
             List<string> listAansluitpunten = _database.GetAansluitpunten(true); // 'geen' als keuze toevoegen (true = enkel niet aangesloten)
             listAansluitpunten.Insert(0, "Geen");
 
             // Pas de titel aan
-            Text = "Aansluiting " + _aansluitpunt + " - "+ (string)_row["Kring"] + " aanpassen";
+            if (_row["Kring"].Equals("Nieuw"))
+            {
+                Text = "Nieuwe aansluiting ingeven";
+            } else { 
+                Text = "Aansluiting " + _aansluitpunt + " - "+ (string)_row["Kring"] + " aanpassen";
+            }
             lblTitel.Text = _aansluitpunt + " - " + (string)_row["Kring"];
 
             // Wat is er op deze aansluiting aangesloten?
@@ -188,6 +194,7 @@ namespace Laagspanningsnet
                 if(cmbAansluitpunt.Text == "Geen")
                 {
                     txtbxOmschrijving.Enabled = true;
+                    txtbxOmschrijving.Text = "";
                 }
                 return;
             }

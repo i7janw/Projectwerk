@@ -149,10 +149,11 @@
             // cmbAansluitpunt
             // 
             this.cmbAansluitpunt.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cmbAansluitpunt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAansluitpunt.FormattingEnabled = true;
-            this.cmbAansluitpunt.Location = new System.Drawing.Point(306, 15);
+            this.cmbAansluitpunt.Location = new System.Drawing.Point(306, 14);
             this.cmbAansluitpunt.Name = "cmbAansluitpunt";
-            this.cmbAansluitpunt.Size = new System.Drawing.Size(278, 21);
+            this.cmbAansluitpunt.Size = new System.Drawing.Size(243, 21);
             this.cmbAansluitpunt.TabIndex = 18;
             this.cmbAansluitpunt.SelectedIndexChanged += new System.EventHandler(this.cmbMachine_SelectedIndexChanged);
             // 
@@ -172,7 +173,7 @@
             this.txtbxLocatie.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtbxLocatie.Location = new System.Drawing.Point(306, 67);
             this.txtbxLocatie.Name = "txtbxLocatie";
-            this.txtbxLocatie.Size = new System.Drawing.Size(278, 20);
+            this.txtbxLocatie.Size = new System.Drawing.Size(243, 20);
             this.txtbxLocatie.TabIndex = 16;
             // 
             // AansluitpuntVerwijderen

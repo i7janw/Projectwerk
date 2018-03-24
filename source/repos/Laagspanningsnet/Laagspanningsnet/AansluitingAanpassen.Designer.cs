@@ -189,8 +189,9 @@
             // cmbMachine
             // 
             this.cmbMachine.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cmbMachine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMachine.FormattingEnabled = true;
-            this.cmbMachine.Location = new System.Drawing.Point(345, 70);
+            this.cmbMachine.Location = new System.Drawing.Point(345, 69);
             this.cmbMachine.Name = "cmbMachine";
             this.cmbMachine.Size = new System.Drawing.Size(278, 21);
             this.cmbMachine.TabIndex = 7;
@@ -199,8 +200,9 @@
             // cmbAansluitpunt
             // 
             this.cmbAansluitpunt.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cmbAansluitpunt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAansluitpunt.FormattingEnabled = true;
-            this.cmbAansluitpunt.Location = new System.Drawing.Point(345, 124);
+            this.cmbAansluitpunt.Location = new System.Drawing.Point(345, 123);
             this.cmbAansluitpunt.Name = "cmbAansluitpunt";
             this.cmbAansluitpunt.Size = new System.Drawing.Size(278, 21);
             this.cmbAansluitpunt.TabIndex = 8;
@@ -298,7 +300,7 @@
             // 
             this.cmbPolen.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cmbPolen.FormattingEnabled = true;
-            this.cmbPolen.Location = new System.Drawing.Point(345, 394);
+            this.cmbPolen.Location = new System.Drawing.Point(345, 393);
             this.cmbPolen.Name = "cmbPolen";
             this.cmbPolen.Size = new System.Drawing.Size(278, 21);
             this.cmbPolen.TabIndex = 18;

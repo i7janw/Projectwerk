@@ -1,0 +1,2693 @@
+A023,GIDDINGS & LEWIS,A08
+A060,MAZAK,G26
+A062,OKUMA     ,G27
+A067,EX-CELL-O                      (I097A),A22
+A067-a,KOELINSTALLATIE - BKW,A22
+A068,SCHARMANN                     (I097B),A24
+A068-a,KOELINSTALLATIE - SCHIMPKE,A24
+A069,SCHARMANN                     (I104),A23
+A069-a,KOELINSTALLATIE - HYFRA,A23
+A069-b,KOELINTALLATIE - SCHIMPKE,A23
+A070,SCHARMANN                     (I114),A45
+A070-a,KOELINSTALLATIE - HYFRA,A45
+A070-b,KOELINSTALLATIE - SCHIMPKE,A45
+A072,HECKERT                        (I221),A48
+A072-a,KOELINSTALLATIE - HYFRA,A48
+A073,HECKERT                        (I221),A34
+A073-a,KOELINSTALLATIE - HYFRA,A34
+B003,GM 2 boormachine,F25
+B004,ARBOGA boormachine,A30
+B013,GM boormachine,D04
+B016,MATHEYS boormachine,D02
+B017,VALMER boormachine,D01
+B031,OTTO MULLER boormachine,D04
+B032,OTTO MULLER boormachine,A35
+B033,OTTO MULLER boormachine,A10
+B034,OTTO MULLER boormachine,A54
+B035,OTTO MULLER boormachine,G01
+B039,MAS,A08
+B041,GSP,G11
+B042,DONAU,A42
+B045,DONAU,G23
+B080,OKUMA,A46
+B081,OKUMA,A42
+B082,MAS ,G38
+B083,OKUMA,A16
+B084,OKUMA,A40
+B086,CINCINNATI,A39
+B087,MAZAK,G46
+D015,AMC,D02
+D039,VDF,G20
+D042,VDF,A39
+D043,IKEGAI,D02
+D052,SCHAERER,A39
+D058,STANKO,G52
+D068,OKUMA Rechts (ex D073)                        (I106),G37
+D069,OKUMA Links  (ex D073)                        (I106),G35
+D071,DÖRRIES-SCHARMANN,G45
+D072,DÖRRIES-SCHARMANN,G42
+D074,OKUMA                        (I108),A42
+D075,DÖRRIES-SCHARMANN (I220),A25
+D075-a,KOELINSTALLATIE - SCHIMPKE,A25
+D076,DÖRRIES                        (I094),F03
+D077,HESSAPP,G13
+D081,MAZAK                         (I217),G21
+D082,BOEHRINGER  VDF,G21
+D083,FMS (Amber),G051
+D085,BOEHRINGER  (Amber),G51
+D090,MAZAK                         (I110),A41
+D091,MORI SEIKI,G25
+D092,BOEHRINGER  VDF,G14
+D093,BOEHRINGER  VDF                           (I097C),F00
+D096,OKUMA                         (I111),A41
+D097,BOEHRINGER  VDF                           (I098),G25
+E001,Alternator MARKON,
+E002,Aansluitborden,
+E003,Alternator MARKON,
+E006,Voeding PHILIPS,D15
+E007,Voeding PHILIPS,D15
+E008,Noodvoeding POWER WARE        (Voor computer),
+E009,CUMMINS noodgenerator,A11
+E050,MS post L. da Vincilaan,
+E051,MS schakelpost in hal RT,F12
+E052,MS transfo in hal RT,F12
+E053,MS transfo in oven,E14
+E054,MS post Boerenlegerstraat,
+E055,MS transfo in hal CD,A30
+E058,MS transfo in testafdeling,D12
+E059,MS transfo in testafdeling,D13
+E060,IDETRON energiebeheer,
+E061,MS transfo in testafdeling,D13
+F003,HECKERT,A54
+F005,HURON,D04
+F006,TOS,D04
+F007,TOS,E13
+F066,SCHWABISCHE WERKZEUGMACHINE,G18
+F067,UNISIGN,G25
+F068,UNISIGN,G18
+F093,PFAUTER,G11
+F093-a,KOELINSTALLATIE - Lahntechnik,G11
+F094,PFAUTER,G26
+F094-a,KOELINSTALLATIE - BKW,G26
+F096,PFAUTER,G41
+F097,PFAUTER,G37
+F097-a,KOELINSTALLATIE - BKW,G37
+F098,PFAUTER,G10
+F098-a,KOELINSTALLATIE - Lahntechnik,
+F099,PFAUTER,G08
+F099-a,KOELINSTALLATIE - BKW,G08
+G011,KLINGELNBERG,G12
+G011-a,KOELINSTALLATIE BKW,
+G051,CUTTER TRUING DEVICE GLEASON (gereedschapstelmachine),F07
+G053,HYPOID CUTTER SHARPENER,F07
+G071,KLINGELNBERG,F04
+G071-a,KOELINSTALLATIE - HOFFMANN,F04
+G072,KLINGELNBERG,F05
+HB001,REMALIFT 3000kg,
+HB002,-V- 5000kg,
+HD001,DRAAIARM 250kg,A38A39
+HD002,DRAAIARM 250kg,A40A41
+HD003,DRAAIARM 250kg,A41
+HD005,DRAAIARM 250kg,A38A39
+HD008,DRAAIARM 500kg,D05
+HD009,DRAAIARM 250kg,D02
+HD010,DRAAIARM 250kg,D02
+HD011,DRAAIARM 500kg,D03
+HD012,DRAAIARM 500kg,F07
+HD013,DRAAIARM 250kg,D02
+HD014,DRAAIARM 500kg,D03
+HD015,DRAAIARM 500kg,G00
+HD017,DRAAIARM 250kg              -TBD-,G48
+HD018,DRAAIARM 500kg,F27
+HD019,DRAAIARM 250kg,D05
+HD021,1000 kg Demag,A55
+HD022,DRAAIARM 1000kg Demag,A54
+HD023,250 kg Demag,A43
+HD024,500kg,CO1
+HD025,500kg,C01
+HD027,DRAAIARM 125 kg,G52
+HD028,250 kg Demag,A42
+HD029,500 kg,G58
+HD030,500 kg,F25
+HD031,500 kg,F19
+HD032,DRAAIARM 1000kg,C01
+HD033,500 kg,F35
+HD034,500 kg,F32
+HD035,500 kg,F26
+HD040,500kg,F18
+HD104,250 kg,B26
+HD113,500 kg Demag,A28
+HD115,500 kg,B04
+HD116,500 kg,F04
+HD118,500 kg,G38
+HD119,500 kg,F07
+HD160,500 kg                        ,F26
+HD161,1.000 kg,G09
+HD163,1.000 kg,E05
+HD164,1.000 kg,G06
+HD165,250 kg,X02
+HD170,1.000 kg,G15
+HD175,250 kg,G04
+HD176,250 kg,G14
+HD177,500 kg,F05
+HD178,500 kg,F16
+HD179,Reserve,G17
+HD180,500 kg,F21
+HD181,500 kg,F20
+HD183,500 kg,G49
+HD185,500 kg,G39
+HD186,500 kg,F27
+HD187,125 kg,E03
+HD188,500 kg,F22
+HD189,250 kg,G34
+HD190,500 kg,F15
+HD191,500 kg,X02
+HD192,500 kg,F06
+HD197,500 kg,F14
+HD199,500 kg,G36
+HD200,250 kg,G37
+HD201,250 kg,G13
+HD202,500 kg,F16
+HD205,500 kg,G21
+HD207,1.000 kg,G07
+HD209,500 kg,F18
+HD210,500 kg,G22
+HD211,500 kg                        ,G18
+HD212,250 kg,G24
+HD213,500 kg,C02
+HD214,500 kg,X02
+HD215,Reserve,F02
+HD217,500 kg,G12
+HD222,500 kg,G28
+HD226,250 kg,G03
+HD228,125 kg,G33
+HD229,ABUS  Wandzwenkkraan 1000kg,A51
+HD230,ABUS  Wandzwenkkraan 1000kg,A52
+HD231,ABUS  Kolomzwenkkraan 500kg,G51
+HD232,ABUS  Wandzwenkkraan 500kg,G51
+HD233,ABUS  Wandzwenkkraan 500kg,F23
+HD234,ABUS  Kolomzwenkkraan 1000kg,G02
+HD235,ABUS  Kolomzwenkkraan 1000kg,F31
+HD236,ABUS  Wandzwenkkraan 125kg,F03
+HD237,ABUS  Wandzwenkkraan 125kg,G14
+HD238,ABUS Kolomzwenkkraan 250kg,G26
+HD239,ABUS  Kolomzwenkkraan 500kg,G10
+HD240,ABUS  Kolomzwenkkraan 500kg,G27
+HD241,ABUS  Kolomzwenkkraan 1000kg,G06
+HD242,ABUS  Kolomzwenkkraan 1000kg,G37
+HD245,ABUS Kolomzwenkkraan 125kg,A10
+HD246,ABUS Kolomzwenkkraan 1000kg,B22
+HD247,ABUS Kolomzwenkkraan 500kg,G05
+HD248,630 kg,F00
+HD249,ABUS Kolomzwenkkraan 80kg,E09
+HD250,ABUS Wandzwenkkraan,G53
+HD251,ABUS Kolomzwenkkraan 500kg,X02
+HD252,500 kg,G55
+HD253,Reserve,G27
+HD254,125 kg,E07
+HE004,TAKEL DEMAG 250kg              -TBD-,
+HE005,Palan Demag 10000kg,B09/B33
+HE006,Palan Demag 8000 kg,D13
+HE007,TAKEL DEMAG 5000 kg,A14/A21
+HE008,1000kg,C01
+HE011,Takel Demag 8000kg,B04/B32
+HE012,PALAN DEMAG 2500kg,B27
+HE013,Palan Demag 2500kg,B26
+HE014,Palan Demag 2500kg,B26
+HE015,TAKEL DEMAG 8T,A33/A40
+HE016,Palan Demag 5.000kg,A14A21
+HE017,Palan Demag 5.000kg,G00/G48
+HE019,250 kg,G14
+HE020,500 kg,C01
+HE021,5000kg Demag,G17/G23
+HE022,500 kg,C01
+HE023,TAKEL DEMAG 3 TON,A07/A09
+HE024,TAKEL DEMAG 5T,G40G47
+HE025,TAKEL DEMAG 5T,A50A56
+HE026,3200kg DEMAG,C01
+HE027,DEMAG 500 kg,F32
+HE028,TAKEL DEMAG 8T,A25A39
+HE029,TAKEL DEMAG 8T,A25A39
+HE031,TAKEL DEMAG 5T,G49G53
+HE032,TAKEL DEMAG 5T,G32/G39
+HE033,TAKEL DEMAG 5T,G49G53
+HE034,TAKEL DEMAG 8T,A29
+HE035,2000kg DEMAG,X02
+HE036,500 kg                 -NG-,F19
+HE037,TAKEL DEMAG 25T,D12D14
+HE038,5000kg Demag,X02
+HE039,5.000 kg Demag,B03/B31
+HE040,TAKEL DEMAG 5T,F32/F39
+HE041,TAKEL DEMAG 5T,G32/G39
+HE042,TAKEL DEMAG 10T,A50A56
+HE043,TAKEL DEMAG 10T,G40G47
+HE044,TAKEL DEMAG 10T,A50A56
+HE045,5000  kg,A14A21
+HE046,3.000 kg Demag,A14A21
+HE047,5.000 kg Demag,B03/B31
+HE048,2.000 kg                      -NG-,A05A13
+HE049,5000 kg                       -NG-,X01X02
+HE051,500kg,E14
+HE052,TAKEL DEMAG 8T,B13/B35
+HE053,TAKEL DEMAG 8T,D03/D05
+HE055,500kg,F25
+HE056,2000kg,G30/G24
+HE057,25000 kg Demag,A50A56
+HE059,Abus 5000kg,A13A20
+HE060,500 kg,F27
+HE061,8000kg DEMAG,E02E07
+HE062,TAKEL DEMAG 250kg,A38A39
+HE063,TAKEL DEMAG 250kg,A40A41
+HE064,TAKEL DEMAG 250kg,A41
+HE065,5000kg                        -NG-,X04
+HE066,TAKEL DEMAG 250kg,A38A39
+HE067,5.000 kg Demag,B01/B32
+HE071,5000kg ABUS,E00E01
+HE072,TAKEL DEMAG 16T,D06D11
+HE073,TAKEL DEMAG 16T,D13
+HE074,TAKEL DEMAG 125kg,G22
+HE075,TAKEL DEMAG 500kg,D03D05
+HE076,TAKEL DEMAG 250kg,D02D04
+HE077,TAKEL DEMAG 250kg,D02D04
+HE078,125 kg,E03
+HE079,DEMAG 5000 kg,A42/A49
+HE080,TAKEL DEMAG 25T,D06D11
+HE081,DEMAG 12.5 Ton,A50A56
+HE082,8000 kg Demag,A42/A49
+HE083,8000 kg Demag,A42/A49
+HE084,TAKEL 1000kg,G04
+HE085,TAKEL 250kg                  -TBD-,G48
+HE087,500 kg,G25
+HE088,500 kg,G00
+HE090,TAKEL 500kg,F18
+HE092,TAKEL 1000kg                  -NG-,D06D08
+HE093,TAKEL 250kg                   -NG-,F18
+HE096,500 kg                          -TBD-,B22
+HE097,8000kg Demag,A33/A40
+HE098,250 kg,F26
+HE099,500 kg                                ,G17
+HE100,500 kg,B23
+HE101,500 kg,B09
+HE102,500 kg,G25
+HE104,500 kg,G36
+HE107,500 kg,F15
+HE108,DEMAG 8T,E08/E15
+HE109,DEMAG 8T,E08E13
+HE110,DEMAG 8T,E00E03
+HE112,500 kg,G15
+HE113,500 kg,G28
+HE114,250 kg,A43
+HE115,500 kg                        -NG-,E11
+HE118,5.000 kg  vvd HE244,B20B21
+HE119,125 kg,G34
+HE120,TAKEL 500 kg,F35
+HE121,TAKEL 500 kg,F26
+HE122,500 kg,F22
+HE125,5000 kg Demag,A33/A40
+HE126,1.000 kg,B14B15
+HE127,1.000 kg Demag,A07/A09
+HE128,1.000 kg,B15B17
+HE129,500 kg,D3D5
+HE130,500 kg,F14
+HE131,DEMAG 500 kg                  ,G40G47
+HE133,125 kg                        ,F06
+HE135,250 kg,G31
+HE136,TAKEL 250 kg,D02D04
+HE138,1.000 kg,A54
+HE139,5.000 kg  ABUS,A12
+HE140,5.000 kg,X01X04
+HE142,250 kg,B26
+HE150,3.200 kg,A14A21
+HE151,TAKEL  3.2T      -TBD-,
+HE152,TAKEL  2.5T,F29F30
+HE153,TAKEL  5T Demag,E08/E17
+HE156,400 kg,D12
+HE157,500 kg                        -NG-,D13
+HE158,10.000 kg Demag,B09/B33
+HE163,5.000 kg,G00/G48
+HE165,TAKEL 250 kg,Atlas
+HE166,250 kg,G24
+HE168,500kg                        terug in dienst 2/2006,G49
+HE169,1.000 kg,G10
+HE170,1.000 kg,G11
+HE171,1.000 kg,E00
+HE172,1.000 kg                      -NG-,F04
+HE173,1.000 kg                    In Atlas,
+HE174,125 kg,A13
+HE176,1.000 kg,A55
+HE177,1.000 kg,G15
+HE179,250 kg,G00
+HE180,1.000 kg                      -NG-,E08
+HE182,TAKEL 80kg,A01
+HE184,6.000 kg Demag,X03X04
+HE185,500 kg,B16
+HE186,250 kg,F05
+HE187,500 kg                        ,G18
+HE188,250 kg,A43
+HE189,500 kg,D03D05
+HE190,5.000 kg,E08/E15
+HE191,5.000 kg Demag,B11/B34
+HE193,5.000 kg,F32F39
+HE194,500 kg,G30
+HE195,500 kg,F21
+HE196,8000 kg Demag,B11/B34
+HE197,8000 kg Demag,B11/B34
+HE199,1.000 kg Demag,A22A28
+HE200,TAKEL 500 kg,D03D05
+HE202,500 kg,F15
+HE204,500 kg,F09
+HE205,250 kg,D5
+HE206,500 kg                        -TBD-,A22A28
+HE207,250 kg,Atlas
+HE208,1.000 kg  Demag                   ,A22A28
+HE209,1000kg,A22A28
+HE210,1.000 kg,G06
+HE211,500 kg                       ,G39
+HE212,250 kg,G33
+HE213,500 kg,G13
+HE214,500 kg,F07
+HE215,500 kg                    ,F25F26
+HE216,"1,000 kg Demag",A22/A28
+HE217,500 kg,G19
+HE218,500 kg,G20
+HE219,500 kg,G05
+HE220,5OO kg,F20
+HE221,500 kg,G21
+HE222,250 kg                        -NG-,G37
+HE223,250 kg,G29
+HE224,500 kg,F07
+HE225,500 kg,G33
+HE226,500 kg,F13
+HE227,250 kg,G27
+HE230,"10,000 kg Demag",B35B13
+HE231,8000kg Demag,A33A40
+HE232,5000 kg Demag,A42/A49
+HE233,TAKEL 500kg,G27
+HE234,TAKEL 250kg,F27
+HE235,ABUS 10000 kg,A31
+HE236,KETTINGTAKEL 500kg,F32
+HE237,ABUS  3200kg,B14/B17
+HE238,ABUS  3200kg,B14/B17
+HE239,ABUS  3200kg,B14/B17
+HE240,ABUS  1000kg,
+HE241,ABUS  1000kg,
+HE242,ABUS  500kg,
+HE243,ABUS  500kg,
+HE244,ABUS  5000kg,B34/B11
+HE245,ABUS  3200kg,A09/A07
+HE246,ABUS  6300kg (staalmagazijn),X04
+HE247,DEMAG 500kg,G04
+HE248,TAKEL DEMAG 250kg,G03
+HE249,DEMAG 2000kg,F31
+HE250,ABUS  1000kg,F31
+HE251,ABUS 125kg,D076 
+HE252,ABUS 125kg,Cel kl/wi
+HE253,ABUS 5000kg,B03/B53
+HE254,ABUS 250kg,Cel kl/wi
+HE255,ABUS 500kg,Cel kl/as
+HE256,ABUS 500kg,Cel med/wi
+HE257,ABUS 5000kg,D076 
+HE258,ABUS  1000kg,F099
+HE259,ABUS 125kg,R079
+HE260,ABUS  1000kg,F097
+HE261,ABUS  5000kg,G33/G39
+HE262,ABUS,A064
+HE263,ABUS 8000kg,B04B07
+HE264,ABUS 8000kg,A13A20
+HE265,ABUS 5000kg,B02/B29
+HE266,ABUS 1000 kg,
+HE267,ELEPHANT kettingtakel,
+HE268,ABUS kettingtakel en loopkat,
+HE269,ABUS kettingtakel en loopkat,
+HE270,"ABUS kettingtakel en loopkat 1,000kg",G16/G17
+HE271,ABUS kettingtakel en loopkat,D093
+HE272,"ABUS 5,000kg",G17/G23
+HE273,ABUS 80kg,
+HE274,ABUS 125kg,
+HE275,ABUS 8000kg,
+HE276,ABUS 10000 kg,G54/G58
+HE277,ABUS 6300 kg,F30/F29
+HE278,ABUS 500 kg,
+HE279,ABUS 10000 kg,G54/G58
+HE280,ABUS 8000 kg,G54/G58
+HE281,ABUS 16000 kg,X01
+HE282,ABUS 5000 kg,B01/B32
+HE283,ABUS 8000 kg,B01/B33
+HE284,ABUS 8000 kg,B09/B33
+HE285,ABUS 10000 kg,B09/B34
+HE286,ABUS 10000 kg,B11/B34
+HP001,DEMAG 1.25 T,
+HP002,DEMAG 1.25 T,
+HP003,DEMAG 1.25 T,
+HP004,DEMAG 1.25 T,
+HP005,CAMLOK 1.5 T,
+HP007,CAMLOK 3 T,
+HP008,CAMLOK 5 T,
+HP009,DEMAG 1.5 T,
+HP010,DEMAG 1.5 T,
+HP011,DEMAG 1.5 T,
+HP012,DEMAG 1.5 T,
+HP013,GOLIATH 2 T,
+HP014,GOLIATH 2 T,
+HP015,TERRIER 1.5 T,
+HP016,CAMLOK 2 T,
+HP017,CAMLOK 1 T,
+HP020,CAMLOK 2 T,
+HP021,CAMLOK 4 T,
+HR001,3200kg,C01
+HR002,ROLBRUG DEMAG 8T,A33A35
+HR003,2000kg DEMAG,X01X02
+HR004,2500kg - Jamach,B27
+HR005,2500kg - Jamach,B26
+HR006,2500kg - Jamach,B26
+HR007,ROLBRUG 10.000kg - Jamach,B08B09
+HR008,Rolbrug Demag 5.000kg,A14A21
+HR009,Rolbrug Demag 8000kg,D13
+HR010,Rolbrug Demag 5.000kg,G00G07
+HR011,5000kg,X01X02
+HR014,TAKEL DEMAG 5000 kg,G16G23
+HR015,ROLBRUG DEMAG 5T,G40G47
+HR016,ROLBRUG DEMAG 5T,A50A56
+HR017,ROLBRUG DEMAG 8T,E02E07
+HR018,ROLBRUG DEMAG 3 TON,A07A11
+HR019,ROLBRUG DEMAG 8T,A25A39
+HR020,ROLBRUG DEMAG 8T,A25A39
+HR023,ROLBRUG DEMAG 5T,F30F37
+HR024,ROLBRUG DEMAG 5T,G32G38
+HR025,ROLBRUG DEMAG 10T,A50A56
+HR026,ROLBRUG DEMAG 10T,F30F37
+HR027,ROLBRUG DEMAG 10T,A50A56
+HR028,ROLBRUG JAMACH 5T,G51G53
+HR029,ROLBRUG JAMACH 5T,G32G38
+HR030,ROLBRUG JAMACH 5T,G49G53
+HR031,ROLBRUG DEMAG 8T,A29
+HR032,ROLBRUG DEMAG 25T,D12D14
+HR033,ROLBRUG DEMAG 125kg,A01
+HR034,ROLBRUG DEMAG 8T,B18B35
+HR035,ROLBRUG DEMAG 8T,D02D05
+HR036,DEMAG 5000 kg,A42A46
+HR037,25000kg,A50A56
+HR038,DEMAG 12.5T,A50A56
+HR039,DEMAG 8T,A49A47
+HR040,DEMAG 8T,B24B25
+HR041,DEMAG 8T,A49A47
+HR042,DEMAG 8T,A33A35
+HR043,DEMAG 5T,A36A40
+HR044,ROLBRUG DEMAG 16T,D06D11
+HR045,ROLBRUG DEMAG 16T,D13
+HR046,ROLBRUG DEMAG 25T,D06D11
+HR052,2000  kg                      ,A22A28
+HR057,8.000 kg,B22B23
+HR060,5.000 kg,B24B25
+HR062,5.000 kg,B04B07
+HR065,DEMAG 8T,B10B21
+HR069,5.000 kg,B26B27
+HR070,VDB  3.2T,F31
+HR071,VDB  2.5T,F29F30
+HR072,VDB  5T,F29F30
+HR073,DEMAG 8T,E10E15
+HR074,DEMAG 8T,E08E13
+HR075,DEMAG 8T,E00E03
+HR078,5.000 kg,A20A13
+HR081,5.000 kg,B20B21
+HR086,3.000 kg,A14A21
+HR097,500 kg                        -TBD-,A22A28
+HR122,8.000 kg,B10B11
+HR150,VB 10000kg,B22B23
+HR158,VB 5000kg,E00E01
+HR159,VB 5000kg,E08E17
+HR174,5.000 kg,E08E17
+HR184,5.000 kg,F32F36
+HR200,1.000 kg,A22A28
+HR205,1.000 kg,A07A11
+HR223,ROSENGARDE 5000kg,F12
+HR224,ROSENGARDE 6300kg,X03X04
+HR225,ROSENGARDE 5000kg,A14A21
+HR228,DEMAG 16T,B35B13
+HR229,8000 kg,A33A40
+HR230,5000 kg,A42A46
+HR231,ABUS 10T,A31
+HR232,DEMAG 500kg,F32
+HR233,"ABUS 3,2T ",B13B18
+HR234,"ABUS 3,2T  ",B13B18
+HR235,"ABUS 3,2T  ",B13B18
+HR236,"ABUS 3,2T",A13
+HR237,ABUS 6.3T (staalmagazijn),X04
+HR238,ABUS 5T (waskabine),
+HR239,ABUS Rolbrug 5000kg,
+HR241,ABUS Rolbrug 8000kg,A13A20
+HR243,ABUS Rolbrug 1000kg,G17
+HR244,ABUS Rolbrug 5000kg,F06/G52
+HR245,ABUS Rolbrug 8000kg,B13/B18
+HR246,ABUS Rolbrug 10000 kg,G54/G58
+HR247,ABUS Rolbrug 6300 kg,F28/F30
+HR248,ABUS 6000 kg,G54/G58
+HR249,ABUS 10000 kg,G54/G58
+HR250,ABUS 8000 kg,G54/G58
+HR251,ABUS 16000 kg,X01
+HR252,ABUS 5000 kg,B01/B32
+HR253,ABUS 8000 kg,B01/B33
+HR254,ABUS 8000 kg,B09/B33
+HR255,ABUS 10000 kg,B09/B34
+HR256,ABUS 10000 kg,B11/B34
+HS001,SIEGERT(R002),G17
+HS002,SIEGERT(D041),G23
+HS003,SIEGERT(R002),G17
+HS004,SIEGERT(D040),G21
+HS005,SIEGERT(D041),G23
+HS006,SIEGERT(R010),G16
+HS007,SIEGERT(F065),G19
+HS008,TOPAL,
+HT001,TIRFOR 1000kg,
+HT002,TIRFOR 3000kg,
+HT003,RILLEY 2000kg,
+HT004,RILLEY 2000kg,
+HT005,RILLEY 2000kg,
+HT006,REMA 3000kg,
+HT007,REMA 3000kg,
+HT008,CM 1500kg,
+HT009,CM 1500kg,
+HT010,CM 750kg,
+I001,SCHLICK Straalmachine,E00
+I003,KARCHER,G48
+I004,KARCHER,
+I005,LABOREX waskabine,C001
+I006,KARCHER,
+I008,KARCHER,D03
+I009,KARCHER,D03
+I010,Wascabine SEMMELROTH,B03
+I011,WASKABINE KERMAD 8t,E01
+I013,LABOREX waskabine RT,F27
+I020,FILTERWAGEN,SME
+I025,WIELAND stofzuiger,A06
+I026,VEEGMACHINE DULEVO,A42
+I028,DELTA NEW,
+I030,NILFISK,D03
+I031,NILFISK,A17
+I032,NUMATIC stof- en waterzuiger,F00F05
+I033,NUMATIC stof- en waterzuiger,A36
+I034,NILFISK,X00
+I035,DELTA NEW,D04
+I036,VENTILATOR SUPER COBRA,
+I037,NILFISK,X00
+I038,NILFISK,A27
+I039,WIRBEL,A30
+I040,WIRBEL,A14
+I041,WIRBEL,
+I042,WIRBEL,
+I043,NILFISK Shampoo,
+I044,NILFISK,
+I045,NILFISK,B27
+I046,NILFISK,B02
+I047,NILFISK,B20
+I049,NILFISK,
+I050,NILFISK,
+I051,NILFISK,
+I052,NILFISK,B18
+I053,NILFISK,
+I054,FLOORPULL stof-en waterzuiger,
+I055,FLOORPULL stof- en waterzuiger,
+I056,TOSEL stof- en waterzuiger,
+I057,TOSEL stof- en waterzuiger,F14
+I058,TOSEL stof- en waterzuiger,
+I059,TOSEL stof-en waterzuiger,
+I060,CITIN schrob-en boenmachine,A42
+I061,SOFRAPER  spaan-en vloeistof- zuiger,
+I062,MATZEK  zuigwagen,
+I063,TOSEL stof- en waterzuiger,
+I065,FLOORPULL  stof-en waterzuiger,
+I066,TOSEL  stof-en waterzuiger,B04
+I067,MATZEK  zuigwagen,D15
+I068,TOSEL  stof-en waterzuiger,B04
+I070,PFK,A..
+I071,PFK,A02
+I072,PFK,B07
+I073,PFK,A..
+I074,PFK,F38
+I081,PLYMOTH  lasdampafzuiger,D07
+I082,ELOSTA  luchtreiniger,F10
+I083,WELDEX  luchtfilter,A29
+I084,CORAL  stofafzuiging,D04
+I085,TRION  luchtreiniger,F15
+I086,WELDEX  ventilator,B06
+I087a,TEPCON luchtfilter,D07
+I087b,TEPVON luchtfilter,D07
+I088,ELOSTA  luchtreiniger,F14
+I089,TRION  luchtreiniger                                             ( R080),G14
+I090,FILTERMIST,
+I090a,FILTERMIST,G20
+I090b,FILTERMIST,A14
+I090c,FILTERMIST,G21
+I090e,FILTERMIST   (D091),G25
+I091,ALFA SYSTEM afzuiginstallatie,A..
+I092,MOLTER  olienevelafzuiger,G13
+I093,MOLTER olienevelafzuiger,A17
+I094,DONALDSON olienevelafzuiger   (D076),G05
+I095,Afzuiginstallatie keuken,D13
+I096,NEDERMAN  lasdampafzuiging,D10
+I097a,DONALDSON olienevelafzuiging  (A067),A22
+I097b,DONALDSON olienevelafzuiging  (A068),A26
+I097c,DONALDSON olienevelafzuiging (D093),G21
+I097d,DONALDSON olienevelafzuiging  (D098),G18
+I098,DONALDSON olienevelafzuiging (D097),G27
+I099,DONALDSON olienevelafzuiging  ( TBD kwam van F49),
+I100,DONALDSON olienevelafzuiging (F049),G13
+I101,DONALDSON olienevelafzuiging,
+I102,DONALDSON olienevelafzuiging (A065),A20
+I103,DONALDSON olienevelafzuiging,
+I104,DONALDSON olienevelafzuiging (A069),
+I105,DONALDSON olienevelafzuiging (D079),G07
+I106,DONALDSON olienevelafzuiging (D068+D069),G37
+I107,DONALDSON olienevelafzuiging (F40),G38
+I108,DONALDSON olienevelafzuiging (R61=weg)  TBD WK42-2006,F14
+I109,DONALDSON olienevelafzuiging (R53+weg)  TBD WK42-2006,F14
+I110,TORIT olienevelafscheider    (D090),A41
+I111,TORIT olienevelafscheider    (D096),A41
+I112,TORIT olienevelafscheider   (R059=weg)      TBD WK42-2006,F12
+I113,TORIT olienevelafscheider    (R058=weg)     TBD WK42-2006,F12
+I114,TORIT olienevelafscheider    (A070),A45
+I115,TORIT olienevelafscheider    (A071),A37
+I151,NUMATIC stof-en waterzuiger,B25
+I152,CFM stof-en waterzuiger,A22
+I153,CFM stof-en waterzuiger,A27
+I154,CFM stof-en waterzuiger,
+I155,CFM stof-en waterzuiger,A26
+I156,CFM stof-en waterzuiger,A27
+I157,GESCO stofzuiger,D06
+I158,CFM stof-en waterzuiger,
+I159,CFM stof-en waterzuiger,
+I160,CFM stof-en waterzuiger,
+I161,Omgebouwde zuigkar,
+I162,CFM waterzuiger,F26
+I163,CFM stof-en waterzuiger,
+I164,CFM stof-en waterzuiger,
+I165,NUMATIC  stof-en waterzuiger,
+I166,CFM stof-en waterzuiger      (aan B080),B080
+I167,CFM stof-en waterzuiger,A23
+I168,CFM stof-en waterzuiger,A25
+I169a,Stofzuiger KARCHER,
+I170,CFM stof-en waterzuiger,
+I171,CFM stof-en waterzuiger,Service
+I172,PR0370  stofzuiger,
+I173,PR0370  stofzuiger,
+I174,CFM stof-en waterzuiger,
+I175,PR0370  stofzuiger,
+I176,GESCO stof-en waterzuiger,
+I177,CFM stof-en waterzuiger,
+I178,CFM stof-en waterzuiger,
+I179,CFM stof-en waterzuiger,
+I180,CFM stof-en waterzuiger,
+I181,CFM spaan- en stofzuiger,
+I182,Luchtreiniger ELOSTA,F10
+I183,CFM stof-en waterzuiger,
+I184,KARCHER Stof-en waterzuiger,
+I185,KARCHER Stof-en waterzuiger,Service
+I186,KARCHER Stof-en waterzuiger,
+I187,KARCHER Stof-en waterzuiger,
+I188,KARCHER Stof-en waterzuiger,
+I189,KARCHER Stof-en waterzuiger,
+I190,KARCHER Stof-en waterzuiger,
+I191,GESCO Ind. waterzuiger,
+I192,KARCHER  Stof-en waterzuiger,
+I193,GESCO  Ind. stofzuiger,
+I194,Stofafzuiger FESTOOL,
+I195,Mobiele lasafzuiger  SAF,A04
+I196,Lasdampafzuiging NEDERMAN,X01
+I197a,Lasdampafzuiging NEDERMAN,B32
+I197b,Lasdampafzuiging NEDERMAN,B32
+I197c,Lasdampafzuiging NEDERMAN,B32
+I198,KARCHER Stof- en waterzuiger,Hugo
+I199,GESCO Stofzuiger met HEPA filter,
+I200,TORIT Olienevelafscheider     (G010),F06
+I201,TORIT Olienevelafscheider     (F090),G28
+I202,UNIFIL  Stoffilter,
+I203,GESCO Stof & waterzuiger,wind
+I204,WASCABINE RAD + KARCHER,Service
+I205,GESCO  Kuismachine,
+I206,KARCHER  HD-reiniger          (Combitoestel met waterzuiger),
+I207,KARCHER Waterzuiger           (Combitoestel met HD-reiniger),
+I208,GESCO  Stof en waterzuiger,A52A56
+I209,GESCO  Stof en waterzuiger,Schoten
+I210,KARCHER Stof en waterzuiger,
+I211,KARCHER Waterzuiger        ,Bupi
+I212,WASCABINE RAD SCHOTEN + Karcher HDS1195,Schoten
+I213,KARCHER  Stof-en waterzuiger,Mag
+I214,KARCHER  Stof-en waterzuiger,Mag
+I215,NEDERMAN  lasdampafzuiging,
+I216,KARCHER Hogedrukreiniger,Schoten
+I217,TORIT  Olienevelafscheider  (D081),A38
+I218,TORIT  Stofafscheider   (R087),R087
+I219,GESCO  stof-en waterzuiger,B042
+I220,GESCO  stof-en waterzuiger,D075
+I221,GESCO  stof-en waterzuiger,A072
+I222,GESCO  stofzuiger,
+I223,GESCO  stofzuiger,
+I224,GESCO  stof-en waterzuiger,Etscabine
+I225,TORIT  Stofafscheider   (R088),R088
+I226,GESCO stofzuiger   ,
+I227,kws Afscheider,G48
+I228,GESCO Stofzuiger,
+I229,GESCO Waterzuiger,I012
+I230,GESCO Waterzuiger,
+I231,TORIT Olienevelafscheider,G13
+I232,GESCO Kuismachine,A50A56
+I233,GESCO Kuismachine,G00G05
+I234a,NEDERMAN afzuiging + afzuigarm ,
+I234b,NEDERMAN afzuiging + afzuigarm ,
+I235,Ind. afzuig- en filtergroep ALKO,
+I236,GESCO stof-en waterzuiger,Wind
+I238,TORIT Stofafscheider,
+I239,TORIT Stofafscheider,
+I240,GESCO stofzuiger,A073
+I241,TORIT Stofafscheider,
+I242,GESCO Stofzuiger,
+I243,GESCO Stofzuiger,
+I244,GESCO Stofzuiger,
+I245,GESCO Stofzuiger,
+I246,TORIT Stofafscheider,R080
+I247,NEDERMAN lasrookafzuiging,
+I248,MKR spaan- en vloeistofzuiger,
+I249,KÄRCHER,
+I250,GESCO Stofzuiger,
+I251,KÄRCHER,
+I252,LABOREX,
+I253,TORIT,
+I254,KÄRCHER,
+I255,LABOREX,
+I256,LABOREX,
+I257,LABOREX,
+I258,KÄRCHER,
+I259,GESCO,
+I260,GESCO,
+I261,GESCO,
+I262,GESCO,
+I263,LABOREX onderdelenreinigingstafel,
+I264,LABOREX  rotatiemachine,Service
+I265,GESCO stof- en waterzuiger,A068
+I266,verfpistoolreiniger B-TEC ,
+I267,Niedermann Lasafzuiging,Service
+I268,Stof- en vloeistofzuiger GESCO - AEP,Smeerder
+I269,Industriële stofzuiger Gesco,A23
+I270,TEKA rookafzuiging (recup UK),
+I271,Stofzuiger Gesco,etscabine
+K001,POLIFIX ( schuurmachine ),A45
+K002,METABO  dubbele slijpmolen,A54
+K003,IMPERIA,D04
+K004,METEOR (Borenslijpmachine),A02
+K005,ACETI  bandslijpmachine,
+K006,MAGERLEF slijpmachine,D04
+K007,ACETI  bandslijpmachine,Service
+K008,LEMPEREUR (Beitelslijpmach.),A02
+K012,AGATHON (Beitelslijpmach.),A02
+K013,FLOTT (AEG-slijpsteen),B02
+K014,VAL D'OR (Slijpsteen),A02
+K017,TNW (Slijpsteen),D05
+K019,CORDIA DOT (Slijpsteen),A02
+K022,AEG (Slijpsteen),A02
+K023,AEG  slijpsteen,D01
+K026,AEG (Slijpsteen),A02
+K027,AEG (Slijpsteen),A31
+K031,GUHRING (borenslijpmach.),A02
+K032,KLINGELNBERG (frezenslijpm.),G11
+K033,KELLENBERGER STRAUZAK,D04
+K034,NILES  voorprofileerapparaat,F04
+K035,EICHHOFF,F24
+K036,AVYAC  borenslijpmachine,A02
+K038,ACETI  bandslijpmachine,A02
+K039,ACETI  bandslijpmachine,
+L001,FURET  lastoestel,D02
+L002,INVERTEC laspost,
+L004,ELECTROMECANIQUE  lastoestel,D08
+L005,ZINSER  lastoestel,D07
+L006,ZINSER (Puntlastoestel),D07
+L007,NORDWELD  lasgelijkrichter,D08
+L008,SAF  lastoestel,G51
+L009,SAF  laspost,G51
+L010,AUDION ELECTRO,
+L011,SAF  laspost,
+L012,FURET (Lastoestel),D07
+L013,PRESTOTIG 165  laspost,G51
+L014,FURET (Lastoestel),D02
+L015,JUNIOR rollerflampost,
+L016,KOIKE SANSO  snijbrandmachine,G53
+L017,IDEAL Lasapp. voor zagen,F24
+L020b,Lastransformator,B02
+L021,Impulslasapp. Polyster,B13
+L022,TECHNA  puntlasmachine,G49
+L023,TIG-Laspost,
+L025b,NORWELD  lasgelijkrichter,D05
+L025c,NORWELD  lasgelijkrichter,
+L025d,NORWELD  lasgelijkrichter,D05
+L026,CASTOLIN  opspuituitrusting,D03
+L027,KOIKE  draagbare snijbrandm.,D08
+L028,SAFEX  laspost,D02
+L029,LASWIG  lasgelijkrichter,D07
+L030,EUTECTIC  plasma brander,D02
+L032,MILLER halfaut. laspost,G51
+L033,BAND SEALER,
+L034,SAXO  Laspost,Mon
+L035,Kar met 2 flessen,Service
+L036,Kar met 2 flessen,Service
+L037,BAND SEALER,
+LPT1,Lozingspunt 1 afvalwater (L. da Vincilaan),LPT1
+LPT2,Lozingspunt 2 afvalwater (Arendsnestlaan),LPT2
+M001,WOLPERT - Dia testor,
+M002,JFA  kontrolewinkelhaak,D00
+M003,JFA  Kontrolelat,D00
+M004,TESTO  Temperatuurmeter,F07
+M005,LOS  Kerfslag,
+M006,CARL MAHR,
+M007,CARL MAHR,
+M008,PARKSON,
+M009,STROBOSCOOP,
+M010,REICHERT METATEST  Microscoop,
+M011,DRAGER  Gasdetectietoestel,
+M012,FEINPRUF  Perthometer,
+M013a,KONTAKTTHERMOMETER (Meetlokaal),
+M013b,KONTAKTTHERMOMETER (Montage),
+M013c,KONTAKTTHERMOMETER (RAD),
+M014,LUTRON  Digitale A-tang,
+M015,CARL MAHR,F07
+M016,ERNST  Draagb. Hardheidsmeter,
+M017,SEKUNDEN Thermometer,
+M018,MICROFLAT  Traceertafel,
+M019,MICROFLAT  Traceertafel,
+M020,REICHERT  Microscoop,
+M021,BRUEL&KJAER  Phone meter,
+M022,HARDHEIDSMETER EMCOTEST,
+M023,PRESTOPRES  Pers,F08
+M024,Profielprojector,A30
+M025,HORN  Handtachometer,
+M026,KRAUTKRAMER  Ultra-son,
+M027,BRIVISKOP  Hardheidsmeter,
+M029,JENA  Lengtemeetbank,
+M030,Multimar  Universeeltaster,
+M031,KLINGELNBERG  Meetapparaat,
+M032,PANLUX  Electronic,
+M033,ZOLLER  Voorinstelapparaat,A38
+M034,ZOLLER  Voorinstelapparaat,A01
+M035,ZWICK  Shore-hardheidsmeter,
+M036,YEW  Registreertoestel,
+M037,Meetapp. vr dikte v verflaag,
+M038,MAGNAFLUX (opsporen scheuren) (Nieuw toestel),
+M039,MAGNAFLUX  Field-indicator,
+M040,Afstandsmeter LEICA,Robert
+M041,HORNET  Kontactloze toerent.,
+M042,TOPWARD  Gestab. voeding,
+M043,ERNST  Hardheidsmeter,
+M044,SPM  Schokpulsmeter,
+M045,STREURS LECTROPOL  El. Polijst,
+M046,TRANSPOL  Polijsttoestel,
+M047,BOSCH  Analytische balans,
+M049,PREMICARBU  Vlakplaat,
+M050,MAAG (tanden meten),F07
+M051,Digitale multimeter,
+M052,Audio spectrum analyzer,
+M053,TESA Waterpas,
+M054,Centricator,
+M055,GRANT  Data-logger,A20
+M056,X-Y Recorder,
+M057,JOHANSSON  Set eindmaten,
+M058,TESA  Interfer. glas,
+M060,TECHNOTHERM  Digit. bordtherm.,
+M061,ZWICK  Hardheidsmeter,
+M062,JENA  Set schroefmeetdraden,
+M063,EMCOTEST  Tandfl.hardh.meter,
+M064,JFA  Kontrolewinkelhaak,
+M065,GRINDO-SONIC  Electron.meettst,
+M066,DIGITAP  Digitale tachometer,
+M067,TRIMOS vertikaal,
+M068,BRUEL&KJAER  Geluidsmeter,
+M069,EXACTA  Meetapp. vr spiebanen,
+M071,Digitale Watt-metertang,
+M072,SPECTRUM Analyzer,
+M073,TEKTRONIX  Oscilloscoop,
+M074,NORMA  Digitale thermometer,
+M075,Thermo-Hygrograaf,
+M076,TESA  Hoogtemaat met microproc,
+M077,A-tang vr. = en wisselstroom,
+M079,TRIMOS  Horizontale meetbank,
+M080,GANZ  Multimeter,
+M081,Toestel vr kontrole op slag,
+M082,NORMA  Digitale multimeter,
+M083,TYLER  Zeeftoestel,
+M084,"BRAIVE ""Surface profil gauge""",
+M085,JFA  Meetzuil,
+M086,TASTOTHERM  Electron.thermom.,
+M087,PORTHEN  Opp.ruwheidsmeter,
+M088,TEKTRONIX  Oscilloscoop,
+M089,DRAEGER  Draagbare gasdetector,
+M090,Testbord elektriekers,
+M091,QUALITEK  Aut.lek-testsysteem,
+M092,HBM  Meetomzetter,
+M093,FORT  Halfvaste endoscoop,
+M094,MESA  Digitale stroom - en    spanningsgever,
+M095,SONY  Digitale aflezing       (lineaal + teller),
+M096,SIEMENS  Gasanalysator,
+M097,AUS JENA  Stereomicroscoop,
+M099,HIOKI  Micro-Hi-Corder,
+M100,GOULD  Oscilloscoop,
+M101,AIRFLOW  Anemometer,
+M102,SQUIRREL Grant Instruments,
+M103,FLUKE Digitale meter,
+M104,FLUKE Digitale meter,
+M105,MEMOCAL  Ijkingstoestel,
+M107,HCK,
+M108,TESA MODUUL,
+M109,KLINGELNBERG,F04
+M110,LUTRON  Digitale toerenteller,
+M111,Diditale Funktiegenerator,
+M112,MINITEST  Draagb.Laagdiktemeter,
+M113,CCI  Isolatiemeter,
+M114,STIEFELMAYER  DriedimensioneleMeet-en traceermachine,A29
+M115,HOBSON  Draagb. ruwheidsmeter Rank Taylor,
+M116,EQUOTIP  Hardheidsmeter,
+M117,ELEKTRO-PHYSIK  Laagdiktemeter,
+M118,QUARTEL  Datalogger,
+M119,CMT  Driedimensionele kanten -tester,
+M120,GOULD  Geheugenscoop,D15
+M121,MAUSER  Hoogtemaat,
+M122,SPECTROLAB - NIEUW,E05
+M123,YOKOGAWA  Aardingsmeter,
+M124,CHAUVIN ARNOUD  Tang,
+M125,BOURDON  Ijkmanometer,
+M126,SYSTEMES ANALYTICUS  Autom.   lek-testsysteem,
+M127,Fluke Diditale meter,
+M128,CICINNATI  3D Meetbank,A29
+M129,SIEMENS  Vochtigheidsmeter,
+M130,KLINGELNBERG  Vertandings -   meetcentrum,F06
+M131,SCOTCHTRACK  I.R. Warmtemeter,
+M132,HOMMEL  Opp.ruwheidsmeter,
+M133,RANK TAYLER HOBSON  Zakruwh.- meter,
+M134,LUTRON  Digitale toerenteller,
+M135,FLUKE  Draagb. Scope meter,
+M136,ZEISS  Co-ordinaten meetmach.,A29
+M137,STREURS  Polijstmachine,
+M138,Geluidsmeter,
+M139,KLINGELNBERG  Tandwielmeetmach,F29
+M140,"Richtbalk 1,5m",
+M141,Drukverschilmeter Oventrop,
+M142,TESA  waterpas,
+M148,FLUKE OHM-meter,
+M149,MAGNAFLUX (RT-wielen),F32
+M150,MAGNAFLUX  (RT-assen),F27
+M151,WHARTON DIG.TEMP.AANDUIDING,D10D11
+M152,GATES DIG.RIEMSPANNINGSMETER,BUREEL
+M153,Universele hardheidsmeter,E13
+M154,SPM  Trillingsmeter,
+M155,3M  Infrarood thermometer,
+M156,LUTRON  Digitale toerenteller,
+M157,FLUKE  Multimeter,Dirk
+M158,TESTO CO-meter,
+M159,FLUKE  Stroomtang,
+M160,FLUKE  Faserotatie-indicator,
+M161,FLUKE  Multimeter,
+M162,pH-Meter,
+M163,NORBAR  Koppelmeter,
+M164,TESTO Temp.Meetapp.,
+M165,TESTO Temp.Meetapp.,
+M166,FLUKE Multimeter,
+M167,CO-Meettoestel,
+M168,GASLEKDETECTIE toestel Testo,OHD
+M169,ETSCABINE,F31
+M170,Testadapter 16p ,
+M171,Bandspanningsmeter ,OHD
+M172,Deeltjestellers Hydac,Test
+M173,ZEISS  Co-ordinaten meetmach.,A29
+M174,EQUOTIP  Hardheidsmeter,
+M175,Spectrometer BELEC,
+M176,ZOLLER  Voorinstelapparaat,A01
+M177,TESTO Temp.Meetapp.,OV
+M178,Weegschaal Kern 440,
+M179,Fluke Stroomtang  2000A,
+M180,SKF Stethosccop,Matthias
+M181,Fluke 434 Power Quality Analyser,
+M182,Additel 221A kalibrator,
+M183,Greisinger drukmeter,
+M184,SKF Endoscope,Service
+M185,SKF Stethoscope,Service
+M186,Testo 925 Temp Meetapp,Service
+M187,SKF Endoscope,Service
+M188,SKF Stethoscope,Service
+M189,SKF Stethoscope,Service
+M190,SKF Stethoscope,Service
+M191,SKF Endoscope,Service
+M192,Sensycon,Service
+M193,SKF Stethoscope,Service
+M194,SKF Endoscope,Service
+M195,SKF Stethoscope,Service
+M196,SKF Riemuitlijnapparatuur,Service
+M197,SKF Riemuitlijnapparatuur,Service
+M198,SKF Riemfrequentiemeter,Service
+M199,SKF Stroboscope,Service
+M200,SKF Stroboscope,Service
+M201,SKF Riemfrequentiemeter,Service
+M202,Pullalign,Service
+M203,Alluris handtachometer,OHD
+M204,Olympus endoscoop,Service
+M205,SKF CMDT 390,
+M206,SKF CMDT 390,
+M207,SKF CMDT 390,
+O001,PEISELER voor HAT,
+O002,PEISELER Vert. verdeeltafel,
+O003,TICONAL  Magn. opspanplaat,
+O004,TECMAG  Magn. opspanplaat,A26
+O005,HANSEN  Kantelmachine voor    wielen,G27
+O006,PLARAD Krachtvermeerderaar,
+O007,PEISELER Verdeeltafel,
+O008,POSISAF  Lasdraaitafel,D07
+O009,Kantenfreesmachine,
+O010,REMS Draadsnijmach.,D02
+O011,WOHLHAUPTER Vlakdraaikop,
+O012,PEISELER Verdeeltafel,
+O013,Vert.hor. verdeelappar.,
+O014,D'ANDREA  Vlakdraai- en kotterkop,
+O015,AMESTRA  Klauwplaat,
+O016,PLARAD  Krachtvermeerderaar,D12
+O017,BRAILLON  Magn. opspanplaat,
+O018,SPEEDBIT  Nevelaggregaat,
+O019,NIKKON  Micro touch,
+O020,OLAER Controle en vulapparaat,MAG
+O020r,OLAER Reserve vulapparaat,MAG
+O022,BENDIX  Hydr. purgeur,D03
+O023,RIDGID  Draadsnijmachine,B02
+O024,BAKUER,
+O025,PLARAD  Krachtvermeerderaar,D12
+O027,RIDGID  Afkortzaag (Vervangen door nieuwe 2007),
+O028,RIVEKLE  Tang voor blindklink-moeren,
+O029,CEMBRE  Kabelschoentang,
+O030,KLAUKE  Kabelkniptang,
+O031,Manipulator voor VSK - EH553,A47
+O032,WALDMANN  Vonk-erosie app.,
+O033,Manipulator voor VSK - EH553,
+O034,Manipulator voor VSK - EH553,
+O035,Manipulator voor VSK - EH553,
+O036,Manipulator voor VSK - EH553,
+O037,Kantelchassis voor komplete   TWK - EH553,
+O038,Manipulator voor VSK - EH801- EH802,
+O039,Kantelmachine voor wielen,G38
+O040,PLARAD  Krachtvermeerderaar,
+O041,Lagerpers voor ringwielen 901,
+O042,SKF HYDROCAM,D06
+O043,Manipulator voor VSK - EH803,
+O044,Hydr.krachtsleutelinstallatie DAMATORK,Service
+O045,REMS Cirkelzaagmachine,
+O046,RIDGID Draadsnijmachine,B24
+O047,PAKKINGS SNIJMACHINE,MAG
+O048,Montagemanipulator voor Concrete kasten,
+O049,Nullastmanipulators (3st) voor Reductiekasten,
+O050,Plarad ,
+O051,Hydr. krachtsleutelinstallatie DAMATORK,
+O052,Hydraulische momentsleutel (HYTORC),
+O053,Hydraulische momentsleutel (HYTORC),
+O054,Kantellift,
+O055,Hydraulische momentsleutel (HYTORC),
+O056,Hydr.krachtsleutelinstallatie DAMATORK,
+O057,Olifant,Service
+P002,MINGORI pijpenbuigmachine,D02
+P004,PULMAX,G49
+P005a,RIEDEL  Plooi-apparaat,D07
+P005b,RIEDEL  Bandrolapparaat,-
+P006,Rolmachine,G49
+P007,PEDDINGHAUS  Plaatschaar,D06
+P008,PEDDINGHAUS  Combine schaar-  pons,G51
+P010,SAFAN  Hydraul. schaar,G49
+P011,SAFAN  Hydraul. kantpers,G49
+P012,MUBEA  Plaatschaar,-
+P013,JORG  Vingerzetbank,G49
+P014,SAFAN Hydraulische pers,G49
+P015,KNUTH - 3-Wals Rondbuigmachine,G49
+P030,Hydraulische buigmachine      RIGID,D05
+P031,SMG  Hydr. pers,A51
+P032,BROOMWADE  Riveerpers,D06
+P033,BROOMWADE  Riveerpers,A34
+P034,SMIDSE  Hydraul. pers,D07
+P035,MARSH  Letterponsmachine,
+P036,FROMAG  Richtpers,E01
+P037,POWER TEAM 55TON  Pers,A34
+P038,ROLL-BED 100T  Pers,Service
+P039,AUTOMARK  Metaalmerker,-
+P040,GOULD  (Slangen)  Pers,-
+P041,AUTOMARK  Metaalmerker,-
+P042,EITEL,G17
+P043,AUTOMARK  Metaalmerker,B22
+P044,SISA elektr.pers voor slangen,
+P045,POWER TEAM Hydr.Pers 200T,A..
+P047,AUTOMATOR  Metaalmerker,B23
+P048,Metaalmerker tafelmodel,B23
+P050,Uniflex hydraulische pers voor slangen,
+P060,Handpers,-
+P061,Hydraulische pers,-
+P062,ENERPAC,D12
+P063,LUKASSEN,Service
+P064,HAWE  Elektr. pers,Service
+P065,SKF  Demonteergereedschap,Service
+P066,SKF  Hydr. pomp + moeren,
+P067,RIDGID  Buizenplooimachine,B02
+P068,ENERPAC,
+P069,ENERPAC  Werkplaatspers,D00
+P070,ENERPAC  Drukgroep,A..
+P071,TILMAN  Hydr. polie-trekker,A..
+P072,TRANSFLUID  Doorbuigmachine,B02
+P073,ENERPAC,A..
+P074,ENERPAC Pomp + cilinder 700bar,D01
+P075,ENERPAC Voetpomp 700 bar,
+P076,ENERPAC  Hydr.pompgroep 700bar,D12
+P077,HOLMATO  Drukcilinder,A..
+P078,HOLMATO  Drukcilinder,
+P079,ENERPAC  Tafelpers,
+P080,ENERPAC,Service
+P081,EXTRACTIL  Hydr.polie-trekker,
+P082,Hydr. pomp,
+P083,POWER TEAM  Hydr. Pomp ,
+P084,Hydr. cilinder,
+P085,Hydr. cilinder,
+P086,ENERPAC  Hydr. pompgroep,D14
+P087,Hogedruktester  CAT,D07
+P088,ENERPAC - Pomp + Cilinder,
+P089,ENERPAC - Pomp + trekker,
+P090,ENERPAC VOETPOMP,
+P091,VERRIJDBARE VETEENHEID ALEMITEMet pomp H50/1,
+P092,TRANSFLUID Buigmachine,B24
+P093,ENERPAC VOETPOMP,Service
+P094a,ENERPAC  Cylinder,
+P094b,ENERPAC  Cylinder,
+P095,POWER TEAM  Hydr. Pomp ,
+P096,LEN MATEC  Pompunit,A50A56
+P097,POWERTEAM  700bar,
+P098,ENERPAC Cilinder,
+P099,EXTRACTIL  Hydr.polie-trekker,
+P100,ENERPAC Pomp + cilinder 700bar,Service
+P101,Enerpac Cylinder 15T,Service
+P102,Enerpac Cylinder 20T,Service
+P103,Enerpac Cylinder 20T,Service
+P104,Enerpac Cylinder 12T,Service
+P105,ENERPAC Pomp + cilinder 700bar,Service
+P106,Enerpac Cylinder 10T,Service
+P107,Enerpac Cylinder 15T,Service
+P108,Enerpac Cylinder 80T,Service
+P109,Enerpac Cylinder 90T,Service
+P110,GOULD Voetpomp,Service
+P111,SKF Voetpomp + Cylinder,Service
+P112,Betex Voetpomp,Service
+P113,ENERPAC Pomp + cilinder P55,Service
+P114,Enerpac pomp + cylinder P159,Service
+P115,Enerpac pomp + cylinder P159,Service
+P116,Cylinder 80T,Service
+P117,Cylinder 100T,Service
+P118,Fag Cylinder 10T,Service
+P119,Fag Cylinder 10T,Service
+P120,Fag Cylinder 10T,Service
+P121,Fag Cylinder 10T,Service
+P122,Lukas Cylinder 20T,Service
+P123,Enerpac Cylinder 10T,Service
+P124,Enerpac Cylinder 15T,Service
+P125,Cylinder 10T,Service
+P126,Enerpac Cylinder 15T,Service
+P127,Cylinder 10T,Service
+P128,Betex Cylinder 100T,Service
+P129,Enerpac Cylinder 15T,Service
+P130,Enerpac Cylinder 15T,Service
+P131,HOLMATO  Drukcilinder,Service
+P132,Enerpac Cylinder 10T,Service
+P133,Enerpac Cylinder 30T,Service
+P134,Enerpac Cylinder 15T,Service
+P135,Enerpac pomp + cylinder P159,Service
+P136,Enerpac pomp,Service
+P137,Lukas Cylinder 250kN,Service
+P138,Lukas Cylinder 50T,Service
+P139,Enerpac Cylinder,Service
+P140,Holmatro Cylinder,Service
+P141,Holmatro Cylinder,Service
+P142,Holmatro Cylinder,Service
+P143,Holmatro Cylinder,Service
+P144,Holmatro Cylinder,Service
+P145,Holmatro Cylinder,Service
+P146,Holmatro Cylinder,Service
+P147,Holmatro Cylinder,Service
+P148,Enerpac pomp + cylinder P55,Service
+P149,Enerpac Cylinder 30T,Service
+P150,Enerpac Cylinder 5T,Service
+P151,Enerpac Cylinder 15T,Service
+P152,Enerpac Cylinder 15T,Service
+P153,Enerpac Cylinder 15T,Service
+P154,Enerpac Cylinder,Service
+P155,Enerpac Cylinder,Service
+P156,Fag Cylinder 10T,Service
+P157,Fag Cylinder 16T,Service
+P158,Fag Cylinder 10T,Service
+P159,Ridgid waterdrukpomp 50 bar,Service
+P160,Power Team,Service
+P161,Holmatro hydraulische pomp,Service
+P162,Hydraulikaggregat,Service
+P163,Enerpac pomp,OHD
+P164,Power Team Hydraulische cilinder 55T,Service
+P165,Enerpac  Drukcilinder,Service
+P166,Enerpac Cylinder 10T,Service
+Q001,Verlichting,
+Q002,Airco-Verwarming,
+Q003,Sanitair,
+Q004,Gebouw,
+Q005,Meubilair,
+Q006,Perslucht,
+Q007,Riolering,
+Q008,Voeding & Drank,
+Q100,Diverse,
+R004,CHURCHILL,D04
+R010,SCHAUDT,F17
+R013,KARSTENS,F01
+R013-a,KOELINSTALLATIE - HYFRA,F01
+R014,KARSTENS                                      ,F15
+R014-a,KOELINSTALLATIE HYFRA ,F15
+R020,GLAUCHAU (1986),F15
+R024,GLAUCHAU,F12
+R026,KEHREN                        (I202),F21
+R026-a,KOELINSTALLATIE HYFRA ,F21
+R026-b,KOELINSTALLATIE HYFRA ,F21
+R050,GLEASON PFAUTER,F26
+R050-a,KOELINSTALLATIE - HOFFMANN,F26
+R052,GLEASON PFAUTER,F22
+R052-a,KOELINSTALLATIE - HOFFMANN,F22
+R054,GLEASON PFAUTER,F05
+R054-a,KOELINSTALLATIE - HOFFMANN,F05
+R055,GLEASON PFAUTER,X02
+R055-a,KOELINSTALLATIE - HOFFMANN,X02
+R065,OERLIKON-MAAG,F27
+R065-a,KOELINSTALLATIE,F27
+R066,GLEASON PFAUTER,F32
+R068,GLEASON PFAUTER,F22
+R068-a,KOELINSTALLATIE - HOFFMANN,F22
+R073,DISCUS,B18
+R076,DELTA,A35
+R077,DELTA,B18
+R078,TOS,A54
+R079,ELB,B19
+R080,DAVIS THOMPSON (Rotomatic)           (I246),G14
+R081,PICCO                          (I241),G11
+R082,PICCO                         (I238),F06
+R083,GRATOMAT ontbraammachine,G32
+R086,GRATOMAT RAUSCH,G36
+R087,PICCO  (Amber)             (I218),G49
+R088,PICCO                          (I225),G13
+R089,PICCO                          (I239),G26
+R090,ELB,A43
+R091,PICCO,G38
+R093,HENNINGER  Centreerslijpmachine,G17
+R095,HENNINGER  Centreerslijpmachine,G16
+S019,FRÖMAG,X02
+S020,FRÖMAG,F00
+S021,FRÖMAG,F00
+S022,FRÖMAG,A54
+S024,FRÖMAG,A54
+S026,FRÖMAG,G22
+S027,FRÖMAG,G14
+T002,DIV installatie,E10
+T013,AICHELIN Ontlaatoven,E06
+T014,AICHELIN Oven,E04
+T015,AICHELIN Oven (gas),E03
+T017,IVA Carboneeroven,E03
+T019,IVA Ontlaatoven,E06
+T020,HERING Oliebad (elektrisch),E03
+T021,AICHELIN Carboneeroven (Omgebouwd door Hansen),E02
+T022,IVA Oven,E02
+T024,IVA Oven,E02
+T025,OLIEBAD (elektrisch),E05
+T026,IVA Oven,E06
+T027,IVA Oven,E06
+T028,Oven IVA,E07
+T029,SERTT Endogasgenerator,E17
+T030,Ventilator rookafzuiging,E02
+T031,IVA Oven,E06
+T032,CIEFFE FORNI Oliebad (elektrisch),E04
+T051,Oven FORNAX (elektrisch),A53
+T052,Oven FORNAX,E01
+T100,WIZCON Supervisiesysteem,E10
+TH002,Stookplaats sociaal complex,C03
+TH003,THERMOBLOC WANSON GAS         MTP150,A42
+TH004,Saint Roch Couvin,
+TH005,Saint Roch Couvin,
+TH006,GASLUCHTVERHITTER MARK,C01
+TH007,GASLUCHTVERHITTER MARK   - TBD -,D02
+TH008,THERMOBLOC MARK FOHN,A51
+TH009,GASLUCHTVERHITTER MARK,C01
+TH012,Gasluchtverhitter Mark,A10
+TH014,MARK luchtverhitter,E09
+TH016,Thermobloc Wolf GAS,D12
+TH017,Gasluchtverhitter Mark,D09
+TH019,MARK luchtverhitter,E16
+TH023,THERMOBLOC WANSON,A39
+TH025,MARK luchtverhitter,F12
+TH026,THERMOBLOC WANSON GAS,G00
+TH027,THERMOBLOC WANSON GAS,G52
+TH030,THERMOBLOC Mark Fohn - gas,G40
+TH031,Klimatisatie Kalibratie RT 'ORCON',F11
+TH032,THERMOBLOC WANSON,A13
+TH033,WARMELUCHTGORDIJN MAG,C01
+TH040,HITACHI Airco Winner Controlelokaal oven,E13
+TH041,Luchtverhitter Wanson - gas -,A20
+TH042,Luchtverhitter Wanson - gas -,A17
+TH045,Gasluchtverhitter Mark,D07
+TH046,Gasluchtverhitter Mark,D01
+TH047,Gasluchtverhitter Mark,X01
+TH048,Gasluchtverhitter Mark,D11
+TH049,Gasluchtverhitter Mark,A07
+TH050,Gasluchtverhitter Mark,A08
+TH051,Gasluchtverhitter Mark,A09
+TH053,Klimatisatie Meetlokaal RT                     (2 compressoren),F30
+TH054,Klimatisatie kantoor Sales & UPS lokaal,B16
+TH055,Klimatisatie kantoor Directie,B16
+TH056,Klimatisatie Sales,B16
+TH057,Klimatisatie IT & Leonardo zaal,A03
+TH058,Airco portier,
+TH059,Klimatisatie magazijn IT,A03
+TH060,MARK,D15
+TH061,MARK,D02
+TH062,MARK,G49
+TH063,MARK,G51
+TH064,MARK,G53
+TH065,MARK luchtverhitter,F07
+TH066,MARK luchtverhitter,F26
+TH067,MARK,F39
+TH068,MARK,X02
+TH069,Chiller Serverroom,A03
+TH070,Renovatie stookplaats receptie (ABATI),B16
+TH071,Chiller Serverroom (vloer deel 1),A03
+TH072,Chiller Serverroom (vloer deel 1),A03
+TH073,Chiller Serverroom (vloer deel 2),A03
+TH074,Ventilatieunit planafdruk (Renovent),A04
+TH075,Klimatisatie meetlokaal CD,A29
+TH076,MARK luchtverhitter,A56
+TH077,MARK luchtverhitter,B02
+TH078,MARK luchtverhitter,A50
+TH079,MARK luchtverhitter,B31
+TH080,MARK luchtverhitter,B32
+TH081,MARK luchtverhitter,B34
+TH082,MARK luchtverhitter,B14
+TH083,MARK luchtverhitter,B13
+TH084,MARK luchtverhitter,B11
+TH085,MARK luchtverhitter,B03
+TH086,MARK luchtverhitter,B17
+TH087,Verwarming hal Services (Log Hub Zuid),G54 - G58
+TH090,Klimatisatie OHD & Service & CD,D01
+TH091,Koelcel R&D,D14
+TH092,Koelinstallatie noodglasvezel room,B33
+TH093,Zanotti koelinstallatie,
+UA001,ATLAS COPCO LMS 11            (Slagm.sl.),
+UA002,ATLAS COPCO LMS 11            (Slagm.sl.),
+UA003,ATLAS COPCO LMS 11            (Slagm.sl.),
+UA004,ATLAS COPCO LMS 11            (Slagm.sl.),
+UA005,ATLAS COPCO LMS 11            (Slagm.sl.),
+UA006,ATLAS COPCO LMS 11            (Slagm.sl.),
+UA007,ATLAS COPCO LMS 31            (Slagm.sl.),
+UA008,ATLAS COPCO LMS 31            (Slagm.sl.),
+UA009,ATLAS COPCO LMS 31            (Slagm.sl.),
+UA010,ATLAS COPCO LMS 31            (Slagm.sl.),
+UA011,DEPRAG AMBERG RGS10           (Slagm.sl.),
+UA012,DEPRAG AMBERG RGS10           (Slagm.sl.),
+UA013,KELLER 18A4 (Slagm.sl.),
+UA014,KELLER 18A4 (Slagm.sl.),
+UA015,KELLER 18A6 (Slagm.sl.),
+UA016,POKORNY SA14 (Slagm.sl.),A..
+UA017,POKORNY SA24 (Slagm.sl.),
+UA018,POKORNY SA24 (Slagm.sl.),
+UA019,POKORNY SA24 (Slagm.sl.),
+UA020,POWER VANE CP (Slagm.sl.),
+UA021,POWER VANE CP (Slagm.sl.),
+UA022,POWER VANE CP (Slagm.sl.),
+UA023,POWER VANE CP (Slagm.sl.),
+UA024,POWER VANE CP (Slagm.sl.),
+UA025,POWER VANE CP (Slagm.sl.),
+UA026,YOKOTA (Slagm.sl.),
+UA027,Luchtboormachine Demag B6,
+UA028,YOKOTA (Slagm.sl.) YES 002,
+UA029,YOKOTA (Slagm.sl.) YES 01,
+UA030,YOKOTA (Slagm.sl.) YES 01,
+UA031,POWER VANE CP (Slagm.sl.),
+UA032,POWER VANE CP (Slagm.sl.),
+UA033,KELLER 18A4 (slagm.sl.),
+UA035,CHICAGO PNEUMATIC CP344ORS    (Slagm.sl.),
+UA036,YOKOTA YES 01 (Slagm. Sl.),
+UA037,YOKOTA YES 01 (Slagm.sl.),
+UA038,CHAMPION (Slijpm.),
+UA039,INTERNATIONAL AIR BOXER       (Stapling mach.),
+UA040,TORNADE T6 (Boutenpistool),
+UA043,LUCHTSLIJPMACHINE,
+UA044,LUCHTSLIJPMACHINE (Pokorny),
+UA045,LUCHTBOORMACHINE (Pokorny),
+UA046,YOKOTA YES 02 (Slagm.sl.),
+UA047,AEROSMITHHAMMER (Type 2027),
+UA048,AEROSMITHHAMMER (Type 3856),
+UA049,LUCHTSLIJPMACHINE (Type M40B),
+UA050,LUCHTBOORMACHINE  Demag  wordt vervangen UA712,
+UA051,LUCHTBOORMACHINE (Type B837P) Demag,
+UA052,SLAGMOERSLEUTEL CP            (Type CP 3440-RS),
+UA053,SLAGMOERSLEUTEL CP            (Type CP 3440-RS),
+UA054,SLAGMOERSLEUTEL CP            (Type CP 3440-RS),
+UA055,SLAGMOERSLEUTEL ARO           (Type 8103PC1),
+UA056,SLAGMOERSLEUTEL CP            (Type CP3440RS),
+UA057,LUCHTBOORMACHINE POKORNY      (Type B10-32P),A..
+UA058,LUCHTBOORMACHINE POKORNY,
+UA059,MOERAANZETTER CP              (Type CP 3440-RS),
+UA060,SLAGMOERSLEUTEL CP            (Type 3440-RS),A..
+UA061,LUCHTSLIJPMACHINE ARO         (Type 7199),
+UA062,Pneum. naaldenpistool Von Arx NP 34,
+UA063,Haakse slijpmach Metabo       type EW7115S,
+UA064,LUCHTSLIJPMACHINE POKORNY     (Type F2Z),
+UA065,NAGELPISTOOL BOSTICH          (Model N16),
+UA066,NAGELPISTOOL BOSTICH          (Model N III.719.1-427 CT),
+UA067,Pneum naaldenpistool Von Arx  type 3B,
+UA068,Pneum. naaldenpistool Von Arx 3 B,
+UA069,LUCHTSLIJPMACHINE ARO         (Type 7199),
+UA070,SLAGMOERSLEUTEL CP            (Type 3440-RS),
+UA071,ELEKTR.SLIJPMOLEN MALTE MANSAR (Type M61/60 - Elite 1500),
+UA072,ELEKTR.SLIJPMOLEN MALTE MANSAR (Type M61/60 - Elite 1500),
+UA073,LUCHTBOORMACHINE DEMAG        (Type B8-37P),
+UA074,LUCHTSLIJPMACHINE ARO         (Type 7199),
+UA075,LUCHTBOORMACHINE I.R.,
+UA076,AIR Scribe - CP (Type CP61-1),
+UA077,SLAGMOERSLEUTEL ARO           (Type 8540-APC1),
+UA078,LUCHTSLIJPMACHINE ARO         (Type 7199),
+UA079,Bandautomaat CM Cyclop Barle  Wanner,
+UA080,LUCHTSLIJPMACHINE ARO         (Type 7199),
+UA081,LUCHTSLIJPMACHINE ARO         (Type 8477),
+UA082,Elekt. boormachine AEG,
+UA084,Slagmoersleutel CP - type     344ORS-RP,
+UA085,Luchtslijpmachine ARO         (type 7199),
+UA086,Luchtslijpmachine ARO         (type 7941D),
+UA087,Elektr. slijpmach. WOLF       type 4234,
+UA088,LUCHTSLIJPMACHINE ARO    vvd UA709,
+UA089,Sloophamer Atlas Copco        Tex 30,
+UA090,Moeraanzetter Demag A70,
+UA091,Handboormachine Metabo        750010/2S Automatic,
+UA092,Luchtslijpmachine ARO         (type 7840D),
+UA093,Vlakschuurmachine WOLF,
+UA094,Beitelhamer Broomwade         Type L500C,
+UA095,Slijpmachine Bosch            0.601.202.008,A..
+UA096,Klopboormachine Metabo        750116/2,
+UA097,Luchtslijpmachine Rockwell    180840,
+UA098,Elektr.boormach. Metabo       75011C/25-Automatic,
+UA099,CP 3X,
+UA100,"Pneum.ratelsl.Gardner-Denver  type TS312C/17-6096-32-1/2""",
+UA101,Nailer Pasiode type SK312,
+UA102,Luchtslijpmachine ARO 8477A,
+UA103,Luchtslijpmachine Outiperret  type OPM 10,
+UA104,Luchtboormachine CP.985-2200,
+UA105,Moeraanzetter CP960-RSR,
+UA106,Luchtslijpmachine ARO 8477A,
+UA107,Luchtslijpmachine ARO 8477A,
+UA108,Elektr.boormach. METABO       750010/2S,
+UA109,Pneum.moeraanzetter CP        3440RSR,
+UA110,Pneum. moeraanzetter CP       3440RSR,
+UA111,Elektr. slijpmach. WOLF       4586 Gimderette B,A..
+UA112,Luchtfreesmach. Atlas Copco   LSR33 S150,
+UA113,Elektr. slijpmach. AEG        WS330,
+UA114,Luchtboormachine CP           3075.01.100,
+UA115,Luchtslijpmachine CP          3317 LASCAD,
+UA116,Pneum. moeraanzetter CP       3440RSR,
+UA118,HAAKSE SLIJPMACHINE METABO,
+UA119,LUCHTSLIJPMACHINE CP          P400CL,
+UA120,Pneum.slijpmach.Atlas Copco   LSS84.S060,
+UA121,Luchtboormachine CP           3075-0-750,
+UA122,Luchtboormachine DEMAG        B6-42P,Service
+UA123,Luchtboormachine DEMAG        B6-42P,
+UA124,Pneum. moeraanzetter CP       3440 SABAR,
+UA125,Luchtslijpmachine Rockwell    18G-810,
+UA126,Nietjesmach. ATRO mod. 4000,
+UA127,Haakse slijpmach. Metabo      type 4316S,A..
+UA128,Elektr. boormach. Metabo      type 0176/2S Metabomatic,
+UA129,Luchtslijpmach. ARO type 7199A,
+UA130,Haakse slijpmach. Metabo      W23230,
+UA131,Haakse slijpmachine Metabo,
+UA132,Bandschuurmach. Metabo 6100,
+UA133,Pneum. beitelhamer            Broomwade LSOOG,
+UA134,Decoupeerzaag Metabo          4330 Metabomatic,
+UA135,Luchtslijpmach.ARO 8477-A1,
+UA136,Haakse slijpmach. Metabo      61268S-automatic,
+UA137,Luchtboormach.DEMAG B6-42P,
+UA138,Luchthamer KRUPP typ 211/212,
+UA139,LUCHTBOORMACHINE ATLAS COPCO,
+UA140,I.R. SCHOKSLEUTEL,A20
+UA141,Pneum. beitelhamer CP         type 9363H,A..
+UA142,Haakse slijpmach. Metabo      type 4316S,
+UA143,Haakse slijpmach. Metabo,
+UA145,Elektr. boormach. Metabo      750010/2S,
+UA148,Pneum. moeraanzetter CP       type CP3440-RSHR,A..
+UA149,Pneum. moeraanzetter CP       type CP3440-RSHR,A..
+UA150,Pneum. moeraanzetter CP       type CP 3440-RSHR,
+UA151,Luchtslijpmachine CP          type CP 3050-12000,
+UA152,Luchtslijpmachine CP          type CP 3050-12000,
+UA153,Elektr. boormachine Metabo    SbE 600/2S-autom.,
+UA155,Luchtboormachine Pokorny      B6-42P,A..
+UA156,Luchtslijpm. ARO 8477A,
+UA157,Haakse slijpmach. Metabo      612680S,
+UA158,Luchtslijpm. ARO 7943E,
+UA159,Haakse slijpmachine Metabo    type 6161S-automatic,
+UA161,Luchtslijpm. ARO type         7600-S14-3,
+UA163,Luchtslijpmachine CP          type CP3050-14000,
+UA164,Luchtboorm. CP-9288-900,
+UA165,Pneum. moeraanzetter CP       type CP 3440-RSHR,
+UA166,Luchtboorm.ARO type 7367D,
+UA167,Luchtslijpm. CP 3050-14000,
+UA169,Nailer Paslode SK312,
+UA170,Elektr. slijpmachine Bosch    type 0601.209.033,
+UA171,Pneum. moeraanzetter IR,
+UA172,Pneum. moeraanzetter I.R.     type 223,
+UA173,Luchtslijpmach.ARO 7940D,
+UA174,Haakse moeraanzetter ARO      type 7960-E,
+UA175,Pneum. slijpmachine ARO       model 7015-E,A..
+UA177,Haakse slijpmachine METABO    6161S-Automatic,
+UA178,Pneum. moeraanzetter CP       type 3441 - HABAB,
+UA179,Luchtslijpmachine CP          type 3051 - mod. B,A..
+UA180,Schoksleutel I.R. type 231A,
+UA181,Pneum. slijpmach. Rockwell    type 18G810B,
+UA182,Luchtslijpmachine ARO type    7940D,
+UA183,Luchtslijpm. ARO              type 7015E,
+UA184,Elektr. boormach. Metabo      SbEDV1000/2S-aut. R+L,
+UA185,Schoksleutel I.R.             type 2920P1,
+UA186,Pneum. moeraanzetter CP       3441 HABAB,
+UA187,Pneum. moeraanzetter CP       3441 HABAB,
+UA188,Pneum. moeraanzetter CP       3441 HABAB,
+UA189,Luchtslijpm. ARO 8477-A,
+UA190,Nailer Paslode GN90S,
+UA191,Haakse slijpmach. Metabo      6161S aut.,
+UA192,Sloophamer Atlas Copco        TEX31S,
+UA193,Pneum. moeraanzetter CP       CP772,
+UA194,Pneum. bandschuurmachine      Doga type B10,
+UA195,Pneum. moeraanzetter          CP 3441-HABAB,
+UA196,Pneum. beitelhamer            CP3444-PURAB,
+UA197,Pneum. beitelhamer            CP3444-PURAB,
+UA198,Pneum. moeraanzetter          CP3440-SABAB,
+UA199,Luchtslijpmachine Demag B6-68,
+UA200,LUCHTSLIJPMACHINE CM NR 48831,
+UA201,Breekhamer Atlas Copco        type TEX11/DC/S,
+UA202,Haakse slijpmachine Metabo    type EW6.114S-automatic,
+UA203,Pneum. moeraanzetter          CP3441-HABAB,
+UA204,Elektr. boormachine Metabo    BE500S Aut. R+L,
+UA205,Pneum. slijpmach. CP type     3051LASDUK,
+UA206,Pneum. hoekboormach.          Desoutter type D32-S2500,
+UA207,Luchtboormachine DEMAG        type B6-68,
+UA208,Nietjesmachine Paslode        model 94 750,
+UA209,Haakse slijpmachine Metabo    type EW6.114.S,A..
+UA210,Luchtslijpmachine ARO         type 8477A,
+UA211,Pneum. moeraanzetter          Ingersoll Rand type 2906P1,
+UA212,El. boormachine Metabo        BE 620/2S - Automatic,
+UA213,Slagmoersleutel CP CP9547,
+UA214,El. klopboormachine Metabo    Sb EDV 1000/2 S Aut. R + L,
+UA215,El. klopboormachine Metabo    Sb EDV 1000/2 S Aut. R + L,
+UA216,Las- en brandbikhamer CP455L,
+UA217,Haakse slijpmachine Metabo    EW.6.115.S,
+UA218,Elektr. boormach. Metabo      BE500S Aut. R + L,
+UA219,Pneum. moeraanzetter          Ingersoll Rand type 231,
+UA220,Elektr. plaatschaar Metabo    type 6872,
+UA221,Luchtslijpmachine Aro         type 8477-A,
+UA222,Pneum. beitelhamer CP         type 4444PURAB,
+UA223,Schoksleutel Atlas Copco      type LMS 26 HR-13,
+UA224,Haakse boormach. Desoutter    type D314-L-3000,
+UA225,Pneum.-hydr. moeraanzetter    CP 5440 P,
+UA226,Elektr. boormach. Fein type   110.02,
+UA227,Schaafmachine Haffner type    FH.224/224.000.00,
+UA228,Las- brandbikhamer CP 455 L,
+UA229,Nietpistool ATRO,
+UA230,Luchtslijpmachine ARO 7940 E,Service
+UA231,Slagmoersleutel CP 5440 P,
+UA232,Luchtslijpmachine ARO 7943 E,
+UA233,Elektro-pneum. boorhamer      SPIT - code 027800,
+UA234,Bandautomaat CYKLOP,
+UA235,Bandautomaat Borbe Wanner CM50,
+UA236,Elektr. schuurmach. WOLF,
+UA237,Elektrische cirkelzaag METABO,
+UA238,Luchtslijpmachine ARO 7199,
+UA239,Elektr. polijstmachine        METABO 6155,
+UA240,Haakse slijpmachine           BOSCH type 1.347,
+UA241,Boormachine BOSCH type 1159.7,
+UA242,Boormachine BOSCH type 1159.7,
+UA243,Boormachine BOSCH type 1159.7,
+UA244,Slijpmachine CP3050,G14
+UA245,Slijpmachine BIAX SRD645,
+UA246,Slijpmachine BIAX SRD830,
+UA247,Luchtslijpmachine Aro         type 8477-A,
+UA248,OMSNOERINGSAPPARAAT           FROMM A333/16,
+UA249,OMSNOERINGSAPPARAAT           FROMM A333/16,
+UA250,LUCHTHAMER INGERSOLL RAND     AVC13,
+UA251,MOERAANZETTER INGERSOLL RAND  7LRN3D6,
+UA253,SLIJPMACHINE INGERSOLL RAND   66H120G4,
+UA254,HAAKSE SLIJPMACHINE BOSCH     1.347,
+UA255,SLIJPMACHINE INGERSOLL-RAND,G070
+UA256,SCHOKSLEUTEL INGERSOLL-RAND   TYPE 231,
+UA257,SCHOKSLEUTEL INGERSOLL-RAND   TYPE 231,
+UA258,SCHROEVENDRAAIER METABO       SE4420 R+L,
+UA259,SCHROEVENDRAAIER METABO       SE4420 R+L,
+UA260,BOORMACH METABO BE622/S R+L,
+UA261,BOORMACH METABO BE620/2S R+L,
+UA262,BOORMACH METABO BE620/2S R+L,
+UA263,BOORMACH METABO BE620/2S R+L,
+UA264,BOORMACH METABO BE620/2S R+L,
+UA265,NIETPISTOOL ATRO TYPE 8/14,
+UA266,NIETPISTOOL ATRO TYPE 8/14,
+UA267,MOERAANZETTER INGERSOLL-RAND  TYPE 7RLN3D6,
+UA268,BOORMACH METABO SBE700/2S R+L,
+UA269,BOORMACH METABO SBE700/2S R+L,
+UA270,BOORMACH METABO BE380S-R+L,
+UA271,ELEK SLIJPMACH BOSCH GGS27L,A..
+UA272,ELEK SLIJPMACH AEG AGSL25,
+UA273,ELEKTR. VLAKSCHUURMACH. AEG   VSS 280,
+UA274,PNEUM. BOORMACH. ARO          DG051B-15,A..
+UA275,HAAKSE SLIJPMACH. METABO      EW6.114S,
+UA276,HAAKSE SLIJPMACH. METABO      WE24.230X,
+UA279,ELEKTR. BOORM. AEG BE10RLNC,
+UA280,ONTBRAAMMACH. BIAX BE805,
+UA281,ONTBRAAMMACH. BIAX BE805,
+UA282,LUCHTSLIJPMACH. ARO 8479-2,
+UA283,LUCHTSLIJPMACH. ARO 8479-2,
+UA284,SLAGMOERSLEUTEL I.R. 2906P1,
+UA285,PERSLUCHT RATELSLEUTEL IR-1077,
+UA286,ELEKTR. SLIJPMACH. ATLAS COPCO,
+UA287,ELEKTR. BOORMACH. METABO      TYPE SbE 700/2S R+L,
+UA288,ELEKTR. BOORMACH. METABO      TYPE SbE 700/2S R+L,
+UA289,ELEKTR. BOORMACH. METABO      TYPE SbE 700/2S R+L,
+UA290,ELEKTR. BOORMACH. METABO      TYPE SbE 700/2S R+L,
+UA291,ELEKTR. BOORMACH. METABO      TYPE SbE 700/2S R+L,
+UA292,ELEKTR. BOORMACH. METABO      TYPE SbE 700/2S R+L,
+UA293,ELEKTR. BOORMACH. METABO      TYPE SbE 700/2S R+L,
+UA294,ELEKTR. BOORMACH. METABO      TYPE SbE 700/2S R+L,
+UA295,ELEKTR. BOORMACH. METABO      TYPE SbE 700/2S R+L,
+UA296,ELEKTR. BOORMACH. METABO      TYPE SbE 700/2S R+L,
+UA297,ONTBRAAMMACH. BIAX BE805,
+UA298,LUCHTBOORMACH. I.R. TYPE 7AM3,
+UA299,LUCHTSLIJPMACH. ARO TYPE 8477A,
+UA300,LUCHTFREESMACH. I.R.          TYPE DGS210RG4,
+UA301,LUCHTSLIJPMACH. ARO TYPE 8477A,
+UA302,LUCHTSLIJPMACH. ARO TYPE 8477A,
+UA303,LUCHTSLIJPMACH. I.R.          TYPE CD350RG4M,Service
+UA304,ELEKTR. SLIJPMACH. BOSCH,
+UA305,SLAGMOERSLEUTEL IR2906P1,
+UA306,LUCHTBOORMACHINE I.R. 7AM3,
+UA307,VERFBRANDER BOSCH PHG560E,
+UA308,LUCHTSLIJPMACHINE ARO 8477A,
+UA309,SLIJPMACHINE BIAX SRD 645,
+UA311,BANDSCHUURMACHINE METABO      Ba611,
+UA312,HAAKSE SLIJPMACHINE METABO    WE24.230X,
+UA313,HAAKSE SLIJPMACHINE METABO    EW6.114S,
+UA314,HAAKSE SLIJPMACHINE METABO    EW6.114S,
+UA315,HAAKSE SLIJPMACHINE METABO    EW6.114S,
+UA316,HAAKSE SLIJPMACHINE METABO    EW6.114S,
+UA317,HAAKSE SLIJPMACHINE METABO    EW6.114S,
+UA318,HAAKSE SLIJPMACHINE METABO    EW6.114S,
+UA319,SLAGMOERSLEUTEL I.R.  2906P1,Service
+UA320,SLAGMOERSLEUTEL I.R.  2906P1,A..
+UA321,SLAGMOERSLEUTEL I.R.  2906P1,
+UA322,SLAGMOERSLEUTEL I.R.  2906P1,
+UA323,SLAGMOERSLEUTEL I.R.  2906P1,
+UA324,SLAGMOERSLEUTEL I.R.  2906P1,
+UA325,SLAGMOERSLEUTEL I.R.  2906P1,
+UA326,SLIJPMACHINE BIAX SRD645,
+UA327,PERSLUCHTSLIJPMACHINE I.R.    61H120G4,
+UA328,PNEUM. BOORMACHINE ARO        TYPE DG051B-11,
+UA329,Decoupeerzaag Metabo STS450S,
+UA330,Schroevendraaier Skil         Super Twist 2210H,
+UA331,Schroevendraaier Skil         Super Twist 2210H,
+UA332,Pneum. slijpmachine ARO       type 7943-E-12000,
+UA333,Pneum. slijpmachine ARO       type 7943-E-12000,
+UA334,Pneum. slijpmachine ARO       type 7943-E-12000,
+UA335,Pneum. slijpmachine ARO       type 7943-E-12000,
+UA336,Pneum. slijpmachine ARO       type 8477-A,
+UA337,Pneumatische slijpmachine I.R.CD350RG4,
+UA338,Boormachine Metabo            BE 532 S  R+L,
+UA339,Haakse slijpmachine Metabo,
+UA341,HAAKSE SLIJPMACHINE METABO    TYPE WE24230X,
+UA342,HAAKSE SLIJPMACHINE METABO    TYPE WE24230X,
+UA343,I.R. SLAGMOERSLEUTEL,
+UA344,Slagmoersleutel I.R. 2141S,
+UA345,Slagmoersleutel I.R. 2906P1,
+UA346,Slagmoersleutel I.R. 2906P1,
+UA347,Slagmoersleutel I.R. 2906P1,
+UA348,Slijpmachine Biax BE805,
+UA349,Riveermachine Rivekle,
+UA350,Slijpmachine I.R. 61H120G4,
+UA351,Slagmoersleutel I.R. 2906P1,Service
+UA352,Slagmoersleutel I.R. 2906P1,
+UA353,Haakse slijpmachine Metabo    W7-115 QUICK,
+UA354,Haakse slijpmachine Metabo    EW 6114S,
+UA355,Slijpmachine BIAX SRD830,
+UA356,Slagmoersleutel I.R.2906P1,
+UA357,Haakse slijpm. Metabo EW6114S,
+UA358,Boorm. Metabo Sb E655/2S R+L,
+UA359,Boorm. Metabo Sb655/2S R+L,
+UA360,Slagmoersleutel CP  9561-RS,
+UA362,Pneum. betontrilnaald I.R.    type DV55,
+UA363,Haakse slijpmachine Metabo    EW6.114S,
+UA364,Slagmoersleutel I.R.2920P,A13A14
+UA365,Slagmoersleutel I.R. 261,A22
+UA366,Slagmoersleutel I.R. 231-EU,A22
+UA367,Luchtslijpmachine I.R.        61H120 G4-EU,
+UA368,Klopboormachine Metabo        Sb E 815/2S R+L,
+UA369,Slagmoersleutel I.R. 2920P1,A10
+UA370,Klopboormachine Metabo        Sb E751/2S R+L,
+UA371,Slagmoersleutel I.R. 2906 P1,Service
+UA372,Slagmoersleutel I.R. 2906 P1,
+UA373,Elektro-pneum. boorhamer Spit type 351,
+UA374,Haakse slijpmachine METABO,
+UA375,SPIT 372 - Elektr.pneum.hamer,
+UA376,Klopboormachine Metabo        ,
+UA377,Slagmoersleutel I.R. ,
+UA378,Slagmoersleutel I.R. ,
+UA379,Persluchtboormachine I.R.     ,
+UA380,Persluchtboormachine I.R.     ,
+UA381,Haakse slijpmachine Metabo   ,
+UA382,Slijpmachine Biax BE 805,
+UA383,Klopboormachine Metabo,
+UA384,Knabbelschaar Metabo,
+UA385,Freesmachine I.R.,
+UA386,Elektr. slijpm. Atlas Copco   type PSG12,
+UA387,Akkuboorm. Metabo             type BEAT 12/2 R+L,
+UA388,Excenterschuurm. Metabo       type SXE 425,
+UA389,Schuurm. Metabo               type DSE 130,
+UA390,Decoupeerzaagm. Metabo        type STE 450,
+UA391,Slagmoersleutel I.R.          type 261,
+UA392,Slagmoersleutel I.R.          type 231,
+UA393,Atro Stapler 8/14,
+UA394,Atro Stapler 8/14,
+UA395,Atro Roofing Stapler 38,
+UA396,Atro Roll 70,
+UA397,Slagmoersleutel I.R.          type 2920P1,Service
+UA398,Persluchtboorm. I.R.          type 6AJST,
+UA399,Schroevendraaier Skill        type Super Twist 233641,
+UA400,Slagmoersleutel I.R.,D077
+UA401,Slagmoersleutel I.R.,
+UA402,DESOUTTER BOORMACHINE         D314-L 2800,
+UA403,Persluchtfreesmachine I.R.,
+UA404,Persluchtfreesmachine I.R.,
+UA405,Persluchtfreesmachine I.R.,
+UA406,Haaks persluchtfreesm. I.R.,
+UA407,I.R. SLAGMOERSLEUTEL,
+UA408,Haakse slijpm. Metabo,
+UA409,Haakse slijpm. Metabo,
+UA410,Haakse slijpm. Metabo,
+UA411,IR hakhamer,
+UA412,Schoksleutel I.R.,
+UA413,Haakse slijpmachiine Metabo,
+UA414,Boormachine Metabo,
+UA415,Knabbelschaar Makita,
+UA416,Slijpmachine Biax,
+UA417,Slijpmachine I.R.,
+UA418,Schoksleutel I.R.,
+UA419,Slijpmachine Metabo,
+UA420,SLAGMOERSLEUTEL IR,
+UA422,Hakhamer I.R.,
+UA423,Driehoekschuurmachine Flex,
+UA424,Schraper Biax,
+UA425,Slijpmachine Biax,
+UA426,Slijpmachine Biax,
+UA427,Slijpmachine I.R.,
+UA428,Slijpmachine I.R.,
+UA429,Slijpmachine I.R.,
+UA430,Schoksleutel I.R.,
+UA431,Knabbelschaar Makita,
+UA432,Haakse slijpmachine Metabo,
+UA433,Boormachine IR,
+UA434,BIAX,
+UA435,Slijpmachine I.R.,
+UA436,Schoksleutel I.R.,
+UA437,Elektr. slijpmach. Atlas Copco,
+UA438,BIAX,
+UA439,BIAX,
+UA440,BIAX,
+UA441,SLAGMOERSLEUTEL IR,
+UA442,Boormachine METABO,
+UA443,BOORMACHINE METABO,
+UA444,BIAX,
+UA445,SLAGMOERSLEUTEL IR,
+UA446,Slijpmachine I.R.,
+UA447,Slijpmachine I.R.,
+UA448,BOORMACHINE METABO,
+UA449,GRAVEERSTIFT PERSLUCHT,
+UA450,BIAX,
+UA451,BIAX,
+UA452,BIAX,
+UA454,SLAGMOERSLEUTEL IR,
+UA455,SLAGMOERSLEUTEL I.R.,
+UA456,SLAGMOERSLEUTEL IR,
+UA457,BOORMACHINE METABO,Service
+UA458,METABO haakse slijpmachine,
+UA459,METABO haakse slijpmachine,
+UA460,BOORMACHINE METABO,
+UA461,BOORMACHINE METABO,
+UA462,Haakse slijpmolen METABO,
+UA463,Haaks boormachine MAKITA,Service
+UA464,Slagmoersleutel I.R.,
+UA465,Slagmoesleutel I.R.,
+UA466,BIAX,
+UA467,SLIJPMOLENTJE BIAX,G36
+UA468,ATRO,
+UA469,ATRO,
+UA470,SLIJPMOLENTJE BIAX,
+UA471,METABO DRIEHOEKSSCHUURMACH.,
+UA472,SLIJPMOLENTJE BIAX,
+UA473,METABO haakse slijpmolen,
+UA474,BETONMIXER Collomix,
+UA475,HAAKS SLIJPMACH.METABO,
+UA476,HAAKS SLIJPMACH.METABO,
+UA477,BOORMACHINE METABO,
+UA478,BOORMACHINE METABO,
+UA479,Persluchtboormachine I.R.,
+UA480,Schoksleutel IR2906P,
+UA481,METABO haakse slijpmachine,
+UA482,SPIT 331,
+UA483,Persluchtfreesmachine I.R.,
+UA484,METABO haaks slijpmachine,
+UA485,METABO boormachine,
+UA486,BIAX,
+UA487,I.R. schoksleutel,
+UA488,I.R. schoksleutel,
+UA489,I.R. schoksleutel,
+UA490,I.R. persluchtboormachine,
+UA491,BOSCH driehoekschuurmachine,
+UA492,I.R. persluchtfreesmachine,
+UA493,I.R. schoksleutel,
+UA494,I.R. freestol,
+UA495,Haaks slijpmachine METABO     W7-115 Quick,
+UA496,Boormachine METABO            SBE751/2S R+L,
+UA497,Boormachine METABO            SBE751/2S R+L,
+UA498,Haaks slijpmachine METABO     W7-115 Quick,
+UA499,I.R. slagmoersleutel,
+UA500,Boormachine METABO,
+UA501,Haaks slijpmachine METABO     WPS7-115 Quick,
+UA502,Boormachine METABO,
+UA503,I.R. Persluchtslijpmachine,
+UA504,I.R. slagmoersleutel,
+UA505,BIAX,
+UA506,I.R. luchtboormachine,
+UA507,I.R.,
+UA508,BIAX,
+UA509,I.R.,
+UA510,BIAX,
+UA511,Potloodfreesmachine Dynabride,
+UA512,Elektrische slagmoersleutel Bosch,
+UA513,DESOUTTER haakse persluchtboormachine,
+UA514,DESOUTTER haakse persluchtboormachine,
+UA515,I.R. Slagmoersleutel,
+UA516,I.R. Slagmoersleutel,
+UA517,I.R. persluchtslijpmachine,
+UA518,Schoksleutel Dino Paoli,
+UA519,I.R. schoksleutel,
+UA520,I.R. Persluchtslijpmachine,
+UA521,I.R.  schoksleutel,
+UA522,luchtboormachine,Service
+UA523,Biax persluchtslijpmachine,
+UA526,I.R. haakse moeraanzetter,
+UA527,I.R. Haakse moeraanzetter,
+UA529,Haakse slijpmachine METABO,
+UA530,IR Slagmoersleutel,
+UA531,IR slagmoersleutel,
+UA532,IR slagmoersleutel,
+UA533,slagmoersleutel DINO PAOLI,
+UA534,Zaagmachine METABO,
+UA535,METABO schroevendraaier,
+UA536,METABO schroevendraaier,
+UA537,I.R. persluchtslijpmachine,
+UA538,IR schoksleutel,
+UA539,METABO klopboormachine,
+UA540,BIAX,
+UA543,Dremel,
+UA544,Dremel,
+UA545,IR Schoksleutel,
+UA546,I.R. Schoksleutel,
+UA547,IR Schoksleutel,
+UA548,IR Schoksleutel,
+UA549,IR Schoksleutel,
+UA550,BIAX  Handslijpmachine,
+UA551,IR Schoksleutel,
+UA552,IR Schoksleutel,
+UA553,Moeraanzetter ATLAS COPCO,WINDM
+UA554,Moeraanzetter ATLAS COPCO,WINDM
+UA555,Moeraanzetter ATLAS COPCO,WINDM
+UA556,Klinkhamer ATLAS COPCO,WINDM
+UA557,IR Schoksleutel,Service
+UA558,IR Schoksleutel,
+UA559,IR Persluchtboormachine,WINDM
+UA560,Momentapparaat,
+UA561,Graveerstift MK/WEN,
+UA562,Graveerstift MK/WEN,
+UA563,Akku Schroefboormachine METABO,
+UA564,Haakse slijpmachine METABO,
+UA565,Haakse slijpmachine METABO,
+UA566,Haakse slijpmachine METABO,
+UA567,Boormachine METABO,
+UA568,Boormachine METABO,
+UA569,Boormachine METABO,
+UA570,IR  Persluchtboormachine,
+UA571,Haakse slijpmachine METABO,
+UA572,Haakse slijpmachine  METABO,
+UA573,Haakse slijpmachine  METABO,
+UA574,DREMEL,
+UA575,DREMEL,
+UA576,I.R. FREESTOL  Handfrees,
+UA578,IR  Haakse slijpmachine,
+UA579,IR  Schoksleutel              (P-659221),A52
+UA580,IR  Moeraanzetter             (P-659221),A52
+UA581,IR  Persluchtboormachine,
+UA582,I.R. SCHOKSLEUTEL             (P-661135),
+UA583,I.R. MOERAANZETTER            (P-661135),
+UA584,I.R. Moeraanzetter,
+UA585,I.R. Schoksleutel,
+UA586,I.R. Freestol,
+UA587,METABO Klopboormachine,
+UA588,RC  HAKHAMER,
+UA589,RC  HAKHAMER,
+UA590,RC  HAKHAMER,
+UA591,RC  HAKHAMER,
+UA592,GRAVEERSTIFT,
+UA593,METABO ACCU BOORMACHINE,
+UA594,I.R. Persluchtboormachine,
+UA595,I.R. Haakse moeraanzetter,
+UA596,I.R. Moeraanzetter,A52-56
+UA599,DELTA chuurmachine,
+UA600,I.R. MOERAANZETTER,
+UA601,I.R. MOERAANZETTER,
+UA602,I.R. MOERAANZETTER,
+UA603,I.R. MOERAANZETTER,
+UA604,I.R. MOERAANZETTER,
+UA605,I.R. MOERAANZETTER,
+UA606,IR Persluchtschroevendraaier,Indust
+UA607,IR Persluchtschroevendraaier,Indust
+UA608,METABO haakse slijpmachine,Ind
+UA610,METABO  accu boormachine,
+UA611,METABO  accu boormachine,
+UA612,METABO  wipzaag,
+UA613,METABO  haakse slijpmachine,Wind
+UA614,SENCO  Nagelschieter,Vic
+UA615,SENCO  Nietjesschieter,Vic
+UA616,SENCO  Nietjesschieter,Vic
+UA617,HOLZHER  Nagelschieter,Vic
+UA618,MAX  Nagelschieter,Vic
+UA619,MAX  Nagelschieter,Vic
+UA620,METABO  Haakse slijpmachine,
+UA621,IR  Schoksleutel,G12
+UA622,I.R. Moeraanzetter,Wind
+UA623,I.R. SCHOKSLEUTEL,
+UA624,I.R. SCHOKSLEUTEL,
+UA625,METABO ACCU BOORMACHINE,
+UA626,I.R.MOERAANZETTER,
+UA628,I.R. MOERAANZETTER,
+UA629,I.R. MOERAANZETTER,
+UA630,R.C. HAKHAMER,
+UA631,I.R. MOERAANZETTER,
+UA632,I.R. MOERAANZETTER,
+UA633,MAKITA ACCU SLAGMOERSLEUTEL,
+UA634,SENCO Nietjesschieter,
+UA635,Graveerstift IR,
+UA636,I.R. Persl.slijpmachine,B083
+UA637,I.R. Persl.slijpmachine,B080
+UA638,METABO Haakse slijpmachine,
+UA639,BOSCH Moeraanzetter,
+UA640,BOSCH Moeraanzetter,
+UA641,BOSCH  Moeraanzetter,Service
+UA642,I.R. Schoksleutel,
+UA643,I.R. Schoksleutel,
+UA644,I.R. Schoksleutel,
+UA645,I.R. Schoksleutel,
+UA646,I.R. Luchtboormachine,
+UA647,METABO Accu boormachine,
+UA648,METABO Haakse slijpmachine,
+UA649,METABO Haakse slijpmachine,
+UA650,DREMEL,
+UA651,I.R. Schoksleutel,D079
+UA652,I.R. Persluchtboormachine,
+UA653,I.R. Schoksleutel,
+UA654,I.R. Schoksleutel,
+UA655,BIAX  Handslijpmachine,R010
+UA656,DELTA  Schuurmachine,F095
+UA657,I.R. Haakse moeraanzetter,
+UA658,I.R. Schoksleutel,SCHOTE
+UA659,MAGNEETBOORMACHINE,
+UA660,MAGNEETBOORMACHINE,SCHOTE
+UA661,I.R. Persl.boormachine,
+UA662,I.R. Schoksleutel,Service
+UA663,I.R. Persl.slijpmachine,
+UA664,METABO boormachine,Service
+UA665,Persl.boormachine,
+UA666,Afzuiger luchtdruk,
+UA667,MAGNEETBOORMACHINE,SCHOTE
+UA668,I.R. Schoksleutel,
+UA669,I.R. Schoksleutel,
+UA670,I.R. Schoksleutel,
+UA671,I.R. Schoksleutel,
+UA672,METABO ACCU BOORMACHINE,Danny
+UA673,METABO ACCU BOORMACHINE,Maurice
+UA674,METABO ACCU BOORMACHINE,Leo
+UA675,METABO ACCU BOORMACHINE,Nick
+UA676,METABO ACCU BOORMACHINE,Swa
+UA677,METABO  Haakse slijpmachine,Service
+UA678,I.R. Persl.slijpmachine,
+UA679,BIAX  Handslijpmachine,
+UA680,ARO  Persl.boormachine,
+UA681,ARO  Persl.boormachine,
+UA682,METABO  Haakse slijpmachine,
+UA683,I.R. Schoksleutel,
+UA684,I.R. Schoksleutel,
+UA685,I.R. Haakse slijpmachine,
+UA686,I.R. Persl. Slijpmachine,R080
+UA687,RUPES  schuurmachine,SCHOTE
+UA688,ARO  Persl.boormachine,
+UA689,ARO  Persl.boormachine,
+UA690,ARO  Persl.boormachine,
+UA691,Perslucht afzuigpistool (Kristal),D071
+UA692,Perslucht afzuigpistool (Kristal),D098
+UA693,Perslucht afzuigpistool (Kristal),D077
+UA694,Perslucht afzuigpistool (Kristal),A060
+UA695,Perslucht afzuigpistool (Kristal),D079
+UA696,Perslucht afzuigpistool (Kristal),F097
+UA697,Perslucht afzuigpistool (Kristal),D093
+UA698,Perslucht afzuigpistool (Kristal),R051
+UA699,Perslucht afzuigpistool (Kristal),R066
+UA700,Perslucht afzuigpistool (Kristal),R063
+UA701,Perslucht afzuigpistool (Kristal),G070
+UA702,Perslucht afzuigpistool (Kristal),R094
+UA703,SPIT  Boorhamer (nieuwe op 13/01/2009),
+UA704,METABO  Haakse slijpmachine,
+UA705,BOSCH Moeraanzetter,Service
+UA706,BOSCH Slijpmachine,
+UA707,Omsnoeringsapparaat,
+UA708,Omsnoeringsapparaat,
+UA709,Accu slijpmachine MILWAUKEE,
+UA710,I.R. Persl.slijpmachine,
+UA711,BOSCH Moeraanzetter,Service
+UA712,I.R. Persluchtboormachine,
+UA713,METABO  Heteluchtblazer,
+UA714,I.R. Persluchtboormachine,A070
+UA715,I.R. Persluchtboormachine,A071
+UA716,I.R. Persluchtboormachine,D052
+UA717,I.R. Persluchtboormachine,D074
+UA718,METABO  Haakse slijpmachine,
+UA719,BIAX  Handslijpmachine,R014
+UA720,BIAX  Afbramer,D090
+UA721,BIAX  Afbramer,A070
+UA722,BIAX  Afbramer,A065
+UA723,BIAX  Afbramer,B042
+UA724,I.R. Hakhamer,
+UA725,BIAX  Haakse afbramer,B042
+UA726,I.R. Graveerstift,Amber
+UA727,I.R. Persl.slijpmachine,D090
+UA728,I.R. Persl.slijpmachine,B042
+UA729,I.R. Schoksleutel,
+UA730,METABO  accu boormachine,SCHOTE
+UA731,I.R.  Schoksleutel,A072
+UA732,I.R.  Persl.slijpmachine,A072
+UA733,BIAX  Afbramer,A072
+UA734,I.R.  Schoksleutel,Schoten
+UA735,BIAX  Handslijpmachine,Amber
+UA736,BIAX  Handslijpmachine,Amber
+UA737,METABO  Haakse slijpmachine,Schoten
+UA738,METABO  Klopboormachine,Schoten
+UA739,Tafelboormachine,
+UA740,I.R.  Ontroester,
+UA741,METABO  Haakse slijpmachine,Zagerij
+UA742,I.R.  Persl.slijpmachine,
+UA743,METABO  Haakse slijpmachine,Paswerk
+UA744,METABO  Haakse slijpmachine,A062
+UA745,METABO  accu boormachine,
+UA746,SPIT  Boorhamer,
+UA747,BIAX Afbramer,A072
+UA748,METABO slijpmachine,
+UA749,I.R. Persl.slijpmachine,
+UA750,METABO slijpmachine,
+UA751,METABO slijpmachine,
+UA752,I.R. Schoksleutel,Schoten
+UA753,I.R. Schoksleutel,Schoten
+UA754,YOKOTA Haakse slijpmachine,Schoten
+UA755,BIAX Afbramer,
+UA756,I.R. Haakse persl.slijpmachine,Leo
+UA757,I.R. Persl.slijpmachine,Leo
+UA758,METABO Hetelucht blazer,
+UA759,Graveerstift,A29
+UA760,I.R. Schoksleutel,F095
+UA761,I.R. Persl.slijpmachine,B082
+UA762,Omsnoeringsapparaat GETRA elec.,
+UA763,METABO Decoupeerzaag ,Schoten
+UA764,METABO Boormachine,Schoten
+UA765,METABO Handcirkelzaag,Schoten
+UA766,DREMEL,Oven
+UA767,METABO Haakse slijpmachine,Pac.
+UA768,METABO Haakse slijpmachine,
+UA769,METABO Haakse slijpmachine,P.Vets
+UA770,COLLOMIX mengmachine RGE160,Testafd.
+UA771,I.R. Persl.boormachine,
+UA772,I.R. Hakhamer,
+UA773,I.R. Persl.boormachine,
+UA774,I.R. Persl.slijpmachine,A073
+UA775,Graveerstift MK/WEN,
+UA776,Graveerstift MK/WEN,
+UA777,Graveerstift MK/WEN,
+UA778,Graveerstift MK/WEN,
+UA779,Graveerstift MK/WEN,
+UA780,Graveerstift MK/WEN,
+UA781,BIAX afbramer,A073
+UA782,Magneetboormachine,
+UA785,I.R. Persl.slijpmachine,
+UA786,I.R. Haakse slijpmachine,
+UA787,METABO Power Grip,F095
+UA788,I.R. Persl.slijpmachine,A069
+UA789,I.R. Persl.slijpmachine,
+UA790,Atlas Copco  Persl. Slijpmachine,R086
+UA791,Atlas Copco  Persl. Slijpmachine,R086
+UA792,Omsnoeringsappparaat,
+UA793,Afzuiger op luchtdruk,F099
+UA794,Spieuittrekker,
+UA795,Spieuittrekker,
+UA796,I.R. Schoksleutel,
+UA797,I.R. Freestol,A070
+UA798,I.R. Freestol,R082
+UA799,I.R. Schoksleutel,A072
+UA800,Graveerstift MK/WEN ,D052
+UA801,Graveerstift MK/WEN ,D080+A1
+UA802,I.R. freestol,A067
+UA803,METABO Haakse slijpmachine,Walter
+UA804,SENCO Nagelschieter,
+UA805,METABO Klopboormachine,Walter
+UA806,Max Nagelschieter,
+UA807,METABO Klopboormachine,Nick
+UA808,SPIT  Boorhamer,
+UA809,Accu Boorschroefmachine,
+UA810,SPIT  Boorhamer,
+UA811,Desoutter Haakse persluchtboormachine,
+UA812,Slijpmachine FEIN,
+UA813,Graveerstift MK-WEN ,
+UA814,Graveerstift MK-WEN ,
+UA815,Graveerstift MK-WEN ,
+UA816,IR Schoksleutel,
+UA817,Luchtslijpmachine BIAX ,B087
+UA818,Ontbraammachine,A071
+UA819,Ontbraammachine,A071
+UA820,METABO Accuboormachine,Mag
+UA821,METABO slijpmolen,Bart
+UA822,METABO klopboormachine,Jan W
+UA823,METABO Slijpmolen,Mon
+UA824,IR Persl. moeraanzetter,A062
+UA825,IR Haakse slijpmolen,Schoten
+UA826,IR Haakse slijpmolen,Schoten
+UA827,Graveerstift ,Amber
+UA828,Haakse slijper RODAC,Schoten
+UA829,Haakse slijper RODAC,Schoten
+UA830,METABO Accuboormachine,
+UA831,METABO slijpmolen,Patrick
+UA832,METABO Hetelucht blazer,
+UA833,Ontbraammachine BIAX,A072
+UA834,Ontbraammachine BIAX,A071
+UA835,Magneetboormachine ,
+UA836,SPIT  Boorhamer,
+UA837,IR Schoksleutel,
+UA838,IR Schoksleutel,
+UA839,IR Boormachine,B083
+UA840,Graveerstift,Matthias
+UA841,Delta schuurmachine BOSCH,Leo
+UA842,IR Persl. slijmachine,A069
+UA843,IR Persl. slijpmachine,
+UA844,SPIT Boorhamer,
+UA845,IR Schoksleutel,Zagerij
+UA846,METABO Accuboormachine,
+UA847,Hetekuchtblazer STEINEL,
+UA848,IR Voeghamer,
+UA849,Graveerstift,Zagerij
+UA850,METABO Accuboormachine ,
+UA851,IR Persl. slijpmachine,
+UA852,METABO Accuboormachine,Schoten
+UA853,Moeraanzetter Yokota,Matthias
+UA854,Moeraanzetter Yokota,Matthias
+UA855,Heteluchtblazer Steinel,
+UA856,IR Persl. slijpmachine,A069
+UA857,IR Persl. slijpmachine,Amber
+UA858,METABO Accuboormachine,
+UA859,IR Schoksleutel,
+UA860,IR Schoksleutel,Service
+UA861,Graveerstift,Zagerij
+UA862,IR Persluchtboormachine,Zagerij
+UA863,Graveerstift,S. Ivo
+UA864,Deltaschuurmachine BOSCH ,Leo
+UA865,IR Persl. moeraanzetter,
+UA866,IR Haakse slijpmolen,B042
+UA867,Graveerstift,Amber
+UA868,Perslucht graveerstift,CD
+UA869,Freestool,Service
+UA870,Metabo boormachine L/R,Service
+UA871,Metabo Slijpmolen,Service
+UA872,Metabo Slijpmolen,Service
+UA873,Metabo Slijpmolen,Service
+UA874,Metabo Slijpmolen,Service
+UA875,Mennekes Koppelstuk,Service
+UA876,"Atecx Verlenkabel 40M 3G2,5",Service
+UA877,Vynckier kabel Haspel 25m,Service
+UA878,METABO slijpmolen,Service
+UA879,Ohmewatt,Service
+UA880,Rodac,Service
+UA881,Stekkerblok 16A,Service
+UA882,YOKOTA Haakse slijpmachine,Service
+UA883,Ingersoll Rand,Service
+UA884,Casa Fan,Service
+UA885,Brons ventilator,Service
+UA886,Casa Fan,Service
+UA887,Casa Fan,Service
+UA888,Ingersoll Rand,Service
+UA889,Bosch,Service
+UA890,Rorhlux looplamp 4W,Service
+UA891,Rorhlux looplamp 8W,Service
+UA892,Atlas Copco  Persl. Haakse boormachine,Service
+UA893,Power Vane,Service
+UA894,I.R. Persl.slijpmachine,A070
+UA895,Vlakschuurmachine Makita,Facility
+UA896,Spit boorhamer,Facility
+UA897,IR Schoksleutel,
+UA898,IR Schoksleutel,
+UA899,Reaction sleeve,Service
+UA900,Drive Impact Socket Set,Service
+UA901,Slagmoersleutel Red Rooster,D077
+UA902,Slijpmachine 900W 115mm,OHD
+UA903,Accu Slagmoersleutel 18V,Service
+UA904,Accu Slagmoersleutel 18V,Service
+UA905,Accu boor / schroefmachine 18V,Service
+UA906,Accu boor / schroefmachine 18V,Service
+UA907,Accu haakse slijpmachine 125 mm 18V,Service
+UA908,Accu haakse slijpmachine 125 mm 18V,Service
+UA909,IR Schoksleutel,
+UA910,Metabo accu boor / schroefmachine,
+UA911,I.R. Moeraanzetter (OM0031252),A50-56
+UA912,DeWalt accu klopboormachine 18V/3X4AH,OHD
+UA913,"Accu boormachine 18V 2,2AH Metabo",Oven
+UA914,I.R. Moeraanzetter (OM0031638),Assembly
+UA915,Perslucht Boormachine (OM0031742),Oven
+UA916,Perslucht schuurmachine (OA0008782),Assembly
+UA917,Graveerstift,Q Niko
+UA921,Accu boormachine 18V 4.0AH Metabo SB18LT,Oven
+UA922,Graveerpen,
+UA923,Accu boor / schroefmachine 18V,Service
+UA924,INGERSOLL-RAND 7RLN3D6,
+V001,TEREX knikhoogwerker (EIGENDOM),
+V002,PLATTE WAGEN CORNILLE,
+V003,HEFTAFEL HYMO,D00
+V004,Wagner (handtranspallet),A30
+V005,Aanhangwagen Gaussin,
+V006,SKYJACK  Schaarlift,
+V007,ELECTRO PALLETTRUCK           JUNGHEINRICH JUNIOR,
+V010,Handtranspallet Ameise,
+V013,Aanhangwagen Gaussin,
+V019,Still heftruck (UK),Services
+V019-a,Batterijlader CURTIS (Voor V019),G54
+V020,Aanhangwagen SCHULER - 10 ton,
+V024,Aanhangwagen Schuler - 5 ton,
+V025,Caterpillar                   -TBD-,C02
+V027,Wagner (handtranspallet),
+V028,Handtranspallet Indass,
+V031,Handpalettruck AMEISE,
+V035,Transportrijwerk                 (verhuis mach.),
+V039,Aanhangwagen Gaussin,
+V045,Batterijlader Oldham voor V051,C01
+V048,STAPELAAR BT,Amber
+V048-a,Batterijlader voor V048,G53
+V051,BT STAPELAAR,RT
+V053,HEBEFIX hydraulische heftafel,
+V054,Longus hydraulische heftafel,
+V057,Lift sociaal komplex,
+V058,Stapelaar,B11
+V058-a,Batterijlader voor stapelaar V058,G53
+V059,Transpallet AMEISE 3000,
+V060,Transpallet AMEISE 3000,
+V061,Transpallet AMEISE 3000,
+V062,Transpallet AMAISE 3000,
+V063,BT Elektr.Stapelaar,F31
+V063-a,Lader Hawker 24V-40A,F32
+V064,Transpallet  AMEISE 3000,
+V065,Aanhangwagen  GAUSSIN,
+V067,GAUSSIN aanhangwagen 20T,
+V068a,Transpallet  AMEISE 3000,
+V068b,Transpallet  AMEISE 3000,
+V068c,Transpallet  AMEISE 3000,
+V068d,Transpallet  AMEISE 3000,
+V068e,Transpallet  AMEISE 3000,
+V069,LIFT-RAILSYSTEEM  KARDEX SHUTTLES,
+V070,Heftafel  POWER-LIFT,
+V071,Schaar Heftafel  (Pipefitting),B28
+V072,Transpallet AMEISE 3000,
+V073,Transpallet AMEISE 2200,D075
+V074,Transpallet AMEISE 3000,
+V075,Transpallet AMEISE 3000,Schoten
+V076,Transpallet AMEISE 2200,
+V077,Transpallet AMEISE 3000,Amber
+V078,Transpallet AMEISE 2200,
+V079,Aanhangwagen GAUSSIN,Schoten
+V080,Transpallet AMEISE 3000,Amber
+V081,Transpallet AMEISE 2200,A073
+V082,BT elektrische stapelaar,F01
+V082-a,Lader voor V082,F01
+V083,Transpallet AMEISE 2200,
+V084,Transpallet AMEISE 3000,
+V085,Transpallet AMEISE 3000,
+V087,Stapelaar JUNGHEINRICH,Holle As
+V088,Transpallet AMEISE,
+V089,RDL,
+V090,Transpallet AMEISE,
+V091,Stapelaar JUNGHEINRICH,RT
+V092,Stapelaar JUNGHEINRICH,RT
+V094,Transpallet Ameise,
+V095,Transpallet Ameise,Amber
+V096,Transpallet Ameise,
+V097,Stapelaar JUNGHEINRICH  ,Oven
+V097-a,Batterijlader voor V097,E16
+V098,Heftruck 16Ton,Shipping
+V099,Elektrische Stapelaar BT STAXIO,CD
+V099-a,Batterijlader Hawker voor V099,A39
+V100,Elektrische Stapelaar BT STAXIO,WHS
+V100-a,Batterijlader Hawker voor V100,C01
+V101,Elektrische Stapelaar BT STAXIO,WHS
+V101-a,Batterijlader Hawker voor V101,C01
+V102,Elektrische Stapelaar BT STAXIO,WHS
+V102-a,Batterijlader Hawker voor V102,C01
+V103,Elektrische Stapelaar BT STAXIO,RT
+V103-a,Batterijlader Hawker voor V103,G03
+V104,Still Heftruck,
+V104-a,Batterijlader ECOTRON voor V104,A49
+V105,Still Heftruck,Shipping
+V105-a,Batterijlader ECOTRON voor V105,B19
+V106,Still Heftruck,
+V106-a,Batterijlader ECOTRON voor V106,E16
+V107,Still Heftruck,RT
+V107-a,Batterijlader ECOTRON voor V107,F20
+V108,Still Heftruck,
+V108-a,Batterijlader ECOTRON voor V108,D15
+V109,Still Heftruck,Montage
+V109-a,Batterijlader ECOTRON voor V109,B02
+V110,Still Heftruck,
+V110-a,Batterijlader ECOTRON voor V110,D15
+V401,Still Heftruck,CD
+V401-a,Batterijlader Still Ecotron voor V401,A25
+V502,ALLIFT HOOGTEWERKER,
+V514,Still Heftruck,
+V514-a,Batterijlader Still Ecotron voor V514,B12
+V517,"ALLIFT Schaarlift GENIE  9,92m",
+W007,BETONMOLEN,
+W008,Perscontainer VANHEEDE,KOER
+W009,VERWARMINGSPLAAT SEM,A36
+W010,Datanet,
+W011,Lijnentrekkerwagen,
+W012,Smeerpomp ALEMITE,
+W013,Draagbare datenspeicher,
+W014,Kleine ventilatoren,
+W016,Centrifuge POLAR,G04
+W017,Schenkinstallatie Bock-pils,
+W018,Sicli blusinstallatie,
+W019,Transformator Rheotor,D12
+W020,Recirculatieventil. Colt,
+W022,Inrichting soc. komplex,C04
+W023,I.R. COMPRESSOR,KELDER
+W024,Huro afwikkeltoestel,B09
+W025,Ventilatie Colt,
+W026,ALEMITE (smeerpomp),A..
+W027,ALEMITE (smeerpomp),
+W028,Hydraulische krik hydrogrif,
+W029,Weeghaak A.W.S.,B11
+W030,Schuurschijf,D14
+W032,Elektronische telweegschaal   Ishida,A30
+W033,Rolpoort Riexinger,B11
+W034,Brother nummersysteem,
+W035,Schuifpoort Heras + Hekwerk,
+W036,Waterpas Kern,
+W037a,LUTZ  Elektrische vatpomp,
+W037b,LUTZ  Elektrische vatpomp,Lommel
+W038,Brandbeveiliging ovengebouw,
+W039,Compressor I.R.,kelder
+W040,Vetpomp Aro,D13
+W041,Rolpoort Slaets,A10
+W042,SLIJPSTEEN (voor schrijwerk.),D14
+W043,Afvaltank emulsie (vertikaal),
+W044,CONTAINER ZELFKIPPEND         MARCO TIPPER,
+W046,ONDERDELENREINIGINGSTAFEL     VECOM,A..
+W047,Soldeerstation  WELLER,Labo
+W048,Pomp Alemite,
+W049,Elektronische balans Ishidu,A30
+W050,Vlak- en vandikteschaafbank   Robland,D04
+W051,RUBBENS (koffietoestel),
+W052,Automatische antwoordapparaten,
+W053,HYDROFOORGROEP,F43
+W054,IMOP brandblusinstallatie,
+W055,MEIKO (vaatwasmachine),C01
+W056,Polaroid camera,
+W057,DRINKWATERKOELER Natural Chois,
+W058,Dynamometrische balans,D16
+W059,KOELTOREN BALTIMORE,X05
+W060,DINI-ARGEO  Weeginstallatie,B12
+W061,MOEDERKLOK,
+W063a,Beaverline verfkasten,
+W063b,Beaverline verfkasten,
+W063c,Beaverline verfkasten,
+W063d,Beaverline verfkasten,buiten
+W063e,Beaverline verfkasten,
+W063f,Beaverline verfkasten,
+W064,Koelinstallatie ovens,E07
+W066,SIME (dompelpomp),-
+W067,Koeltoren Evapco (RT),F43
+W068,Tank afvalolie,
+W069,Smeerpomp ALEMITE,
+W072,PG Siemens,
+W073,Vluchtladder Jomy,
+W074,Smeerpomp Alemite,
+W075,Ventilatoren COLT - MONTAGE,
+W076,Hypermatic,
+W077,COMPRESSOR ATLAS COPCO,F43
+W079,Elektrolytisch merken,
+W080,Reiniger afvalwater,
+W081,TECNAVIA OPROEPSYSTEEM,
+W087,Verwarmingsplaat 8 KW,A36
+W088,Spanentransport MAYFRAN       Niet meer zo Nieuw,G39G05
+W089,Handschrijfapparaat Primo,A30
+W090,Poort-aandrijving oven,E04
+W091,Gasbranders tandwielen,
+W092,PG SIEMENS,D15
+W093,Ultrasoon reinigen KLN,C00
+W094,Pneum. oliepomp Alemite,F15
+W095,FACIT 4070,
+W096,Verwarmingsplaat Ohmewatt     3500 W,
+W097,Verwarmingsplaat Ohmewatt     2000 W,
+W098,Refractometer Kruss,
+W099,Dompelpomp SIME -,D03
+W100,COMPRESSOR ATLAS COPCO,
+W103,FACIT 4070,
+W104,Flakt,
+W105,ALEMITE vetpomp,
+W106,Verwarmingstafel 2000 W,A37
+W108,Verwarming lagers SKF,
+W109,Digitaal deurslot,
+W110,Panafax,
+W111,FACIT 4030,
+W112,PNEUMATISCHE LEDIGER CASTROL,
+W113,CENTRALE OLIENEVELAFZUIGING,F08
+W114,MICROFILMPROJECTOR            RHONE-POULENC,
+W115,TELEFOONCENTRALE SIEMENS,
+W116,INDUKTIEVERHITTER LAGERS,
+W118,BRANDALARMCENTRALE COMPTERROOMTYCO,
+W119,VERPAKKINGSMACHINE MAGIC,
+W120,SOLD. EN DESOLD.POST WELLER,
+W125,MOBIELE FILTERGROEP FILTRERI,E04
+W127,DIESELPOMP GASBOY,G48
+W128,Inductieverhitter lagers,B12
+W129,Inductieverhitter lagers      -BD Niet vindbaar-,B12
+W130,INDUCTIEVERHITTER LAGERS SKF,B12
+W132,COMPRESSOR ATLAS COPCO,F43
+W133,DROGER ATLAS COPCO,C00
+W134,Inductieverhitter,
+W135,INDUCTIEVERHITTER,
+W136,VERLUCHTING uitbreiding OVEN,
+W137,Induktieverhitter FAG,Service
+W138a,ASRS  Automatisch magazijn,C02
+W138b,KARDEX  (3St)  1850x863,C01
+W138c,KARDEX   (2St)  1850x863,C01
+W139a,KARDEX Mag OHD (2St) 1950x863,D15
+W139b,KARDEX Mag OHD  1500x864,D15
+W140,META draagarmstelling,D17
+W141,Verluchting compressor        + olielokaal,
+W142,Spanentransportband MAYFAN,G45
+W143,Weeghaak 25T,
+W144,NASSAU poorten,
+W145,DYNACO poorten,
+W146,Handlabelprinter PAN-QUICK,
+W147,PG Siemens,
+W148,Verfspuitkabine,D08
+W149,ELektronisch analyseweegschaal,
+W150,Verwarmingsplaat OHMEWATT,WINDM
+W151a,Verluchtingsinstallatie kelderruimte OVEN,X05
+W151b,Verluchtingsinstallatie kelderruimte OVEN,E06
+W151c,Verluchtingsinstallatie kelderruimte OVEN,
+W152,STIP  Brandpoorten,
+W153,VELDEMAN  Tent,GB
+W154,Spuitpistool  KREMLIN,
+W155,RENOVATIE BURELEN             DIRECTIE EN SALES,
+W156,REK  META,G53
+W157,REK  META,
+W158,SPRINKLERINSTALLATIE,D08
+W159,Kelderpomp  ROBUSTA,
+W160,BIJVULINSTALLATIE + LEKDETECTI,
+W161,Accu Siliconenpistool 'KRESS',
+W162,LABOTAFEL  LABONORM,
+W163,KOELKAST  AEG                 DIRECTIELOKAAL,
+W164a,IJSKAST  LIEBHER  302L,F01
+W164b,IJSKAST  LIEBHER  302L,B33
+W164c,IJSKAST  LIEBHER  302L,A21
+W165,COMPRESSOR  ATLAS COPCO,SCHOTE
+W166,INDUKTIEVERHITTER LAGERS,Service
+W167,INDUKTIEVERHITTER LAGERS,B12
+W168,INDUKTIEVERHITTER LAGERS,
+W169,INDUKTIEVERHITTER LAGERS,
+W170,INDUKTIEVERHITTER LAGERS,
+W171,INDUKTIEVERHITTER LAGERS,
+W172,PHILIPS  VIDEO - DVD,
+W173,Induktieverhitter SKF,
+W174,Audiovisuele apparatuur      (Boardrooms),
+W175,Afzuiging ETSLOKAAL RT,F31
+W176,WERTHER - Hydraulische kraan,
+W177,Induktieverhitter Betex,
+W178,AIRLESS VERFSPUITPISTOOL,Ludo
+W179,ZOUTSTROOIWAGENTJE,Zolder
+W180,MENGMACHINE COLLOMIX,
+W181,GESCO  Kuismachine,A50A56
+W182,INDUKTIEVERHITTER LAGERS,A50
+W183,INDUKTIEVERHITTER LAGERS,A51
+W184,INDUKTIEVERHITTER LAGERS,A54
+W185,MAZOUTTANK DUBBELWANDIG verplaatsbaar,G48
+W186,POWERWARE  UPS,
+W187,Brandkast KABA MAUER,
+W188,ROLPOORT  Spuitcabine Wind,D10
+W189,INDUKTIEVERHITTER LAGERS,
+W190,BRANDKASTEN,
+W191,INDUKTIEVERHITTER LAGERS,
+W192,KOELKAST   ,
+W193,TOEGANGSCONTROLE,
+W194,BANKWEEGSCHAAL,
+W195,LEAN LIFT HAENEL,A01
+W196,Afrolwagentje voor staalband,
+W197,Afrolwagentje voor staalband,
+W198,INDUCTIEVERHITTER LAGERS,
+W199,Olievernevelaar,
+W200,Ventilatie Unit  Planafdruk,
+W201,Hogedruk gasleiding Endogas,
+W202,KREMLIN  Spuitpistool,X02
+W203,JETCLEANER proppenschieter,B28
+W204,DEMI -Installatie,
+W205,BANKWEEGSCHAAL,
+W206,CHILLER HITACHI,F43
+W207,CHILLER HITACHI,F43
+W208,Digitaal fototoestel,
+W209,INDUCTIEVERHITTER LAGERS,B35
+W210a,DALLAS Bureau Units RT,
+W210b,DALLAS Bureau Units RT,
+W210c,DALLAS Bureau Units RT,
+W210d,DALLAS Bureau Units RT,
+W211,BELMEKO Verfspuitmachine,B09
+W212,FASTEMS Pallettenmagazijn voor A072+A073,A35/A47
+W213,Vaatwasmachine SIEMENS,Schoten
+W214,"Dubbelwandige tank 10,000l", G53
+W215,Elektronische kraanweegschaal 20T,
+W216,Bankweegschaal 75kg,
+W217,Palletweegschaal,
+W218a,THIEL  Schuifladesysteem ,B04
+W218b,THIEL  Schuifladesysteem ,B04
+W219,AIRCO  voor Manipulator (O-048),B04
+W220,Boringverhitter,B13
+W221,Bankweegschaal 75kg,
+W222,Afvalwaterinstallatie (pompput),G53
+W223,Filtereiland HYDAC,
+W224,Filtereiland ,
+W225,Filtereiland HYDAC,
+W226,Filtereiland HYDAC,
+W227,Verluchters COLT (2 stuks),
+W228,Verluchters COLT (2 stuks),
+W229,Renovatie R & D,
+W230,Flexiguarwanden ,
+W231,Aanpassingen montage wind + eindmontage,
+W232,"Rookstop ""Rooklokaal""",
+W233,Renovatie Finance 2004 - 2005,
+W234,Bankweegschaal 75kg,
+W235,Rekken Facilities algemeen,
+W236,Vouwmachine,Portier
+W237,Bankweegschaal,VERZ
+W238,Microgolfoven,Keuken
+W239,Geluidsinstallatie,
+W240,Spanentransport MAYFRAN       Nieuw,Z042
+W241,Poorten en Barelen,
+W242,Verpakkingsmachine Sapacflex,VERZ
+W243,Camerabewaking,
+W244,Ventilatie RT - LG1-LG2-LG3-LG4,RT
+W245,INDUKTIEVERHITTER LAGERS,B07
+W246,INDUKTIEVERHITTER LAGERS,B04
+W247,INDUKTIEVERHITTER LAGERS,B24
+W248,INDUKTIEVERHITTER LAGERS,B29
+W249,Vetpomp GRACO ,
+W250,Kraanweegschaal 600 kg,
+W251,Schuifpoort fietsstalling,
+W252,Schuimblusinstallatie Soval,
+W253,Ohmewatt kookplaat,Service
+W254,Ohmewatt kookplaat,Service
+W255,Ohmewatt kookplaat,Service
+W256,Ohmewatt kookplaat,Service
+W257,Ohmewatt kookplaat,Service
+W258,Ohmewatt kookplaat,Service
+W259,Ohmewatt kookplaat,Service
+W260,Ohmewatt kookplaat,Service
+W261,Fag AW-G8,Service
+W262,Ohmewatt kookplaat,Service
+W263,Ohmewatt kookplaat,Service
+W264,Ohmewatt kookplaat,Service
+W265,Ohmewatt kookplaat,Service
+W266,Induktieverwarmer lagers,Service
+W267,Radio Sony EHBO lokaal,
+W268,Mobiele Compressor Dynamair,Service
+W269,"INDUKTIEVERHITTER LAGERS (Recup UK) 400V-12,8KVA",Service
+W270,Vetpomp ARO,Montage
+W271,Diepvriezer Actiko,Montage
+W272,Inductieverhitter lagers,Montage
+W502,Buffervat perslucht 2600 liter,F43
+W503,Stikstof thank (Huurinst.Messer) 4000 liter,X05
+W504,Bovengrondse tank mazout verplaatsbaar 1000 liter,X01
+W505,Bovengrondse tank mazout noodgenerator IT 1200 liter,A11
+W506,Bovengrondse olie tank rodage-montage 2500 liter,B23
+W507,Tank filtereiland montage 2700 liter,D06
+W508,Filter eiland montage 800 liter,D06
+W509,Olie opslag tank 800 liter,D12
+W510,Olie opslag tank 800 liter,D13
+W511,Olie opslag tank 800 liter,D13
+W512,Waterverzachter BWT,A29
+W513,INDUKTIEVERHITTER LAGERS,Montage
+WT022,TELTRONIC,
+WT023,TELTRONIC,
+X001,Zwerver 11kW,B23
+X002,Zwerver 11kW,B23
+X005,TESTSTAND 200kW,B05
+X006,DICHTHEIDSPROEFBANK,A34
+X008,TRANSMISSIEAS KLEIN,B24
+X009,Teststand 1.5MW,D13
+X010,Proefstand geluidskamer,D12
+X011,ZWERVER  22kW,
+X012,"ZWERVER  7,5kW",
+X014,PROEFSTAND,
+X015,Proefstand 3 x 4kW (M4ACC) - 1,
+X016,Zwerver Lumet 55kW,
+X017,TREBEL (equilibreermachine),F13
+X019,PROEFSTAND voor het afstellen van koppelbegrenzers,A..
+X021,Motorgroep met Vari-Phi op    voetplaat,
+X022,Equilibreertoestel Reutlinger,
+X023,Vari-phi groep,
+X024,Vari-phi groep,
+X025,Verstelbare proefvloer,B24
+X026,Thyristor gestuurde gelijkstroommotor,
+X030,LABO - Servo teststand,
+X031,Proefloop rodage QVR(C-FX)2,
+X032,Proefstand 3 x 4 kW (M4ACC) - 2,
+Z002,KASTO,D02
+Z024,HOUTZAAGMACHINE,B13
+Z027,KALTENBACH,G53
+Z028,RADIAALZAAGMACHINE  LYONFLEX,
+Z029,CIRKELZAAGMACHINE BEWO,B24
+Z030,Houtzaagmachine LYONFLEX,B11
+Z031,Houtzaagmachine LYONFLEX            (I235),Schoten
+Z040,WELLS,F24
+Z041,DOALL,A43
+Z042,AMADA,G04
+Z043,AMADA,G03
+Z044,BEHRINGER,G00
+Z045,BEHRINGER,G04
