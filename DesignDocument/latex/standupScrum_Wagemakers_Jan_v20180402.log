@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.11.11)  3 MAR 2018 16:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.11.11)  2 APR 2018 08:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**standupScrum_Wagemakers_Jan_v20180303
-(./standupScrum_Wagemakers_Jan_v20180303.tex
+**standupScrum_Wagemakers_Jan_v20180402
+(./standupScrum_Wagemakers_Jan_v20180402.tex
 LaTeX2e <2017/01/01> patch level 3
 Babel <3.9r> and hyphenation patterns for 30 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -107,8 +107,8 @@ Package babel Info: Making " an active character on input line 132.
 ))
 \c@homeworkProblemCounter=\count91
 
-(./standupScrum_Wagemakers_Jan_v20180303.aux)
-\openout1 = `standupScrum_Wagemakers_Jan_v20180303.aux'.
+(./standupScrum_Wagemakers_Jan_v20180402.aux)
+\openout1 = `standupScrum_Wagemakers_Jan_v20180402.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 140.
 LaTeX Font Info:    ... okay on input line 140.
@@ -305,43 +305,48 @@ Underfull \hbox (badness 10000) in paragraph at lines 267--286
  []
 
 (./filename.txt) [3]
-Underfull \hbox (badness 10000) in paragraph at lines 290--331
+Underfull \hbox (badness 10000) in paragraph at lines 290--316
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 290--331
+Underfull \hbox (badness 10000) in paragraph at lines 290--316
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 290--331
+Underfull \hbox (badness 10000) in paragraph at lines 290--316
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 290--331
+Underfull \hbox (badness 10000) in paragraph at lines 290--316
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 333--354
+Underfull \hbox (badness 10000) in paragraph at lines 318--339
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 333--354
+Underfull \hbox (badness 10000) in paragraph at lines 318--339
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 333--354
+Underfull \hbox (badness 10000) in paragraph at lines 318--339
 
  []
 
-(./filename.txt) [4] 
+(./filename.txt) [4]
+Underfull \hbox (badness 10000) in paragraph at lines 341--349
+
+ []
+
+
 AED: lastpage setting LastPage
-(./filename.txt) [5] (./standupScrum_Wagemakers_Jan_v20180303.aux) ) 
+(./filename.txt) [5] (./standupScrum_Wagemakers_Jan_v20180402.aux) ) 
 Here is how much of TeX's memory you used:
  2513 strings out of 494358
  34487 string characters out of 6164526
@@ -359,7 +364,7 @@ t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts
 public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmsy10.pfb>
-Output written on standupScrum_Wagemakers_Jan_v20180303.pdf (5 pages, 109626 by
+Output written on standupScrum_Wagemakers_Jan_v20180402.pdf (5 pages, 109744 by
 tes).
 PDF statistics:
  52 PDF objects out of 1000 (max. 8388607)
