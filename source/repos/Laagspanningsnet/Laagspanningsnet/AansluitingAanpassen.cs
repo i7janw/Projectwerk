@@ -7,6 +7,8 @@
  *      - titel "Nieuwe aansluiting ingeven" toegevoegd
  *  - 20180402 :
  *      - combobox aansluitpunt/machine --> nieuw toegevoegd
+ *      - cmbPolen : DropDownStyle = DropDownList
+ *      - check lege kring 
  */
 using System;
 using System.ComponentModel;
@@ -25,6 +27,7 @@ namespace Laagspanningsnet
         private readonly Database _database;      // Nodig om machine en aansluitpunten lijst op te halen
         private BindingList<string> _listMachines;
         private BindingList<string> _listAansluitpunten;
+        private bool _locked;
 
         // Aansluiting aanpassen
         public AansluitingAanpassen(DataTable dt, int index)
@@ -50,16 +53,17 @@ namespace Laagspanningsnet
             {
                 cmbPolen.Items.Add(count);
             }
+
             // Lijst met Machines aanmaken
             _listMachines = _database.GetMachines(true);                // uit database ophalen (true = enkel niet aangesloten)
-            _listMachines.Insert(0, "Geen");                                         // 'geen' als keuze toevoegen
-            _listMachines.Insert(1, "Nieuw");                                        // 'nieuw' als keuze toevoegen
+            _listMachines.Insert(0, "Nieuw");                           // 'nieuw' als keuze toevoegen
+            _listMachines.Insert(1, "Geen");                            // 'geen' als keuze toevoegen
             
             // Lijst met aansluitpunten aanmaken                                 
             _listAansluitpunten = _database.GetAansluitpunten(true);    // uit database ophalen
-            _listAansluitpunten.Insert(0, "Geen");                                   // 'geen' als keuze toevoegen (true = enkel niet aangesloten)
-            _listAansluitpunten.Insert(1, "Nieuw");                                  // 'nieuw' als keuze toevoegen
-
+            _listAansluitpunten.Insert(0, "Nieuw");                     // 'nieuw' als keuze toevoegen
+            _listAansluitpunten.Insert(1, "Geen");                      // 'geen' als keuze toevoegen (true = enkel niet aangesloten)
+            
             // Pas de titel aan
             if (_row["Kring"].Equals("Nieuw"))
             {
@@ -106,7 +110,7 @@ namespace Laagspanningsnet
             {
                 txtbxKring.Text = "";
             }
-            txtbxKabeltype.Text = "";
+            txtbxKabeltype.Text = "XVB";            // Default kabel type = XVB 
             if (_row["KabelType"] != DBNull.Value)
             {
                 txtbxKabeltype.Text = (string)_row["Kabeltype"];
@@ -126,13 +130,27 @@ namespace Laagspanningsnet
             {
                 cmbPolen.Text = (string)_row["Aantal polen"];
             }
+
+            // Koppel de combobox'en aan de list'en,
+            // vermijd dat de selectie "Nieuw" getriggerd wordt 
+            _locked = true;
             cmbMachine.DataSource = _listMachines;
             cmbAansluitpunt.DataSource = _listAansluitpunten;
+            if (cmbMachine.Text.Equals("Nieuw")) cmbMachine.Text = "Geen";
+            if (cmbAansluitpunt.Text.Equals("Nieuw")) cmbAansluitpunt.Text = "Geen";
+            _locked = false;
         }
 
         // Er is op de OK knop geklikt.
         private void BtnOK_Click(object sender, EventArgs e)
         {
+            // We staan geen lege kring toe.
+            if (txtbxKring.Text.Equals(""))
+            {
+                MessageBox.Show("Kring mag niet leeg zijn.");
+                return;
+            }
+            
             // Ga na of deze aansluiting wel uniek is
             if ((string)_row["Kring"] == "Nieuw")    // enkel checken als we een nieuwe kring toevoegen
             {
@@ -140,7 +158,6 @@ namespace Laagspanningsnet
                 {
                     if (dtRow["Kring"] != DBNull.Value)
                     {
-                        Console.WriteLine(dtRow["Kring"] + " " + txtbxKring.Text);
                         if ((string)dtRow["Kring"] == txtbxKring.Text)
                         {
                             MessageBox.Show("Deze aansluiting bestaat reeds.\nKijk na of alles correct is ingegeven...");
@@ -195,16 +212,19 @@ namespace Laagspanningsnet
         // Machine is aangepast
         private void CmbMachine_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (_locked) return;
             if (cmbMachine.Text == "Nieuw")
             {
+                _locked = true;
+                cmbMachine.Text = "Geen";
                 string[] machine = new string[1];
                 MachineNieuw mn = new MachineNieuw(machine);
-                if (mn.ShowDialog() == DialogResult.Cancel) // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
+                if (mn.ShowDialog() != DialogResult.Cancel) // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
                 {
-                    cmbMachine.Text = "Geen";
+                    _listMachines.Insert(0, machine[0]);
+                    cmbMachine.Text = machine[0];
                 }
-                _listMachines.Insert(0, machine[0]);
-                cmbMachine.Text = machine[0];
+                _locked = false;
             }
             if(cmbMachine.Text == "Geen")
             {
@@ -223,16 +243,19 @@ namespace Laagspanningsnet
         // Aansluitpunt is aangepast
         private void CmbAansluitpunt_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (_locked) return;
             if (cmbAansluitpunt.Text == "Nieuw")
             {
+                _locked = true;
+                cmbAansluitpunt.Text = "Geen";
                 string[] aansluitpunt = new string[1];
                 AansluitpuntNieuw an = new AansluitpuntNieuw(aansluitpunt);
-                if (an.ShowDialog() == DialogResult.Cancel) // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
+                if (an.ShowDialog() != DialogResult.Cancel) // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
                 {
-                    cmbAansluitpunt.Text = "Geen";
+                    _listAansluitpunten.Insert(0, aansluitpunt[0]);
+                    cmbAansluitpunt.Text = aansluitpunt[0];
                 }
-                _listAansluitpunten.Insert(0, aansluitpunt[0]);
-                cmbAansluitpunt.Text = aansluitpunt[0];
+                _locked = false;
             }
             if (cmbAansluitpunt.Text == "Geen")
             {

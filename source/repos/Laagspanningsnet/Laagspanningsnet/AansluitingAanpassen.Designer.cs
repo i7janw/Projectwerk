@@ -299,6 +299,7 @@
             // cmbPolen
             // 
             this.cmbPolen.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cmbPolen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPolen.FormattingEnabled = true;
             this.cmbPolen.Location = new System.Drawing.Point(345, 393);
             this.cmbPolen.Name = "cmbPolen";

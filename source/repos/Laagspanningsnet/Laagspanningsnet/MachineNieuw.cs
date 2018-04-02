@@ -7,6 +7,7 @@
  *      - .ico toegevoegd
  * - 20180402 :
  *      - constructor 'public MachineNieuw(string[] MachineId)' toegevoegd
+ *      - check lege machine ID
  */
 using System;
 using System.Windows.Forms;
@@ -43,6 +44,11 @@ namespace Laagspanningsnet
         // Er is op de OK knop geklikt.
         private void BtnOK_Click(object sender, EventArgs e)
         {
+            if (txtbxMachine.Text.Equals(""))
+            {
+                MessageBox.Show("Machine ID mag niet leeg zijn.");
+                return;
+            }
             // Ga na of het dit Machine ID reeds bestaat.
             if (_database.IsMachine(txtbxMachine.Text))
             {

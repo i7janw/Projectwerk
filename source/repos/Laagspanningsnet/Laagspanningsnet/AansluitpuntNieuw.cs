@@ -7,6 +7,7 @@
  *      - .ico toegevoegd
  *  - 20180402 :
  *      - constructor 'public AansluitpuntNieuw(string[] aansluitpuntId)' toegevoegd
+ *      - check leeg aansluitpunt ID
  */
 using System;
 using System.Windows.Forms;
@@ -42,6 +43,11 @@ namespace Laagspanningsnet
         // Er is op de OK knop geklikt.
         private void BtnOK_Click(object sender, EventArgs e)
         {
+            if (txtbxAansluitpunt.Text.Equals(""))
+            {
+                MessageBox.Show("Aansluitpunt ID mag niet leeg zijn.");
+                return;
+            }
             // Ga na of het dit Aansluitpunt ID reeds bestaat.
             if (_database.IsAansluitpunt(txtbxAansluitpunt.Text))
             {
