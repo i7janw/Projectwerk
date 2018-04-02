@@ -6,6 +6,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace Laagspanningsnet
@@ -23,7 +24,7 @@ namespace Laagspanningsnet
         private void AansluitpuntenVerwijderen_Load(object sender, EventArgs e)
         {
             // Haal lijst met alle niet aangesloten machines op
-            List<String> listAansluitpunt = _database.GetAansluitpunten(true); // true - notConnected
+            BindingList<String> listAansluitpunt = _database.GetAansluitpunten(true); // true - notConnected
 
             // Steek ze in de selectie combobox
             cmbAansluitpunt.DataSource = listAansluitpunt;

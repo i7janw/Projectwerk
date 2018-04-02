@@ -6,6 +6,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace Laagspanningsnet
@@ -23,7 +24,7 @@ namespace Laagspanningsnet
         private void MachineAanpassen_Load(object sender, EventArgs e)
         {
             // Haal lijst met alle machines op
-            List<string> listMachines = _database.GetMachines();
+            BindingList<string> listMachines = _database.GetMachines();
 
             // Steek ze in de selectie combobox
             cmbMachine.DataSource = listMachines;

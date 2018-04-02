@@ -5,6 +5,8 @@
  *      - TxtbxAansluitpunt_KeyPress toegevoegd, enkel cijfers en letters kunnen ingevoegd worden.
  *        Fix voor probleem 'VB810 ' ingeven --> database error want 'VB810' bestaat reeds.
  *      - .ico toegevoegd
+ *  - 20180402 :
+ *      - constructor 'public AansluitpuntNieuw(string[] aansluitpuntId)' toegevoegd
  */
 using System;
 using System.Windows.Forms;
@@ -13,12 +15,21 @@ namespace Laagspanningsnet
 {
     public partial class AansluitpuntNieuw : Form
     {
-        private readonly Database _database;      
+        private readonly Database _database;
+        private readonly string[] _aansluitpunt;
 
         public AansluitpuntNieuw()
         {
             InitializeComponent();
             _database = new Database();
+            _aansluitpunt = new string[1];
+        }
+
+        public AansluitpuntNieuw(string[] aansluitpuntId)
+        {
+            InitializeComponent();
+            _database = new Database();
+            _aansluitpunt = aansluitpuntId;
         }
 
         private void AansluitpuntNieuw_Load(object sender, EventArgs e)
@@ -40,6 +51,9 @@ namespace Laagspanningsnet
 
             // Voeg het aansluitpunt toe aan de database
             _database.InsertAansluitpunt(txtbxAansluitpunt.Text, txtbxLocatie.Text);
+
+            // Aangemaakt item retourneren
+            _aansluitpunt[0] = txtbxAansluitpunt.Text;
 
             // sluit het venster
             DialogResult = DialogResult.OK;

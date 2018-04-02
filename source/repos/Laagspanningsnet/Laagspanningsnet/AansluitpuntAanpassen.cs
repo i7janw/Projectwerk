@@ -6,6 +6,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace Laagspanningsnet
@@ -23,7 +24,7 @@ namespace Laagspanningsnet
         private void AansluitpuntAanpassen_Load(object sender, EventArgs e)
         {
             // Haal lijst met alle aansluitpunten op
-            List<string> listAansluitpunt = _database.GetAansluitpunten();
+            BindingList<string> listAansluitpunt = _database.GetAansluitpunten();
 
             // Steek ze in de selectie combobox
             cmbAansluitpunt.DataSource = listAansluitpunt;

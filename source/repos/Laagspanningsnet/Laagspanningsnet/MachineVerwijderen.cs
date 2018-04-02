@@ -5,7 +5,7 @@
  *      - .ico toegevoegd
  */
 using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace Laagspanningsnet
@@ -23,7 +23,7 @@ namespace Laagspanningsnet
         private void MachineVerwijderen_Load(object sender, EventArgs e)
         {
             // Haal lijst met alle niet aangesloten machines op
-            List<string> listMachines = _database.GetMachines(true); // true - notConnected
+            BindingList<string> listMachines = _database.GetMachines(true); // true - notConnected
 
             // Steek ze in de selectie combobox
             cmbMachine.DataSource = listMachines;
@@ -40,7 +40,7 @@ namespace Laagspanningsnet
             _database.DeleteMachine(cmbMachine.Text);
 
             // sluit het venster
-            this.DialogResult = DialogResult.OK;
+            DialogResult = DialogResult.OK;
             Close();
         }
 

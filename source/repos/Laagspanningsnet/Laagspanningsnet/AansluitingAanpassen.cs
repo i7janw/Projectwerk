@@ -5,9 +5,11 @@
  *      - beperken van welke characters er in de kring txtbx ingegeven kunnen worden
  *      - max.lengte van txtbx'en aangepast volgens datawoordenboek
  *      - titel "Nieuwe aansluiting ingeven" toegevoegd
+ *  - 20180402 :
+ *      - combobox aansluitpunt/machine --> nieuw toegevoegd
  */
 using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
 
@@ -21,6 +23,8 @@ namespace Laagspanningsnet
         private readonly DataRow _row;
         private readonly int _index;
         private readonly Database _database;      // Nodig om machine en aansluitpunten lijst op te halen
+        private BindingList<string> _listMachines;
+        private BindingList<string> _listAansluitpunten;
 
         // Aansluiting aanpassen
         public AansluitingAanpassen(DataTable dt, int index)
@@ -47,12 +51,14 @@ namespace Laagspanningsnet
                 cmbPolen.Items.Add(count);
             }
             // Lijst met Machines aanmaken
-            List<string> listMachines = _database.GetMachines(true);             // uit database ophalen (true = enkel niet aangesloten)
-            listMachines.Insert(0, "Geen");                                      // 'geen' als keuze toevoegen
+            _listMachines = _database.GetMachines(true);                // uit database ophalen (true = enkel niet aangesloten)
+            _listMachines.Insert(0, "Geen");                                         // 'geen' als keuze toevoegen
+            _listMachines.Insert(1, "Nieuw");                                        // 'nieuw' als keuze toevoegen
             
-            // Lijst met aansluitpunten aanmaken                                 // uit database ophalen
-            List<string> listAansluitpunten = _database.GetAansluitpunten(true); // 'geen' als keuze toevoegen (true = enkel niet aangesloten)
-            listAansluitpunten.Insert(0, "Geen");
+            // Lijst met aansluitpunten aanmaken                                 
+            _listAansluitpunten = _database.GetAansluitpunten(true);    // uit database ophalen
+            _listAansluitpunten.Insert(0, "Geen");                                   // 'geen' als keuze toevoegen (true = enkel niet aangesloten)
+            _listAansluitpunten.Insert(1, "Nieuw");                                  // 'nieuw' als keuze toevoegen
 
             // Pas de titel aan
             if (_row["Kring"].Equals("Nieuw"))
@@ -78,7 +84,7 @@ namespace Laagspanningsnet
             {
                 txtbxOmschrijving.Enabled = false;                  // Machine = Omschrijving komt uit Machine-Table
                 txtbxOmschrijving.Text = _database.GetMachineOmschrijving((string)_row["Nummer"]);
-                listMachines.Insert(0, (string)_row["Nummer"]);      // Huidige machine aan lijst toevoegen
+                _listMachines.Insert(0, (string)_row["Nummer"]);      // Huidige machine aan lijst toevoegen
                 cmbMachine.Text = (string)_row["Nummer"];
                 cmbAansluitpunt.Text = "Geen";
             }
@@ -86,7 +92,7 @@ namespace Laagspanningsnet
             {
                 txtbxOmschrijving.Enabled = false;                  // Aansluitpunt =  geen omschrijving
                 txtbxOmschrijving.Text = "";
-                listAansluitpunten.Insert(0, (string)_row["Nummer"]);// Huidig aansluitpunt aan lijst toevoegen
+                _listAansluitpunten.Insert(0, (string)_row["Nummer"]);// Huidig aansluitpunt aan lijst toevoegen
                 cmbAansluitpunt.Text = (string)_row["Nummer"];
                 cmbMachine.Text = "Geen";
             }
@@ -120,8 +126,8 @@ namespace Laagspanningsnet
             {
                 cmbPolen.Text = (string)_row["Aantal polen"];
             }
-            cmbMachine.DataSource = listMachines;
-            cmbAansluitpunt.DataSource = listAansluitpunten;
+            cmbMachine.DataSource = _listMachines;
+            cmbAansluitpunt.DataSource = _listAansluitpunten;
         }
 
         // Er is op de OK knop geklikt.
@@ -189,6 +195,17 @@ namespace Laagspanningsnet
         // Machine is aangepast
         private void CmbMachine_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cmbMachine.Text == "Nieuw")
+            {
+                string[] machine = new string[1];
+                MachineNieuw mn = new MachineNieuw(machine);
+                if (mn.ShowDialog() == DialogResult.Cancel) // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
+                {
+                    cmbMachine.Text = "Geen";
+                }
+                _listMachines.Insert(0, machine[0]);
+                cmbMachine.Text = machine[0];
+            }
             if(cmbMachine.Text == "Geen")
             {
                 if(cmbAansluitpunt.Text == "Geen")
@@ -206,6 +223,17 @@ namespace Laagspanningsnet
         // Aansluitpunt is aangepast
         private void CmbAansluitpunt_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cmbAansluitpunt.Text == "Nieuw")
+            {
+                string[] aansluitpunt = new string[1];
+                AansluitpuntNieuw an = new AansluitpuntNieuw(aansluitpunt);
+                if (an.ShowDialog() == DialogResult.Cancel) // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
+                {
+                    cmbAansluitpunt.Text = "Geen";
+                }
+                _listAansluitpunten.Insert(0, aansluitpunt[0]);
+                cmbAansluitpunt.Text = aansluitpunt[0];
+            }
             if (cmbAansluitpunt.Text == "Geen")
             {
                 if (cmbMachine.Text == "Geen")
@@ -229,7 +257,7 @@ namespace Laagspanningsnet
             }
 
             // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            if ((e.KeyChar == '.') && (((TextBox) sender).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }

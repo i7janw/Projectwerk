@@ -7,7 +7,7 @@
  */
 
 using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using System.Data;
@@ -241,10 +241,19 @@ namespace Laagspanningsnet
          * RETURN : false = mislukt
          *          true  = bewaren gelukt
          */
-        public bool SetAansluitingen(DataSet dsDatabase)
+        public bool SetAansluitingen(string aansluitpunt, DataSet dsDatabase)
         {
             bool _return = true;    // Bijhouden of er fouten optreden, we gaan er van uit dat alles goed zal verlopen
-            int count = 0;
+
+            // DELETE alle aansluitingen van dit aansluitpunt
+            string nonQuery = "DELETE FROM laagspanningsnet.aansluitingen WHERE AP_id = @para ;";
+            _mySqlCommand = new MySqlCommand(nonQuery, MySqlConnection);
+            _mySqlCommand.Parameters.AddWithValue("@para", aansluitpunt);
+            if (!NonQueryCommon())
+            {
+                _return = false;
+            }
+            
             foreach (DataRow dataRow in dsDatabase.Tables["aansluitingen"].Rows)
             {
                 // Steek de gegevens van deze row in losse var's
@@ -258,21 +267,6 @@ namespace Laagspanningsnet
                 var dbStroom = dataRow["Stroom"];
                 var dbPolen = dataRow["Polen"];
                 
-                // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                // !!!! TODO : Voorlopig deleten en dan inserten, kan misschien verbeterd worden door updaten , maar dan is test op reeds bestaan nodig !!!!
-                // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                string nonQuery;
-                if (count == 0) { 
-                    // DELETE alles van een bepaald aansluitpunt van de MySqlDatabase (enkel 1 maal uitvoeren is voldoende)
-                    nonQuery = "DELETE FROM laagspanningsnet.aansluitingen WHERE AP_id = @para ;";
-                    _mySqlCommand = new MySqlCommand(nonQuery, MySqlConnection);
-                    _mySqlCommand.Parameters.AddWithValue("@para", dbApId);
-                    if (!NonQueryCommon())
-                    {
-                        _return = false;
-                    }
-                }
-
                 // INSERT de gegevens in de MySqlDatabase
                 nonQuery = "INSERT INTO laagspanningsnet.aansluitingen " + 
                     "(`AP_id`, `A_id`, `Naar_AP_id`, `Naar_M_id` , `Omschrijving`, `Kabeltype`, `Kabelsectie`, `Stroom`, `Polen`)" +
@@ -300,7 +294,6 @@ namespace Laagspanningsnet
                 {
                     _return = false;
                 }
-                count++;
             }
             return _return;
         }
@@ -384,7 +377,7 @@ namespace Laagspanningsnet
          * 
          * RETURN: List<String> met alle machines
          */
-        public List<String> GetMachines()
+        public BindingList<String> GetMachines()
         {
             return GetMachines(false);
         }
@@ -393,7 +386,7 @@ namespace Laagspanningsnet
          * 
          * RETURN: List<String> met alle aansluitpunten
          */
-        public List<String> GetAansluitpunten()
+        public BindingList<String> GetAansluitpunten()
         {
             return GetAansluitpunten(false);
         }
@@ -404,7 +397,7 @@ namespace Laagspanningsnet
          * 
          * RETURN: List<String> met alle machines
          */
-        public List<string> GetMachines(bool notConnected)
+        public BindingList<string> GetMachines(bool notConnected)
         { 
             string query = "SELECT M_id FROM laagspanningsnet.machines ";
             if (notConnected)
@@ -416,7 +409,7 @@ namespace Laagspanningsnet
             DataSet dataSet = GetDataSet();
             
             // Zet DataSet om naar een List
-            List<string> convert = new List<string>();
+            BindingList<string> convert = new BindingList<string>();
             foreach (DataRow dataRow in dataSet.Tables[0].Rows)
             {
                 convert.Add((String)dataRow["M_id"]);
@@ -430,19 +423,40 @@ namespace Laagspanningsnet
          * 
          * RETURN: List<String> met alle aansluitpunten
          */
-        public List<String> GetAansluitpunten(bool notConnected)
+        public BindingList<String> GetAansluitpunten(bool notConnected)
         {
-            string query = "SELECT aansluitpunten.AP_id FROM laagspanningsnet.aansluitpunten ";
+            string query = "SELECT aansluitpunten.AP_id FROM laagspanningsnet.aansluitpunten";
             if (notConnected)
             {
-                query = query + "LEFT JOIN laagspanningsnet.aansluitingen ON aansluitpunten.AP_id = Naar_AP_id WHERE Naar_AP_id IS NULL";
+                /* Om na te gaan of een aansluitpunt NIET aangesloten is, moeten er twee zaken gecontroleerd worden.
+                 * 1. Krijgt het aansluitpunt voeding van een ander aansluitpunt?
+                 *      SELECT aansluitpunten.AP_id FROM laagspanningsnet.aansluitpunten 
+                 *          LEFT JOIN laagspanningsnet.aansluitingen ON aansluitpunten.AP_id = Naar_AP_id
+                 *          WHERE Naar_AP_id IS NULL;
+                 *
+                 * 2. Is een ander aansluitpunt aangesloten op dit aansluitpunt?
+                 *      SELECT aansluitpunten.AP_id FROM laagspanningsnet.aansluitpunten 
+                 *          LEFT JOIN laagspanningsnet.aansluitingen ON aansluitpunten.AP_id = aansluitingen.AP_id
+                 *          WHERE aansluitingen.AP_id IS NULL;
+                 *
+                 * Enkel wanneer een aansluitpunt in deze twee gevallen niet meer aangesloten is, mag het in onze lijst
+                 * geretourneerd worden --> 1/2 combineren met IN
+                 *
+                 */
+                query = query + " LEFT JOIN laagspanningsnet.aansluitingen ON aansluitpunten.AP_id = Naar_AP_id " +
+                        "WHERE Naar_AP_id IS NULL";
+
+                /*" AND aansluitpunten.AP_id IN(" +
+                        "SELECT aansluitpunten.AP_id FROM laagspanningsnet.aansluitpunten " +
+                        "LEFT JOIN laagspanningsnet.aansluitingen ON aansluitpunten.AP_id = aansluitingen.AP_id " +
+                        "WHERE aansluitingen.AP_id IS NULL)";*/
             }
             query = query + ";";
             _mySqlDataAdapter = new MySqlDataAdapter(query, MySqlConnection);
             DataSet dataSet = GetDataSet();
 
             // Zet DataSet om naar een List
-            List<string> convert = new List<string>();
+            BindingList<string> convert = new BindingList<string>();
             foreach (DataRow dataRow in dataSet.Tables[0].Rows)
             {
                 convert.Add((String)dataRow["AP_id"]);

@@ -212,7 +212,7 @@ namespace Laagspanningsnet
             }
 
             // De database dataset sturen we naar de database, die de gegevens op de mySQL-server zal opslaan
-            _database.SetAansluitingen(dsDatabase);
+            _database.SetAansluitingen(dgvLaagspanningsnet.GetAansluitpunt(), dsDatabase);
 
             // Gegevens terug inladen zodat hetgene op het scherm staat zeker hetzelfde is als in de database is opgeslagen
             dgvLaagspanningsnet.Reload();
@@ -289,7 +289,6 @@ namespace Laagspanningsnet
             {
                 dgvLaagspanningsnet.Reload();
             }
-            
         }
 
         private void MenuAansluitpuntAanpassen_Click(object sender, EventArgs e)

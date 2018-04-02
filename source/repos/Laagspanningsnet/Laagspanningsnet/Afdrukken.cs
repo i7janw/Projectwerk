@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing.Printing;
 using System.Windows.Forms;
@@ -67,7 +68,7 @@ namespace Laagspanningsnet
             cmbAantal.SelectedItem = 1;
 
             // Haal lijst met alle aansluitpunten op
-            List<String> listAansluitpunt = database.GetAansluitpunten();
+            BindingList<String> listAansluitpunt = database.GetAansluitpunten();
             listAansluitpunt.Insert(0, "Huidige Pagina");
 
             // Steek ze in de selectie combobox
