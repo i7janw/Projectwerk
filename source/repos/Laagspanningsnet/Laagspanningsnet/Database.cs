@@ -3,7 +3,8 @@
  * Aanpassingen :
  *  - 20180317 :
  *      - Parameters.AddWithValue("@para", .... gebruikt : sql-injection
- *
+ *  - 20180409 :
+ *      - search aangepast : aansluitingen-machines + aansluitingen-aansluitpunten
  */
 
 using System;
@@ -214,23 +215,37 @@ namespace Laagspanningsnet
          */
         public DataSet GetSearch(string search)
         {
-            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            // TODO Query e.d. nog te bekijken, momenteel voldoende om te testen...
-            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            /* MySQL kent geen FULL JOIN, dus we doen een LEFT JOIN + RIGHT JOIN + UNION
+             * We doen dit voor de tables:
+             *  - aansluitingen FULL JOIN machines
+             *  - aansluitingen FULL JOIN aansluitpunten
+             */
             search = "%" + search + "%";
-            const string what = "AP_id, A_id, Kabeltype, Kabelsectie, Stroom, Polen, Omschrijving, Naar_AP_id, M_id AS Naar_M_id";
-            const string where = "WHERE Naar_AP_id LIKE " +
-                "@para" + " OR M_id LIKE " +
-                "@para" + " OR Omschrijving LIKE " +
-                "@para" + " OR M_omschrijving LIKE " +
-                "@para" + " ";
-            const string query = "SELECT " + what + " FROM laagspanningsnet.aansluitingen " +
-                "LEFT JOIN laagspanningsnet.machines ON Naar_M_id = M_id " +
-                where +
-                "UNION " +
-                "SELECT " + what + " FROM laagspanningsnet.aansluitingen " +
-                "RIGHT JOIN laagspanningsnet.machines ON Naar_M_id = M_id " +
-                where + "";
+            const string what = "aansluitingen.AP_id, A_id, Kabeltype, Kabelsectie, Stroom, Polen, Omschrijving, ";
+            const string whatM = what + "Naar_AP_id, machines.M_id AS Naar_M_id";
+            const string whatA = what + "aansluitpunten.AP_id AS Naar_AP_id, Naar_M_id";
+            const string whereM = "WHERE Naar_AP_id LIKE @para " + 
+                                  "OR M_id LIKE @para " + 
+                                  "OR Omschrijving LIKE @para " + 
+                                  "OR M_omschrijving LIKE @para ";
+            const string whereA = "WHERE aansluitpunten.AP_id LIKE @para " + 
+                                  "OR aansluitingen.AP_id LIKE @para " + 
+                                  "OR Omschrijving LIKE @para ";
+            const string query = "SELECT " + whatM + " FROM laagspanningsnet.aansluitingen " +
+                                 "LEFT JOIN laagspanningsnet.machines ON Naar_M_id = M_id " +
+                                 whereM +
+                                 "UNION " +
+                                 "SELECT " + whatM + " FROM laagspanningsnet.aansluitingen " +
+                                 "RIGHT JOIN laagspanningsnet.machines ON Naar_M_id = M_id " +
+                                 whereM +
+                                 "UNION " +
+                                 "SELECT " + whatA + " FROM laagspanningsnet.aansluitingen " +
+                                 "LEFT JOIN laagspanningsnet.aansluitpunten ON Naar_AP_id = aansluitpunten.AP_id " +
+                                 whereA +
+                                 "UNION " +
+                                 "SELECT " + whatA + " FROM laagspanningsnet.aansluitingen " +
+                                 "RIGHT JOIN laagspanningsnet.aansluitpunten ON Naar_AP_id = aansluitpunten.AP_id " +
+                                 whereA + ";";
             _mySqlDataAdapter = new MySqlDataAdapter(query, MySqlConnection);
             _mySqlDataAdapter.SelectCommand.Parameters.AddWithValue("@para", search);
             return GetDataSet();

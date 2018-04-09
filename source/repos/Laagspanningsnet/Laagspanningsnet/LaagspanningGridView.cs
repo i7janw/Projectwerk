@@ -94,6 +94,7 @@ namespace Laagspanningsnet
             switch (mode)
             {
                 case 1:     // transfos
+                {
                     // Zichtbaarheid instellen
                     Columns["+"].Visible = false;
                     Columns["-"].Visible = false;
@@ -108,7 +109,9 @@ namespace Laagspanningsnet
                     // database gegevens ophalen
                     dsDatabase = _database.GetTransfos();
                     break;
+                }
                 case 3:     // search
+                {
                     // Zichtbaarheid instellen
                     Columns["+"].Visible = false;
                     Columns["-"].Visible = false;
@@ -116,12 +119,15 @@ namespace Laagspanningsnet
                     // database gegevens ophalen
                     dsDatabase = _database.GetSearch(ap);
                     break;
+                }
                 default:    // _aansluitpunt // case 2 = default
+                {
                     // Zichtbaarheid instellen
                     Columns["T/VB/K"].Visible = false;
                     // database gegevens ophalen
                     dsDatabase = _database.GetAansluitingen(ap);
                     break;
+                }
             }
 
             // Zitten er wel gegevens in database DataSet?

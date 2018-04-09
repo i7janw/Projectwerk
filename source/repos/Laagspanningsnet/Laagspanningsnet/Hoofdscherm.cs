@@ -335,7 +335,7 @@ namespace Laagspanningsnet
             if (_huidigAansluitpunt != null && _huidigAansluitpunt.Equals(aansluitpunt)) return;
             _huidigAansluitpunt = aansluitpunt;
 
-            Console.WriteLine("Updating DataGridView"  + aansluitpunt );
+            Console.WriteLine("Updating DataGridView"  + aansluitpunt);
 
             switch (dgvLaagspanningsnet.GetMode())
             {
