@@ -151,7 +151,7 @@
             this.cmbAansluitpunt.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cmbAansluitpunt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAansluitpunt.FormattingEnabled = true;
-            this.cmbAansluitpunt.Location = new System.Drawing.Point(306, 17);
+            this.cmbAansluitpunt.Location = new System.Drawing.Point(306, 16);
             this.cmbAansluitpunt.Name = "cmbAansluitpunt";
             this.cmbAansluitpunt.Size = new System.Drawing.Size(236, 21);
             this.cmbAansluitpunt.TabIndex = 18;

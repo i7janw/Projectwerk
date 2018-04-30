@@ -5,6 +5,8 @@
  *      - Parameters.AddWithValue("@para", .... gebruikt : sql-injection
  *  - 20180409 :
  *      - search aangepast : aansluitingen-machines + aansluitingen-aansluitpunten
+ *  - 20180430 :
+ *      - Insert/Update/Delete-Aansluitingen toegevoegd / SetAansluitingen verwijderd
  */
 
 using System;
@@ -172,6 +174,128 @@ namespace Laagspanningsnet
             string stroom = GetString();
             stroom = stroom.Equals("") ? "-" : (stroom + "A").Trim();
             return stroom;
+        }
+
+        /* Wissen van een Aansluiting aan een Aansluitpunt
+         *
+         * RETURN : false = mislukt
+         *          true  = gelukt 
+         */
+        public bool DeleteAansluiting(DataRow dataRow)
+        {
+            bool _return = true; // Bijhouden of er fouten optreden, we gaan er van uit dat alles goed zal verlopen
+
+            // DELETE de aansluitingen van het aansluitpunt
+            string nonQuery = "DELETE FROM laagspanningsnet.aansluitingen WHERE AP_id = @para1 AND A_id = @para2 ;";
+            _mySqlCommand = new MySqlCommand(nonQuery, MySqlConnection);
+            _mySqlCommand.Parameters.AddWithValue("@para1", dataRow["AP_id"]);
+            _mySqlCommand.Parameters.AddWithValue("@para2", dataRow["A_id"]);
+
+            if (!NonQueryCommon())
+            {
+                _return = false;
+            }
+
+            return _return;
+        }
+
+        /* Toevoegen van een Aansluiting aan een Aansluitpunt
+         *
+         * RETURN : false = mislukt
+         *          true  = gelukt 
+         */
+        public bool InsertAansluiting(DataRow dataRow)
+        {
+            bool _return = true;    // Bijhouden of er fouten optreden, we gaan er van uit dat alles goed zal verlopen
+            
+            // Steek de gegevens van dataRow in losse var's
+            var dbApId = dataRow["AP_id"];
+            var dbAId = dataRow["A_id"];
+            var dbNaarApId = dataRow["Naar_AP_id"];
+            var dbNaarMId = dataRow["Naar_M_id"];
+            var dbOmschrijving = dataRow["Omschrijving"];
+            var dbKabeltype = dataRow["Kabeltype"];
+            var dbKabelsectie = dataRow["Kabelsectie"];
+            var dbStroom = dataRow["Stroom"];
+            var dbPolen = dataRow["Polen"];
+
+            // INSERT de gegevens in de MySqlDatabase
+            string nonQuery = "INSERT INTO laagspanningsnet.aansluitingen " +
+                "(`AP_id`, `A_id`, `Naar_AP_id`, `Naar_M_id` , `Omschrijving`, `Kabeltype`, `Kabelsectie`, `Stroom`, `Polen`)" +
+                "VALUES(" +
+                " @para1 , " +
+                " @para2 , " +
+                " @para3 , " +
+                " @para4 , " +
+                " @para5 , " +
+                " @para6 , " +
+                " @para7 , " +
+                " @para8 , " +
+                " @para9 ); ";
+            _mySqlCommand = new MySqlCommand(nonQuery, MySqlConnection);
+            _mySqlCommand.Parameters.AddWithValue("@para1", dbApId);
+            _mySqlCommand.Parameters.AddWithValue("@para2", dbAId);
+            _mySqlCommand.Parameters.AddWithValue("@para3", dbNaarApId);
+            _mySqlCommand.Parameters.AddWithValue("@para4", dbNaarMId);
+            _mySqlCommand.Parameters.AddWithValue("@para5", dbOmschrijving);
+            _mySqlCommand.Parameters.AddWithValue("@para6", dbKabeltype);
+            _mySqlCommand.Parameters.AddWithValue("@para7", dbKabelsectie);
+            _mySqlCommand.Parameters.AddWithValue("@para8", dbStroom);
+            _mySqlCommand.Parameters.AddWithValue("@para9", dbPolen);
+            if (!NonQueryCommon())
+            {
+                _return = false;
+            }
+            
+            return _return;
+        }
+
+        /* Toevoegen van een Aansluiting aan een Aansluitpunt
+         *
+         * RETURN : false = mislukt
+         *          true  = gelukt 
+         */
+        public bool UpdateAansluiting(DataRow dataRow)
+        {
+            bool _return = true;    // Bijhouden of er fouten optreden, we gaan er van uit dat alles goed zal verlopen
+
+            // Steek de gegevens van dataRow in losse var's
+            var dbApId = dataRow["AP_id"];
+            var dbAId = dataRow["A_id"];
+            var dbNaarApId = dataRow["Naar_AP_id"];
+            var dbNaarMId = dataRow["Naar_M_id"];
+            var dbOmschrijving = dataRow["Omschrijving"];
+            var dbKabeltype = dataRow["Kabeltype"];
+            var dbKabelsectie = dataRow["Kabelsectie"];
+            var dbStroom = dataRow["Stroom"];
+            var dbPolen = dataRow["Polen"];
+
+            // UPDATE de gegevens in de MySqlDatabase
+            string nonQuery = "UPDATE laagspanningsnet.aansluitingen SET " +
+                              "`Naar_AP_id` = @para3, " +
+                              "`Naar_M_id` = @para4, " +
+                              "`Omschrijving` = @para5, " +
+                              "`Kabeltype` = @para6, " +
+                              "`Kabelsectie` = @para7, " +
+                              "`Stroom` = @para8, " +
+                              "`Polen` = @para9 " +
+                              "WHERE AP_id = @para1 AND A_id = @para2 ;";
+            _mySqlCommand = new MySqlCommand(nonQuery, MySqlConnection);
+            _mySqlCommand.Parameters.AddWithValue("@para1", dbApId);
+            _mySqlCommand.Parameters.AddWithValue("@para2", dbAId);
+            _mySqlCommand.Parameters.AddWithValue("@para3", dbNaarApId);
+            _mySqlCommand.Parameters.AddWithValue("@para4", dbNaarMId);
+            _mySqlCommand.Parameters.AddWithValue("@para5", dbOmschrijving);
+            _mySqlCommand.Parameters.AddWithValue("@para6", dbKabeltype);
+            _mySqlCommand.Parameters.AddWithValue("@para7", dbKabelsectie);
+            _mySqlCommand.Parameters.AddWithValue("@para8", dbStroom);
+            _mySqlCommand.Parameters.AddWithValue("@para9", dbPolen);
+            if (!NonQueryCommon())
+            {
+                _return = false;
+            }
+
+            return _return;
         }
 
         /* Opvragen van alle aanwezige Transormatoren in het bedrijf.

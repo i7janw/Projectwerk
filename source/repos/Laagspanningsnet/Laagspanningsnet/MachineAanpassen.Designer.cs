@@ -190,7 +190,7 @@
             this.cmbMachine.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cmbMachine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMachine.FormattingEnabled = true;
-            this.cmbMachine.Location = new System.Drawing.Point(306, 18);
+            this.cmbMachine.Location = new System.Drawing.Point(306, 17);
             this.cmbMachine.Name = "cmbMachine";
             this.cmbMachine.Size = new System.Drawing.Size(232, 21);
             this.cmbMachine.TabIndex = 18;
