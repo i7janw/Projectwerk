@@ -6,11 +6,13 @@
  */
 using System;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace Laagspanningsnet
 {
+    [SuppressMessage("ReSharper", "PossibleNullReferenceException")]
     public class LaagspanningGridView : DataGridView
     {
         private DataTable _dtDisplay;               // Inhoud van deze DataTable wordt op het scherm getoond
