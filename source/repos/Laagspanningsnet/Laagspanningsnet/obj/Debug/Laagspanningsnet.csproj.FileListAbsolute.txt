@@ -25,3 +25,4 @@ C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagsp
 C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\bin\Debug\nl\PdfiumViewer.resources.dll
 C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\obj\Debug\Laagspanningsnet.exe
 C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\obj\Debug\Laagspanningsnet.pdb
+C:\Users\Jan Wagemakers\Documents\MEGA\2017-2018\ProjectWerk\source\repos\Laagspanningsnet\Laagspanningsnet\obj\Debug\Laagspanningsnet.csproj.CopyComplete

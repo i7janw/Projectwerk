@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing.Printing;
 using System.Windows.Forms;
 // print
@@ -14,41 +15,36 @@ namespace Laagspanningsnet
 
     public partial class Afdrukken : Form
     {
-        private Database database;
-        private LaagspanningGridView dgvLaagspanningsnet;
-        private String selectie;
+        private readonly Database _database;
+        private readonly LaagspanningGridView _dgvLaagspanningsnet;
+        private string _selectie;           // het geselecteerde aansluitpunt
+        private string _printer;            // bijhouden van de printer
+        private short _kopies;              // aantal kopies
+        private bool _inclusief;            // inclusief aangesloten aansluitpunt false/true
 
-        private String huidigAansluitpunt; // onthouden van het aansluitpunt dat getoond werd toen we op afdrukken klikte.
-
-        private String printer;
-        private short kopies;
-        private bool inclusief;
-
-        public Afdrukken(LaagspanningGridView _dgv)
+        public Afdrukken(LaagspanningGridView dgv)
         {
             InitializeComponent();
-            database = new Database();
-            huidigAansluitpunt = _dgv.GetAansluitpunt();
-            selectie = huidigAansluitpunt;
-            dgvLaagspanningsnet = _dgv;
+            _database = new Database();
+            _dgvLaagspanningsnet = dgv;
         }
 
         private void Afdrukken_Load(object sender, EventArgs e)
         {
-            String defaultPrn = "";
+            string defaultPrn = "";
             // Haal een lijst op met de beschikbare printers
             PrinterSettings settings = new PrinterSettings();
             List<string> printers = new List<string>();
-            foreach (string _printer in PrinterSettings.InstalledPrinters)
+            foreach (string printer in PrinterSettings.InstalledPrinters)
             {
                 // Voeg elke printer toe aan de printerlijst
-                printers.Add(_printer);
+                printers.Add(printer);
 
                 // Ga op zoek naa de default printer
-                settings.PrinterName = _printer;
+                settings.PrinterName = printer;
                 if (settings.IsDefaultPrinter)
                 {
-                    defaultPrn = _printer;
+                    defaultPrn = printer;
                 }
             }
 
@@ -68,15 +64,19 @@ namespace Laagspanningsnet
             cmbAantal.SelectedItem = 1;
 
             // Haal lijst met alle aansluitpunten op
-            BindingList<String> listAansluitpunt = database.GetAansluitpunten();
+            BindingList<String> listAansluitpunt = _database.GetAansluitpunten();
             listAansluitpunt.Insert(0, "Huidige Pagina");
 
             // Steek ze in de selectie combobox
             cmbSelectie.DataSource = listAansluitpunt;
 
             // Kies de huidige selectie
-            cmbSelectie.SelectedItem = selectie;
-            Console.WriteLine(selectie);
+            cmbSelectie.SelectedItem = "Huidige Pagina";
+            if (_dgvLaagspanningsnet.GetMode() == LaagspanningGridView.Aansluitpunt)    // Als er een aansluitpunt getoond wordt,
+            {
+                cmbSelectie.SelectedItem = _dgvLaagspanningsnet.GetAansluitpunt();      // selecteren we het aansluitpunt ipv van huidige Pagina 
+            }
+            Console.WriteLine(_selectie);
         }
 
         // Er is op de OK knop geklikt.
@@ -84,22 +84,20 @@ namespace Laagspanningsnet
         {
             // Open doc om te schrijven naar een MemoryStream
             Document doc = new Document(PageSize.A4);
-            // String pdf = "C:\\Users\\Jan Wagemakers\\Documents\\MEGA\\" + _ap + ".pdf";
-            // var output = new FileStream(pdf, FileMode.Create);
             MemoryStream output = new MemoryStream();
-            var writer = PdfWriter.GetInstance(doc, output);
+            PdfWriter.GetInstance(doc, output);
             doc.Open();
 
 
             // steek de geselecteerde gegevens in de variablen
-            kopies = Convert.ToInt16(cmbAantal.Text);
-            selectie = cmbSelectie.Text;
-            printer = cmbPrinter.Text;
-            inclusief = cbxInclusief.Checked;
+            _kopies = Convert.ToInt16(cmbAantal.Text);
+            _selectie = cmbSelectie.Text;
+            _printer = cmbPrinter.Text;
+            _inclusief = cbxInclusief.Checked;
             bool huidige = false;
-            if (selectie.Equals("Huidige Pagina"))
+            if (_selectie.Equals("Huidige Pagina"))
             {
-                selectie = huidigAansluitpunt;
+                _selectie = _dgvLaagspanningsnet.GetAansluitpunt();
                 huidige = true;
             }
             
@@ -107,7 +105,7 @@ namespace Laagspanningsnet
             // We starten met het afdrukken van de selectie en
             // indien gewenst worden ook de aansluitpunten die op de selectie zijn aangesloten afgedrukt.
             List<string> todo = new List<string>(); // todo = lijst van aansluitpunten waarvan we nog moeten testen of er aansluitpunten op zijn aangesloten
-            todo.Add(selectie);
+            todo.Add(_selectie);
 
             while (todo.Count != 0)
             {
@@ -117,13 +115,13 @@ namespace Laagspanningsnet
                 {
                     if (!huidige)       // Als de huidige pagina moet afgedrukt worden, moet dgv niet herladen worden
                     {
-                        dgvLaagspanningsnet.ShowAansluitpunt(ap); // Toon en Print selectie
+                        _dgvLaagspanningsnet.ShowAansluitpunt(ap); // Toon en Print selectie
                     }
                     Print(doc);
                     huidige = false;    // de eerste pagina is afgedrukt, de rest zijn dus geen huidige pagina's meer 
-                    if (inclusief) // Gaan we ook de aangesloten aansluitpunten afdrukken?
+                    if (_inclusief) // Gaan we ook de aangesloten aansluitpunten afdrukken?
                     {
-                        foreach (DataGridViewRow row in dgvLaagspanningsnet.Rows)
+                        foreach (DataGridViewRow row in _dgvLaagspanningsnet.Rows)
                         {
                             if (row.Cells["Type"].Value != DBNull.Value)
                             {
@@ -148,15 +146,16 @@ namespace Laagspanningsnet
             ToPrn(output.ToArray());
 
             // sluit het venster
-            this.DialogResult = DialogResult.OK;
+            DialogResult = DialogResult.OK;
             Close();
         }
 
         // Het afdrukken zelf. TODO
+        [SuppressMessage("ReSharper", "RedundantNameQualifier")]
         private void Print(Document doc)
         {
-            String _ap = dgvLaagspanningsnet.GetAansluitpunt();
-            Console.WriteLine("Afdrukken van " + _ap + " mode = " + dgvLaagspanningsnet.GetMode());
+            String ap = _dgvLaagspanningsnet.GetAansluitpunt();
+            Console.WriteLine("Afdrukken van " + ap + " mode = " + _dgvLaagspanningsnet.GetMode());
 
             iTextSharp.text.Font font = FontFactory.GetFont("Arial", 10);
             iTextSharp.text.Font titleFont = FontFactory.GetFont("Arial", 32);
@@ -164,16 +163,16 @@ namespace Laagspanningsnet
             Paragraph text;
             // Titel
             String title;
-            switch (dgvLaagspanningsnet.GetMode())
+            switch (_dgvLaagspanningsnet.GetMode())
             {
                 case LaagspanningGridView.Transfos: 
                     title = "Overzicht transfos";
                     break;
                 case LaagspanningGridView.Search:
-                    title = "Zoeken : " + _ap;
+                    title = "Zoeken : " + ap;
                     break;
                 default: // case Aansluitpunt = default
-                    title = "Layout van " + _ap;
+                    title = "Layout van " + ap;
                     break;
             }
 
@@ -183,10 +182,10 @@ namespace Laagspanningsnet
             doc.Add(text);
 
             // Info
-            String voeding = database.GetVoeding(_ap);
-            String locatie = database.GetAansluitpuntLocatie(_ap);
-            String kabel = database.GetKabel(_ap);
-            String stroom = database.GetStroom(_ap);
+            String voeding = _database.GetVoeding(ap);
+            String locatie = _database.GetAansluitpuntLocatie(ap);
+            String kabel = _database.GetKabel(ap);
+            String stroom = _database.GetStroom(ap);
             text = new Paragraph("Voeding : " + voeding + "\n" +
                                  "Kabel : " + kabel + "\n" +
                                  "Stroom : " + stroom + "\n" +
@@ -198,7 +197,7 @@ namespace Laagspanningsnet
             // Table
             PdfPTable table;
             float[] widths;
-            switch (dgvLaagspanningsnet.GetMode())
+            switch (_dgvLaagspanningsnet.GetMode())
             {
                 case LaagspanningGridView.Transfos:
                     table = new PdfPTable(7);
@@ -230,21 +229,21 @@ namespace Laagspanningsnet
             table.AddCell(new Phrase("Polen", font));
             table.AddCell(new Phrase("Locatie", font));
 
-            foreach (DataRow dtRow in dgvLaagspanningsnet.GetDataTable().Rows)
+            foreach (DataRow dtRow in _dgvLaagspanningsnet.GetDataTable().Rows)
             {
                 if (dtRow["Type"] == DBNull.Value)
                 {
                     break;
                 }
 
-                if (dgvLaagspanningsnet.GetMode() == LaagspanningGridView.Search)
+                if (_dgvLaagspanningsnet.GetMode() == LaagspanningGridView.Search)
                 {
                     table.AddCell(new Phrase(dtRow["T/VB/K"].ToString(), font));
                 }
                 table.AddCell(new Phrase(dtRow["Kring"].ToString(), font));
                 table.AddCell(new Phrase(dtRow["Nummer"].ToString(), font));
                 table.AddCell(new Phrase(dtRow["Omschrijving"].ToString(), font));
-                table.AddCell(new Phrase(dtRow["Kabeltype"].ToString() + " " + dtRow["Kabelsectie"].ToString(), font));
+                table.AddCell(new Phrase(dtRow["Kabeltype"] + " " + dtRow["Kabelsectie"], font));
                 table.AddCell(new Phrase(dtRow["Stroom (A)"].ToString(), font));
                 table.AddCell(new Phrase(dtRow["Aantal Polen"].ToString(), font));
                 table.AddCell(new Phrase(dtRow["Locatie"].ToString(), font));
@@ -256,47 +255,38 @@ namespace Laagspanningsnet
             doc.NewPage();
         }
 
-        private bool ToPrn(byte[] _stream)
+        private void ToPrn(byte[] memStream)
         {
-            try
+            var printerSettings = new PrinterSettings
             {
-                var printerSettings = new PrinterSettings
-                {
-                    PrinterName = printer,
-                    Copies = (short) kopies,
-                };
+                PrinterName = _printer,
+                Copies = _kopies,
+            };
 
-                var pageSettings = new PageSettings(printerSettings)
-                {
-                    Margins = new Margins(0, 0, 0, 0),
-                };
+            var pageSettings = new PageSettings(printerSettings)
+            {
+                Margins = new Margins(0, 0, 0, 0),
+            };
 
-                foreach (PaperSize paperSize in printerSettings.PaperSizes)
+            foreach (PaperSize paperSize in printerSettings.PaperSizes)
+            {
+                if (paperSize.PaperName == "a4")
                 {
-                    if (paperSize.PaperName == "a4")
-                    {
-                        pageSettings.PaperSize = paperSize;
-                        break;
-                    }
+                    pageSettings.PaperSize = paperSize;
+                    break;
                 }
-
-                var stream = new MemoryStream(_stream);
-                using (var document = PdfiumViewer.PdfDocument.Load(stream))
-                {
-                    using (var printDocument = document.CreatePrintDocument())
-                    {
-                        printDocument.PrinterSettings = printerSettings;
-                        printDocument.DefaultPageSettings = pageSettings;
-                        printDocument.PrintController = new StandardPrintController();
-                        printDocument.Print();
-                    }
-                }
-
-                return true;
             }
-            catch
+
+            var stream = new MemoryStream(memStream);
+            using (var document = PdfiumViewer.PdfDocument.Load(stream))
             {
-                return false;
+                using (var printDocument = document.CreatePrintDocument())
+                {
+                    printDocument.PrinterSettings = printerSettings;
+                    printDocument.DefaultPageSettings = pageSettings;
+                    printDocument.PrintController = new StandardPrintController();
+                    printDocument.Print();
+                }
             }
         }
 
