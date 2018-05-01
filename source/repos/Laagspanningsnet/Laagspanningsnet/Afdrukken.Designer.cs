@@ -41,8 +41,8 @@
             this.lblAantal = new System.Windows.Forms.Label();
             this.cmbAantal = new System.Windows.Forms.ComboBox();
             this.cmbSelectie = new System.Windows.Forms.ComboBox();
-            this.rbtnInclusief = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.cbxInclusief = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -204,7 +204,7 @@
             // 
             this.cmbAantal.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cmbAantal.FormattingEnabled = true;
-            this.cmbAantal.Location = new System.Drawing.Point(97, 14);
+            this.cmbAantal.Location = new System.Drawing.Point(97, 15);
             this.cmbAantal.Name = "cmbAantal";
             this.cmbAantal.Size = new System.Drawing.Size(178, 21);
             this.cmbAantal.TabIndex = 0;
@@ -220,34 +220,31 @@
             this.cmbSelectie.Size = new System.Drawing.Size(264, 202);
             this.cmbSelectie.TabIndex = 22;
             // 
-            // rbtnInclusief
-            // 
-            this.rbtnInclusief.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.rbtnInclusief.AutoCheck = false;
-            this.rbtnInclusief.AutoSize = true;
-            this.rbtnInclusief.Location = new System.Drawing.Point(3, 16);
-            this.rbtnInclusief.Name = "rbtnInclusief";
-            this.rbtnInclusief.Size = new System.Drawing.Size(154, 19);
-            this.rbtnInclusief.TabIndex = 23;
-            this.rbtnInclusief.TabStop = true;
-            this.rbtnInclusief.Text = "Inclusief aansluitpunten";
-            this.rbtnInclusief.UseVisualStyleBackColor = true;
-            this.rbtnInclusief.Click += new System.EventHandler(this.rbtnInclusief_Click);
-            // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Controls.Add(this.rbtnInclusief, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.cbxInclusief, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Right;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(16, 241);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(264, 52);
             this.tableLayoutPanel5.TabIndex = 24;
+            // 
+            // rbtnInclusief
+            // 
+            this.cbxInclusief.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cbxInclusief.AutoSize = true;
+            this.cbxInclusief.Location = new System.Drawing.Point(3, 16);
+            this.cbxInclusief.Name = "cbxInclusief";
+            this.cbxInclusief.Size = new System.Drawing.Size(155, 19);
+            this.cbxInclusief.TabIndex = 23;
+            this.cbxInclusief.Text = "Inclusief aansluitpunten";
+            this.cbxInclusief.UseVisualStyleBackColor = true;
             // 
             // Afdrukken
             // 
@@ -288,7 +285,7 @@
         private System.Windows.Forms.ComboBox cmbAantal;
         private System.Windows.Forms.Label lblSelectie;
         private System.Windows.Forms.ComboBox cmbSelectie;
-        private System.Windows.Forms.RadioButton rbtnInclusief;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.CheckBox cbxInclusief;
     }
 }

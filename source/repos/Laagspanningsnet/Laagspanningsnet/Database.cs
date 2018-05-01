@@ -19,6 +19,10 @@ namespace Laagspanningsnet
 {
     public class Database
     {
+        public const int All = 0;
+        public const int NoPower = 1;
+        public const int NoConnections = 2;
+
         // Gegevens nodig om met de MySqlDatabase verbinding te maken.
 
         // Mysql via localhost :
@@ -374,69 +378,7 @@ namespace Laagspanningsnet
             _mySqlDataAdapter.SelectCommand.Parameters.AddWithValue("@para", search);
             return GetDataSet();
         }
-
-        /* Data van alle aansluitingen van een aansluitpunt opslaan in de MySqlDatabase.
-         * 
-         * RETURN : false = mislukt
-         *          true  = bewaren gelukt
-         */
-        public bool SetAansluitingen(string aansluitpunt, DataSet dsDatabase)
-        {
-            bool _return = true;    // Bijhouden of er fouten optreden, we gaan er van uit dat alles goed zal verlopen
-
-            // DELETE alle aansluitingen van dit aansluitpunt
-            string nonQuery = "DELETE FROM laagspanningsnet.aansluitingen WHERE AP_id = @para ;";
-            _mySqlCommand = new MySqlCommand(nonQuery, MySqlConnection);
-            _mySqlCommand.Parameters.AddWithValue("@para", aansluitpunt);
-            if (!NonQueryCommon())
-            {
-                _return = false;
-            }
-            
-            foreach (DataRow dataRow in dsDatabase.Tables["aansluitingen"].Rows)
-            {
-                // Steek de gegevens van deze row in losse var's
-                var dbApId = dataRow["AP_id"];
-                var dbAId = dataRow["A_id"];
-                var dbNaarApId = dataRow["Naar_AP_id"];
-                var dbNaarMId = dataRow["Naar_M_id"];
-                var dbOmschrijving = dataRow["Omschrijving"];
-                var dbKabeltype = dataRow["Kabeltype"];
-                var dbKabelsectie = dataRow["Kabelsectie"];
-                var dbStroom = dataRow["Stroom"];
-                var dbPolen = dataRow["Polen"];
-                
-                // INSERT de gegevens in de MySqlDatabase
-                nonQuery = "INSERT INTO laagspanningsnet.aansluitingen " + 
-                    "(`AP_id`, `A_id`, `Naar_AP_id`, `Naar_M_id` , `Omschrijving`, `Kabeltype`, `Kabelsectie`, `Stroom`, `Polen`)" +
-                    "VALUES(" +
-                    " @para1 , " +
-                    " @para2 , " +
-                    " @para3 , " +
-                    " @para4 , " +
-                    " @para5 , " +
-                    " @para6 , " +
-                    " @para7 , " +
-                    " @para8 , " +
-                    " @para9 ); ";
-                _mySqlCommand = new MySqlCommand(nonQuery, MySqlConnection);
-                _mySqlCommand.Parameters.AddWithValue("@para1", dbApId);
-                _mySqlCommand.Parameters.AddWithValue("@para2", dbAId);
-                _mySqlCommand.Parameters.AddWithValue("@para3", dbNaarApId);
-                _mySqlCommand.Parameters.AddWithValue("@para4", dbNaarMId);
-                _mySqlCommand.Parameters.AddWithValue("@para5", dbOmschrijving);
-                _mySqlCommand.Parameters.AddWithValue("@para6", dbKabeltype);
-                _mySqlCommand.Parameters.AddWithValue("@para7", dbKabelsectie);
-                _mySqlCommand.Parameters.AddWithValue("@para8", dbStroom);
-                _mySqlCommand.Parameters.AddWithValue("@para9", dbPolen);
-                if (!NonQueryCommon())
-                {
-                    _return = false;
-                }
-            }
-            return _return;
-        }
-
+        
         /* Ophalen van een string uit de MySqlDatabase
          * private gemeenschappelijke routine 
          * 
@@ -527,7 +469,7 @@ namespace Laagspanningsnet
          */
         public BindingList<String> GetAansluitpunten()
         {
-            return GetAansluitpunten(false);
+            return GetAansluitpunten(All);
         }
 
         /* Haal een lijst op van alle machines die in de machine table aanwezig zijn 
@@ -558,14 +500,17 @@ namespace Laagspanningsnet
         
         /* Haal een lijst op van alle aansluitpunten die in de aansluitpunt table aanwezig zijn 
          * 
-         * Naargelang _notconnected = true/false worden enkel de niet aangesloten aansluitpunten geRETURNed
+         * Naargelang _which wordt aangegeven welke aansluitpunten in de lijst opgenomen worden:
+         *  - All : alle aansluitpunten
+         *  - NoPower : alleen aansluitpunten die geen voeding hebben
+         *  - NoConnections : alleen aansluitpunten zijn een aansluiting
          * 
          * RETURN: List<String> met alle aansluitpunten
          */
-        public BindingList<String> GetAansluitpunten(bool notConnected)
+        public BindingList<String> GetAansluitpunten(int which)
         {
             string query = "SELECT aansluitpunten.AP_id FROM laagspanningsnet.aansluitpunten";
-            if (notConnected)
+            if ((which == NoPower) || (which == NoConnections))
             {
                 /* Om na te gaan of een aansluitpunt NIET aangesloten is, moeten er twee zaken gecontroleerd worden.
                  * 1. Krijgt het aansluitpunt voeding van een ander aansluitpunt?
@@ -585,10 +530,13 @@ namespace Laagspanningsnet
                 query = query + " LEFT JOIN laagspanningsnet.aansluitingen ON aansluitpunten.AP_id = Naar_AP_id " +
                         "WHERE Naar_AP_id IS NULL";
 
-                /*" AND aansluitpunten.AP_id IN(" +
-                        "SELECT aansluitpunten.AP_id FROM laagspanningsnet.aansluitpunten " +
-                        "LEFT JOIN laagspanningsnet.aansluitingen ON aansluitpunten.AP_id = aansluitingen.AP_id " +
-                        "WHERE aansluitingen.AP_id IS NULL)";*/
+                if (which == NoConnections)
+                {
+                    query = query + " AND aansluitpunten.AP_id IN(" +
+                            "SELECT aansluitpunten.AP_id FROM laagspanningsnet.aansluitpunten " +
+                            "LEFT JOIN laagspanningsnet.aansluitingen ON aansluitpunten.AP_id = aansluitingen.AP_id " +
+                            "WHERE aansluitingen.AP_id IS NULL)";
+                }
             }
             query = query + ";";
             _mySqlDataAdapter = new MySqlDataAdapter(query, MySqlConnection);

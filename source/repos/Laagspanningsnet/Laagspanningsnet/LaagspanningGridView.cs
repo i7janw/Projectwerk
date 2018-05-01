@@ -15,6 +15,10 @@ namespace Laagspanningsnet
     [SuppressMessage("ReSharper", "PossibleNullReferenceException")]
     public class LaagspanningGridView : DataGridView
     {
+        public const int Transfos = 1;
+        public const int Aansluitpunt = 2;
+        public const int Search = 3;
+
         private DataTable _dtDisplay;               // Inhoud van deze DataTable wordt op het scherm getoond
         private readonly Database _database;        // Alle communicatie met de database verloopt via de database klasse
         private string _aansluitpunt;
@@ -31,7 +35,7 @@ namespace Laagspanningsnet
          */
         public void ShowTransfos()
         {
-            Reload("", 1);
+            Reload("", Transfos);
         }
 
         /* Tonen van het _aansluitpunt.
@@ -40,7 +44,7 @@ namespace Laagspanningsnet
          */
         public void ShowAansluitpunt(string ap)
         {
-            Reload(ap, 2);
+            Reload(ap, Aansluitpunt);
         }
 
         /* Tonen van zoekresultaten.
@@ -49,7 +53,7 @@ namespace Laagspanningsnet
          */
         public void ShowSearch(string search)
         {
-            Reload(search, 3);
+            Reload(search, Search);
         }
 
         /* Tonen van Zoekresultaten of Aansluitpunt
@@ -95,7 +99,7 @@ namespace Laagspanningsnet
             // Andere gegevens uit database halen + op het scherm zetten naar gelang de modus
             switch (mode)
             {
-                case 1:     // transfos
+                case Transfos:  
                 {
                     // Zichtbaarheid instellen
                     Columns["+"].Visible = false;
@@ -112,7 +116,7 @@ namespace Laagspanningsnet
                     dsDatabase = _database.GetTransfos();
                     break;
                 }
-                case 3:     // search
+                case Search:    
                 {
                     // Zichtbaarheid instellen
                     Columns["+"].Visible = false;
@@ -122,7 +126,7 @@ namespace Laagspanningsnet
                     dsDatabase = _database.GetSearch(ap);
                     break;
                 }
-                default:    // _aansluitpunt // case 2 = default
+                default:    // case Aansluitpunt = default
                 {
                     // Zichtbaarheid instellen
                     Columns["T/VB/K"].Visible = false;
@@ -189,8 +193,8 @@ namespace Laagspanningsnet
             }
 
             // En nog een extra lijn bijvoegen voor de extra "+" knop.
-            if (mode == 2)
-            {    // enkel bij modus (2)_aansluitpunt
+            if (mode == Aansluitpunt)
+            {    // enkel bij modus Aansluitpunt
                 DataRow extraDataRow = _dtDisplay.NewRow();
                 extraDataRow[0] = "+";
                 _dtDisplay.Rows.Add(extraDataRow);
@@ -229,7 +233,7 @@ namespace Laagspanningsnet
         {
             // Maak van de +  een knop.
             Rows[count].Cells["+"] = new DataGridViewButtonCell();
-
+            
             if (Rows[count].Cells["Type"].Value != DBNull.Value)    // op de laatste lege lijn met enkel een + heeft "Type" geen waarde.
             {
                 // Maak van -/A en Aansluitpunten een knop.
@@ -239,6 +243,10 @@ namespace Laagspanningsnet
                 }
                 Rows[count].Cells["-"] = new DataGridViewButtonCell();
                 Rows[count].Cells["A"] = new DataGridViewButtonCell();
+                if(Rows[count].Cells["T/VB/K"].Value != DBNull.Value)
+                { 
+                    Rows[count].Cells["T/VB/K"] = new DataGridViewButtonCell();
+                }
             }
             else // deze code wordt uitgevoerd als we op de laatste lege lijn met enkel een + zijn 
             {
@@ -269,13 +277,13 @@ namespace Laagspanningsnet
         {
             switch (_mode)
             {
-                case 1:
+                case Transfos:
                     ShowTransfos();
                     break;
-                case 2:
+                case Aansluitpunt:
                     ShowAansluitpunt(_aansluitpunt);
                     break;
-                case 3:
+                case Search:
                     ShowSearch(_aansluitpunt);
                     break;
             }

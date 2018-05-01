@@ -55,14 +55,14 @@ namespace Laagspanningsnet
             }
 
             // Lijst met Machines aanmaken
-            _listMachines = _database.GetMachines(true);                // uit database ophalen (true = enkel niet aangesloten)
-            _listMachines.Insert(0, "Nieuw");                           // 'nieuw' als keuze toevoegen
-            _listMachines.Insert(1, "Geen");                            // 'geen' als keuze toevoegen
+            _listMachines = _database.GetMachines(true);                            // uit database ophalen (true = enkel niet aangesloten)
+            _listMachines.Insert(0, "Nieuw");                                       // 'nieuw' als keuze toevoegen
+            _listMachines.Insert(1, "Geen");                                        // 'geen' als keuze toevoegen
             
             // Lijst met aansluitpunten aanmaken                                 
-            _listAansluitpunten = _database.GetAansluitpunten(true);    // uit database ophalen
-            _listAansluitpunten.Insert(0, "Nieuw");                     // 'nieuw' als keuze toevoegen
-            _listAansluitpunten.Insert(1, "Geen");                      // 'geen' als keuze toevoegen (true = enkel niet aangesloten)
+            _listAansluitpunten = _database.GetAansluitpunten(Database.NoPower);    // uit database ophalen (enkel zonder voeding)
+            _listAansluitpunten.Insert(0, "Nieuw");                                 // 'nieuw' als keuze toevoegen
+            _listAansluitpunten.Insert(1, "Geen");                                  // 'geen' als keuze toevoegen
             
             // Pas de titel aan
             if (_row["Kring"].Equals("Nieuw"))
@@ -286,11 +286,13 @@ namespace Laagspanningsnet
             }
         }
 
-        // In de kring box kunnen enkel getallen, letter, ".", "," ingegeven worden.
+        // In de kring box kunnen enkel getallen, letters, "." ingegeven worden.
+        // Een ',' wordt een '.'
         // Bron : <https://stackoverflow.com/questions/463299/how-do-i-make-a-textbox-that-only-accepts-numbers>
         private void TxtbxKring_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != ','))
+            if (e.KeyChar == ',') e.KeyChar = '.';  // , --> .
+            if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
