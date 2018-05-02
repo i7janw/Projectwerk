@@ -64,6 +64,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AansluitpuntHernoemen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AansluitpuntHernoemen.Designer.cs">
+      <DependentUpon>AansluitpuntHernoemen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Afdrukken.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AansluitpuntHernoemen.resx">
+      <DependentUpon>AansluitpuntHernoemen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Afdrukken.resx">
       <DependentUpon>Afdrukken.cs</DependentUpon>
     </EmbeddedResource>

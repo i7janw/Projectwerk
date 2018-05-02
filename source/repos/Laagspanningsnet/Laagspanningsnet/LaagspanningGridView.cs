@@ -281,7 +281,16 @@ namespace Laagspanningsnet
                     ShowTransfos();
                     break;
                 case Aansluitpunt:
-                    ShowAansluitpunt(_aansluitpunt);
+                    // Stel, we staan op een aansluitpunt dat we hernoemd hebben en dus niet bestaat.
+                    // In dat geval gaan we terug naar overzicht van de transfo's
+                    if (_database.IsAansluitpunt(_aansluitpunt))
+                    { 
+                        ShowAansluitpunt(_aansluitpunt);
+                    }
+                    else
+                    {
+                        ShowTransfos();
+                    }
                     break;
                 case Search:
                     ShowSearch(_aansluitpunt);

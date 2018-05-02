@@ -50,7 +50,7 @@ namespace Laagspanningsnet
             Close();
         }
 
-        // Andere machine uit het menu gekozen
+        // Andere aansluitpunt uit het menu gekozen
         private void cmbAansluitpunt_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtbxLocatie.Text = _database.GetAansluitpuntLocatie(cmbAansluitpunt.Text);

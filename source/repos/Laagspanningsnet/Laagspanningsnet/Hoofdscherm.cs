@@ -306,15 +306,15 @@ namespace Laagspanningsnet
         }
 
         // Data in dgvLaagspanningsnet is ge-updated --> de nodige velden op het scherm updaten
-        private string _huidigAansluitpunt;                                 // Gebruikt in 'DgvLaagspanningsnetCellValueChanged' om enkel te updaten indien echt nodig
+        //private string _huidigAansluitpunt;                                 // Gebruikt in 'DgvLaagspanningsnetCellValueChanged' om enkel te updaten indien echt nodig
         private void DgvLaagspanningsnetCellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             // Welk aansluitpunt wordt er nu getoond?
             string aansluitpunt = dgvLaagspanningsnet.GetAansluitpunt();
 
             // Enkel de labels op het scherm  updaten als het echt nodig is.
-            if (_huidigAansluitpunt != null && _huidigAansluitpunt.Equals(aansluitpunt)) return;
-            _huidigAansluitpunt = aansluitpunt;
+            //if (_huidigAansluitpunt != null && _huidigAansluitpunt.Equals(aansluitpunt)) return;
+            //_huidigAansluitpunt = aansluitpunt;
 
             Console.WriteLine("Updating DataGridView"  + aansluitpunt);
 
@@ -335,41 +335,39 @@ namespace Laagspanningsnet
             btnDynVoeding.Text = _database.GetVoeding(aansluitpunt);
 
             // Kruimelpad updaten
-            lblKruimelpad.Text = "";
-            if (dgvLaagspanningsnet.GetMode() != LaagspanningGridView.Transfos)
+            lblKruimelpad.Text = "[Overzicht Transfo's";
+            
+            string kruimelpad = "";
+            string txt;
+            string ap = aansluitpunt;
+
+            while (!ap.Equals("-"))
             {
-                string kruimelpad = "";
-                string txt = "";
-                string ap = aansluitpunt;
-
-                while (!ap.Equals("-"))
+                txt = _database.GetVoeding(ap);
+                ap = txt.Split(' ').First();
+                if (txt.Equals("-"))
                 {
-                    txt = _database.GetVoeding(ap);
-                    ap = txt.Split(' ').First();
-                    if (txt.Equals("-"))
+                    switch (dgvLaagspanningsnet.GetMode())
                     {
-                        if(dgvLaagspanningsnet.GetMode() == LaagspanningGridView.Search)
-                        {
+                        case LaagspanningGridView.Transfos:
+                            kruimelpad = "[Overzicht transfo's";
+                            break;
+                        case LaagspanningGridView.Search:
                             kruimelpad = "[Zoeken: " + kruimelpad;
-                        }
-                        else
-                        {
+                            break;
+                        default:
                             kruimelpad = "[" + kruimelpad;
-                        }
+                            break;
                     }
-                    else
-                    { 
-                        kruimelpad = txt + " > " + kruimelpad;
-                    }
-                } 
-                kruimelpad = kruimelpad + aansluitpunt +"]";
-                lblKruimelpad.Text = kruimelpad;
-            }
-
-
-
-
-
+                }
+                else
+                { 
+                    kruimelpad = txt + " > " + kruimelpad;
+                }
+            } 
+            kruimelpad = kruimelpad + aansluitpunt +"]";
+            lblKruimelpad.Text = kruimelpad;
+            
             // Text Locatie aanpassen
             lblDynLocatie.Text = _database.GetAansluitpuntLocatie(aansluitpunt);
 
@@ -392,6 +390,16 @@ namespace Laagspanningsnet
         private void MenuTransfoClick(object sender, EventArgs e)
         {
             dgvLaagspanningsnet.ShowTransfos();
+        }
+
+        // Menu : Aansluitpunt hernoemen
+        private void MenuAansluitpuntHernoemenClick(object sender, EventArgs e)
+        {
+            AansluitpuntHernoemen ah = new AansluitpuntHernoemen();
+            if (ah.ShowDialog() != DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
+            {
+                dgvLaagspanningsnet.Reload();
+            }
         }
     }
 }

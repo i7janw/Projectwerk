@@ -59,6 +59,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblKruimelpad = new System.Windows.Forms.Label();
             this.dgvLaagspanningsnet = new Laagspanningsnet.LaagspanningGridView();
+            this.hernoemenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -125,7 +126,8 @@
             this.aansluitpuntToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.nieuwToolStripMenuItem1,
             this.aanpassenToolStripMenuItem1,
-            this.verwijderenToolStripMenuItem1});
+            this.verwijderenToolStripMenuItem1,
+            this.hernoemenToolStripMenuItem});
             this.aansluitpuntToolStripMenuItem.Name = "aansluitpuntToolStripMenuItem";
             this.aansluitpuntToolStripMenuItem.Size = new System.Drawing.Size(99, 23);
             this.aansluitpuntToolStripMenuItem.Text = "Aansluitpunt";
@@ -133,21 +135,21 @@
             // nieuwToolStripMenuItem1
             // 
             this.nieuwToolStripMenuItem1.Name = "nieuwToolStripMenuItem1";
-            this.nieuwToolStripMenuItem1.Size = new System.Drawing.Size(151, 24);
+            this.nieuwToolStripMenuItem1.Size = new System.Drawing.Size(194, 24);
             this.nieuwToolStripMenuItem1.Text = "Nieuw";
             this.nieuwToolStripMenuItem1.Click += new System.EventHandler(this.MenuAansluitpuntNieuwClick);
             // 
             // aanpassenToolStripMenuItem1
             // 
             this.aanpassenToolStripMenuItem1.Name = "aanpassenToolStripMenuItem1";
-            this.aanpassenToolStripMenuItem1.Size = new System.Drawing.Size(151, 24);
+            this.aanpassenToolStripMenuItem1.Size = new System.Drawing.Size(194, 24);
             this.aanpassenToolStripMenuItem1.Text = "Aanpassen";
             this.aanpassenToolStripMenuItem1.Click += new System.EventHandler(this.MenuAansluitpuntAanpassenClick);
             // 
             // verwijderenToolStripMenuItem1
             // 
             this.verwijderenToolStripMenuItem1.Name = "verwijderenToolStripMenuItem1";
-            this.verwijderenToolStripMenuItem1.Size = new System.Drawing.Size(151, 24);
+            this.verwijderenToolStripMenuItem1.Size = new System.Drawing.Size(194, 24);
             this.verwijderenToolStripMenuItem1.Text = "Verwijderen";
             this.verwijderenToolStripMenuItem1.Click += new System.EventHandler(this.MenuAansluitpuntVerwijderenClick);
             // 
@@ -334,7 +336,7 @@
             // 
             this.dgvLaagspanningsnet.AllowUserToAddRows = false;
             this.dgvLaagspanningsnet.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvLaagspanningsnet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvLaagspanningsnet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvLaagspanningsnet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -344,7 +346,7 @@
             this.dgvLaagspanningsnet.MultiSelect = false;
             this.dgvLaagspanningsnet.Name = "dgvLaagspanningsnet";
             this.dgvLaagspanningsnet.RowHeadersVisible = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
             this.dgvLaagspanningsnet.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvLaagspanningsnet.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvLaagspanningsnet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -353,6 +355,13 @@
             this.dgvLaagspanningsnet.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvLaagspanningsnetCellContentClick);
             this.dgvLaagspanningsnet.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvLaagspanningsnetCellValueChanged);
             this.dgvLaagspanningsnet.SelectionChanged += new System.EventHandler(this.DgvLaagspanningsnetSelectionChanged);
+            // 
+            // hernoemenToolStripMenuItem
+            // 
+            this.hernoemenToolStripMenuItem.Name = "hernoemenToolStripMenuItem";
+            this.hernoemenToolStripMenuItem.Size = new System.Drawing.Size(194, 24);
+            this.hernoemenToolStripMenuItem.Text = "Hernoemen";
+            this.hernoemenToolStripMenuItem.Click += new System.EventHandler(this.MenuAansluitpuntHernoemenClick);
             // 
             // Hoofdscherm
             // 
@@ -408,6 +417,7 @@
         private System.Windows.Forms.ToolStripMenuItem afdrukkenToolStripMenuItem1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblKruimelpad;
+        private System.Windows.Forms.ToolStripMenuItem hernoemenToolStripMenuItem;
     }
 }
 

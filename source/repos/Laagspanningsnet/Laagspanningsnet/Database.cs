@@ -661,5 +661,25 @@ namespace Laagspanningsnet
             _mySqlCommand.Parameters.AddWithValue("@para", id);
             return NonQueryCommon();
         }
+
+        /* updaten van alle aansluitingen van een aansluitpunt (gebruikt als een aansluitpunt van naam veranderd)
+         *
+         * RETURN : bool : false/true : mislukt/gelukt
+         */
+        public bool UpdateAansluitingen(string oldId, string newId)
+        {
+            string nonQuery = "UPDATE `laagspanningsnet`.`aansluitingen` SET `AP_id`= @para1 WHERE `AP_id`= @para2 ;";
+            _mySqlCommand = new MySqlCommand(nonQuery, MySqlConnection);
+            _mySqlCommand.Parameters.AddWithValue("@para1", newId);
+            _mySqlCommand.Parameters.AddWithValue("@para2", oldId);
+            bool _return = NonQueryCommon();
+
+            nonQuery = "UPDATE `laagspanningsnet`.`aansluitingen` SET `Naar_AP_id`= @para1 WHERE `Naar_AP_id`= @para2 ;";
+            _mySqlCommand = new MySqlCommand(nonQuery, MySqlConnection);
+            _mySqlCommand.Parameters.AddWithValue("@para1", newId);
+            _mySqlCommand.Parameters.AddWithValue("@para2", oldId);
+            _return = _return & NonQueryCommon();
+            return _return;
+        }
     }
 }
