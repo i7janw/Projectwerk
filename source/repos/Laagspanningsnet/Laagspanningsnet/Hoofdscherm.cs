@@ -9,6 +9,9 @@
  *      - Menu start en afsluiten toegevoegd
  *  - 20180430 :
  *      - save & undo knoppen verwijderd
+ *  - 20180502 :
+ *      - menu's aangepast (afsluiten, afdrukken, overzicht --> laagspanningsnet)
+ *      - knop zoeken naast input veld (alles in een panel gestoken)
  */
 using System;
 using System.Data;
@@ -34,7 +37,7 @@ namespace Laagspanningsnet
 
         /* Is er op een cell van het dataGrid geklikt?
          */
-        private void DgvLaagspanningsnet_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DgvLaagspanningsnetCellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Klikken op de bovenste rij (column-text) negeren.
             if (e.RowIndex < 0)
@@ -106,7 +109,7 @@ namespace Laagspanningsnet
 
         /* Als er op de knop van de voeding wordt geklikt, gaan we naar het scherm van dit aansluitpunt.
          */
-        private void BtnDynVoeding_Click(object sender, EventArgs e)
+        private void BtnDynVoedingClick(object sender, EventArgs e)
         {
             if (!(sender is Button button)) return;
             string ap = button.Text.Split(' ').First();     // Het eerste veld is de naam van het aansluitpunt
@@ -124,7 +127,7 @@ namespace Laagspanningsnet
          * Info:
          * <https://stackoverflow.com/questions/11330147/how-to-disable-the-ability-to-select-in-a-datagridview>
          */
-        private void DgvLaagspanningsnet_SelectionChanged(object sender, EventArgs e)
+        private void DgvLaagspanningsnetSelectionChanged(object sender, EventArgs e)
         {
             dgvLaagspanningsnet.ClearSelection();
         }
@@ -216,14 +219,14 @@ namespace Laagspanningsnet
 
         /* Op de zoekknop klikken --> start zoeken
          */
-        private void BtnSearch_Click(object sender, EventArgs e)
+        private void BtnSearchClick(object sender, EventArgs e)
         {
             dgvLaagspanningsnet.ShowSearch(txtbxSearch.Text);
         }
 
         /* Op Enter drukken in de search box = op de zoekknop klikken
          */
-        private void TxtbxSearch_KeyDown(object sender, KeyEventArgs e)
+        private void TxtbxSearchKeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -237,7 +240,7 @@ namespace Laagspanningsnet
             }
         }
                 
-        private void MenuMachineNieuw_Click(object sender, EventArgs e)
+        private void MenuMachineNieuwClick(object sender, EventArgs e)
         {
             MachineNieuw mn = new MachineNieuw();
             if (mn.ShowDialog() != DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
@@ -246,7 +249,7 @@ namespace Laagspanningsnet
             }
         }
 
-        private void MenuMachineAanpassen_Click(object sender, EventArgs e)
+        private void MenuMachineAanpassenClick(object sender, EventArgs e)
         {
             MachineAanpassen ma = new MachineAanpassen();
             if (ma.ShowDialog() != DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
@@ -255,7 +258,7 @@ namespace Laagspanningsnet
             }
         }
 
-        private void MenuMachineVerwijderen_Click(object sender, EventArgs e)
+        private void MenuMachineVerwijderenClick(object sender, EventArgs e)
         {
             MachineVerwijderen mv = new MachineVerwijderen();
             if (mv.ShowDialog() != DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
@@ -264,7 +267,7 @@ namespace Laagspanningsnet
             }
         }
 
-        private void MenuAansluitpuntNieuw_Click(object sender, EventArgs e)
+        private void MenuAansluitpuntNieuwClick(object sender, EventArgs e)
         {
             AansluitpuntNieuw an = new AansluitpuntNieuw();
             if (an.ShowDialog() != DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
@@ -273,7 +276,7 @@ namespace Laagspanningsnet
             }
         }
 
-        private void MenuAansluitpuntAanpassen_Click(object sender, EventArgs e)
+        private void MenuAansluitpuntAanpassenClick(object sender, EventArgs e)
         {
             AansluitpuntAanpassen aa = new AansluitpuntAanpassen();
             if (aa.ShowDialog() != DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
@@ -282,7 +285,7 @@ namespace Laagspanningsnet
             }
         }
 
-        private void MenuAansluitpuntVerwijderen_Click(object sender, EventArgs e)
+        private void MenuAansluitpuntVerwijderenClick(object sender, EventArgs e)
         {
             AansluitpuntVerwijderen av = new AansluitpuntVerwijderen();
             if (av.ShowDialog() != DialogResult.Cancel)      // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
@@ -291,7 +294,7 @@ namespace Laagspanningsnet
             }
         }
 
-        private void MenuAfdrukken_Click(object sender, EventArgs e)
+        private void MenuAfdrukkenClick(object sender, EventArgs e)
         {
             string aansluitpunt = dgvLaagspanningsnet.GetAansluitpunt();
             int mode = dgvLaagspanningsnet.GetMode();                       // Afdrukken pas de huidige view aan, oude view onthouden
@@ -303,8 +306,8 @@ namespace Laagspanningsnet
         }
 
         // Data in dgvLaagspanningsnet is ge-updated --> de nodige velden op het scherm updaten
-        private string _huidigAansluitpunt;                                 // Gebruikt in 'DgvLaagspanningsnet_CellValueChanged' om enkel te updaten indien echt nodig
-        private void DgvLaagspanningsnet_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private string _huidigAansluitpunt;                                 // Gebruikt in 'DgvLaagspanningsnetCellValueChanged' om enkel te updaten indien echt nodig
+        private void DgvLaagspanningsnetCellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             // Welk aansluitpunt wordt er nu getoond?
             string aansluitpunt = dgvLaagspanningsnet.GetAansluitpunt();
@@ -317,19 +320,55 @@ namespace Laagspanningsnet
 
             switch (dgvLaagspanningsnet.GetMode())
             {
-                case 1:     // transfos
+                case LaagspanningGridView.Transfos:    
                     lblLayout.Text = "Overzicht transfos";
                     break;
-                case 3:     // search
+                case LaagspanningGridView.Search:     
                     lblLayout.Text = "Zoeken : " + aansluitpunt;
                     break;
-                default:    // aansluitpunt // case 2 = default
+                default:    // case Aansluitpunt = default
                     lblLayout.Text = "Layout van " + aansluitpunt;
                     break;
             }
             
             // Text in button voeding aanpassen
             btnDynVoeding.Text = _database.GetVoeding(aansluitpunt);
+
+            // Kruimelpad updaten
+            lblKruimelpad.Text = "";
+            if (dgvLaagspanningsnet.GetMode() != LaagspanningGridView.Transfos)
+            {
+                string kruimelpad = "";
+                string txt = "";
+                string ap = aansluitpunt;
+
+                while (!ap.Equals("-"))
+                {
+                    txt = _database.GetVoeding(ap);
+                    ap = txt.Split(' ').First();
+                    if (txt.Equals("-"))
+                    {
+                        if(dgvLaagspanningsnet.GetMode() == LaagspanningGridView.Search)
+                        {
+                            kruimelpad = "[Zoeken: " + kruimelpad;
+                        }
+                        else
+                        {
+                            kruimelpad = "[" + kruimelpad;
+                        }
+                    }
+                    else
+                    { 
+                        kruimelpad = txt + " > " + kruimelpad;
+                    }
+                } 
+                kruimelpad = kruimelpad + aansluitpunt +"]";
+                lblKruimelpad.Text = kruimelpad;
+            }
+
+
+
+
 
             // Text Locatie aanpassen
             lblDynLocatie.Text = _database.GetAansluitpuntLocatie(aansluitpunt);
@@ -339,16 +378,18 @@ namespace Laagspanningsnet
 
             // Text stroom aanpassen
             lblDynStroom.Text = _database.GetStroom(aansluitpunt);
+
+            Console.WriteLine("Updating DataGridView DONE" + aansluitpunt);
         }
 
         // Menu : Afsluiten geklikt
-        private void MenuAfsluiten_Click(object sender, EventArgs e)
+        private void MenuAfsluitenClick(object sender, EventArgs e)
         {
             Close();
         }
 
-        // Menu : Start geklikt
-        private void MenuStart_Click(object sender, EventArgs e)
+        // Menu : Overzicht transfos geklikt
+        private void MenuTransfoClick(object sender, EventArgs e)
         {
             dgvLaagspanningsnet.ShowTransfos();
         }
