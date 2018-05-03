@@ -105,6 +105,7 @@
             this.txtbxAansluitpunt.Name = "txtbxAansluitpunt";
             this.txtbxAansluitpunt.Size = new System.Drawing.Size(213, 20);
             this.txtbxAansluitpunt.TabIndex = 20;
+            this.txtbxAansluitpunt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtbxAansluitpunt_KeyPress);
             // 
             // AansluitpuntHernoemen
             // 

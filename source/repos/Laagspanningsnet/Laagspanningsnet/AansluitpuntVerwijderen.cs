@@ -5,7 +5,6 @@
  *      - .ico toegevoegd
  */
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -24,7 +23,7 @@ namespace Laagspanningsnet
         private void AansluitpuntenVerwijderen_Load(object sender, EventArgs e)
         {
             // Haal lijst met alle vrije aansluitpunten op.
-            BindingList<String> listAansluitpunt = _database.GetAansluitpunten(Database.NoConnections); 
+            BindingList<String> listAansluitpunt = _database.GetAansluitpunten(true); 
 
             // Steek ze in de selectie combobox
             cmbAansluitpunt.DataSource = listAansluitpunt;

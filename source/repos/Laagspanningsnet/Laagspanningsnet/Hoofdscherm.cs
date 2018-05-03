@@ -306,17 +306,10 @@ namespace Laagspanningsnet
         }
 
         // Data in dgvLaagspanningsnet is ge-updated --> de nodige velden op het scherm updaten
-        //private string _huidigAansluitpunt;                                 // Gebruikt in 'DgvLaagspanningsnetCellValueChanged' om enkel te updaten indien echt nodig
         private void DgvLaagspanningsnetCellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             // Welk aansluitpunt wordt er nu getoond?
             string aansluitpunt = dgvLaagspanningsnet.GetAansluitpunt();
-
-            // Enkel de labels op het scherm  updaten als het echt nodig is.
-            //if (_huidigAansluitpunt != null && _huidigAansluitpunt.Equals(aansluitpunt)) return;
-            //_huidigAansluitpunt = aansluitpunt;
-
-            Console.WriteLine("Updating DataGridView"  + aansluitpunt);
 
             switch (dgvLaagspanningsnet.GetMode())
             {
@@ -335,38 +328,32 @@ namespace Laagspanningsnet
             btnDynVoeding.Text = _database.GetVoeding(aansluitpunt);
 
             // Kruimelpad updaten
-            lblKruimelpad.Text = "[Overzicht Transfo's";
-            
-            string kruimelpad = "";
-            string txt;
+            lblDynKruimelpad.Text = "";
             string ap = aansluitpunt;
 
             while (!ap.Equals("-"))
             {
-                txt = _database.GetVoeding(ap);
+                string txt = _database.GetVoeding(ap);
                 ap = txt.Split(' ').First();
                 if (txt.Equals("-"))
                 {
                     switch (dgvLaagspanningsnet.GetMode())
                     {
                         case LaagspanningGridView.Transfos:
-                            kruimelpad = "[Overzicht transfo's";
+                            lblDynKruimelpad.Text = "Overzicht transfo's";
                             break;
                         case LaagspanningGridView.Search:
-                            kruimelpad = "[Zoeken: " + kruimelpad;
-                            break;
-                        default:
-                            kruimelpad = "[" + kruimelpad;
+                            lblDynKruimelpad.Text = "Zoeken: " + lblDynKruimelpad.Text;
                             break;
                     }
                 }
                 else
-                { 
-                    kruimelpad = txt + " > " + kruimelpad;
+                {
+                    lblDynKruimelpad.Text = txt + " > " + lblDynKruimelpad.Text;
                 }
-            } 
-            kruimelpad = kruimelpad + aansluitpunt +"]";
-            lblKruimelpad.Text = kruimelpad;
+            }
+            lblDynKruimelpad.Text = lblDynKruimelpad.Text + aansluitpunt;
+            lblDynKruimelpad.Text = lblDynKruimelpad.Text;
             
             // Text Locatie aanpassen
             lblDynLocatie.Text = _database.GetAansluitpuntLocatie(aansluitpunt);
@@ -376,8 +363,6 @@ namespace Laagspanningsnet
 
             // Text stroom aanpassen
             lblDynStroom.Text = _database.GetStroom(aansluitpunt);
-
-            Console.WriteLine("Updating DataGridView DONE" + aansluitpunt);
         }
 
         // Menu : Afsluiten geklikt

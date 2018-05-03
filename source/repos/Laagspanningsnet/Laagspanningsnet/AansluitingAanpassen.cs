@@ -60,7 +60,7 @@ namespace Laagspanningsnet
             _listMachines.Insert(1, "Geen");                                        // 'geen' als keuze toevoegen
             
             // Lijst met aansluitpunten aanmaken                                 
-            _listAansluitpunten = _database.GetAansluitpunten(Database.NoPower);    // uit database ophalen (enkel zonder voeding)
+            _listAansluitpunten = _database.GetAansluitpunten(true);                // uit database ophalen (enkel zonder voeding)
             _listAansluitpunten.Insert(0, "Nieuw");                                 // 'nieuw' als keuze toevoegen
             _listAansluitpunten.Insert(1, "Geen");                                  // 'geen' als keuze toevoegen
             

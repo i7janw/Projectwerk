@@ -72,7 +72,7 @@ namespace Laagspanningsnet
             Close();
         }
 
-        // In de id box kunnen enkel cijfers en letters ingegeven worden.
+        // In de id box kunnen enkel cijfers en T/VB/K ingegeven worden.
         // Bron : <https://stackoverflow.com/questions/463299/how-do-i-make-a-textbox-that-only-accepts-numbers>
         private void TxtbxAansluitpunt_KeyPress(object sender, KeyPressEventArgs e)
         {

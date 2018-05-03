@@ -19,10 +19,6 @@ namespace Laagspanningsnet
 {
     public class Database
     {
-        public const int All = 0;
-        public const int NoPower = 1;
-        public const int NoConnections = 2;
-
         // Gegevens nodig om met de MySqlDatabase verbinding te maken.
 
         // Mysql via localhost :
@@ -469,7 +465,7 @@ namespace Laagspanningsnet
          */
         public BindingList<String> GetAansluitpunten()
         {
-            return GetAansluitpunten(All);
+            return GetAansluitpunten(false);
         }
 
         /* Haal een lijst op van alle machines die in de machine table aanwezig zijn 
@@ -497,46 +493,28 @@ namespace Laagspanningsnet
             }
             return convert;
         }
-        
+
         /* Haal een lijst op van alle aansluitpunten die in de aansluitpunt table aanwezig zijn 
-         * 
-         * Naargelang _which wordt aangegeven welke aansluitpunten in de lijst opgenomen worden:
-         *  - All : alle aansluitpunten
-         *  - NoPower : alleen aansluitpunten die geen voeding hebben
-         *  - NoConnections : alleen aansluitpunten zijn een aansluiting
+         *
+         * Naargelang _notconnected = true/false worden enkel de niet aangesloten aansluitpunten geRETURNed
          * 
          * RETURN: List<String> met alle aansluitpunten
          */
-        public BindingList<String> GetAansluitpunten(int which)
+        public BindingList<String> GetAansluitpunten(bool notConnected)
         {
             string query = "SELECT aansluitpunten.AP_id FROM laagspanningsnet.aansluitpunten";
-            if ((which == NoPower) || (which == NoConnections))
+            if (notConnected)
             {
-                /* Om na te gaan of een aansluitpunt NIET aangesloten is, moeten er twee zaken gecontroleerd worden.
-                 * 1. Krijgt het aansluitpunt voeding van een ander aansluitpunt?
-                 *      SELECT aansluitpunten.AP_id FROM laagspanningsnet.aansluitpunten 
-                 *          LEFT JOIN laagspanningsnet.aansluitingen ON aansluitpunten.AP_id = Naar_AP_id
-                 *          WHERE Naar_AP_id IS NULL;
-                 *
-                 * 2. Is een ander aansluitpunt aangesloten op dit aansluitpunt?
-                 *      SELECT aansluitpunten.AP_id FROM laagspanningsnet.aansluitpunten 
-                 *          LEFT JOIN laagspanningsnet.aansluitingen ON aansluitpunten.AP_id = aansluitingen.AP_id
-                 *          WHERE aansluitingen.AP_id IS NULL;
-                 *
-                 * Enkel wanneer een aansluitpunt in deze twee gevallen niet meer aangesloten is, mag het in onze lijst
-                 * geretourneerd worden --> 1/2 combineren met IN
-                 *
-                 */
                 query = query + " LEFT JOIN laagspanningsnet.aansluitingen ON aansluitpunten.AP_id = Naar_AP_id " +
                         "WHERE Naar_AP_id IS NULL";
 
-                if (which == NoConnections)
-                {
-                    query = query + " AND aansluitpunten.AP_id IN(" +
-                            "SELECT aansluitpunten.AP_id FROM laagspanningsnet.aansluitpunten " +
-                            "LEFT JOIN laagspanningsnet.aansluitingen ON aansluitpunten.AP_id = aansluitingen.AP_id " +
-                            "WHERE aansluitingen.AP_id IS NULL)";
-                }
+                /* Evt. kan ook nog gecontroleerd worden of een aansluitpunt aansluitingen heeft
+                 *
+                 * query = query + " AND aansluitpunten.AP_id IN(" +
+                 *          "SELECT aansluitpunten.AP_id FROM laagspanningsnet.aansluitpunten " +
+                 *          "LEFT JOIN laagspanningsnet.aansluitingen ON aansluitpunten.AP_id = aansluitingen.AP_id " +
+                 *          "WHERE aansluitingen.AP_id IS NULL)";
+                 */
             }
             query = query + ";";
             _mySqlDataAdapter = new MySqlDataAdapter(query, MySqlConnection);
@@ -656,10 +634,18 @@ namespace Laagspanningsnet
          */
         public bool DeleteAansluitpunt(string id)
         {
-            const string nonQuery = "DELETE FROM `laagspanningsnet`.`aansluitpunten` WHERE `AP_id`= @para ;";
+            // Wis eerst alle aansluitingen van het aansluitpunt
+            string nonQuery = "DELETE FROM `laagspanningsnet`.`aansluitingen` WHERE `AP_id`= @para ;";
             _mySqlCommand = new MySqlCommand(nonQuery, MySqlConnection);
             _mySqlCommand.Parameters.AddWithValue("@para", id);
-            return NonQueryCommon();
+            bool _return = NonQueryCommon();
+
+            // Wis dan het aansluitpunt zelf
+            nonQuery = "DELETE FROM `laagspanningsnet`.`aansluitpunten` WHERE `AP_id`= @para ;";
+            _mySqlCommand = new MySqlCommand(nonQuery, MySqlConnection);
+            _mySqlCommand.Parameters.AddWithValue("@para", id);
+            _return = _return & NonQueryCommon();
+            return _return;
         }
 
         /* updaten van alle aansluitingen van een aansluitpunt (gebruikt als een aansluitpunt van naam veranderd)
