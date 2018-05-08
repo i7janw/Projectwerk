@@ -12,6 +12,8 @@
  *  - 20180502 :
  *      - menu's aangepast (afsluiten, afdrukken, overzicht --> laagspanningsnet)
  *      - knop zoeken naast input veld (alles in een panel gestoken)
+ *  - 20180508 :
+ *      - MessageBoxIcon aan messagebox toegevoegd
  */
 using System;
 using System.Data;
@@ -81,7 +83,7 @@ namespace Laagspanningsnet
                     break;
                 case 1: // -
                     // dgvLaagspanningsnet.GetDataTable().Rows.RemoveAt(e.RowIndex);
-                    DialogResult result = MessageBox.Show("Kring " + dgvLaagspanningsnet.GetDataTable().Rows[e.RowIndex]["Kring"] + " verwijderen?", "Verwijderen?", MessageBoxButtons.YesNo);
+                    DialogResult result = MessageBox.Show("Kring " + dgvLaagspanningsnet.GetDataTable().Rows[e.RowIndex]["Kring"] + " verwijderen?", "Verwijderen?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
                         Save(e.ColumnIndex, e.RowIndex);

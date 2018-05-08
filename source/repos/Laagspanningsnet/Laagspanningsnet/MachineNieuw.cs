@@ -3,11 +3,13 @@
  * Aanpassingen :
  *  - 20180317 :
  *      - TxtbxMachine_KeyPress toegevoegd, enkel cijfers en letters kunnen ingevoegd worden.
- *        Fix voor probleem 'S019 ' ingeven --> database error want 'S019' bestaat reeds.
+ *      - Fix voor probleem 'S019 ' ingeven --> database error want 'S019' bestaat reeds.
  *      - .ico toegevoegd
  * - 20180402 :
  *      - constructor 'public MachineNieuw(string[] MachineId)' toegevoegd
  *      - check lege machine ID
+ * - 20180508 :
+ *      - MessageboxIcon aan messageboxen toegevoegd
  */
 using System;
 using System.Windows.Forms;
@@ -46,13 +48,13 @@ namespace Laagspanningsnet
         {
             if (txtbxMachine.Text.Equals(""))
             {
-                MessageBox.Show("Machine ID mag niet leeg zijn.");
+                MessageBox.Show("Machine ID mag niet leeg zijn.", "Leeg ID", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
             // Ga na of het dit Machine ID reeds bestaat.
             if (_database.IsMachine(txtbxMachine.Text))
             {
-                MessageBox.Show("Deze machine bestaat reeds!");
+                MessageBox.Show("Deze machine bestaat reeds!", "Dubbel ID", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 

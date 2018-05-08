@@ -39,7 +39,7 @@ filename=`ls featureList*.tex`
 
 #4. klassendiagram
 filename=`ls klassendiagram*.tex`
-##create
+##create pdflatex
 
 #5. datawoordenboek
 ##pdf2ps ~/MEGA/2017-2018/ProjectWerk/DesignDocument/1.5_datawoordenboek/EER.pdf ~/MEGA/2017-2018/ProjectWerk/DesignDocument/latex/pictures/EER.ps

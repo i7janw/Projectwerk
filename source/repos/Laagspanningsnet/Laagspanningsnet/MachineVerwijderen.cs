@@ -3,6 +3,8 @@
  * Aanpassingen :
  *  - 20180317 :
  *      - .ico toegevoegd
+ *  - 20180508 :
+ *      - Messagebox ter bevestiging toegevoegd
  */
 using System;
 using System.ComponentModel;
@@ -36,12 +38,18 @@ namespace Laagspanningsnet
         // Er is op de OK knop geklikt.
         private void BtnOK_Click(object sender, EventArgs e)
         {
-            // Wis de machine uit de database
-            _database.DeleteMachine(cmbMachine.Text);
+            DialogResult result = MessageBox.Show("Machine " +
+                                                  cmbMachine.Text +
+                                                  " verwijderen?", "Verwijderen?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                // Wis de machine uit de database
+                _database.DeleteMachine(cmbMachine.Text);
 
-            // sluit het venster
-            DialogResult = DialogResult.OK;
-            Close();
+                // sluit het venster
+                DialogResult = DialogResult.OK;
+                Close();
+            }
         }
 
         // Er is op de anuleer knop geklikt.

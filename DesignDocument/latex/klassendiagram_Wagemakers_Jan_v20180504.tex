@@ -161,32 +161,39 @@
 %	\includegraphics[width=1.2\textwidth]{pictures/Aansluitpunten.ps}
 %\end{homeworkProblem}
 %\newpage
-\begin{homeworkProblem}[Werkdocument : klad]
-\textbf{Ter info :} Dit is een niet afgewerkt (klad) werkdocument. De grafische voorstelling van
-het klassendiagram is terug te vinden op draw.io en zal later in dit
-document bijgevoegd worden. Momenteel worden hier de
-methodes beschreven die geprogrammeerd moeten worden.  Naargelang er
-vooruitgang wordt geboekt, zal dit document aangevuld worden. Als er tijdens
-het programmeren blijkt dat er zaken aangepast moeten worden, wordt dit naar
-dit document teruggekoppeld.
-\\\\
-\textbf{Werkwijze :} Eerst wordt er voor een bepaalde \textbf{klasse}
-nagedacht over de attributen en methodes en deze in dit document aangevuld.
-Pas daarna wordt er gestart met programmeren en eventueel teruggekoppeld als
-zaken niet werkbaar blijken.
+\begin{homeworkProblem}[Klassendiagram]
+
+\includegraphics[width=1.05\textwidth]{/home/jan/MEGA/2017-2018/ProjectWerk/source/repos/Laagspanningsnet/Laagspanningsnet.png}
+\includegraphics[width=1.05\textwidth]{/home/jan/MEGA/2017-2018/ProjectWerk/source/repos/Laagspanningsnet/LaagspanningsnetP1.png}
+\includegraphics[width=1.05\textwidth]{/home/jan/MEGA/2017-2018/ProjectWerk/source/repos/Laagspanningsnet/LaagspanningsnetP2.png}
+\includegraphics[width=1.05\textwidth]{/home/jan/MEGA/2017-2018/ProjectWerk/source/repos/Laagspanningsnet/LaagspanningsnetP3.png}
+\includegraphics[width=1.05\textwidth]{/home/jan/MEGA/2017-2018/ProjectWerk/source/repos/Laagspanningsnet/LaagspanningsnetP4.png}
+\includegraphics[width=1.05\textwidth]{/home/jan/MEGA/2017-2018/ProjectWerk/source/repos/Laagspanningsnet/LaagspanningsnetP5.png}
+\includegraphics[width=1.05\textwidth]{/home/jan/MEGA/2017-2018/ProjectWerk/source/repos/Laagspanningsnet/LaagspanningsnetP6.png}
+\includegraphics[width=1.05\textwidth]{/home/jan/MEGA/2017-2018/ProjectWerk/source/repos/Laagspanningsnet/LaagspanningsnetP7.png}
+\includegraphics[width=1.05\textwidth]{/home/jan/MEGA/2017-2018/ProjectWerk/source/repos/Laagspanningsnet/LaagspanningsnetP8.png}
+\includegraphics[width=1.05\textwidth]{/home/jan/MEGA/2017-2018/ProjectWerk/source/repos/Laagspanningsnet/LaagspanningsnetP9.png}
+\includegraphics[width=1.05\textwidth]{/home/jan/MEGA/2017-2018/ProjectWerk/source/repos/Laagspanningsnet/LaagspanningsnetP10.png}
+
+
 \end{homeworkProblem}
+\end{document}
+
 
 \begin{homeworkProblem}[Database]
 \begin{itemize}
 \item\textbf{Doel} : alle communciatie met de database verloopt via deze klasse.
 \item\textbf{Atributen} 
 	\begin{itemize}
-        \item \textcolor{blue}{\textbf{$-$string server}}
-        \item \textcolor{blue}{\textbf{$-$string database}}
-        \item \textcolor{blue}{\textbf{$-$string user}}
-        \item \textcolor{blue}{\textbf{$-$string password}}
-        \item \textcolor{blue}{\textbf{$-$string connectiestring}}
-        \item \textcolor{blue}{\textbf{$-$MySqlConnection connectie}}
+        \item \textcolor{blue}{\textbf{$-$string Server}}
+        \item \textcolor{blue}{\textbf{$-$string MySqlDatabase}}
+        \item \textcolor{blue}{\textbf{$-$string User}}
+        \item \textcolor{blue}{\textbf{$-$string Password}}
+        \item \textcolor{blue}{\textbf{$-$string Connectiestring}}
+        \item \textcolor{blue}{\textbf{$-$MySqlConnection \underline{MySqlConnection}}}
+	\item \textcolor{blue}{\textbf{$-$MySqlDataAdapter \_mySqlDataAdapter}}
+	\item \textcolor{blue}{\textbf{$-$MySqlCommand \_mysqlCommand}}
+\_mySqlDataAdapter}}
 	\end{itemize}
 \item\textbf{Constructor}
         \begin{itemize}
@@ -194,7 +201,7 @@ zaken niet werkbaar blijken.
         \end{itemize}
 \item\textbf{Methodes}
 	\begin{itemize}
-	\item \textcolor{blue}{\textbf{$-$Open():bool}}
+	\item \textcolor{blue}{\textbf{$-$\underline{Open}():bool}}
 		\begin{itemize}
 			\item \textbf{Doel} : openen van een connectie met de database.
 			\item \textbf{Parameters} : geen.
@@ -204,7 +211,7 @@ zaken niet werkbaar blijken.
 					\item true = connectie is geopend
 				\end{itemize}
 		\end{itemize}
-        \item \textcolor{blue}{\textbf{$-$Close():bool}}
+        \item \textcolor{blue}{\textbf{$-$\underline{Close}():bool}}
         	\begin{itemize}
 			\item \textbf{Doel} : sluiten van de connectie met de database.
 			\item \textbf{Parameters} : geen.
@@ -214,6 +221,25 @@ zaken niet werkbaar blijken.
 					\item true = connectie is gesloten
 				\end{itemize}
 		\end{itemize}
+	\item \textcolor{blue}{\textbf{$+$GetMachineOmschrijving(string machine):}}
+                \begin{itemize}
+                        \item \textbf{Doel} : sluiten van de connectie met de database.
+                        \item \textbf{Parameters} : geen.
+                        \item \textbf{Return} : bool
+                                \begin{itemize}
+                                        \item false = mislukt
+                                        \item true = connectie is gesloten
+                                \end{itemize}
+                \end{itemize}
+
+
+
+
+
+
+
+
+
 	\item\textcolor{blue}{\textbf{$+$GetTransfos():DataSet}}
         	\begin{itemize}
 			\item \textbf{Doel} : ophalen van alle transformatoren die op het bedrijf aanwezig zijn.

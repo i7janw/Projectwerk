@@ -12,7 +12,6 @@ using System.IO;
 
 namespace Laagspanningsnet
 {
-
     public partial class Afdrukken : Form
     {
         private readonly Database _database;
@@ -76,7 +75,6 @@ namespace Laagspanningsnet
             {
                 cmbSelectie.SelectedItem = _dgvLaagspanningsnet.GetAansluitpunt();      // selecteren we het aansluitpunt ipv van huidige Pagina 
             }
-            Console.WriteLine(_selectie);
         }
 
         // Er is op de OK knop geklikt.
@@ -87,7 +85,6 @@ namespace Laagspanningsnet
             MemoryStream output = new MemoryStream();
             PdfWriter.GetInstance(doc, output);
             doc.Open();
-
 
             // steek de geselecteerde gegevens in de variablen
             _kopies = Convert.ToInt16(cmbAantal.Text);
@@ -104,14 +101,14 @@ namespace Laagspanningsnet
             // Afdrukken. 
             // We starten met het afdrukken van de selectie en
             // indien gewenst worden ook de aansluitpunten die op de selectie zijn aangesloten afgedrukt.
-            List<string> todo = new List<string>(); // todo = lijst van aansluitpunten waarvan we nog moeten testen of er aansluitpunten op zijn aangesloten
-            todo.Add(_selectie);
+            List<string> todoList = new List<string>(); // todoList = lijst van aansluitpunten waarvan we nog moeten testen of er aansluitpunten op zijn aangesloten
+            todoList.Add(_selectie);
 
-            while (todo.Count != 0)
+            while (todoList.Count != 0)
             {
                 // zijn er nog te testen aansluitpunten?
                 List<string> tmp = new List<string>(); // tmp = om nieuwe todo lijst aan te maken
-                foreach (String ap in todo) // doorloop alle aansluitpunten in todo 
+                foreach (String ap in todoList) // doorloop alle aansluitpunten in todo 
                 {
                     if (!huidige)       // Als de huidige pagina moet afgedrukt worden, moet dgv niet herladen worden
                     {
@@ -135,10 +132,9 @@ namespace Laagspanningsnet
                     }
                 }
 
-                todo = tmp; // todo = nieuwe todo lijst.
+                todoList = tmp; // todo = nieuwe todo lijst.
             }
             
-
             // Sluit doc
             doc.Close();
 
@@ -248,7 +244,6 @@ namespace Laagspanningsnet
                 table.AddCell(new Phrase(dtRow["Aantal Polen"].ToString(), font));
                 table.AddCell(new Phrase(dtRow["Locatie"].ToString(), font));
             }
-
             doc.Add(table);
 
             // Volgende pagina

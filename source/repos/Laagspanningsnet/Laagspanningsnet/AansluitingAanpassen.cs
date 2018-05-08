@@ -8,7 +8,10 @@
  *  - 20180402 :
  *      - combobox aansluitpunt/machine --> nieuw toegevoegd
  *      - cmbPolen : DropDownStyle = DropDownList
- *      - check lege kring 
+ *      - check lege kring
+ *  - 20180508 :
+ *      - Transfo's komen niet in keuzelijst aansluitpunten meer voor
+ *      - MessageBoxIcon.Exclamation aan massageboxen toegevoegd
  */
 using System;
 using System.ComponentModel;
@@ -60,7 +63,21 @@ namespace Laagspanningsnet
             _listMachines.Insert(1, "Geen");                                        // 'geen' als keuze toevoegen
             
             // Lijst met aansluitpunten aanmaken                                 
-            _listAansluitpunten = _database.GetAansluitpunten(true);                // uit database ophalen (enkel zonder voeding)
+            _listAansluitpunten = new BindingList<string>();                        // starten met een lege lijst
+            
+            // ophalen van niet aangesloten aansluitpunten uit de database 
+            // en alles wat niet start met een 'T' toevoegen aan de lege lijst
+            // T = Transfo --> enkel aan te sluiten op hoogspanning
+            foreach (string a in _database.GetAansluitpunten(true))
+            {
+                Console.WriteLine("GET " + a);
+                // if it is List<String>
+                if (!a.StartsWith("T"))
+                {
+                    Console.WriteLine("ADD " + a);
+                    _listAansluitpunten.Add(a);
+                }
+            }
             _listAansluitpunten.Insert(0, "Nieuw");                                 // 'nieuw' als keuze toevoegen
             _listAansluitpunten.Insert(1, "Geen");                                  // 'geen' als keuze toevoegen
             
@@ -147,7 +164,7 @@ namespace Laagspanningsnet
             // We staan geen lege kring toe.
             if (txtbxKring.Text.Equals(""))
             {
-                MessageBox.Show("Kring mag niet leeg zijn.");
+                MessageBox.Show("Kring mag niet leeg zijn.", "Lege kring", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
             
@@ -160,7 +177,7 @@ namespace Laagspanningsnet
                     {
                         if ((string)dtRow["Kring"] == txtbxKring.Text)
                         {
-                            MessageBox.Show("Deze aansluiting bestaat reeds.\nKijk na of alles correct is ingegeven...");
+                            MessageBox.Show("Deze kring bestaat reeds.", "Bestaande kring", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             return;
                         }
                     }

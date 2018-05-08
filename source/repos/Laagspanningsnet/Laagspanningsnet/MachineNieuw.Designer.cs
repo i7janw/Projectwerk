@@ -74,7 +74,7 @@
             // 
             // txtbxMachine
             // 
-            this.txtbxMachine.Location = new System.Drawing.Point(99, 104);
+            this.txtbxMachine.Location = new System.Drawing.Point(99, 78);
             this.txtbxMachine.Name = "txtbxMachine";
             this.txtbxMachine.Size = new System.Drawing.Size(208, 20);
             this.txtbxMachine.TabIndex = 15;
@@ -82,7 +82,7 @@
             // 
             // txtbxOmschrijving
             // 
-            this.txtbxOmschrijving.Location = new System.Drawing.Point(99, 78);
+            this.txtbxOmschrijving.Location = new System.Drawing.Point(99, 104);
             this.txtbxOmschrijving.Name = "txtbxOmschrijving";
             this.txtbxOmschrijving.Size = new System.Drawing.Size(208, 20);
             this.txtbxOmschrijving.TabIndex = 14;

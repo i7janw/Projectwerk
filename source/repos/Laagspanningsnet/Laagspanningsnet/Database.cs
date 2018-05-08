@@ -7,6 +7,9 @@
  *      - search aangepast : aansluitingen-machines + aansluitingen-aansluitpunten
  *  - 20180430 :
  *      - Insert/Update/Delete-Aansluitingen toegevoegd / SetAansluitingen verwijderd
+ *  - 20180508 :
+ *      - MessageBoxIcon toegevoegd aan messageboxen
+ *      - Als open() mislukt --> Application.Exit()
  */
 
 using System;
@@ -61,7 +64,8 @@ namespace Laagspanningsnet
             {
                 // Dit kan evt. nog verbeterd worden door "ex" niet af, een switch case te gebruiken
                 // voor de meest gangbare fouten.
-                MessageBox.Show("Kan geen verbinding maken met MySqlDatabase\n\n" + ex.Message);
+                MessageBox.Show("Kan geen verbinding maken met MySqlDatabase\n\n" + ex.Message, "Database fout", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
                 return false;
             }
         }
@@ -83,7 +87,7 @@ namespace Laagspanningsnet
             {
                 // Dit kan evt. nog verbeterd worden door "ex" niet af te drukken en een switch case te gebruiken
                 // voor de meest gangbare fouten.
-                MessageBox.Show("Kan geen verbinding maken met MySqlDatabase\n\n" + ex.Message);
+                MessageBox.Show("Kan geen verbinding maken met MySqlDatabase\n\n" + ex.Message, "Database fout", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
         }
@@ -397,7 +401,7 @@ namespace Laagspanningsnet
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Database fout", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             Close();
             return _return;
@@ -421,7 +425,7 @@ namespace Laagspanningsnet
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Database fout", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             Close();
             return dataSet;
@@ -443,7 +447,7 @@ namespace Laagspanningsnet
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Database fout", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 Close();
                 return false;
             }
@@ -487,14 +491,17 @@ namespace Laagspanningsnet
             
             // Zet DataSet om naar een List
             BindingList<string> convert = new BindingList<string>();
-            foreach (DataRow dataRow in dataSet.Tables[0].Rows)
+            if (dataSet.Tables.Count != 0)
             {
-                convert.Add((String)dataRow["M_id"]);
+                foreach (DataRow dataRow in dataSet.Tables[0].Rows)
+                {
+                    convert.Add((String) dataRow["M_id"]);
+                }
             }
             return convert;
         }
 
-        /* Haal een lijst op van alle aansluitpunten die in de aansluitpunt table aanwezig zijn 
+        /* Haal een lijst op van alle aansluitpunten die in de aansluitpunt table aanwezig zijn
          *
          * Naargelang _notconnected = true/false worden enkel de niet aangesloten aansluitpunten geRETURNed
          * 
@@ -505,26 +512,21 @@ namespace Laagspanningsnet
             string query = "SELECT aansluitpunten.AP_id FROM laagspanningsnet.aansluitpunten";
             if (notConnected)
             {
-                query = query + " LEFT JOIN laagspanningsnet.aansluitingen ON aansluitpunten.AP_id = Naar_AP_id " +
-                        "WHERE Naar_AP_id IS NULL";
-
-                /* Evt. kan ook nog gecontroleerd worden of een aansluitpunt aansluitingen heeft
-                 *
-                 * query = query + " AND aansluitpunten.AP_id IN(" +
-                 *          "SELECT aansluitpunten.AP_id FROM laagspanningsnet.aansluitpunten " +
-                 *          "LEFT JOIN laagspanningsnet.aansluitingen ON aansluitpunten.AP_id = aansluitingen.AP_id " +
-                 *          "WHERE aansluitingen.AP_id IS NULL)";
-                 */
+                query = query + " LEFT JOIN laagspanningsnet.aansluitingen ON aansluitpunten.AP_id = Naar_AP_id WHERE Naar_AP_id IS NULL"; 
             }
+
             query = query + ";";
             _mySqlDataAdapter = new MySqlDataAdapter(query, MySqlConnection);
             DataSet dataSet = GetDataSet();
 
             // Zet DataSet om naar een List
             BindingList<string> convert = new BindingList<string>();
-            foreach (DataRow dataRow in dataSet.Tables[0].Rows)
+            if (dataSet.Tables.Count != 0)
             {
-                convert.Add((String)dataRow["AP_id"]);
+                foreach (DataRow dataRow in dataSet.Tables[0].Rows)
+                {
+                    convert.Add((String) dataRow["AP_id"]);
+                }
             }
             return convert;
         }

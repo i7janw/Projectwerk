@@ -8,6 +8,8 @@
  *  - 20180402 :
  *      - constructor 'public AansluitpuntNieuw(string[] aansluitpuntId)' toegevoegd
  *      - check leeg aansluitpunt ID
+ *  - 20180508 :
+ *      - MessageboxIcon aan messageboxen toegevoegd
  */
 using System;
 using System.Windows.Forms;
@@ -45,13 +47,13 @@ namespace Laagspanningsnet
         {
             if (txtbxAansluitpunt.Text.Equals(""))
             {
-                MessageBox.Show("Aansluitpunt ID mag niet leeg zijn.");
+                MessageBox.Show("Aansluitpunt ID mag niet leeg zijn.", "Leeg ID", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
             // Ga na of het dit Aansluitpunt ID reeds bestaat.
             if (_database.IsAansluitpunt(txtbxAansluitpunt.Text))
             {
-                MessageBox.Show("Dit aansluitpunt bestaat reeds!");
+                MessageBox.Show("Dit aansluitpunt bestaat reeds!", "Dubbel ID", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
