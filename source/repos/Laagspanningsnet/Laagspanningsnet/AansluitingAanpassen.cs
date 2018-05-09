@@ -12,6 +12,8 @@
  *  - 20180508 :
  *      - Transfo's komen niet in keuzelijst aansluitpunten meer voor
  *      - MessageBoxIcon.Exclamation aan massageboxen toegevoegd
+ *  - 20180509 :
+ *      - cursor in kring tekstveld
  */
 using System;
 using System.ComponentModel;
@@ -51,6 +53,9 @@ namespace Laagspanningsnet
             txtbxOmschrijving.MaxLength = 90;
             txtbxStroom.MaxLength = 3;
 
+            // Zet cursor bij start in kring
+            txtbxKring.Select();
+            
             // Vul de Polen combobox met de cijfers 1-4
             for (int count = 1; count < 5; count++)
             {
@@ -165,11 +170,12 @@ namespace Laagspanningsnet
             if (txtbxKring.Text.Equals(""))
             {
                 MessageBox.Show("Kring mag niet leeg zijn.", "Lege kring", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtbxKring.Select();
                 return;
             }
             
             // Ga na of deze aansluiting wel uniek is
-            if ((string)_row["Kring"] == "Nieuw")    // enkel checken als we een nieuwe kring toevoegen
+            if (_row["Kring"].Equals("Nieuw"))    // enkel checken als we een nieuwe kring toevoegen
             {
                 foreach (DataRow dtRow in _dt.Rows)
                 {
@@ -178,6 +184,7 @@ namespace Laagspanningsnet
                         if ((string)dtRow["Kring"] == txtbxKring.Text)
                         {
                             MessageBox.Show("Deze kring bestaat reeds.", "Bestaande kring", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            txtbxKring.Select();
                             return;
                         }
                     }
