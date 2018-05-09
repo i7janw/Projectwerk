@@ -88,6 +88,7 @@
             this.cmbAansluitpunt.Name = "cmbAansluitpunt";
             this.cmbAansluitpunt.Size = new System.Drawing.Size(213, 21);
             this.cmbAansluitpunt.TabIndex = 18;
+            this.cmbAansluitpunt.SelectedIndexChanged += new System.EventHandler(this.cmbAansluitpunt_SelectedIndexChanged);
             // 
             // lblAansluitpuntNieuw
             // 

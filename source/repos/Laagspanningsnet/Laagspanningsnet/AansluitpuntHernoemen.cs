@@ -3,10 +3,10 @@
  * Aanpassingen :
  *  - 20180508 :
  *      - MessageboxIcon aan messageboxen toegevoegd
- *
+ *  - 20180509 :
+ *      - Plaats de cursor automatisch in het nieuw aansluitpunt ID tekstveld
  */
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -32,6 +32,9 @@ namespace Laagspanningsnet
 
             // beperk de lengte van de velden - zie datawoordenboek
             txtbxAansluitpunt.MaxLength = 10;
+
+            // Plaats de cursor automatisch in het nieuw aansluitpunt ID tekstveld
+            txtbxAansluitpunt.Select();
         }
 
         // Er is op de OK knop geklikt.
@@ -79,6 +82,13 @@ namespace Laagspanningsnet
             {
                 e.Handled = true;
             }
+        }
+
+        // Andere aansluitpunt uit het menu gekozen
+        private void cmbAansluitpunt_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Plaats de cursor automatisch in het nieuw aansluitpunt ID tekstveld
+            txtbxAansluitpunt.Select();
         }
     }
 }

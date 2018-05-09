@@ -10,6 +10,8 @@
  *      - check leeg aansluitpunt ID
  *  - 20180508 :
  *      - MessageboxIcon aan messageboxen toegevoegd
+ *  - 20180509
+ *      - cursor automatisch in aansluitpunt tekstveld plaatsen
  */
 using System;
 using System.Windows.Forms;
@@ -40,6 +42,9 @@ namespace Laagspanningsnet
             // beperk de lengte van de velden - zie datawoordenboek
             txtbxAansluitpunt.MaxLength = 10;
             txtbxLocatie.MaxLength = 10;
+
+            // Plaats de cursor automatisch in het aansluitpunt tekstveld
+            txtbxAansluitpunt.Select();
         }
 
         // Er is op de OK knop geklikt.

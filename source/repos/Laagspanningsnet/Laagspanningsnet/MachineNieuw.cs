@@ -10,6 +10,8 @@
  *      - check lege machine ID
  * - 20180508 :
  *      - MessageboxIcon aan messageboxen toegevoegd
+ * - 20180509 :
+ *      - Plaats de cursor automatisch in machine tekstveld
  */
 using System;
 using System.Windows.Forms;
@@ -41,6 +43,9 @@ namespace Laagspanningsnet
             txtbxMachine.MaxLength = 10;
             txtbxOmschrijving.MaxLength = 80;
             txtbxLocatie.MaxLength = 10;
+
+            // Plaats de cursor automatisch in machine tekstveld
+            txtbxMachine.Select();
         }
 
         // Er is op de OK knop geklikt.

@@ -3,9 +3,10 @@
  * Aanpassingen :
  *  - 20180317 :
  *      - .ico toegevoegd
+ *  - 20180509 :
+ *      - Plaats de cursor automatisch in het omschrijving tekstveld
  */
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -32,6 +33,9 @@ namespace Laagspanningsnet
             // beperk de lengte van de velden - zie datawoordenboek
             txtbxOmschrijving.MaxLength = 80;
             txtbxLocatie.MaxLength = 10;
+
+            // Plaats de cursor automatisch in het omschrijving tekstveld
+            txtbxOmschrijving.Select();
         }
 
         // Er is op de OK knop geklikt.
@@ -56,6 +60,9 @@ namespace Laagspanningsnet
         {
             txtbxOmschrijving.Text = _database.GetMachineOmschrijving(cmbMachine.Text);
             txtbxLocatie.Text = _database.GetMachineLocatie(cmbMachine.Text);
+
+            // Plaats de cursor automatisch in het omschrijving tekstveld
+            txtbxOmschrijving.Select();
         }
     }
 }

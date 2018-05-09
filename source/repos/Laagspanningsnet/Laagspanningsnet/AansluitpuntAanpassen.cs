@@ -3,9 +3,10 @@
  * Aanpassingen :
  *  - 20180317 :
  *      - .ico toegevoegd
+ *  - 20180509 :
+ *      - Plaats de cursor automatisch in locatie tekstveld
  */
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -31,6 +32,9 @@ namespace Laagspanningsnet
 
             // beperk de lengte van de velden - zie datawoordenboek
             txtbxLocatie.MaxLength = 10;
+
+            // Plaats de cursor automatisch in het locatie tekstveld
+            txtbxLocatie.Select();
         }
 
         // Er is op de OK knop geklikt.
@@ -54,6 +58,9 @@ namespace Laagspanningsnet
         private void cmbAansluitpunt_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtbxLocatie.Text = _database.GetAansluitpuntLocatie(cmbAansluitpunt.Text);
+            
+            // plaats cursor in Locatie veld
+            txtbxLocatie.Select();
         }
     }
 }
