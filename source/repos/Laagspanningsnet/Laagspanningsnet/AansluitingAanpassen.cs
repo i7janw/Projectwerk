@@ -14,10 +14,13 @@
  *      - MessageBoxIcon.Exclamation aan massageboxen toegevoegd
  *  - 20180509 :
  *      - cursor in kring tekstveld
+ *  - 20180510 :
+ *      - Ontvangt nu kring-voorstellen bij nieuwe kring
  */
 using System;
 using System.ComponentModel;
 using System.Data;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Laagspanningsnet
@@ -75,26 +78,15 @@ namespace Laagspanningsnet
             // T = Transfo --> enkel aan te sluiten op hoogspanning
             foreach (string a in _database.GetAansluitpunten(true))
             {
-                Console.WriteLine("GET " + a);
                 // if it is List<String>
                 if (!a.StartsWith("T"))
                 {
-                    Console.WriteLine("ADD " + a);
                     _listAansluitpunten.Add(a);
                 }
             }
             _listAansluitpunten.Insert(0, "Nieuw");                                 // 'nieuw' als keuze toevoegen
             _listAansluitpunten.Insert(1, "Geen");                                  // 'geen' als keuze toevoegen
             
-            // Pas de titel aan
-            if (_row["Kring"].Equals("Nieuw"))
-            {
-                Text = "Nieuwe aansluiting ingeven";
-            } else { 
-                Text = "Aansluiting " + _aansluitpunt + " - "+ (string)_row["Kring"] + " aanpassen";
-            }
-            lblTitel.Text = _aansluitpunt + " - " + (string)_row["Kring"];
-
             // Wat is er op deze aansluiting aangesloten?
             if ((string)_row["Type"] == "N")
             {
@@ -108,30 +100,38 @@ namespace Laagspanningsnet
             }
             if ((string)_row["Type"] == "M")
             {
-                txtbxOmschrijving.Enabled = false;                  // Machine = Omschrijving komt uit Machine-Table
+                txtbxOmschrijving.Enabled = false;                      // Machine = Omschrijving komt uit Machine-Table
                 txtbxOmschrijving.Text = _database.GetMachineOmschrijving((string)_row["Nummer"]);
-                _listMachines.Insert(0, (string)_row["Nummer"]);      // Huidige machine aan lijst toevoegen
+                _listMachines.Insert(0, (string)_row["Nummer"]);        // Huidige machine aan lijst toevoegen
                 cmbMachine.Text = (string)_row["Nummer"];
                 cmbAansluitpunt.Text = "Geen";
             }
             if ((string)_row["Type"] == "A")
             {
-                txtbxOmschrijving.Enabled = false;                  // Aansluitpunt =  geen omschrijving
+                txtbxOmschrijving.Enabled = false;                      // Aansluitpunt =  geen omschrijving
                 txtbxOmschrijving.Text = "";
-                _listAansluitpunten.Insert(0, (string)_row["Nummer"]);// Huidig aansluitpunt aan lijst toevoegen
+                _listAansluitpunten.Insert(0, (string)_row["Nummer"]);  // Huidig aansluitpunt aan lijst toevoegen
                 cmbAansluitpunt.Text = (string)_row["Nummer"];
                 cmbMachine.Text = "Geen";
             }
-            // Zet de overige gegevens op het scherm
-            txtbxKring.Text = (string)_row["Kring"];
-            if ((string)_row["Kring"] != "Nieuw")
-            {
-                txtbxKring.Enabled = false;
+            
+            // Nieuwe of bestaande kring?
+            if (((string)_row["Kring"]).StartsWith("Nieuw"))
+            { // --> nieuw
+                Text = "Nieuwe aansluiting ingeven";                                                    // venster-titel
+                txtbxKring.Text = ((string)_row["Kring"]).Split(' ')[1];                                // Nieuw van kring verwijderen
             }
             else
-            {
-                txtbxKring.Text = "";
+            { // --> bestaand
+                Text = "Aansluiting " + _aansluitpunt + " - " + (string)_row["Kring"] + " aanpassen";   // venster-titel
+                txtbxKring.Enabled = false;
+                txtbxKring.Text = (string)_row["Kring"];
             }
+
+            // Titel label aanpassen
+            lblTitel.Text = _aansluitpunt + " - " + ((string)_row["Kring"]).Split(' ')[0];
+
+
             txtbxKabeltype.Text = "XVB";            // Default kabel type = XVB 
             if (_row["KabelType"] != DBNull.Value)
             {
@@ -175,7 +175,7 @@ namespace Laagspanningsnet
             }
             
             // Ga na of deze aansluiting wel uniek is
-            if (_row["Kring"].Equals("Nieuw"))    // enkel checken als we een nieuwe kring toevoegen
+            if (((string)_row["Kring"]).StartsWith("Nieuw"))    // enkel checken als we een nieuwe kring toevoegen
             {
                 foreach (DataRow dtRow in _dt.Rows)
                 {

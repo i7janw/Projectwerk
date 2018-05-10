@@ -14,10 +14,13 @@
  *      - knop zoeken naast input veld (alles in een panel gestoken)
  *  - 20180508 :
  *      - MessageBoxIcon aan messagebox toegevoegd
+ *  - 20180510 :
+ *      - Nieuwe kring toevoegen, geeft kring-voorstel door aan AansluitingAanpassen()
  */
 using System;
 using System.Data;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Laagspanningsnet
@@ -61,7 +64,109 @@ namespace Laagspanningsnet
                     row["+"] = "+";
                     row["-"] = "-";
                     row["A"] = "A";
-                    row["Kring"] = "Nieuw";
+                    row["Kring"] = "Nieuw ";
+
+                    // Gaat het om een VB?
+                    if (dgvLaagspanningsnet.GetAansluitpunt().StartsWith("VB"))
+                    { // Ja --> Stel Sa Sb Sc Sd voor aan de hand van het row nummer
+                        int n = e.RowIndex + 97;                        // 97 = ascii code van 'a'
+                        row["Kring"] = row["Kring"] + "S" + (char)n;    // zet ascii om naar het character
+                    }
+                    else
+                    { // Geen VB, dan is het een T of een K
+
+                        // aan de hand van de waarde in kring gaan we straks een voorstelkring bepalen,
+                        // we starten met de naam van het aansluitpunt, omdat deze kan gebruikt worden bij een
+                        // transfo waar nog geen aansluitingen voor aanwezig zijn.
+                        string kring = dgvLaagspanningsnet.GetAansluitpunt();   
+
+                        bool numberOk = false;      // kunnen we een zinnig nummer voorstellen?
+                        bool plus = false;          // we gaan straks verminderen
+
+                        // is het de laatste lege lijn?
+                        if (dgvLaagspanningsnet.GetDataTable().Rows[e.RowIndex]["Kring"] == DBNull.Value)
+                        { // ja, het is de laatste lege lijn
+                            // --> ophalen van de kring van de vorige lijn, als ....
+                            if (e.RowIndex > 0)     // .... deze kring ook echt bestaat
+                            {
+                                kring = (string) dgvLaagspanningsnet.GetDataTable().Rows[e.RowIndex - 1]["Kring"];
+                                numberOk = true;
+                                plus = true;        // vorige lijn gekozen, dus gaan we straks vermeerderen
+                            }
+                        }
+                        else
+                        { // nee, het is niet de laatste lege lijn
+                            // --> ophalen van de kring van deze lijn
+                            kring = (string)dgvLaagspanningsnet.GetDataTable().Rows[e.RowIndex]["Kring"];
+                            numberOk = true;
+                        }
+
+                        // splits de kring op in getallen (2 getallen indien er een . aanwezig is, anders 1 getal)
+                        string[] digits = kring.Split('.');
+                        int.TryParse(Regex.Replace(digits[0], "[^0-9]", ""), out int number1);
+                        int number2 = -1;           // -1 = er is geen tweede getal
+                        if (digits.Length > 1)
+                        {
+                            int.TryParse(Regex.Replace(digits[1], "[^0-9]", ""), out number2);
+                        }
+
+                        if(numberOk) { 
+                            if (plus)
+                            {
+                                if (number2 == -1 || number2 == 9)
+                                { // bv. 2.9 --> 3.1 of H837 --> H838
+                                    number1++;
+                                    number2 = 1;
+                                }
+                                else
+                                { // bv. 2.6 --> 2.6
+                                    number2++;
+                                }
+                            }
+                            else
+                            {
+                                if (number2 == -1 || number2 == 1 || number2 == 1)
+                                { // bv. 3.0 --> 2.9 of 3.1 --> 2.9 of H838 --> H837
+                                    number1--;
+                                    number2 = 9;
+                                }
+                                else
+                                { // bv. 2.7 --> 2.6
+                                    number2--;
+                                }
+                            }
+                        }
+
+                        // voor de zekerheid voor moest er een getal negatief zijn geworden
+                        if (number1 < 0) number1 = 0;
+                        if (number2 < 0) number2 = 0;
+
+                        // Voeg het nummer toe aan row["Kring"], afhankelijk van T of K
+                        if (dgvLaagspanningsnet.GetAansluitpunt().StartsWith("T"))
+                        { // T
+                            if (!numberOk) // is er een zinnig nummer gevonden
+                            {
+                                // nee, dan rekenen we zelf een start nummer uit.
+                                // kring was helemaal aan de start gelijk gezet aan aansluitpunt,
+                                // dus bij T8 is number1 nu 8 --> 8 * 100 + 1 = 801 als startwaarde
+                                number1 = number1 * 100 + 1;
+                            }
+
+                            row["Kring"] = row["Kring"] + "H" + number1;
+                        }
+                        else
+                        { // K
+                            if (!numberOk) // is er een zinnig nummer gevonden
+                            {
+                                // nee, dan starten we met 1.1
+                                number1 = 1;
+                                number2 = 1;
+                            }
+
+                            row["Kring"] = row["Kring"] + "" + number1 + "." + number2;
+                        }
+                    }
+
                     row["Type"] = "N";
                     row["T/VB/K"] = dgvLaagspanningsnet.GetAansluitpunt();
                     dgvLaagspanningsnet.GetDataTable().Rows.InsertAt(row, e.RowIndex);

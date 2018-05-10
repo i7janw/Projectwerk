@@ -32,6 +32,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Hoofdscherm));
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvLaagspanningsnet = new Laagspanningsnet.LaagspanningGridView();
+            this.panel = new System.Windows.Forms.Panel();
+            this.logo = new System.Windows.Forms.PictureBox();
+            this.lblKruimelpad = new System.Windows.Forms.Label();
+            this.lblDynKruimelpad = new System.Windows.Forms.Label();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.laagspanningsnetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.overzichtTransfosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,8 +51,6 @@
             this.nieuwToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aanpassenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verwijderenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dgvLaagspanningsnet = new Laagspanningsnet.LaagspanningGridView();
-            this.panel = new System.Windows.Forms.Panel();
             this.lblDynStroom = new System.Windows.Forms.Label();
             this.lblDynKabel = new System.Windows.Forms.Label();
             this.lblKabel = new System.Windows.Forms.Label();
@@ -59,14 +62,11 @@
             this.lblLayout = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtbxSearch = new System.Windows.Forms.TextBox();
-            this.lblDynKruimelpad = new System.Windows.Forms.Label();
-            this.lblKruimelpad = new System.Windows.Forms.Label();
-            this.logo = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel.SuspendLayout();
-            this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLaagspanningsnet)).BeginInit();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel
@@ -84,6 +84,81 @@
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel.Size = new System.Drawing.Size(1247, 727);
             this.tableLayoutPanel.TabIndex = 0;
+            // 
+            // dgvLaagspanningsnet
+            // 
+            this.dgvLaagspanningsnet.AllowUserToAddRows = false;
+            this.dgvLaagspanningsnet.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgvLaagspanningsnet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvLaagspanningsnet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvLaagspanningsnet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLaagspanningsnet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvLaagspanningsnet.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvLaagspanningsnet.Location = new System.Drawing.Point(3, 178);
+            this.dgvLaagspanningsnet.MultiSelect = false;
+            this.dgvLaagspanningsnet.Name = "dgvLaagspanningsnet";
+            this.dgvLaagspanningsnet.RowHeadersVisible = false;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
+            this.dgvLaagspanningsnet.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvLaagspanningsnet.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvLaagspanningsnet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvLaagspanningsnet.Size = new System.Drawing.Size(1241, 546);
+            this.dgvLaagspanningsnet.TabIndex = 1;
+            this.dgvLaagspanningsnet.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvLaagspanningsnetCellContentClick);
+            this.dgvLaagspanningsnet.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvLaagspanningsnetCellValueChanged);
+            this.dgvLaagspanningsnet.SelectionChanged += new System.EventHandler(this.DgvLaagspanningsnetSelectionChanged);
+            // 
+            // panel
+            // 
+            this.panel.Controls.Add(this.logo);
+            this.panel.Controls.Add(this.lblKruimelpad);
+            this.panel.Controls.Add(this.lblDynKruimelpad);
+            this.panel.Controls.Add(this.menuStrip);
+            this.panel.Controls.Add(this.lblDynStroom);
+            this.panel.Controls.Add(this.lblDynKabel);
+            this.panel.Controls.Add(this.lblKabel);
+            this.panel.Controls.Add(this.lblStroom);
+            this.panel.Controls.Add(this.lblDynLocatie);
+            this.panel.Controls.Add(this.btnDynVoeding);
+            this.panel.Controls.Add(this.lblVoeding);
+            this.panel.Controls.Add(this.lblLocatie);
+            this.panel.Controls.Add(this.lblLayout);
+            this.panel.Controls.Add(this.btnSearch);
+            this.panel.Controls.Add(this.txtbxSearch);
+            this.panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel.Location = new System.Drawing.Point(3, 3);
+            this.panel.Name = "panel";
+            this.panel.Size = new System.Drawing.Size(1241, 169);
+            this.panel.TabIndex = 3;
+            // 
+            // logo
+            // 
+            this.logo.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.logo.Image = global::Laagspanningsnet.Properties.Resources.logo_hansen_sumitomo;
+            this.logo.Location = new System.Drawing.Point(977, 30);
+            this.logo.Name = "logo";
+            this.logo.Size = new System.Drawing.Size(261, 53);
+            this.logo.TabIndex = 10;
+            this.logo.TabStop = false;
+            // 
+            // lblKruimelpad
+            // 
+            this.lblKruimelpad.AutoSize = true;
+            this.lblKruimelpad.Location = new System.Drawing.Point(35, 137);
+            this.lblKruimelpad.Name = "lblKruimelpad";
+            this.lblKruimelpad.Size = new System.Drawing.Size(35, 15);
+            this.lblKruimelpad.TabIndex = 9;
+            this.lblKruimelpad.Text = "Pad :";
+            // 
+            // lblDynKruimelpad
+            // 
+            this.lblDynKruimelpad.AutoSize = true;
+            this.lblDynKruimelpad.Location = new System.Drawing.Point(76, 137);
+            this.lblDynKruimelpad.Name = "lblDynKruimelpad";
+            this.lblDynKruimelpad.Size = new System.Drawing.Size(71, 15);
+            this.lblDynKruimelpad.TabIndex = 8;
+            this.lblDynKruimelpad.Text = "Kruimelpad";
             // 
             // menuStrip
             // 
@@ -199,53 +274,6 @@
             this.verwijderenToolStripMenuItem.Text = "Verwijderen";
             this.verwijderenToolStripMenuItem.Click += new System.EventHandler(this.MenuMachineVerwijderenClick);
             // 
-            // dgvLaagspanningsnet
-            // 
-            this.dgvLaagspanningsnet.AllowUserToAddRows = false;
-            this.dgvLaagspanningsnet.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvLaagspanningsnet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvLaagspanningsnet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvLaagspanningsnet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLaagspanningsnet.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLaagspanningsnet.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvLaagspanningsnet.Location = new System.Drawing.Point(3, 178);
-            this.dgvLaagspanningsnet.MultiSelect = false;
-            this.dgvLaagspanningsnet.Name = "dgvLaagspanningsnet";
-            this.dgvLaagspanningsnet.RowHeadersVisible = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
-            this.dgvLaagspanningsnet.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvLaagspanningsnet.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvLaagspanningsnet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLaagspanningsnet.Size = new System.Drawing.Size(1241, 546);
-            this.dgvLaagspanningsnet.TabIndex = 1;
-            this.dgvLaagspanningsnet.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvLaagspanningsnetCellContentClick);
-            this.dgvLaagspanningsnet.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvLaagspanningsnetCellValueChanged);
-            this.dgvLaagspanningsnet.SelectionChanged += new System.EventHandler(this.DgvLaagspanningsnetSelectionChanged);
-            // 
-            // panel
-            // 
-            this.panel.Controls.Add(this.logo);
-            this.panel.Controls.Add(this.lblKruimelpad);
-            this.panel.Controls.Add(this.lblDynKruimelpad);
-            this.panel.Controls.Add(this.menuStrip);
-            this.panel.Controls.Add(this.lblDynStroom);
-            this.panel.Controls.Add(this.lblDynKabel);
-            this.panel.Controls.Add(this.lblKabel);
-            this.panel.Controls.Add(this.lblStroom);
-            this.panel.Controls.Add(this.lblDynLocatie);
-            this.panel.Controls.Add(this.btnDynVoeding);
-            this.panel.Controls.Add(this.lblVoeding);
-            this.panel.Controls.Add(this.lblLocatie);
-            this.panel.Controls.Add(this.lblLayout);
-            this.panel.Controls.Add(this.btnSearch);
-            this.panel.Controls.Add(this.txtbxSearch);
-            this.panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel.Location = new System.Drawing.Point(3, 3);
-            this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(1241, 169);
-            this.panel.TabIndex = 3;
-            // 
             // lblDynStroom
             // 
             this.lblDynStroom.AutoSize = true;
@@ -358,34 +386,6 @@
             this.txtbxSearch.TabIndex = 0;
             this.txtbxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtbxSearchKeyDown);
             // 
-            // lblDynKruimelpad
-            // 
-            this.lblDynKruimelpad.AutoSize = true;
-            this.lblDynKruimelpad.Location = new System.Drawing.Point(76, 137);
-            this.lblDynKruimelpad.Name = "lblDynKruimelpad";
-            this.lblDynKruimelpad.Size = new System.Drawing.Size(71, 15);
-            this.lblDynKruimelpad.TabIndex = 8;
-            this.lblDynKruimelpad.Text = "Kruimelpad";
-            // 
-            // lblKruimelpad
-            // 
-            this.lblKruimelpad.AutoSize = true;
-            this.lblKruimelpad.Location = new System.Drawing.Point(35, 137);
-            this.lblKruimelpad.Name = "lblKruimelpad";
-            this.lblKruimelpad.Size = new System.Drawing.Size(35, 15);
-            this.lblKruimelpad.TabIndex = 9;
-            this.lblKruimelpad.Text = "Pad :";
-            // 
-            // logo
-            // 
-            this.logo.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.logo.Image = global::Laagspanningsnet.Properties.Resources.logo_hansen_sumitomo;
-            this.logo.Location = new System.Drawing.Point(977, 30);
-            this.logo.Name = "logo";
-            this.logo.Size = new System.Drawing.Size(261, 53);
-            this.logo.TabIndex = 10;
-            this.logo.TabStop = false;
-            // 
             // Hoofdscherm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -399,12 +399,12 @@
             this.Text = "Laagspanningsnet : Hansen Industrial Transmissions";
             this.Load += new System.EventHandler(this.Hoofdscherm_Load);
             this.tableLayoutPanel.ResumeLayout(false);
-            this.menuStrip.ResumeLayout(false);
-            this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLaagspanningsnet)).EndInit();
             this.panel.ResumeLayout(false);
             this.panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
 
         }

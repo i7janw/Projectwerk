@@ -10,6 +10,8 @@
  *  - 20180508 :
  *      - MessageBoxIcon toegevoegd aan messageboxen
  *      - Als open() mislukt --> Application.Exit()
+ *  - 20180510 :
+ *      - GetAansluitingen() : order by toegevoegd
  */
 
 using System;
@@ -331,7 +333,13 @@ namespace Laagspanningsnet
          */
         public DataSet GetAansluitingen(string aansluitpunt)
         {
-            const string query = "select * from laagspanningsnet.aansluitingen WHERE AP_id=@para;";
+            const string query = "select *, " +
+                                 "CONVERT(A_id, UNSIGNED INTEGER) AS num1, " +
+                                 "CONVERT(SUBSTRING_INDEX(A_id, '.', -1), UNSIGNED INTEGER) AS num2 " +
+                                 "from laagspanningsnet.aansluitingen WHERE AP_id=@para " +
+                                 "ORDER BY num1, num2;";
+            // Opmerking : de conversie van A_id naar een integers en de ORDER BY num1, num2 zorgen ervoor dat bij een nummering van
+            // bv. 3.1 / 3.10 / 10.10 deze in de juiste volgorde komen te staan.
             _mySqlDataAdapter = new MySqlDataAdapter(query, MySqlConnection);
             _mySqlDataAdapter.SelectCommand.Parameters.AddWithValue("@para", aansluitpunt);
             return GetDataSet();
