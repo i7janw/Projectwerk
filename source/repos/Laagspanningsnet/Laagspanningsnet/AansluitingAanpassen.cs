@@ -16,6 +16,9 @@
  *      - cursor in kring tekstveld
  *  - 20180510 :
  *      - Ontvangt nu kring-voorstellen bij nieuwe kring
+ *  - 20180511 :
+ *      - Doorsturen van naamvoorstel nieuwe kast naar AansluitpuntNieuw
+ *      - Checken op samenhang naam aansluitpunt/kring en AansluitpuntHernoemen aanroepen met naam voorstel
  */
 using System;
 using System.ComponentModel;
@@ -25,7 +28,6 @@ using System.Windows.Forms;
 
 namespace Laagspanningsnet
 {
-    
     public partial class AansluitingAanpassen : Form
     {
         private readonly string _aansluitpunt;
@@ -191,7 +193,53 @@ namespace Laagspanningsnet
                 }
             }
 
-            // Ok, aansluiting is uniek, we kunnen verder gaan
+            // Testen af de naamgevening wel consistent is
+            if (!cmbAansluitpunt.Text.Equals("Geen"))
+            {  
+                bool consistent = true;
+                int.TryParse(Regex.Replace(cmbAansluitpunt.Text, "[^0-9]", ""), out int nr);
+                int.TryParse(Regex.Replace(_aansluitpunt, "[^0-9]", ""), out int apNr);
+                if (_aansluitpunt.StartsWith("VB"))
+                {
+                    if (apNr != nr) consistent = false;
+                    if (!txtbxKring.Text.Substring(txtbxKring.Text.Length - 1)
+                        .Equals(cmbAansluitpunt.Text.Substring(cmbAansluitpunt.Text.Length - 1))) consistent = false;
+                }
+
+                if (_aansluitpunt.StartsWith("K"))
+                {
+                    if (!cmbAansluitpunt.Text.StartsWith(_aansluitpunt)) consistent = false;
+                }
+
+                if (_aansluitpunt.StartsWith("T"))
+                {
+                    if (!txtbxKring.Text.Replace("H", "VB").Equals(cmbAansluitpunt.Text)) consistent = false;
+                }
+
+                if (!consistent)
+                {
+                    DialogResult result = MessageBox.Show("Onsamenhangende naam : " + _aansluitpunt + " - " + txtbxKring.Text + " --> " + cmbAansluitpunt.Text +
+                                                          "\n\n" + cmbAansluitpunt.Text + " hernoemen?" , "Onsamenhangende naam?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        string[] aangesloten = new string[2];
+                        aangesloten[0] = cmbAansluitpunt.Text;
+                        aangesloten[1] = MakeAansluitpuntName();
+                        AansluitpuntHernoemen ah = new AansluitpuntHernoemen(aangesloten);
+                        if (ah.ShowDialog() != DialogResult.Cancel)             // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
+                        {
+                            _listAansluitpunten.Remove(cmbAansluitpunt.Text);   // Oude naam weg
+                            _listAansluitpunten.Add(aangesloten[0]);            // Nieuwe naam erbij
+                            cmbAansluitpunt.Text = aangesloten[0];              // terugkoppeling van de nieuwe naam
+                        }
+                    }
+                }
+            }
+
+            Console.WriteLine("OK");
+            Console.WriteLine(cmbAansluitpunt.Text);
+
+            // Alles Ok, de gegevens kunnen in een nieuwe datarow gestoken worden.
             _dt.Rows.Remove(_row);
             DataRow row = _dt.NewRow();
             row["+"] = "+";
@@ -273,6 +321,9 @@ namespace Laagspanningsnet
                 _locked = true;
                 cmbAansluitpunt.Text = "Geen";
                 string[] aansluitpunt = new string[1];
+                aansluitpunt[0] = MakeAansluitpuntName();       // Stel zelf een aansluitpuntnaam voor
+
+                // Dialoogscherm tonen
                 AansluitpuntNieuw an = new AansluitpuntNieuw(aansluitpunt);
                 if (an.ShowDialog() != DialogResult.Cancel) // ShowDialog --> het hoofdvenster is niet aktief meer tot dit venster gesloten is
                 {
@@ -281,9 +332,9 @@ namespace Laagspanningsnet
                 }
                 _locked = false;
             }
-            if (cmbAansluitpunt.Text == "Geen")
+            if (cmbAansluitpunt.Text.Equals("Geen"))
             {
-                if (cmbMachine.Text == "Geen")
+                if (cmbMachine.Text.Equals("Geen"))
                 {
                     txtbxOmschrijving.Enabled = true;
                 }
@@ -292,6 +343,28 @@ namespace Laagspanningsnet
             cmbMachine.Text = "Geen";
             txtbxOmschrijving.Enabled = false;  // Machine = Omschrijving komt uit Machine-Table
             txtbxOmschrijving.Text = "";
+        }
+
+        // Maak een naam voor een aansluitpunt aan die samenhangend is met de kring waar hij op aangesloten wordt
+        private string MakeAansluitpuntName()
+        {
+            string name = "";
+            // Stel zelf een naam voor, afhankelijk van T/VB/K verschilt de opbouw van de naam
+            if (_aansluitpunt.StartsWith("VB"))
+            {
+                name = _aansluitpunt.Replace("VB", "K") + txtbxKring.Text.Substring(txtbxKring.Text.Length - 1);
+            }
+
+            if (_aansluitpunt.StartsWith("K"))
+            {
+                name = _aansluitpunt + txtbxKring.Text.Replace(".", "");
+            }
+
+            if (_aansluitpunt.StartsWith("T"))
+            {
+                name = txtbxKring.Text.Replace("H", "VB");
+            }
+            return name;
         }
 
         // In de stroom box kunnen enkel getallen ingegeven worden.

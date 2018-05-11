@@ -12,6 +12,8 @@
  *      - MessageboxIcon aan messageboxen toegevoegd
  *  - 20180509
  *      - cursor automatisch in aansluitpunt tekstveld plaatsen
+ *  - 20180511
+ *      - mogelijk om voorgesteld aansluitpunt te tonen
  */
 using System;
 using System.Windows.Forms;
@@ -28,6 +30,7 @@ namespace Laagspanningsnet
             InitializeComponent();
             _database = new Database();
             _aansluitpunt = new string[1];
+            _aansluitpunt[0] = "";
         }
 
         public AansluitpuntNieuw(string[] aansluitpuntId)
@@ -45,6 +48,9 @@ namespace Laagspanningsnet
 
             // Plaats de cursor automatisch in het aansluitpunt tekstveld
             txtbxAansluitpunt.Select();
+
+            // Zet voorgestelde naam in aansluitpunt tekstveld
+            txtbxAansluitpunt.Text = _aansluitpunt[0];
         }
 
         // Er is op de OK knop geklikt.

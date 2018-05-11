@@ -28,6 +28,7 @@ namespace Laagspanningsnet
             InitializeComponent();
             _database = new Database();
             _machine = new string[1];
+            _machine[0] = "";
         }
 
         public MachineNieuw(string[] machineId)

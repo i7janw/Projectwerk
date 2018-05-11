@@ -5,6 +5,9 @@
  *      - MessageboxIcon aan messageboxen toegevoegd
  *  - 20180509 :
  *      - Plaats de cursor automatisch in het nieuw aansluitpunt ID tekstveld
+ *  - 20180511 :
+ *      - Constructor AansluitpuntHernoemen(string[] aansluitpuntId) toegevoegd
+ *        --> mogelijk om naamvoorstel voor een aansluitpunt door te geven
  */
 using System;
 using System.ComponentModel;
@@ -14,12 +17,23 @@ namespace Laagspanningsnet
 {
     public partial class AansluitpuntHernoemen : Form
     {
-        private readonly Database _database;      
+        private readonly Database _database;
+        private readonly string[] _aansluitpunt;
 
         public AansluitpuntHernoemen()
         {
             InitializeComponent();
             _database = new Database();
+            _aansluitpunt = new string[2];
+            _aansluitpunt[0] = "";
+            _aansluitpunt[1] = "";
+        }
+
+        public AansluitpuntHernoemen(string[] aansluitpuntId)
+        {
+            InitializeComponent();
+            _database = new Database();
+            _aansluitpunt = aansluitpuntId;
         }
 
         private void AansluitpuntHernoemen_Load(object sender, EventArgs e)
@@ -35,6 +49,12 @@ namespace Laagspanningsnet
 
             // Plaats de cursor automatisch in het nieuw aansluitpunt ID tekstveld
             txtbxAansluitpunt.Select();
+
+            // Selecteer de huidige naam van het aansluitpunt
+            if (_aansluitpunt[0].Length > 0 ) cmbAansluitpunt.Text = _aansluitpunt[0];
+
+            // Stel een naam voor
+            if (_aansluitpunt[1].Length > 0) txtbxAansluitpunt.Text = _aansluitpunt[1];
         }
 
         // Er is op de OK knop geklikt.
@@ -62,6 +82,9 @@ namespace Laagspanningsnet
 
             // 3. We wissen het oud aansluitpunt
             _database.DeleteAansluitpunt(cmbAansluitpunt.Text);
+
+            // 4. Terugkoppeling van de nieuwe naam
+            _aansluitpunt[0] = txtbxAansluitpunt.Text;
 
             // sluit het venster
             DialogResult = DialogResult.OK;
