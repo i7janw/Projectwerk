@@ -69,7 +69,7 @@
             this.btnOK.TabIndex = 0;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.BtnOK_Click);
+            this.btnOK.Click += new System.EventHandler(this.BtnOkClick);
             // 
             // btnCancel
             // 
@@ -80,7 +80,7 @@
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Annuleren";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancelClick);
             // 
             // lblMachine
             // 
@@ -110,7 +110,7 @@
             this.cmbMachine.Name = "cmbMachine";
             this.cmbMachine.Size = new System.Drawing.Size(278, 21);
             this.cmbMachine.TabIndex = 7;
-            this.cmbMachine.SelectedIndexChanged += new System.EventHandler(this.CmbMachine_SelectedIndexChanged);
+            this.cmbMachine.SelectedIndexChanged += new System.EventHandler(this.CmbMachineSelectedIndexChanged);
             // 
             // cmbAansluitpunt
             // 
@@ -120,7 +120,7 @@
             this.cmbAansluitpunt.Name = "cmbAansluitpunt";
             this.cmbAansluitpunt.Size = new System.Drawing.Size(278, 21);
             this.cmbAansluitpunt.TabIndex = 8;
-            this.cmbAansluitpunt.SelectedIndexChanged += new System.EventHandler(this.CmbAansluitpunt_SelectedIndexChanged);
+            this.cmbAansluitpunt.SelectedIndexChanged += new System.EventHandler(this.CmbAansluitpuntSelectedIndexChanged);
             // 
             // lblOmschrijving
             // 
@@ -192,6 +192,7 @@
             this.txtbxKabelsectie.Name = "txtbxKabelsectie";
             this.txtbxKabelsectie.Size = new System.Drawing.Size(278, 20);
             this.txtbxKabelsectie.TabIndex = 16;
+            this.txtbxKabelsectie.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KabelsectieKeyPress);
             // 
             // txtbxStroom
             // 
@@ -199,7 +200,7 @@
             this.txtbxStroom.Name = "txtbxStroom";
             this.txtbxStroom.Size = new System.Drawing.Size(278, 20);
             this.txtbxStroom.TabIndex = 17;
-            this.txtbxStroom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtbxStroom_KeyPress);
+            this.txtbxStroom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtbxStroomKeyPress);
             // 
             // cmbPolen
             // 
@@ -226,7 +227,7 @@
             this.txtbxKring.Name = "txtbxKring";
             this.txtbxKring.Size = new System.Drawing.Size(278, 20);
             this.txtbxKring.TabIndex = 20;
-            this.txtbxKring.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtbxKring_KeyPress);
+            this.txtbxKring.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtbxKringKeyPress);
             // 
             // AansluitingAanpassen
             // 
@@ -258,7 +259,7 @@
             this.MinimizeBox = false;
             this.Name = "AansluitingAanpassen";
             this.Text = "Aansluiting aanpassen";
-            this.Load += new System.EventHandler(this.AansluitingAanpassen_Load);
+            this.Load += new System.EventHandler(this.AansluitingAanpassenLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
 

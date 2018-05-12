@@ -333,7 +333,7 @@ namespace Laagspanningsnet
          */
         public DataSet GetAansluitingen(string aansluitpunt)
         {
-            const string query = "select *, " +
+            const string query = "SELECT *, " +
                                  "CONVERT(A_id, UNSIGNED INTEGER) AS num1, " +
                                  "CONVERT(SUBSTRING_INDEX(A_id, '.', -1), UNSIGNED INTEGER) AS num2 " +
                                  "from laagspanningsnet.aansluitingen WHERE AP_id=@para " +

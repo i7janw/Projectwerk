@@ -2,7 +2,7 @@
  *
  * Aanpassingen :
  *  - 20180317 :
- *      - TxtbxMachine_KeyPress toegevoegd, enkel cijfers en letters kunnen ingevoegd worden.
+ *      - TxtbxMachineKeyPress toegevoegd, enkel cijfers en letters en bepaalde chars kunnen ingevoegd worden.
  *      - Fix voor probleem 'S019 ' ingeven --> database error want 'S019' bestaat reeds.
  *      - .ico toegevoegd
  * - 20180402 :
@@ -81,11 +81,12 @@ namespace Laagspanningsnet
             Close();
         }
 
-        // In de id box kunnen enkel cijfers en letters ingegeven worden.
+        // In de id box kunnen enkel cijfers en letters en bepaalde characters kunnen ingegeven worden.
         // Bron : <https://stackoverflow.com/questions/463299/how-do-i-make-a-textbox-that-only-accepts-numbers>
         private void TxtbxMachine_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar))
+            if (e.KeyChar == ',') e.KeyChar = '.';  // , --> .
+            if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
             {
                 e.Handled = true;
             }

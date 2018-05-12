@@ -11,7 +11,7 @@
  *      - check lege kring
  *  - 20180508 :
  *      - Transfo's komen niet in keuzelijst aansluitpunten meer voor
- *      - MessageBoxIcon.Exclamation aan massageboxen toegevoegd
+ *      - MessageBoxIcon.Exclamation aan messageboxen toegevoegd
  *  - 20180509 :
  *      - cursor in kring tekstveld
  *  - 20180510 :
@@ -19,6 +19,8 @@
  *  - 20180511 :
  *      - Doorsturen van naamvoorstel nieuwe kast naar AansluitpuntNieuw
  *      - Checken op samenhang naam aansluitpunt/kring en AansluitpuntHernoemen aanroepen met naam voorstel
+ *  - 20180512 :
+ *      - Kabelsectie , --> .
  */
 using System;
 using System.ComponentModel;
@@ -50,7 +52,7 @@ namespace Laagspanningsnet
             _database = new Database();
         }
 
-        private void AansluitingAanpassen_Load(object sender, EventArgs e)
+        private void AansluitingAanpassenLoad(object sender, EventArgs e)
         {
             txtbxKring.MaxLength = 10;
             txtbxKabeltype.MaxLength = 7;
@@ -166,7 +168,7 @@ namespace Laagspanningsnet
         }
 
         // Er is op de OK knop geklikt.
-        private void BtnOK_Click(object sender, EventArgs e)
+        private void BtnOkClick(object sender, EventArgs e)
         {
             // We staan geen lege kring toe.
             if (txtbxKring.Text.Equals(""))
@@ -276,13 +278,13 @@ namespace Laagspanningsnet
         }
 
         // Er is op de anuleer knop geklikt.
-        private void BtnCancel_Click(object sender, EventArgs e)
+        private void BtnCancelClick(object sender, EventArgs e)
         {
             Close();
         }
 
         // Machine is aangepast
-        private void CmbMachine_SelectedIndexChanged(object sender, EventArgs e)
+        private void CmbMachineSelectedIndexChanged(object sender, EventArgs e)
         {
             if (_locked) return;
             if (cmbMachine.Text == "Nieuw")
@@ -313,7 +315,7 @@ namespace Laagspanningsnet
         }
 
         // Aansluitpunt is aangepast
-        private void CmbAansluitpunt_SelectedIndexChanged(object sender, EventArgs e)
+        private void CmbAansluitpuntSelectedIndexChanged(object sender, EventArgs e)
         {
             if (_locked) return;
             if (cmbAansluitpunt.Text == "Nieuw")
@@ -369,7 +371,7 @@ namespace Laagspanningsnet
 
         // In de stroom box kunnen enkel getallen ingegeven worden.
         // Bron : <https://stackoverflow.com/questions/463299/how-do-i-make-a-textbox-that-only-accepts-numbers>
-        private void TxtbxStroom_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtbxStroomKeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
@@ -386,13 +388,19 @@ namespace Laagspanningsnet
         // In de kring box kunnen enkel getallen, letters, "." ingegeven worden.
         // Een ',' wordt een '.'
         // Bron : <https://stackoverflow.com/questions/463299/how-do-i-make-a-textbox-that-only-accepts-numbers>
-        private void TxtbxKring_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtbxKringKeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == ',') e.KeyChar = '.';  // , --> .
             if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
+        }
+
+        // Kabelsectie, maak van een , een . : niet echt nodig, maar steeds een . gebruiken, maakt het geheel meer uniform
+        private void KabelsectieKeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == ',') e.KeyChar = '.';  // , --> .
         }
     }
 }
