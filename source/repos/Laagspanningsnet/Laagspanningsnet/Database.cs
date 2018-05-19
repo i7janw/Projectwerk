@@ -12,6 +12,8 @@
  *      - Als open() mislukt --> Application.Exit()
  *  - 20180510 :
  *      - GetAansluitingen() : order by toegevoegd
+ *  - 20180519 :
+ *      - sorteren GetAansluitingen() aangepast 
  */
 
 using System;
@@ -333,13 +335,29 @@ namespace Laagspanningsnet
          */
         public DataSet GetAansluitingen(string aansluitpunt)
         {
-            const string query = "SELECT *, " +
-                                 "CONVERT(A_id, UNSIGNED INTEGER) AS num1, " +
-                                 "CONVERT(SUBSTRING_INDEX(A_id, '.', -1), UNSIGNED INTEGER) AS num2 " +
-                                 "from laagspanningsnet.aansluitingen WHERE AP_id=@para " +
-                                 "ORDER BY num1, num2;";
-            // Opmerking : de conversie van A_id naar een integers en de ORDER BY num1, num2 zorgen ervoor dat bij een nummering van
-            // bv. 3.1 / 3.10 / 10.10 deze in de juiste volgorde komen te staan.
+            // query om alle aansluitingen van een aansluitpunt op te halen.
+            //
+            // Woordje uitleg over het sorteren van de gegevens 
+            // --------------------------------------------------------------------------------------------------------------
+            //  - (A_id RLIKE '^[^0-9]') : zal 1 zijn als 'kring' niet met een getal start
+            //                                      - eerste ^ = "beginning of string"
+            //                                      - tweede ^ = not
+            //                                      --> als niet start met een getal
+            // --------------------------------------------------------------------------------------------------------------
+            // - CONVERT(A_id, UNSIGNED INTEGER) : geeft bij bv. 10.23 het getal 10
+            // --------------------------------------------------------------------------------------------------------------
+            // - CONVERT(SUBSTRING_INDEX(A_id, '.', -1), UNSIGNED INTEGER) : geeft bij bv. 10.23 het getal 23
+            // --------------------------------------------------------------------------------------------------------------
+            // door te vermenigvuldingen met 1000000 & 1000 en daarna op te tellen, krijgen we het veld sort
+            // dat gebruikt wordt om te sorteren.
+            // 
+            // --> Aansluitingen die starten met een cijfer komen eerst en de volgorde van bv. 3.1 / 3.10 / 10.10 komt
+            //     overeen met wat men als technieker zou verwachten.
+            const string query = "SELECT *," +
+                                 "1000000 * (A_id RLIKE '^[^0-9]') + " +
+                                 "   1000 * CONVERT(A_id, UNSIGNED INTEGER) + " +
+                                 "          CONVERT(SUBSTRING_INDEX(A_id, '.', -1), UNSIGNED INTEGER) AS sort " +
+                                 "from laagspanningsnet.aansluitingen WHERE AP_id = @para ORDER BY sort;";
             _mySqlDataAdapter = new MySqlDataAdapter(query, MySqlConnection);
             _mySqlDataAdapter.SelectCommand.Parameters.AddWithValue("@para", aansluitpunt);
             return GetDataSet();
