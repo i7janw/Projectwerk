@@ -23,6 +23,7 @@ namespace Laagspanningsnet
         private readonly Database _database;
         private readonly string[] _machine;
 
+        // Nieuwe machine
         public MachineNieuw()
         {
             InitializeComponent();
@@ -31,6 +32,8 @@ namespace Laagspanningsnet
             _machine[0] = "";
         }
 
+        // Nieuwe machine
+        //  machineId[0] wordt gebruikt om nieuwe naam door te geven
         public MachineNieuw(string[] machineId)
         {
             InitializeComponent();
@@ -38,7 +41,7 @@ namespace Laagspanningsnet
             _machine = machineId;
         }
 
-        private void MachineNieuw_Load(object sender, EventArgs e)
+        private void MachineNieuwLoad(object sender, EventArgs e)
         {
             // beperk de lengte van de velden - zie datawoordenboek
             txtbxMachine.MaxLength = 10;
@@ -50,7 +53,7 @@ namespace Laagspanningsnet
         }
 
         // Er is op de OK knop geklikt.
-        private void BtnOK_Click(object sender, EventArgs e)
+        private void BtnOkClick(object sender, EventArgs e)
         {
             if (txtbxMachine.Text.Equals(""))
             {
@@ -76,14 +79,14 @@ namespace Laagspanningsnet
         }
 
         // Er is op de anuleer knop geklikt.
-        private void BtnCancel_Click(object sender, EventArgs e)
+        private void BtnCancelClick(object sender, EventArgs e)
         {
             Close();
         }
 
         // In de id box kunnen enkel cijfers en letters en bepaalde characters kunnen ingegeven worden.
         // Bron : <https://stackoverflow.com/questions/463299/how-do-i-make-a-textbox-that-only-accepts-numbers>
-        private void TxtbxMachine_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtbxMachineKeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == ',') e.KeyChar = '.';  // , --> .
             if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))

@@ -22,7 +22,7 @@ namespace Laagspanningsnet
             _database = new Database();
         }
 
-        private void AansluitpuntAanpassen_Load(object sender, EventArgs e)
+        private void AansluitpuntAanpassenLoad(object sender, EventArgs e)
         {
             // Haal lijst met alle aansluitpunten op
             BindingList<string> listAansluitpunt = _database.GetAansluitpunten();
@@ -38,7 +38,7 @@ namespace Laagspanningsnet
         }
 
         // Er is op de OK knop geklikt.
-        private void BtnOK_Click(object sender, EventArgs e)
+        private void BtnOkClick(object sender, EventArgs e)
         {
             // Pas de machine aan in de database
             _database.UpdateAansluitpunt(cmbAansluitpunt.Text, txtbxLocatie.Text);
@@ -49,7 +49,7 @@ namespace Laagspanningsnet
         }
 
         // Er is op de anuleer knop geklikt.
-        private void BtnCancel_Click(object sender, EventArgs e)
+        private void BtnCancelClick(object sender, EventArgs e)
         {
             Close();
         }

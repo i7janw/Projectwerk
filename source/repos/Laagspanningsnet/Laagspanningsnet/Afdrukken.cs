@@ -28,7 +28,7 @@ namespace Laagspanningsnet
             _dgvLaagspanningsnet = dgv;
         }
 
-        private void Afdrukken_Load(object sender, EventArgs e)
+        private void AfdrukkenLoad(object sender, EventArgs e)
         {
             string defaultPrn = "";
             // Haal een lijst op met de beschikbare printers
@@ -78,7 +78,7 @@ namespace Laagspanningsnet
         }
 
         // Er is op de OK knop geklikt.
-        private void BtnOK_Click(object sender, EventArgs e)
+        private void BtnOkClick(object sender, EventArgs e)
         {
             // Open doc om te schrijven naar een MemoryStream
             Document doc = new Document(PageSize.A4);
@@ -107,8 +107,8 @@ namespace Laagspanningsnet
             while (todoList.Count != 0)
             {
                 // zijn er nog te testen aansluitpunten?
-                List<string> tmp = new List<string>(); // tmp = om nieuwe todo lijst aan te maken
-                foreach (String ap in todoList) // doorloop alle aansluitpunten in todo 
+                List<string> tmp = new List<string>(); // tmp = om nieuwe to-do lijst aan te maken
+                foreach (String ap in todoList) // doorloop alle aansluitpunten in to-do 
                 {
                     if (!huidige)       // Als de huidige pagina moet afgedrukt worden, moet dgv niet herladen worden
                     {
@@ -116,7 +116,7 @@ namespace Laagspanningsnet
                     }
                     Print(doc);
                     huidige = false;    // de eerste pagina is afgedrukt, de rest zijn dus geen huidige pagina's meer 
-                    if (_inclusief) // Gaan we ook de aangesloten aansluitpunten afdrukken?
+                    if (_inclusief)     // Gaan we ook de aangesloten aansluitpunten afdrukken?
                     {
                         foreach (DataGridViewRow row in _dgvLaagspanningsnet.Rows)
                         {
@@ -125,14 +125,14 @@ namespace Laagspanningsnet
                                 if ((String) row.Cells["Type"].Value == "A") // is de aansluiting een aansluitpunt?
                                 {
                                     tmp.Add((String) row.Cells["Nummer"]
-                                        .Value); // voeg toe aan tmp (nieuwe todo lijst)
+                                        .Value); // voeg toe aan tmp (nieuwe to-do lijst)
                                 }
                             }
                         }
                     }
                 }
 
-                todoList = tmp; // todo = nieuwe todo lijst.
+                todoList = tmp; // to-do = nieuwe todo lijst.
             }
             
             // Sluit doc
@@ -146,7 +146,7 @@ namespace Laagspanningsnet
             Close();
         }
 
-        // Het afdrukken zelf. TODO
+        // Het afdrukken zelf. 
         [SuppressMessage("ReSharper", "RedundantNameQualifier")]
         private void Print(Document doc)
         {
@@ -250,18 +250,15 @@ namespace Laagspanningsnet
             doc.NewPage();
         }
 
+        // Stuur de memoryStream naar de gekozen printer
         private void ToPrn(byte[] memStream)
         {
-            var printerSettings = new PrinterSettings
-            {
-                PrinterName = _printer,
-                Copies = _kopies,
-            };
+            PrinterSettings printerSettings = new PrinterSettings();
+            printerSettings.Copies = _kopies;
+            printerSettings.PrinterName = _printer;
 
-            var pageSettings = new PageSettings(printerSettings)
-            {
-                Margins = new Margins(0, 0, 0, 0),
-            };
+            PageSettings pageSettings = new PageSettings(printerSettings);
+            pageSettings.Margins = new Margins(0, 0, 0, 0);
 
             foreach (PaperSize paperSize in printerSettings.PaperSizes)
             {
@@ -272,7 +269,7 @@ namespace Laagspanningsnet
                 }
             }
 
-            var stream = new MemoryStream(memStream);
+            MemoryStream stream = new MemoryStream(memStream);
             using (var document = PdfiumViewer.PdfDocument.Load(stream))
             {
                 using (var printDocument = document.CreatePrintDocument())
@@ -283,10 +280,11 @@ namespace Laagspanningsnet
                     printDocument.Print();
                 }
             }
+            // using : https://stackoverflow.com/questions/75401/what-are-the-uses-of-using-in-c-sharp
         }
 
         // Er is op de anuleer knop geklikt.
-        private void BtnCancel_Click(object sender, EventArgs e)
+        private void BtnCancelClick(object sender, EventArgs e)
         {
             Close();
         }

@@ -22,7 +22,7 @@ namespace Laagspanningsnet
             _database = new Database();
         }
 
-        private void MachineVerwijderen_Load(object sender, EventArgs e)
+        private void MachineVerwijderenLoad(object sender, EventArgs e)
         {
             // Haal lijst met alle niet aangesloten machines op
             BindingList<string> listMachines = _database.GetMachines(true); // true - notConnected
@@ -36,7 +36,7 @@ namespace Laagspanningsnet
         }
 
         // Er is op de OK knop geklikt.
-        private void BtnOK_Click(object sender, EventArgs e)
+        private void BtnOkClick(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Machine " +
                                                   cmbMachine.Text +
@@ -53,13 +53,13 @@ namespace Laagspanningsnet
         }
 
         // Er is op de anuleer knop geklikt.
-        private void BtnCancel_Click(object sender, EventArgs e)
+        private void BtnCancelClick(object sender, EventArgs e)
         {
             Close();
         }
 
         // Andere machine uit het menu gekozen
-        private void cmbMachine_SelectedIndexChanged(object sender, EventArgs e)
+        private void CmbMachineSelectedIndexChanged(object sender, EventArgs e)
         {
             txtbxOmschrijving.Text = _database.GetMachineOmschrijving(cmbMachine.Text);
             txtbxLocatie.Text = _database.GetMachineLocatie(cmbMachine.Text);

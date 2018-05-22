@@ -25,6 +25,7 @@ namespace Laagspanningsnet
         private readonly Database _database;
         private readonly string[] _aansluitpunt;
 
+        // Nieuw aansluitpunt
         public AansluitpuntNieuw()
         {
             InitializeComponent();
@@ -33,6 +34,8 @@ namespace Laagspanningsnet
             _aansluitpunt[0] = "";
         }
 
+        // Nieuw aansluitpunt
+        //  _aansluitpunt[0] = naamvoorstel + doorgeven nieuwe naam
         public AansluitpuntNieuw(string[] aansluitpuntId)
         {
             InitializeComponent();
@@ -40,7 +43,7 @@ namespace Laagspanningsnet
             _aansluitpunt = aansluitpuntId;
         }
 
-        private void AansluitpuntNieuw_Load(object sender, EventArgs e)
+        private void AansluitpuntNieuwLoad(object sender, EventArgs e)
         {
             // beperk de lengte van de velden - zie datawoordenboek
             txtbxAansluitpunt.MaxLength = 10;
@@ -54,7 +57,7 @@ namespace Laagspanningsnet
         }
 
         // Er is op de OK knop geklikt.
-        private void BtnOK_Click(object sender, EventArgs e)
+        private void BtnOkClick(object sender, EventArgs e)
         {
             if (txtbxAansluitpunt.Text.Equals(""))
             {
@@ -80,7 +83,7 @@ namespace Laagspanningsnet
         }
 
         // Er is op de anuleer knop geklikt.
-        private void BtnCancel_Click(object sender, EventArgs e)
+        private void BtnCancelClick(object sender, EventArgs e)
         {
             Close();
         }

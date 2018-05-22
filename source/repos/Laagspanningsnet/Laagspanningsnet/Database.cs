@@ -69,6 +69,9 @@ namespace Laagspanningsnet
                 // Dit kan evt. nog verbeterd worden door "ex" niet af, een switch case te gebruiken
                 // voor de meest gangbare fouten.
                 MessageBox.Show("Kan geen verbinding maken met MySqlDatabase\n\n" + ex.Message, "Database fout", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                // Wanneer we geen verbinding met de database kunnen maken, heeft het geen nut om verder te gaan.
+                // Dit zou wel een probleem zijn toen er nog een SAVE knop was (veel nog niet opgeslagen gegevens)
                 Application.Exit();
                 return false;
             }

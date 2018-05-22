@@ -59,7 +59,7 @@
             this.btnOK.TabIndex = 0;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.BtnOK_Click);
+            this.btnOK.Click += new System.EventHandler(this.BtnOkClick);
             // 
             // btnCancel
             // 
@@ -70,7 +70,7 @@
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Annuleren";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancelClick);
             // 
             // txtbxLocatie
             // 
@@ -117,7 +117,7 @@
             this.cmbMachine.Name = "cmbMachine";
             this.cmbMachine.Size = new System.Drawing.Size(232, 21);
             this.cmbMachine.TabIndex = 18;
-            this.cmbMachine.SelectedIndexChanged += new System.EventHandler(this.cmbMachine_SelectedIndexChanged);
+            this.cmbMachine.SelectedIndexChanged += new System.EventHandler(this.CmbMachineSelectedIndexChanged);
             // 
             // txtbxOmschrijving
             // 
@@ -146,7 +146,7 @@
             this.MinimizeBox = false;
             this.Name = "MachineVerwijderen";
             this.Text = "Machine Verwijderen";
-            this.Load += new System.EventHandler(this.MachineVerwijderen_Load);
+            this.Load += new System.EventHandler(this.MachineVerwijderenLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
 

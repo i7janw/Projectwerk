@@ -20,6 +20,7 @@ namespace Laagspanningsnet
         private readonly Database _database;
         private readonly string[] _aansluitpunt;
 
+        // Aansluitpunt hernoemen
         public AansluitpuntHernoemen()
         {
             InitializeComponent();
@@ -29,6 +30,9 @@ namespace Laagspanningsnet
             _aansluitpunt[1] = "";
         }
 
+        // Aansluitpunt hernoemen : 
+        // aansluitpuntId[0] = naam te hernoemen aansluitpunt
+        // aansluitpuntId[1] = naamvoorstel voor nieuwe naam aansluitpunt
         public AansluitpuntHernoemen(string[] aansluitpuntId)
         {
             InitializeComponent();
@@ -36,7 +40,7 @@ namespace Laagspanningsnet
             _aansluitpunt = aansluitpuntId;
         }
 
-        private void AansluitpuntHernoemen_Load(object sender, EventArgs e)
+        private void AansluitpuntHernoemenLoad(object sender, EventArgs e)
         {
             // Haal lijst met alle aansluitpunten op
             BindingList<string> listAansluitpunt = _database.GetAansluitpunten();
@@ -58,7 +62,7 @@ namespace Laagspanningsnet
         }
 
         // Er is op de OK knop geklikt.
-        private void BtnOK_Click(object sender, EventArgs e)
+        private void BtnOkClick(object sender, EventArgs e)
         {
             // 1. We dupliceren eerst het aansluitpunt naar de nieuwe naam.
             if (txtbxAansluitpunt.Text.Equals(""))
@@ -66,7 +70,7 @@ namespace Laagspanningsnet
                 MessageBox.Show("Nieuw Aansluitpunt ID mag niet leeg zijn.", "Leeg ID", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            // Ga na of het dit Aansluitpunt ID reeds bestaat.
+            // Ga na of dit Aansluitpunt ID reeds bestaat.
             if (_database.IsAansluitpunt(txtbxAansluitpunt.Text))
             {
                 MessageBox.Show("Dit aansluitpunt bestaat reeds!", "Dubbel ID", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -92,14 +96,14 @@ namespace Laagspanningsnet
         }
 
         // Er is op de anuleer knop geklikt.
-        private void BtnCancel_Click(object sender, EventArgs e)
+        private void BtnCancelClick(object sender, EventArgs e)
         {
             Close();
         }
 
         // In de id box kunnen enkel cijfers en letters ingegeven worden.
         // Bron : <https://stackoverflow.com/questions/463299/how-do-i-make-a-textbox-that-only-accepts-numbers>
-        private void TxtbxAansluitpunt_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtbxAansluitpuntKeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar))
             {
@@ -108,7 +112,7 @@ namespace Laagspanningsnet
         }
 
         // Andere aansluitpunt uit het menu gekozen
-        private void cmbAansluitpunt_SelectedIndexChanged(object sender, EventArgs e)
+        private void CmbAansluitpuntSelectedIndexChanged(object sender, EventArgs e)
         {
             // Plaats de cursor automatisch in het nieuw aansluitpunt ID tekstveld
             txtbxAansluitpunt.Select();

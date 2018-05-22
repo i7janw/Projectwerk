@@ -22,7 +22,7 @@ namespace Laagspanningsnet
             _database = new Database();
         }
 
-        private void AansluitpuntenVerwijderen_Load(object sender, EventArgs e)
+        private void AansluitpuntenVerwijderenLoad(object sender, EventArgs e)
         {
             // Haal lijst met alle vrije aansluitpunten op.
             BindingList<String> listAansluitpunt = _database.GetAansluitpunten(true); 
@@ -35,7 +35,7 @@ namespace Laagspanningsnet
         }
 
         // Er is op de OK knop geklikt.
-        private void BtnOK_Click(object sender, EventArgs e)
+        private void BtnOkClick(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Aansluitpunt " + 
                                                   cmbAansluitpunt.Text +
@@ -53,13 +53,13 @@ namespace Laagspanningsnet
         }
 
         // Er is op de anuleer knop geklikt.
-        private void BtnCancel_Click(object sender, EventArgs e)
+        private void BtnCancelClick(object sender, EventArgs e)
         {
             Close();
         }
 
         // Andere machine uit het menu gekozen
-        private void cmbMachine_SelectedIndexChanged(object sender, EventArgs e)
+        private void CmbMachineSelectedIndexChanged(object sender, EventArgs e)
         {
             txtbxLocatie.Text = _database.GetAansluitpuntLocatie(cmbAansluitpunt.Text);
         }

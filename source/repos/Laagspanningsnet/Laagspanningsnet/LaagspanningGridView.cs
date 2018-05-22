@@ -71,7 +71,7 @@ namespace Laagspanningsnet
             // DataSet definieren waar de database gegevens in geladen worden
             DataSet dsDatabase;
 
-            // Maak een nieuwe (lege) dataset aan waarin de gegevens komen zoals ze op het sherm getoond worden
+            // Maak een nieuwe (lege) dataset aan waarin de gegevens komen zoals ze op het scherm getoond worden
             // en koppel die aan dgvLaagspanningsnet
             DataSet dsDisplay = new DataSet();
             _dtDisplay = new DataTable("Display");
@@ -154,8 +154,9 @@ namespace Laagspanningsnet
                 var dbOmschrijving = row["Omschrijving"];
                 string dbLocatie = "";
                 string dbNummer = "";
-                string dbType = "N";   // zet standaard op Normaal.
-                                        // Gaat deze aansluiting naar een ander _aansluitpunt?
+                string dbType = "N";    // zet standaard op Normaal.
+                
+                // Gaat deze aansluiting naar een ander _aansluitpunt?
                 var dbNaarApId = row["Naar_AP_id"];
                 if (dbNaarApId != DBNull.Value)
                 {

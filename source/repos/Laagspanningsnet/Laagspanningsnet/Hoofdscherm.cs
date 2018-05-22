@@ -27,7 +27,7 @@ namespace Laagspanningsnet
 {
     public partial class Hoofdscherm : Form
     {
-        private readonly Database _database;        // Alle communicatie met de database verloopt via de database klasse
+        private readonly Database _database;                // Alle communicatie met de database verloopt via de database klasse
         
         public Hoofdscherm()
         {
@@ -35,7 +35,7 @@ namespace Laagspanningsnet
             _database = new Database();
         }
 
-        private void Hoofdscherm_Load(object sender, EventArgs e)
+        private void HoofdschermLoad(object sender, EventArgs e)
         {
             dgvLaagspanningsnet.ShowTransfos();             // We starten met een overzicht van de Transfos
         }
@@ -178,11 +178,11 @@ namespace Laagspanningsnet
                     switch (an.ShowDialog())
                     {
                         case DialogResult.Cancel:
-                            dgvLaagspanningsnet.GetDataTable().Rows.Remove(row); // Verwijder de toegevoegde rij als er op cancel is gedrukt.
+                            dgvLaagspanningsnet.GetDataTable().Rows.Remove(row);    // Verwijder de toegevoegde rij als er op cancel is gedrukt.
                             break;
                         default:
-                            // dgvLaagspanningsnet.MakeButtons(e.RowIndex);    // knoppen updaten
-                            Save(e.ColumnIndex, e.RowIndex);                // Aanpassingen opslaan
+                            // dgvLaagspanningsnet.MakeButtons(e.RowIndex);         // knoppen updaten
+                            Save(e.ColumnIndex, e.RowIndex);                        // Aanpassingen opslaan
                             break;
                     }
                     break;

@@ -397,7 +397,7 @@
             this.MinimumSize = new System.Drawing.Size(1024, 768);
             this.Name = "Hoofdscherm";
             this.Text = "Laagspanningsnet : Hansen Industrial Transmissions";
-            this.Load += new System.EventHandler(this.Hoofdscherm_Load);
+            this.Load += new System.EventHandler(this.HoofdschermLoad);
             this.tableLayoutPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLaagspanningsnet)).EndInit();
             this.panel.ResumeLayout(false);

@@ -57,7 +57,7 @@
             this.btnOK.TabIndex = 0;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.BtnOK_Click);
+            this.btnOK.Click += new System.EventHandler(this.BtnOkClick);
             // 
             // btnCancel
             // 
@@ -68,7 +68,7 @@
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Annuleren";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancelClick);
             // 
             // lblAansluitpuntOud
             // 
@@ -88,7 +88,7 @@
             this.cmbAansluitpunt.Name = "cmbAansluitpunt";
             this.cmbAansluitpunt.Size = new System.Drawing.Size(213, 21);
             this.cmbAansluitpunt.TabIndex = 18;
-            this.cmbAansluitpunt.SelectedIndexChanged += new System.EventHandler(this.cmbAansluitpunt_SelectedIndexChanged);
+            this.cmbAansluitpunt.SelectedIndexChanged += new System.EventHandler(this.CmbAansluitpuntSelectedIndexChanged);
             // 
             // lblAansluitpuntNieuw
             // 
@@ -106,7 +106,7 @@
             this.txtbxAansluitpunt.Name = "txtbxAansluitpunt";
             this.txtbxAansluitpunt.Size = new System.Drawing.Size(213, 20);
             this.txtbxAansluitpunt.TabIndex = 20;
-            this.txtbxAansluitpunt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtbxAansluitpunt_KeyPress);
+            this.txtbxAansluitpunt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtbxAansluitpuntKeyPress);
             // 
             // AansluitpuntHernoemen
             // 
@@ -126,7 +126,7 @@
             this.MinimizeBox = false;
             this.Name = "AansluitpuntHernoemen";
             this.Text = "Aansluitpunt Hernoemen";
-            this.Load += new System.EventHandler(this.AansluitpuntHernoemen_Load);
+            this.Load += new System.EventHandler(this.AansluitpuntHernoemenLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
 

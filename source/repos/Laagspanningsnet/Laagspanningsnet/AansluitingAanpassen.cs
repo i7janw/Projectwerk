@@ -100,7 +100,7 @@ namespace Laagspanningsnet
             _listAansluitpunten.Insert(1, "Geen");                                  // 'geen' als keuze toevoegen
             
             // Wat is er op deze aansluiting aangesloten?
-            if ((string)_row["Type"] == "N")
+            if (_row["Type"].Equals("N"))
             {
                 txtbxOmschrijving.Enabled = true;                                   // Normaal = Omschrijving kan ingegeven worden
                 txtbxOmschrijving.Text = "";
@@ -110,7 +110,7 @@ namespace Laagspanningsnet
                 }
                 cmbMachine.Text = "Geen";
             }
-            if ((string)_row["Type"] == "M")
+            if (_row["Type"].Equals("M"))
             {
                 txtbxOmschrijving.Enabled = false;                                  // Machine = Omschrijving komt uit Machine-Table
                 txtbxOmschrijving.Text = _database.GetMachineOmschrijving((string)_row["Nummer"]);
@@ -118,7 +118,7 @@ namespace Laagspanningsnet
                 cmbMachine.Text = (string)_row["Nummer"];
                 cmbAansluitpunt.Text = "Geen";
             }
-            if ((string)_row["Type"] == "A")
+            if (_row["Type"].Equals("A"))
             {
                 txtbxOmschrijving.Enabled = false;                                  // Aansluitpunt =  geen omschrijving
                 txtbxOmschrijving.Text = "";
@@ -196,7 +196,7 @@ namespace Laagspanningsnet
                 {
                     if (dtRow["Kring"] != DBNull.Value)
                     {
-                        if ((string) dtRow["Kring"] == txtbxKring.Text)
+                        if (dtRow["Kring"].Equals(txtbxKring.Text))
                         {
                             MessageBox.Show("Deze kring bestaat reeds.", "Bestaande kring", MessageBoxButtons.OK,
                                 MessageBoxIcon.Exclamation);
@@ -317,18 +317,18 @@ namespace Laagspanningsnet
             row["T/VB/K"] = _aansluitpunt;
             _dt.Rows.InsertAt(row, _index);
 
-            if (cmbAansluitpunt.Text == "Geen" && cmbMachine.Text == "Geen")
+            if (cmbAansluitpunt.Text.Equals("Geen") && cmbMachine.Text.Equals("Geen"))
             {
                 row["Type"] = "N";
                 row["Nummer"] = "";
             }
-            if (cmbAansluitpunt.Text != "Geen")
+            if (!cmbAansluitpunt.Text.Equals("Geen"))
             {
                 row["Type"] = "A";
                 row["Nummer"] = cmbAansluitpunt.Text;
                 row["Locatie"] = _database.GetAansluitpuntLocatie(cmbAansluitpunt.Text);
             }
-            if (cmbMachine.Text != "Geen")
+            if (!cmbMachine.Text.Equals("Geen"))
             {
                 row["Type"] = "M";
                 row["Nummer"] = cmbMachine.Text;
@@ -354,7 +354,7 @@ namespace Laagspanningsnet
         private void CmbMachineSelectedIndexChanged(object sender, EventArgs e)
         {
             if (_locked) return;
-            if (cmbMachine.Text == "Nieuw")
+            if (cmbMachine.Text.Equals("Nieuw"))
             {
                 _locked = true;
                 cmbMachine.Text = "Geen";
@@ -367,9 +367,9 @@ namespace Laagspanningsnet
                 }
                 _locked = false;
             }
-            if(cmbMachine.Text == "Geen")
+            if(cmbMachine.Text.Equals("Geen"))
             {
-                if(cmbAansluitpunt.Text == "Geen")
+                if(cmbAansluitpunt.Text.Equals("Geen"))
                 {
                     txtbxOmschrijving.Enabled = true;
                     txtbxOmschrijving.Text = "";
@@ -385,7 +385,7 @@ namespace Laagspanningsnet
         private void CmbAansluitpuntSelectedIndexChanged(object sender, EventArgs e)
         {
             if (_locked) return;
-            if (cmbAansluitpunt.Text == "Nieuw")
+            if (cmbAansluitpunt.Text.Equals("Nieuw"))
             {
                 _locked = true;
                 cmbAansluitpunt.Text = "Geen";

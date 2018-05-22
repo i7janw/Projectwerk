@@ -59,7 +59,7 @@
             this.btnOK.TabIndex = 0;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.BtnOK_Click);
+            this.btnOK.Click += new System.EventHandler(this.BtnOkClick);
             // 
             // btnCancel
             // 
@@ -70,7 +70,7 @@
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Annuleren";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancelClick);
             // 
             // txtbxMachine
             // 
@@ -78,7 +78,7 @@
             this.txtbxMachine.Name = "txtbxMachine";
             this.txtbxMachine.Size = new System.Drawing.Size(208, 20);
             this.txtbxMachine.TabIndex = 15;
-            this.txtbxMachine.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtbxMachine_KeyPress);
+            this.txtbxMachine.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtbxMachineKeyPress);
             // 
             // txtbxOmschrijving
             // 
@@ -144,7 +144,7 @@
             this.MinimizeBox = false;
             this.Name = "MachineNieuw";
             this.Text = "Nieuwe Machine";
-            this.Load += new System.EventHandler(this.MachineNieuw_Load);
+            this.Load += new System.EventHandler(this.MachineNieuwLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
 
