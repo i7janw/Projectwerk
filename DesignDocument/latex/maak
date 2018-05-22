@@ -51,10 +51,15 @@ filename=`ls datawoordenboek*.tex`
 filename=`ls useCase*.tex`
 ##create pdflatex
 
+#8. systeemvereisten
+filename=`ls srs*.tex`
+create pdflatex
+
+
 #10. visueel ontwerp
 filename=`ls visueelOntwerp*.tex`
 ##create pdflatex
 
 #13. standup SCRUM
 filename=`ls standupScrum*.tex`
-create pdflatex
+##create pdflatex
