@@ -204,10 +204,13 @@ namespace Laagspanningsnet
             // eerste 3 columns zijn de +/-A knoppen --> width op 25 zetten en HeaderText verbergen
             Columns["+"].Width = 25;
             Columns["+"].HeaderText = "";
+            Columns["+"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             Columns["-"].Width = 25;
             Columns["-"].HeaderText = "";
+            Columns["-"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             Columns["A"].Width = 25;
             Columns["A"].HeaderText = "";
+            Columns["A"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
 
             // width omschrijving instellen
             Columns["Omschrijving"].Width = Width / 3;
